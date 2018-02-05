@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.3" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Java," />
+
+
+<meta name="description" content="机器学习的主要方法 监督学习 无监督学习 强化学习  监督学习检测信用卡欺诈。学习算法会学习所有带有“正常” 或 “可疑”标记（向量Y）的信用卡交易（矩阵X），并最终产生一个决策模型（f函数），对未见过的交易打标记（“正常”或“可疑”）。 无监督学习无监督学习算法所学的数据没有给定的结果标签Y，它主要学习数据结构，比如将相似的输入数据归入某个聚类。可以用于推荐系统，学习算法会发现购物者一同购买的相">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine-Learning-in-Java-1">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/Machine-Learning-in-Java-1/index.html">
+<meta property="og:site_name" content="Junua&#39;s Blog">
+<meta property="og:description" content="机器学习的主要方法 监督学习 无监督学习 强化学习  监督学习检测信用卡欺诈。学习算法会学习所有带有“正常” 或 “可疑”标记（向量Y）的信用卡交易（矩阵X），并最终产生一个决策模型（f函数），对未见过的交易打标记（“正常”或“可疑”）。 无监督学习无监督学习算法所学的数据没有给定的结果标签Y，它主要学习数据结构，比如将相似的输入数据归入某个聚类。可以用于推荐系统，学习算法会发现购物者一同购买的相">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-05T11:22:32.074Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine-Learning-in-Java-1">
+<meta name="twitter:description" content="机器学习的主要方法 监督学习 无监督学习 强化学习  监督学习检测信用卡欺诈。学习算法会学习所有带有“正常” 或 “可疑”标记（向量Y）的信用卡交易（矩阵X），并最终产生一个决策模型（f函数），对未见过的交易打标记（“正常”或“可疑”）。 无监督学习无监督学习算法所学的数据没有给定的结果标签Y，它主要学习数据结构，比如将相似的输入数据归入某个聚类。可以用于推荐系统，学习算法会发现购物者一同购买的相">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/20/Machine-Learning-in-Java-1/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Machine-Learning-in-Java-1 | Junua's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Junua's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/20/Machine-Learning-in-Java-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunHua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junua's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Machine-Learning-in-Java-1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-20T17:00:53+08:00">2017-11-20</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="机器学习的主要方法"><a href="#机器学习的主要方法" class="headerlink" title="机器学习的主要方法"></a>机器学习的主要方法</h3><ul>
+<li>监督学习</li>
+<li>无监督学习</li>
+<li>强化学习</li>
+</ul>
+<h4 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h4><p>检测信用卡欺诈。学习算法会学习所有带有“正常” 或 “可疑”标记（向量Y）的信用卡交易（矩阵X），并最终产生一个决策模型（f函数），对未见过的交易打标记（“正常”或“可疑”）。</p>
+<h4 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h4><p>无监督学习算法所学的数据没有给定的结果标签Y，它主要学习数据结构，比如将相似的输入数据归入某个聚类。可以用于推荐系统，学习算法会发现购物者一同购买的相似商品，比如购买了书A的人也购买了书B。</p>
+<h4 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h4><p>强化学习从完全不同的角度处理学习过程。强化学习的目标是找到最优策略，即映射函数，指定每个状态要采取的行为动作，而没有指导者明确告诉这样做是否会实现目标状态。强化学习的一个例子就是汽车自动驾驶程序。</p>
+<h3 id="机器学习应用流程"><a href="#机器学习应用流程" class="headerlink" title="机器学习应用流程"></a>机器学习应用流程</h3><p>（1） 数据与问题定义<br>（2）数据收集<br>（3）数据预处理<br>（4）利用无监督学习与监督学习进行数据分析与建模<br>（5）模型评价</p>
+<p>特性 | 称名 | 顺序 | 等距 | 等比 |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:center">称名</th>
+<th style="text-align:center">顺序</th>
+<th style="text-align:center">等距</th>
+<th style="text-align:center">等比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">频率分布</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:left">中位数和众数</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:left">值顺序已知</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:left">每个值之间的不同可以量化</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:left">值可以加减</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:left">值可以乘除</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:left">拥有真0点</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+</tr>
+</tbody>
+</table>
+<h3 id="获取数据的方式"><a href="#获取数据的方式" class="headerlink" title="获取数据的方式"></a>获取数据的方式</h3><ul>
+<li>维基百科</li>
+<li>网页抓取</li>
+<li>IMDb</li>
+<li>Million Song Dataset</li>
+</ul>
+<h3 id="数据采集"><a href="#数据采集" class="headerlink" title="数据采集"></a>数据采集</h3><p>陷阱 幸存者偏差<br>数据清洗<br>填充缺失值<br>剔除异常值<br>数据转换</p>
+<h2 id="数据归纳"><a href="#数据归纳" class="headerlink" title="数据归纳"></a>数据归纳</h2><p>奇异值分解（SVD）<br>主成分分析（PCA）<br>神经网络自动编码器（Neural nets auto encoders）</p>
+<h3 id="无监督学习-1"><a href="#无监督学习-1" class="headerlink" title="无监督学习"></a>无监督学习</h3><p>n维欧氏空间中，两个元素之间的距离基于元素在这个空间中的位置，常称为“p-范数距离”(p-norm distance)。常用的两个距离度量是L2与L1范数距离。</p>
+<p>L2范数也叫欧氏距离，它是最常用的距离度量，用于度量二维空间中的两个元素相距多远。<br>它是两个元素在每个维度上差的平方和的平方根，计算公式如下:</p>
+<p>注： 以上数据来自 Machine Learning in Java </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/06/centos-install-git/" rel="next" title="CentOS 安装 git">
+                <i class="fa fa-chevron-left"></i> CentOS 安装 git
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/30/common-commonds/" rel="prev" title="Docker 常用命令(待完善)">
+                Docker 常用命令(待完善) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="JunHua" />
+            
+              <p class="site-author-name" itemprop="name">JunHua</p>
+              <p class="site-description motion-element" itemprop="description">Done is better than perfect.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习的主要方法"><span class="nav-number">1.</span> <span class="nav-text">机器学习的主要方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#监督学习"><span class="nav-number">1.1.</span> <span class="nav-text">监督学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无监督学习"><span class="nav-number">1.2.</span> <span class="nav-text">无监督学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强化学习"><span class="nav-number">1.3.</span> <span class="nav-text">强化学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习应用流程"><span class="nav-number">2.</span> <span class="nav-text">机器学习应用流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取数据的方式"><span class="nav-number">3.</span> <span class="nav-text">获取数据的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据采集"><span class="nav-number">4.</span> <span class="nav-text">数据采集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据归纳"><span class="nav-number"></span> <span class="nav-text">数据归纳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无监督学习-1"><span class="nav-number">1.</span> <span class="nav-text">无监督学习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunHua</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.3"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
