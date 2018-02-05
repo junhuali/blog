@@ -100,27 +100,28 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Linux," />
 
 
-<meta name="description" content="Done is better than perfect.">
+<meta name="description" content="Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。 安装docker-compose 检查是否安装过docker-compose 1$ docker-compose -v #出现docker-compose version 1.16.1, build 6d1ac21 类似，说明安装成功  如果没有安装doc">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="https://junhuali.github.io/blog/2018/02/05/test/index.html">
+<meta property="og:title" content="Docker 安装 RabbitMQ 集群">
+<meta property="og:url" content="https://junhuali.github.io/blog/2017/12/04/docker-install-rabbitmq-cluster/index.html">
 <meta property="og:site_name" content="Junua&#39;s Blog">
-<meta property="og:description" content="Done is better than perfect.">
+<meta property="og:description" content="Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。 安装docker-compose 检查是否安装过docker-compose 1$ docker-compose -v #出现docker-compose version 1.16.1, build 6d1ac21 类似，说明安装成功  如果没有安装doc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T09:15:20.536Z">
+<meta property="og:updated_time" content="2017-12-04T03:18:53.774Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="Done is better than perfect.">
+<meta name="twitter:title" content="Docker 安装 RabbitMQ 集群">
+<meta name="twitter:description" content="Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。 安装docker-compose 检查是否安装过docker-compose 1$ docker-compose -v #出现docker-compose version 1.16.1, build 6d1ac21 类似，说明安装成功  如果没有安装doc">
 
 
 
 
 
 
-  <link rel="canonical" href="https://junhuali.github.io/blog/2018/02/05/test/"/>
+  <link rel="canonical" href="https://junhuali.github.io/blog/2017/12/04/docker-install-rabbitmq-cluster/"/>
 
 
 
@@ -129,7 +130,7 @@
     sidebar: "",
   };
 </script>
-  <title>test | Junua's Blog</title>
+  <title>Docker 安装 RabbitMQ 集群 | Junua's Blog</title>
   
 
 
@@ -264,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://junhuali.github.io/blog/blog/2018/02/05/test/">
+    <link itemprop="mainEntityOfPage" href="https://junhuali.github.io/blog/blog/2017/12/04/docker-install-rabbitmq-cluster/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunHua">
@@ -281,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test</h1>
+          <h1 class="post-title" itemprop="name headline">Docker 安装 RabbitMQ 集群</h1>
         
 
         <div class="post-meta">
@@ -293,7 +294,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T17:15:20+08:00">2018-02-05</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-04T10:31:55+08:00">2017-12-04</time>
             
 
             
@@ -330,7 +331,24 @@
       
 
       
-        
+        <p>Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。</p>
+<h3 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h3><ul>
+<li><p>检查是否安装过docker-compose</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose -v <span class="comment">#出现docker-compose version 1.16.1, build 6d1ac21 类似，说明安装成功</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果没有安装docker-compose，进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#服务器安装</span></span><br><span class="line">$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">$ chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在windows 和 Mac 下载对应的安装包进行安装<br><a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe" target="_blank" rel="noopener">Windows下载地址</a><br><a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">Mac下载地址</a></p>
+</li>
+</ul>
+<h3 id="下载对应的脚本"><a href="#下载对应的脚本" class="headerlink" title="下载对应的脚本"></a>下载对应的脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/bijukunjummen/docker-rabbitmq-cluster.git</span><br></pre></td></tr></table></figure>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> docker-rabbitmq-cluster/cluster/</span><br><span class="line">$ docker-compose up -d <span class="comment">#启动</span></span><br></pre></td></tr></table></figure>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
+<li>登录的账号密码（可以自行在脚本里面修改）<br>user: myuser<br>password: mypass<br>然后访问<code>localhost:15672</code>进行访问</li>
+</ul>
+<p>以上使用bijukunjummen 的脚本，可参见<a href="https://github.com/bijukunjummen/docker-rabbitmq-cluster" target="_blank" rel="noopener">github</a><br>以及<a href="http://get.daocloud.io/#install-docker" target="_blank" rel="noopener">daocloud</a> docker-compose脚本</p>
+
       
     </div>
     
@@ -345,6 +363,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
 
       
       
@@ -354,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2018/01/04/BTC-Tutorial/" rel="next" title="数字货币入门">
-                <i class="fa fa-chevron-left"></i> 数字货币入门
+              <a href="/blog/2017/12/02/kubeadm-install-kubernetes/" rel="next" title="使用kubeadm安装kubernetes集群(待续)">
+                <i class="fa fa-chevron-left"></i> 使用kubeadm安装kubernetes集群(待续)
               </a>
             
           </div>
@@ -363,6 +387,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/12/07/regular-expression-basic/" rel="prev" title="正则表达式基础知识总结">
+                正则表达式基础知识总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -411,8 +439,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -480,6 +517,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">1.</span> <span class="nav-text">安装docker-compose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载对应的脚本"><span class="nav-number">2.</span> <span class="nav-text">下载对应的脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">3.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备注"><span class="nav-number">4.</span> <span class="nav-text">备注</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

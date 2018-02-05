@@ -100,26 +100,28 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Linux," />
 
 
-<meta name="description" content="Done is better than perfect.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Junua&#39;s Blog">
-<meta property="og:url" content="https://junhuali.github.io/blog/archives/2018/02/index.html">
+<meta name="description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3) 启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexu">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 搭建Nexus 私服">
+<meta property="og:url" content="https://junhuali.github.io/blog/2017/09/30/docker-install-nexus/index.html">
 <meta property="og:site_name" content="Junua&#39;s Blog">
-<meta property="og:description" content="Done is better than perfect.">
+<meta property="og:description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3) 启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexu">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-30T05:46:46.921Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Junua&#39;s Blog">
-<meta name="twitter:description" content="Done is better than perfect.">
+<meta name="twitter:title" content="Docker 搭建Nexus 私服">
+<meta name="twitter:description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3) 启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexu">
 
 
 
 
 
 
-  <link rel="canonical" href="https://junhuali.github.io/blog/archives/2018/02/"/>
+  <link rel="canonical" href="https://junhuali.github.io/blog/2017/09/30/docker-install-nexus/"/>
 
 
 
@@ -128,7 +130,7 @@
     sidebar: "",
   };
 </script>
-  <title>Archive | Junua's Blog</title>
+  <title>Docker 搭建Nexus 私服 | Junua's Blog</title>
   
 
 
@@ -175,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,80 +249,164 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 20 posts in total. Keep on posting.
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://junhuali.github.io/blog/blog/2017/09/30/docker-install-nexus/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunHua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junua's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/blog/2018/02/05/test/" itemprop="url">
-              
-                <span itemprop="name">test</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Docker 搭建Nexus 私服</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-05T17:15:20+08:00"
-              content="2018-02-05" >
-          02-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-30T13:46:02+08:00">2017-09-30</time>
+            
 
-    </header>
-  </article>
+            
+            
 
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name nexus-data</span><br></pre></td></tr></table></figure>
+<h3 id="拉取Nexus-镜像"><a href="#拉取Nexus-镜像" class="headerlink" title="拉取Nexus 镜像"></a>拉取Nexus 镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)</span><br></pre></td></tr></table></figure>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
+<h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a></p>
+<p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/" target="_blank" rel="noopener">https://hub.docker.com/r/sonatype/nexus3/</a></p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/09/23/docker-install-MongoDB/" rel="next" title="Docker安装MongoDB(Mongo3.x)">
+                <i class="fa fa-chevron-left"></i> Docker安装MongoDB(Mongo3.x)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/09/30/hexo-can't-find-module/" rel="prev" title="Cannot find module './build/Release/DTraceProviderBindings'">
+                Cannot find module './build/Release/DTraceProviderBindings' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -341,8 +427,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -410,6 +505,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据卷"><span class="nav-number">1.</span> <span class="nav-text">创建数据卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取Nexus-镜像"><span class="nav-number">2.</span> <span class="nav-text">拉取Nexus 镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动镜像"><span class="nav-number">3.</span> <span class="nav-text">启动镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问网址打开-账号-密码-admin-admin123"><span class="nav-number">4.</span> <span class="nav-text">访问网址打开(账号/密码   admin/admin123)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -536,6 +647,10 @@
   
 
   
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=6.0.3"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=6.0.3"></script>
+
+
 
   
 
