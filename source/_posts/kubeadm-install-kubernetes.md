@@ -1,8 +1,7 @@
 ---
 title: 使用kubeadm安装kubernetes集群(待续)
 date: 2017-12-02 16:57:06
-tags:
-    - Linux
+categories: Linux
 ---
 因为国内服务器无法访问google，所以服务器需要科学上网
 可以看我之前的文章，服务器科学上网

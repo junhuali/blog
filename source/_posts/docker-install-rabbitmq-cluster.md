@@ -1,8 +1,7 @@
 ---
 title: Docker 安装 RabbitMQ 集群
 date: 2017-12-04 10:31:55
-tags:
-    - Linux
+categories: Linux
 ---
 Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。
 ### 安装docker-compose

@@ -1,14 +1,13 @@
 ---
 title: CentOS 安装 git
 date: 2017-11-06 15:11:35
-tags:
-    - Linux
+categories: Linux
 ---
 
 ### 源码安装
 - 安装对应的依赖
 ``` bash
-yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel 
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
 yum install gcc perl-ExtUtils-MakeMaker
 ```
 - 下载源码编译安装

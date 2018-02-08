@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Junua's Blog
+title: Junhua's Blog
 subtitle:
 description: Done is better than perfect.
 author: JunHua
-language: zh-Hans
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://junhuali.github.io/blog
-root: /blog/
+url: https://blog.searchinfogo.com
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -82,3 +82,10 @@ deploy:
   branch: gh-pages
   name: junhuali
   email: junhuali.dev@gmail.com
+
+#local_search npm install hexo-generator-searchdb --save
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
