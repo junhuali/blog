@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[数字货币入门]]></title>
-    <url>%2Fblog%2F2018%2F01%2F04%2FBTC-Tutorial%2F</url>
+    <url>%2F2018%2F01%2F04%2FBTC-Tutorial%2F</url>
     <content type="text"><![CDATA[前言最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。 怎么入场交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所平台做担保（避免被骗），建议用实时性比较强的到账方式，不管是买还是卖。我主要是在火币进行兑换，也叫OTC（场外交易） www.huobi.pro]]></content>
       <categories>
         <category>数字货币</category>
@@ -10,7 +10,7 @@
   </entry>
   <entry>
     <title><![CDATA[正则表达式基础知识总结]]></title>
-    <url>%2Fblog%2F2017%2F12%2F07%2Fregular-expression-basic%2F</url>
+    <url>%2F2017%2F12%2F07%2Fregular-expression-basic%2F</url>
     <content type="text"><![CDATA[最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下GitHub，选择了code4craft的webmagic作为项目的基础组件。 对于爬虫来说，数据的获取是基本，获取到数据后需要进行数据清洗之后入库，XPath、正则表达式就是获取这些数据的利器，所以我们只要掌握这些技能就能很好的获取到我们需要的数据。 [0-9]这种形式的正则表达式称作字符组、字符集。\d 字符组简写。(.) 匹配任意字符，通配符，一般不匹配行起始符。]]></content>
       <tags>
         <tag>Java</tag>
@@ -18,7 +18,7 @@
   </entry>
   <entry>
     <title><![CDATA[Docker 安装 RabbitMQ 集群]]></title>
-    <url>%2Fblog%2F2017%2F12%2F04%2Fdocker-install-rabbitmq-cluster%2F</url>
+    <url>%2F2017%2F12%2F04%2Fdocker-install-rabbitmq-cluster%2F</url>
     <content type="text"><![CDATA[Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。 安装docker-compose 检查是否安装过docker-compose 1$ docker-compose -v #出现docker-compose version 1.16.1, build 6d1ac21 类似，说明安装成功 如果没有安装docker-compose，进行安装 123#服务器安装$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose$ chmod +x /usr/local/bin/docker-compose 在windows 和 Mac 下载对应的安装包进行安装Windows下载地址Mac下载地址 下载对应的脚本1$ git clone https://github.com/bijukunjummen/docker-rabbitmq-cluster.git 启动12$ cd docker-rabbitmq-cluster/cluster/$ docker-compose up -d #启动 备注 登录的账号密码（可以自行在脚本里面修改）user: myuserpassword: mypass然后访问localhost:15672进行访问 以上使用bijukunjummen 的脚本，可参见github以及daocloud docker-compose脚本]]></content>
       <categories>
         <category>Linux</category>
@@ -26,7 +26,7 @@
   </entry>
   <entry>
     <title><![CDATA[使用kubeadm安装kubernetes集群(待续)]]></title>
-    <url>%2Fblog%2F2017%2F12%2F02%2Fkubeadm-install-kubernetes%2F</url>
+    <url>%2F2017%2F12%2F02%2Fkubeadm-install-kubernetes%2F</url>
     <content type="text"><![CDATA[因为国内服务器无法访问google，所以服务器需要科学上网可以看我之前的文章，服务器科学上网 安装docker建议使用daocloud提供的脚本进行安装，速度很快12$ curl -sSL https://get.daocloud.io/docker | sh #适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源$ systemctl enable docker &amp;&amp; systemctl start docker #设置开机启动，启动docker 安装kubeadm, kubelet and kubectl123456789101112$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo[kubernetes]name=Kubernetesbaseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64enabled=1gpgcheck=1repo_gpgcheck=1gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpgEOF$ setenforce 0 #关闭SELinux$ yum install -y kubelet kubeadm kubectl$ systemctl enable kubelet &amp;&amp; systemctl start kubelet # 设置开机启动，启动 安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata1234$ yum --enablerepo=kubernetes clean metadata # 如果还是不行，需要先清理缓存$ yum clean metadata$ yum clean all$ rm -rf /var/cache/yum 使用 kubeadm 创建集群1$ kubeadm init #初始化 待续。。。]]></content>
       <categories>
         <category>Linux</category>
@@ -34,7 +34,7 @@
   </entry>
   <entry>
     <title><![CDATA[服务器科学上网]]></title>
-    <url>%2Fblog%2F2017%2F12%2F02%2Fserver-over-the-wall%2F</url>
+    <url>%2F2017%2F12%2F02%2Fserver-over-the-wall%2F</url>
     <content type="text"><![CDATA[因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。 准备 两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4 privoxy 包 开始先用ssh 命令进行服务器socks5 连接接12$ ssh -f -N -D bindaddress:port name@server$ ssh -f -N -D 0.0.0.0:1080 root@45.63.61.77 -f输入密码后进入后台模式(Requests ssh to go to background just before command execution.) -N不执行远程命令,用于端口转发( Do not execute a remote command. This is useful for just for warding ports (protocol version 2 only).) -Dsocket5代理(Specifies a local “dynamic” application-level port forwarding.Currently the SOCKS4 and SOCKS5 protocols are supported, and ssh will act as a SOCKS server.) -Ltcp转发(Specifies that the given port on the local (client) host is to be forwarded to the given host and port on the remote side.) -C使用数据压缩,网速快时会影响速度(Compression is desirable on modem lines and other slow connections, but will only slow down things on fast networks.The compression algorithm is the same used by gzip) bindaddress ：指定绑定ip地址port ： 指定侦听端口name： ssh服务器登录名server： ssh服务器地址 运行完上面的命令就进行socks5连接了可以执行下面的命令查看端口是否打开1$ netstat -nltp 如果能看到指定的端口打开(1080端口)就说明正常连接了。 安装privoxy1$ yum install privoxy -y # 使用yum 安装比较方便，也可以使用源码安装 安装完成后需要进行配置，否则无法正常访问12345$ vim /etc/privoxy/config# :783: 找到 783行，去掉前面的注释符号，端口可以随便改$ listen-address 127.0.0.1:8118#:1336: 找到 1336行，去掉前面的注释符号，后面的1080端口要对应ss服务里面的配置，要一致$ forward-socks5t / 127.0.0.1:1080 修改环境变量开启代理1234vi /ect/profileexport https_proxy=http://127.0.0.1:8118export http_proxy=http://127.0.0.1:8118# 之后执行source /etc/profile 使配置生效 启动privoxy、测试12$ privoxy /etc/privoxy/config #netstat -ntlp 查看8118端口$ wget www.google.com # 如果能下载则说明成功 后记使用完后记得关闭代理，否则所有流量都会走代理，访问可能会变慢注释掉/etc/profile 内的内容，刷新配置。]]></content>
       <tags>
         <tag>Linux</tag>
@@ -42,7 +42,7 @@
   </entry>
   <entry>
     <title><![CDATA[Docker 常用命令(待完善)]]></title>
-    <url>%2Fblog%2F2017%2F11%2F30%2Fcommon-commonds%2F</url>
+    <url>%2F2017%2F11%2F30%2Fcommon-commonds%2F</url>
     <content type="text"><![CDATA[列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true) 创建数据卷1$ docker volume create --name data]]></content>
       <tags>
         <tag>Linux</tag>
@@ -50,7 +50,7 @@
   </entry>
   <entry>
     <title><![CDATA[Machine-Learning-in-Java-1]]></title>
-    <url>%2Fblog%2F2017%2F11%2F20%2FMachine-Learning-in-Java-1%2F</url>
+    <url>%2F2017%2F11%2F20%2FMachine-Learning-in-Java-1%2F</url>
     <content type="text"><![CDATA[机器学习的主要方法 监督学习 无监督学习 强化学习 监督学习检测信用卡欺诈。学习算法会学习所有带有“正常” 或 “可疑”标记（向量Y）的信用卡交易（矩阵X），并最终产生一个决策模型（f函数），对未见过的交易打标记（“正常”或“可疑”）。 无监督学习无监督学习算法所学的数据没有给定的结果标签Y，它主要学习数据结构，比如将相似的输入数据归入某个聚类。可以用于推荐系统，学习算法会发现购物者一同购买的相似商品，比如购买了书A的人也购买了书B。 强化学习强化学习从完全不同的角度处理学习过程。强化学习的目标是找到最优策略，即映射函数，指定每个状态要采取的行为动作，而没有指导者明确告诉这样做是否会实现目标状态。强化学习的一个例子就是汽车自动驾驶程序。 机器学习应用流程（1） 数据与问题定义（2）数据收集（3）数据预处理（4）利用无监督学习与监督学习进行数据分析与建模（5）模型评价 特性 | 称名 | 顺序 | 等距 | 等比 | 特性 称名 顺序 等距 等比 频率分布 √ √ √ √ 中位数和众数 √ √ √ 值顺序已知 √ √ √ 每个值之间的不同可以量化 √ √ √ 值可以加减 √ √ 值可以乘除 √ 拥有真0点 √ 获取数据的方式 维基百科 网页抓取 IMDb Million Song Dataset 数据采集陷阱 幸存者偏差数据清洗填充缺失值剔除异常值数据转换 数据归纳奇异值分解（SVD）主成分分析（PCA）神经网络自动编码器（Neural nets auto encoders） 无监督学习n维欧氏空间中，两个元素之间的距离基于元素在这个空间中的位置，常称为“p-范数距离”(p-norm distance)。常用的两个距离度量是L2与L1范数距离。 L2范数也叫欧氏距离，它是最常用的距离度量，用于度量二维空间中的两个元素相距多远。它是两个元素在每个维度上差的平方和的平方根，计算公式如下: 注： 以上数据来自 Machine Learning in Java]]></content>
       <categories>
         <category>Machine Learning</category>
@@ -58,7 +58,7 @@
   </entry>
   <entry>
     <title><![CDATA[CentOS 安装 git]]></title>
-    <url>%2Fblog%2F2017%2F11%2F06%2Fcentos-install-git%2F</url>
+    <url>%2F2017%2F11%2F06%2Fcentos-install-git%2F</url>
     <content type="text"><![CDATA[源码安装 安装对应的依赖 12yum install curl-devel expat-devel gettext-devel openssl-devel zlib-develyum install gcc perl-ExtUtils-MakeMaker 下载源码编译安装 确保系统git 已经被卸载1yum remove git(先执行本选项，确保卸载掉git) 123456789cd /usr/srcwget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gztar xzf git-2.9.3.tar.gzcd git-2.9.3make prefix=/usr/bin/git allmake prefix=/usr/bin/git installecho "export PATH=$PATH:/usr/bin/git/bin" &gt;&gt; /etc/bashrcsource /etc/bashrcgit --version (查看是否安装完成) rpm 安装（基于CentOS7）1234567# 下载最新rpmwget https://centos7.iuscommunity.org/ius-release.rpm# 安装依赖（可能会少包，按提示安装）rpm -Uvh ius-release*rpm# 安装gityum --enablerepo=ius-archive install git2ugit --version yum 安装(安装2.x 可以yum search git 搜索到)12yum install git2ugit --version]]></content>
       <categories>
         <category>Linux</category>
@@ -66,7 +66,7 @@
   </entry>
   <entry>
     <title><![CDATA[Ubuntu安装LAMP]]></title>
-    <url>%2Fblog%2F2017%2F10%2F28%2Fubuntu-install-lamp%2F</url>
+    <url>%2F2017%2F10%2F28%2Fubuntu-install-lamp%2F</url>
     <content type="text"><![CDATA[LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。 环境基于Ubuntu 开始1$ apt-get update &amp;&amp; sudo apt-get upgrade #更新软件包 安装MySQL123$ sudo apt-get install -y mysql-server $ sudo apt-get install -y mysql-client ! 记得设置默认密码 1$ sudo netstat -tap | grep mysql #显示监听的端口即表示安装成功 配置远程连接12$ vim /etc/mysql/mysql.conf.d/mysqld.cnf#bind-address = 127.0.0.1 远程访问赋权12345$ mysql -u root -p$ grant all on *.* to root@'%' identified by 'root';$ flush privileges; $ exit$ service mysql restart(or: $ /etc/init.d/mysql restart)# 重启 ####安装Apache2 1$ sudo apt-get install -y apache2 1234567891011121314151617#修改apache2.conf配置$ vi /etc/apache2/apache2.conf$ KeepAlive Off#修改mpm_prefork.conf配置$ vim /etc/apache2/mods-available/mpm_prefork.conf &lt;IfModule mpm_prefork_module&gt; StartServers 2 MinSpareServers 6 MaxSpareServers 12 MaxRequestWorkers 39 MaxConnectionsPerChild 3000&lt;/IfModule&gt;#禁用和启动模块$ sudo a2dismod mpm_event$ sudo a2enmod mpm_prefork$ sudo systemctl restart apache2 #重启Apache PHP 安装123456# 安装相关包$ sudo apt-get install php7.0 php-pear libapache2-mod-php7.0 php7.0-mysql -y# 安装组件支持apt-get install php7.0-curl php7.0-json php7.0-cgi graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring php-gettext -y# 重启服务$ sudo systemctl restart apache2 phpmyadmin 安装12345678910111213$ sudo apt-get install -y phpmyadmin#安装对应php包（如果没有安装对应的包） $ sudo apt-get install -y php-mbstring $ sudo apt-get install -y php-gettext#安装时选择自动配置数据库，输入数据库root账号的密码#如果不安装以上两个php软件包，则会报错或者白屏，提示找不到/usr/share/php/php-gettext/gettext.inc之类的错误#建立软连接$ sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin#重启apache$ sudo /etc/init.d/apache2 restart#访问http://localhost:127.0.0.1/phpmyadmin 输入之前创建mysql 时候的账号密码即可]]></content>
       <tags>
         <tag>Linux</tag>
@@ -74,7 +74,7 @@
   </entry>
   <entry>
     <title><![CDATA[Nginx 负载均衡策略]]></title>
-    <url>%2Fblog%2F2017%2F10%2F12%2Fnginx-load-balance-strategy%2F</url>
+    <url>%2F2017%2F10%2F12%2Fnginx-load-balance-strategy%2F</url>
     <content type="text"><![CDATA[Nginx 作为高性能web服务器，负载均衡是其基本功能之一。 注：负载均衡至少需要两台机器 负载均衡负载均衡可以将请求前端的请求分担到后端多个节点上，提升系统的响应和处理能力。 负载均衡策略负载均衡的策略可以大致分为两大类：内置策略 和扩展策略内置策略：一般会直接编译进Nginx内核，常用的有、轮询、ip hash、最少连接扩展策略：fair、url hash等 内置策略 轮询策略（轮询加权/round-robin）到应用服务器的请求以round-robin/轮询的方式被分发配置 123456789101112131415http &#123; # ... 省略其它配置 upstream tomcats &#123; server 192.168.0.100:8080 weight=1 fail_timeout=20s; server 192.168.0.101:8080 weight=2 fail_timeout=20s; &#125; server &#123; server_name www.searchinfogo.com listen 80; location / &#123; proxy_pass http://tomcats; &#125; &#125; # ... 省略其它配置&#125; ip hash 使用hash算法来决定下一个请求要选择哪个服务器(基于客户端IP地址)配置 12345678910111213141516http &#123; # ... 省略其它配置 upstream tomcats &#123; server 192.168.0.100:8080; server 192.168.0.101:8080; ip_hash; &#125; server &#123; server_name www.searchinfogo.com listen 80; location / &#123; proxy_pass http://tomcats; &#125; &#125; # ... 省略其它配置&#125; 最少连接（least_conn) 下一个请求将被分派到活动连接数量最少的服务器配置 12345678910111213141516http &#123; # ... 省略其它配置 upstream tomcats &#123; server 192.168.0.100:8080; server 192.168.0.101:8080; least_conn; &#125; server &#123; server_name www.searchinfogo.com listen 80; location / &#123; proxy_pass http://tomcats; &#125; &#125; # ... 省略其它配置&#125; 扩展策略 fair配置 12345678910111213141516http &#123; # ... 省略其它配置 upstream tomcats &#123; server 192.168.0.100:8080; server 192.168.0.101:8080; fair; &#125; server &#123; server_name www.searchinfogo.com listen 80; location / &#123; proxy_pass http://tomcats; &#125; &#125; # ... 省略其它配置&#125; url hash配置 1234567891011121314151617http &#123; # ... 省略其它配置 upstream tomcats &#123; server 192.168.0.100:8080; server 192.168.0.101:8080; hash $request_uri; hash_method crc32; &#125; server &#123; server_name www.searchinfogo.com listen 80; location / &#123; proxy_pass http://tomcats; &#125; &#125; # ... 省略其它配置&#125; weight=1; (weight 默认为1.weight越大，负载的权重就越大)down; (down 表示单前的server暂时不参与负载)backup; (其它所有的非backup机器down或者忙的时候，请求backup机器)max_fails ：允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream 模块定义的错误fail_timeout:max_fails次失败后，暂停的时间 最后1nginx -s reload #重启nginx]]></content>
       <tags>
         <tag>Linux</tag>
@@ -82,7 +82,7 @@
   </entry>
   <entry>
     <title><![CDATA[centos yum 安装nginx 后增加模块]]></title>
-    <url>%2Fblog%2F2017%2F10%2F01%2Fyum-install-nginx-add-modules%2F</url>
+    <url>%2F2017%2F10%2F01%2Fyum-install-nginx-add-modules%2F</url>
     <content type="text"><![CDATA[yum 和 源码安装的区别yum 安装是在线安装，优点：安装方式简单，快捷； 源码安装是将源码进行编译，生成可执行文件，优点：方便的添加模块等 yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core) 1.增加对应的源1rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm 2.查看nginx信息1yum info nginx (查看nginx 版本方便后面下载对应版本) 3.yum安装nginx1yum -y install nginx nginx 相关的命令1.查看安装路径1rpm -ql nginx 2.查看编译参数1nginx -V 3.nginx 启动、停止、重启123systemctl start nginx #启动 nginx 服务systemctl stop nginx #停止 nginx 服务systemctl restart nginx #重启 nginx 服务 启动检查是否启动成功1curl -i localhost 如下显示说明正常启动：123···&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;··· 安装第三方模块其实yum安装nginx 后想要添加第三方模块，只需对yum安装的nginx相同版本的源码进行编译后替换 1.安装源码安装需要的第三方包1yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel 2.下载对应的源码通过nginx -V 可以知道yum 安装nginx 的版本为1.12.1,下载对应的源码12cd /optwget http://nginx.org/download/nginx-1.12.1.tar.gz 3.查看对应configure1234567tar xf nginx-1.12.1.tar.gzcd nginx-1.12.1nginx -Vconfigure arguments: --prefix=/etc/nginx \ --sbin-path=/usr/sbin/nginx \ --conf-path=/etc/nginx/nginx.conf \ ... 4.增加对应的模块12345./configure --prefix=/etc/nginx \ --sbin-path=/usr/sbin/nginx \ --conf-path=/etc/nginx/nginx.conf \ ... --add-module=../headers-more-nginx-module 5.编译1make &amp;&amp; make install 6.对可执行文件进行备份替换123cp /usr/sbin/nginx /usr/sbin/nginx.bak #备份cp /opt/nginx-1.12.1/objs/nginx /usr/sbin/nginx #替换systemctl restart nginx #重启 nginx 服务 大功告成]]></content>
       <tags>
         <tag>Linux</tag>
@@ -90,7 +90,7 @@
   </entry>
   <entry>
     <title><![CDATA[Cannot find module './build/Release/DTraceProviderBindings']]></title>
-    <url>%2Fblog%2F2017%2F09%2F30%2Fhexo-can't-find-module%2F</url>
+    <url>%2F2017%2F09%2F30%2Fhexo-can't-find-module%2F</url>
     <content type="text"><![CDATA[有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩∩)O哈哈~)报错如下：123456789101112131415161718192021222324&#123; Error: Cannot find module &apos;./build/Release/DTraceProviderBindings&apos; at Function.Module._resolveFilename (module.js:527:15) at Function.Module._load (module.js:476:23) at Module.require (module.js:568:17) at require (internal/module.js:11:18) at Object.&lt;anonymous&gt; (/Users/xxx/Dropbox/hexo/node_modules/dtrace-provider/dtrace-provider.js:18:23) at Module._compile (module.js:624:30) at Object.Module._extensions..js (module.js:635:10) at Module.load (module.js:545:32) at tryModuleLoad (module.js:508:12) at Function.Module._load (module.js:500:3) at Module.require (module.js:568:17) at require (internal/module.js:11:18) at Object.&lt;anonymous&gt; (/Users/xxx/Dropbox/hexo/node_modules/bunyan/lib/bunyan.js:79:18) at Module._compile (module.js:624:30) at Object.Module._extensions..js (module.js:635:10) at Module.load (module.js:545:32) at tryModuleLoad (module.js:508:12) at Function.Module._load (module.js:500:3) at Module.require (module.js:568:17) at require (internal/module.js:11:18) at Object.&lt;anonymous&gt; (/Users/xxx/Dropbox/hexo/node_modules/hexo-log/lib/log.js:3:14) at Module._compile (module.js:624:30) code: &apos;MODULE_NOT_FOUND&apos; &#125;INFO Deleted database. 上面的错误看的非常的影响心情有木有？ 找了网上的很多方法，最后选择了一种比较粗暴的方法删除hexo目录下的node_modules目录，之后执行以下命令：1npm install --registry=https://registry.npm.taobao.org 然后执行hexo server，就会惊喜的发现错误没有了 O(∩∩)O~~)]]></content>
       <tags>
         <tag>Linux</tag>
@@ -98,7 +98,7 @@
   </entry>
   <entry>
     <title><![CDATA[Docker 搭建Nexus 私服]]></title>
-    <url>%2Fblog%2F2017%2F09%2F30%2Fdocker-install-nexus%2F</url>
+    <url>%2F2017%2F09%2F30%2Fdocker-install-nexus%2F</url>
     <content type="text"><![CDATA[创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3) 启动镜像1docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3 访问网址打开(账号/密码 admin/admin123)http://localhost:8081 参考https://hub.docker.com/r/sonatype/nexus3/]]></content>
       <tags>
         <tag>Linux</tag>
@@ -106,7 +106,7 @@
   </entry>
   <entry>
     <title><![CDATA[Docker安装MongoDB(Mongo3.x)]]></title>
-    <url>%2Fblog%2F2017%2F09%2F23%2Fdocker-install-MongoDB%2F</url>
+    <url>%2F2017%2F09%2F23%2Fdocker-install-MongoDB%2F</url>
     <content type="text"><![CDATA[使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data 拉取镜像1docker pull mongo 运行1234567docker run --restart=&quot;always&quot; \ -d \ --name mongo\ -p 17017:27017\ -v mongo-data:/data/db\ -v /etc/localtime:/etc/localtime\ mongo:latest --storageEngine wiredTiger -auth --storageEngine MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘-auth 设置Mongo的权限 进入mongo镜像1docker exec -it mongo mongo admin 创建用户 user123 密码:1234561db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;) 至此，MongDB 安装完成]]></content>
       <tags>
         <tag>Linux</tag>
@@ -114,7 +114,7 @@
   </entry>
   <entry>
     <title><![CDATA[Redis连接池连接没有正常释放报错]]></title>
-    <url>%2Fblog%2F2017%2F09%2F23%2FCould-not-get-a-resource-from-the-pool%2F</url>
+    <url>%2F2017%2F09%2F23%2FCould-not-get-a-resource-from-the-pool%2F</url>
     <content type="text"><![CDATA[123456Caused by: redis.clients.jedis.exceptions.JedisException: Could not get a resource from the poolat redis.clients.util.Pool.getResource(Pool.java:51)at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)... 71 common frames omitted 前几天在线上碰到了一个奇怪的问题，jedis 突然无法从连接池取到资源，经过排查发现是因为使用分布式锁的时候,没有释放资源 redisTemplate 和 jedis 不同redisTemplate 自己实现了资源的释放，不需要像jedis一样手动释放 12345678public boolean setNX(final String key, final String value) throws RedisException &#123; return redisTemplate.execute(new RedisCallback&lt;Boolean&gt;() &#123; @Override public Boolean doInRedis(RedisConnection redisConnection) throws DataAccessException &#123; return redisConnection.setNX(key.getBytes(), value.getBytes()); &#125; &#125;); &#125; 所以实现分布式锁的时候需要调用redisTemplate.execute 让 redisTemplate 帮我们释放资源，具体的可以看redisTemplate 的源码。]]></content>
       <tags>
         <tag>Java</tag>
@@ -122,12 +122,12 @@
   </entry>
   <entry>
     <title><![CDATA[关于]]></title>
-    <url>%2Fblog%2F2017%2F09%2F23%2Fabout%2F</url>
+    <url>%2F2017%2F09%2F23%2Fabout%2F</url>
     <content type="text"><![CDATA[自我介绍 目前就职于一家互联网金融公司 Java 开发工程师（3年工作经验） 邮箱 &#97;&#x72;&#x69;&#101;&#x73;&#x2e;&#x6c;&#x69;&#64;&#x6f;&#117;&#116;&#x6c;&#111;&#111;&#x6b;&#46;&#99;&#111;&#x6d; 个人简历]]></content>
   </entry>
   <entry>
     <title><![CDATA[生活]]></title>
-    <url>%2Fblog%2F2017%2F09%2F23%2Flife%2F</url>
+    <url>%2F2017%2F09%2F23%2Flife%2F</url>
     <content type="text"><![CDATA[日常生活趣事记录]]></content>
       <tags>
         <tag>Life</tag>
@@ -135,7 +135,7 @@
   </entry>
   <entry>
     <title><![CDATA[Nginx 504 Gateway Time-out]]></title>
-    <url>%2Fblog%2F2017%2F09%2F22%2FLinux%2F</url>
+    <url>%2F2017%2F09%2F22%2FLinux%2F</url>
     <content type="text"><![CDATA[今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置1proxy_connect_timeout = 3; 时间过小导致的，最好用默认参数]]></content>
       <categories>
         <category>Linux</category>
