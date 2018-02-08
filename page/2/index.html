@@ -105,13 +105,13 @@
 
 <meta name="description" content="Done is better than perfect.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Junua&#39;s Blog">
+<meta property="og:title" content="Junhua&#39;s Blog">
 <meta property="og:url" content="https://junhuali.github.io/blog/page/2/index.html">
-<meta property="og:site_name" content="Junua&#39;s Blog">
+<meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="Done is better than perfect.">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Junua&#39;s Blog">
+<meta name="twitter:title" content="Junhua&#39;s Blog">
 <meta name="twitter:description" content="Done is better than perfect.">
 
 
@@ -128,7 +128,7 @@
     sidebar: "",
   };
 </script>
-  <title>Junua's Blog</title>
+  <title>Junhua's Blog</title>
   
 
 
@@ -187,7 +187,7 @@
     <div class="custom-logo-site-title">
       <a href="/blog/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Junua's Blog</span>
+        <span class="site-title">Junhua's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -264,150 +264,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://junhuali.github.io/blog/blog/2017/10/12/nginx-load-balance-strategy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/10/12/nginx-load-balance-strategy/" itemprop="url">Nginx 负载均衡策略</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T17:12:01+08:00">2017-10-12</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Nginx 作为高性能web服务器，负载均衡是其基本功能之一。 <code>注：负载均衡至少需要两台机器</code></p>
-<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡可以将请求前端的请求分担到后端多个节点上，提升系统的响应和处理能力。</p>
-<h3 id="负载均衡策略"><a href="#负载均衡策略" class="headerlink" title="负载均衡策略"></a>负载均衡策略</h3><p>负载均衡的策略可以大致分为两大类：<code>内置策略</code> 和<code>扩展策略</code><br>内置策略：一般会直接编译进Nginx内核，常用的有、轮询、ip hash、最少连接<br>扩展策略：fair、url hash等</p>
-<h4 id="内置策略"><a href="#内置策略" class="headerlink" title="内置策略"></a>内置策略</h4><ul>
-<li><p>轮询策略（轮询加权/round-robin）<br><br><code>到应用服务器的请求以round-robin/轮询的方式被分发</code><br><br><code>配置</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080 weight=1 fail_timeout=20s;</span><br><span class="line">        server 192.168.0.101:8080 weight=2 fail_timeout=20s;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ip hash <br><br><code>使用hash算法来决定下一个请求要选择哪个服务器(基于客户端IP地址)</code><br><br><code>配置</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        ip_hash;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最少连接（least_conn) <br><br><code>下一个请求将被分派到活动连接数量最少的服务器</code><br><br><code>配置</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        least_conn;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="扩展策略"><a href="#扩展策略" class="headerlink" title="扩展策略"></a>扩展策略</h4><ul>
-<li><p>fair<br><br><code>配置</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        fair;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>url hash<br><br><code>配置</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        <span class="built_in">hash</span> <span class="variable">$request_uri</span>;</span><br><span class="line">        hash_method crc32;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>weight=1; (weight 默认为1.weight越大，负载的权重就越大)<br>down; (down 表示单前的server暂时不参与负载)<br>backup; (其它所有的非backup机器down或者忙的时候，请求backup机器)<br>max_fails ：允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream 模块定义的错误<br>fail_timeout:max_fails次失败后，暂停的时间</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload <span class="comment">#重启nginx</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://junhuali.github.io/blog/blog/2017/10/01/yum-install-nginx-add-modules/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -417,7 +273,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
+      <meta itemprop="name" content="Junhua's Blog">
     </span>
 
     
@@ -556,7 +412,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
+      <meta itemprop="name" content="Junhua's Blog">
     </span>
 
     
@@ -680,7 +536,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
+      <meta itemprop="name" content="Junhua's Blog">
     </span>
 
     
@@ -805,7 +661,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
+      <meta itemprop="name" content="Junhua's Blog">
     </span>
 
     
@@ -932,7 +788,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
+      <meta itemprop="name" content="Junhua's Blog">
     </span>
 
     
@@ -1057,7 +913,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
+      <meta itemprop="name" content="Junhua's Blog">
     </span>
 
     
@@ -1123,7 +979,7 @@
 </li>
 <li><p>Java 开发工程师（3年工作经验）</p>
 </li>
-<li><p>邮箱 <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x61;&#114;&#x69;&#x65;&#115;&#46;&#108;&#x69;&#64;&#111;&#117;&#116;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;">&#x61;&#114;&#x69;&#x65;&#115;&#46;&#108;&#x69;&#64;&#111;&#117;&#116;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;</a></p>
+<li><p>邮箱 <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x61;&#x72;&#105;&#101;&#115;&#46;&#108;&#x69;&#64;&#x6f;&#x75;&#x74;&#108;&#111;&#111;&#107;&#46;&#x63;&#x6f;&#109;">&#x61;&#x72;&#105;&#101;&#115;&#46;&#108;&#x69;&#64;&#x6f;&#x75;&#x74;&#108;&#111;&#111;&#107;&#46;&#x63;&#x6f;&#109;</a></p>
 </li>
 <li><p><a href="http://image.searchinfogo.com/resume.html" target="_blank" rel="noopener">个人简历</a></p>
 </li>
@@ -1187,7 +1043,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
+      <meta itemprop="name" content="Junhua's Blog">
     </span>
 
     
@@ -1307,7 +1163,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junua's Blog">
+      <meta itemprop="name" content="Junhua's Blog">
     </span>
 
     
@@ -1458,7 +1314,7 @@
                 
                   <a href="/blog/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
