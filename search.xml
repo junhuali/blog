@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[node-install]]></title>
+    <title><![CDATA[CentOS 安装 node]]></title>
     <url>%2F2018%2F02%2F09%2Fnode-install%2F</url>
     <content type="text"><![CDATA[下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz 解压&amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt 1vim /etc/profile 1234#设置node 环境变量export NODE_HOME=/opt/node-v8.9.4-linux-x64export PATH=$NODE_HOME/bin:$PATHsource /etc/profile 测试是否成功1node -v 或者安装nvm123456curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bashvim /etc/profile#加入下面的内容export NVM_DIR="$HOME/.nvm"[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm、source /etc/profile 检查是否安装成功1nvm --version]]></content>
       <categories>
