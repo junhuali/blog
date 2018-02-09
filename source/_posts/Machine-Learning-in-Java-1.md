@@ -2,6 +2,7 @@
 title: Machine-Learning-in-Java-1
 date: 2017-11-20 17:00:53
 categories: Machine Learning
+tag: Machine Learning
 ---
 ### 机器学习的主要方法
 - 监督学习

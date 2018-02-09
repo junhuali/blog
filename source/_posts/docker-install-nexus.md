@@ -1,8 +1,8 @@
 ---
 title: Docker 搭建Nexus 私服
 date: 2017-09-30 13:46:02
-tags:
-    - Linux
+categories: Linux
+tag: Docker
 ---
 ### 创建数据卷
 ``` shell

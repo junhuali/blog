@@ -1,8 +1,8 @@
 ---
 title: Redis连接池连接没有正常释放报错
 date: 2017-09-23 15:56:45
-tags:
-	- Java
+categories: Java
+tag: Redis
 ---
 
 

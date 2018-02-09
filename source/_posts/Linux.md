@@ -2,6 +2,7 @@
 title: Nginx 504 Gateway Time-out
 date: 2017-09-22 20:49:29
 categories: Linux
+tag: Nginx
 
 ---
 

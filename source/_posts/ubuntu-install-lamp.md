@@ -1,8 +1,8 @@
 ---
 title: Ubuntu安装LAMP
 date: 2017-10-28 11:32:00
-tags:
-    - Linux
+categories: Linux
+tag: Shell
 ---
 ### LAMP
  Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。
@@ -15,8 +15,8 @@ $ apt-get update && sudo apt-get upgrade #更新软件包
 ```
 #### 安装MySQL
 ```bash
-$ sudo apt-get install -y mysql-server 
-$ sudo apt-get install -y mysql-client 
+$ sudo apt-get install -y mysql-server
+$ sudo apt-get install -y mysql-client
 ! 记得设置默认密码
 ```
 
@@ -41,7 +41,7 @@ $ service mysql restart(or: $ /etc/init.d/mysql restart)# 重启
 ####安装Apache2
 
 ```bash
-$ sudo apt-get install -y apache2 
+$ sudo apt-get install -y apache2
 ```
 
 ``` bash
@@ -70,7 +70,7 @@ $ sudo apt-get install php7.0 php-pear libapache2-mod-php7.0 php7.0-mysql -y
 # 安装组件支持
 apt-get install php7.0-curl php7.0-json php7.0-cgi graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring php-gettext -y
 # 重启服务
-$ sudo systemctl restart apache2 
+$ sudo systemctl restart apache2
 
 ```
 
@@ -78,8 +78,8 @@ $ sudo systemctl restart apache2
 ``` bash
 
 $ sudo apt-get install -y phpmyadmin
-#安装对应php包（如果没有安装对应的包） 
-$ sudo apt-get install -y php-mbstring 
+#安装对应php包（如果没有安装对应的包）
+$ sudo apt-get install -y php-mbstring
 $ sudo apt-get install -y php-gettext
 #安装时选择自动配置数据库，输入数据库root账号的密码
 #如果不安装以上两个php软件包，则会报错或者白屏，提示找不到/usr/share/php/php-gettext/gettext.inc之类的错误
@@ -90,11 +90,3 @@ $ sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 $ sudo /etc/init.d/apache2 restart
 #访问http://localhost:127.0.0.1/phpmyadmin 输入之前创建mysql 时候的账号密码即可
 ```
-
-
-
-
-
-
-
-

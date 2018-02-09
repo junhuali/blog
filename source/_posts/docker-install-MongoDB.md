@@ -1,8 +1,8 @@
 ---
 title: Docker安装MongoDB(Mongo3.x)
 date: 2017-09-23 16:04:51
-tags:
-	- Linux
+categories: Linux
+tag: Docker
 ---
 
 ### 使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)

@@ -1,8 +1,8 @@
 ---
 title: centos yum 安装nginx 后增加模块
 date: 2017-10-01 23:30:30
-tags:
-    - Linux
+categories: Linux
+tag: Nginx
 ---
 ### yum 和 源码安装的区别
 
@@ -44,7 +44,7 @@ systemctl restart nginx #重启 nginx 服务
 ```
 
 ### 启动检查是否启动成功
-``` shell 
+``` shell
 curl -i localhost
 ```
 
@@ -90,7 +90,7 @@ configure arguments:  --prefix=/etc/nginx \
 make && make install
 ```
 #### 6.对可执行文件进行备份替换
-``` shell 
+``` shell
 cp /usr/sbin/nginx /usr/sbin/nginx.bak #备份
 cp /opt/nginx-1.12.1/objs/nginx /usr/sbin/nginx #替换
 systemctl restart nginx #重启 nginx 服务

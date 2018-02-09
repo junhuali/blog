@@ -1,8 +1,8 @@
 ---
 title: Docker 常用命令(待完善)
 date: 2017-11-30 15:32:29
-tags:
-    - Linux
+categories: Linux
+tag: Docker
 ---
 #### 列出所有并删除已停止容器
 ``` bash

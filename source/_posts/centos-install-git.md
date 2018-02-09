@@ -2,6 +2,7 @@
 title: CentOS 安装 git
 date: 2017-11-06 15:11:35
 categories: Linux
+tag: Git
 ---
 
 ### 源码安装

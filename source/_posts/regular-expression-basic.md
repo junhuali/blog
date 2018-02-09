@@ -1,8 +1,8 @@
 ---
 title: 正则表达式基础知识总结
 date: 2017-12-07 15:48:36
-tags:
-    - Java
+categories: Regular
+tag: Regular
 ---
 最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch
 （分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下

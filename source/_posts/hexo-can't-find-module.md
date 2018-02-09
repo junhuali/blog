@@ -1,8 +1,8 @@
 ---
 title: Cannot find module './build/Release/DTraceProviderBindings'
 date: 2017-09-30 18:03:00
-tags:
-    - Linux
+categories: Linux
+tag: hexo
 ---
 有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩_∩)O哈哈~_)
 报错如下：
@@ -40,4 +40,3 @@ INFO  Deleted database.
 npm install --registry=https://registry.npm.taobao.org
 ```
 然后执行hexo server，就会惊喜的发现错误没有了 O(∩_∩)O~~_)
-

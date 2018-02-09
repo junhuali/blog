@@ -1,8 +1,8 @@
 ---
 title: 生活
 date: 2017-09-23 13:48:08
-tags:
-    - Life
+categories: Other
+tag: Docker
 ---
 
 

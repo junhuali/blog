@@ -1,8 +1,8 @@
 ---
 title: Nginx 负载均衡策略
 date: 2017-10-12 17:12:01
-tags:
-    - Linux
+categories: Linux
+tag: Nginx
 ---
 Nginx 作为高性能web服务器，负载均衡是其基本功能之一。 `注：负载均衡至少需要两台机器`
 ### 负载均衡
@@ -133,4 +133,3 @@ fail_timeout:max_fails次失败后，暂停的时间
 ``` bash
 nginx -s reload #重启nginx
 ```
-
