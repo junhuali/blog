@@ -12,6 +12,28 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Docker 创建MySQL]]></title>
+    <url>%2F2018%2F01%2F17%2Fdocker-create-mysql%2F</url>
+    <content type="text"><![CDATA[不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像1docker pull mysql 创建volume （比较方便，用完方便删除）1docker volume create --name mysql-data 启动镜像123456docker run --restart="always" -d \ -v mysql-data:/var/lib/mysql \ -v /etc/localtime:/etc/localtime \ -p 0.0.0.0:3306:3306 --name mysql \ -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \ --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci restart=&quot;always&quot; docker 重启后自动启动/etc/localtime:/etc/localtime 解决mysql 时区问题MYSQL_ROOT_PASSWORD 设置你自己的密码，默认用户名root--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CentOS7搭建socks5 服务]]></title>
+    <url>%2F2018%2F01%2F15%2Fsocks5-server%2F</url>
+    <content type="text"><![CDATA[环境基于centsOS 7ss5-3.8.9-8 下载源文件12345wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz#配置编译环境及安装编译SS5依赖组件yum -y install gcc automake makeyum install gcc openldap-devel pam-devel openssl-devel 安装12345tar xf ss5-3.8.9-8.tar.gzmv ss5-3.8.9-8 ss5cd ss5./configuremake &amp;&amp; make install 启动脚本加执行权限1chmod +x /etc/init.d/ss5 进行配置并启动12345678910111213vi /etc/sysconfig/ss5 SS5_OPTS=" -u root -b 0.0.0.0:18080" #绑定端口为18080systemctl start ss5 #启动服务#增加用户登录权限vi /etc/opt/ss5/ss5.conf auth 0.0.0.0/0 - u permit u 0.0.0.0/0 - 0.0.0.0/0 - - - - -#设置用户名和密码，一个用户和密码一行，用空格间隔vi /etc/opt/ss5/ss5.passwd user1 123456user2 123456]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Socks5</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数字货币入门]]></title>
     <url>%2F2018%2F01%2F04%2FBTC-Tutorial%2F</url>
     <content type="text"><![CDATA[前言最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。 怎么入场交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所平台做担保（避免被骗），建议用实时性比较强的到账方式，不管是买还是卖。我主要是在火币进行兑换，也叫OTC（场外交易） www.huobi.pro]]></content>
@@ -179,7 +201,7 @@
   <entry>
     <title><![CDATA[关于]]></title>
     <url>%2F2017%2F09%2F23%2Fabout%2F</url>
-    <content type="text"><![CDATA[自我介绍 目前就职于一家互联网金融公司 Java 开发工程师（3年工作经验） 邮箱 &#x61;&#x72;&#x69;&#101;&#x73;&#x2e;&#108;&#x69;&#x40;&#111;&#x75;&#x74;&#108;&#x6f;&#x6f;&#x6b;&#46;&#99;&#x6f;&#x6d; 个人简历]]></content>
+    <content type="text"><![CDATA[自我介绍 目前就职于一家互联网金融公司 Java 开发工程师（3年工作经验） 邮箱 &#x61;&#x72;&#x69;&#x65;&#x73;&#x2e;&#x6c;&#105;&#x40;&#x6f;&#117;&#116;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#x6d; 个人简历]]></content>
   </entry>
   <entry>
     <title><![CDATA[生活]]></title>
