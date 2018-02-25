@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[gitee码云使用webhook]]></title>
+    <url>%2F2018%2F02%2F25%2Fgitee-with-webhook%2F</url>
+    <content type="text"><![CDATA[原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是一个个人的项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向APP或者其他应用提供实时信息的一种方式。Webhook在数据产生时立即发送数据，也就是你能实时收到数据。这一种不同于典型的API，需要用了实时性需要足够快的轮询。这无论是对生产还是对消费者都是高效的，唯一的缺点是初始建立困难。 Webhook有时也被称为反向API，因为他提供了API规则，你需要设计要使用的API。Webhook将向你的应用发起http请求，典型的是post请求，应用程序由请求驱动。 配置webhook知道什么是webhook 后我们就要开始配置我们自己的项目了。环境： CentOS7 Gitee（网上GitHub的教程比较多，这个基于码云） 配置项目公私钥 生产公钥 1234ssh-keygen -t rsa -C "xxxxx@xxxxx.com" # Generating public/private rsa key pair...# 三次回车即可生成 ssh key 查看公钥 12cat ~/.ssh/id_rsa.pub# ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc.... 添加公钥 测试12ssh -T git@gitee.comWelcome to Gitee.com, yourname! # 返回，说明正常 配置服务器node环境 安装nvm，服务器上使用nvm 方便多版本node切换 12345678curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bashvim /etc/profile#加入下面的内容export NVM_DIR="$HOME/.nvm"[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh"source /etc/profilenvm install stable # 安装稳定版nvm current # 查看当前的版本 配置相关的脚本安装gitee-webhook-handler(GitHub,GitLab,gitee 的包是不同的，不能混用) 123mkdir /opt/webhook #创建目录cd /opt/webhooknpm install -g gitee-webhook-handler # 当前的版本为v0.1.2 创建对应的webhook服务 1234567891011121314151617181920212223242526272829303132vim webhook.jsvar http = require('http')var createHandler = require('gitee-webhook-handler')var handler = createHandler(&#123; path: '/webhooks_push', secret: '123456' &#125;)# post 所需要用到的秘钥function run_cmd(cmd, args, callback) &#123; var spawn = require('child_process').spawn; var child = spawn(cmd, args); var resp = ""; child.stdout.on('data', function(buffer) &#123; resp += buffer.toString(); &#125;); child.stdout.on('end', function() &#123; callback (resp) &#125;);&#125;handler.on('error', function (err) &#123; console.error('Error:', err.message)&#125;)handler.on('Push Hook', function (event) &#123; # 这个地方就是GitHub 和 Gitee 不一样的地方，需要注意 console.log('Received a push event for %s to %s', event.payload.repository.name, event.payload.ref); run_cmd('sh', ['./deploy.sh'], function(text)&#123; console.log(text) &#125;);# 需要执行的脚本位置&#125;)try &#123; http.createServer(function (req, res) &#123; handler(req, res, function (err) &#123; res.statusCode = 404 res.end('no such location') &#125;) &#125;).listen(6666) # 服务监听的端口，可以自行修改&#125;catch(err)&#123; console.error('Error:', err.message)&#125; 创建需要执行的脚本 12vim deploy.shgit pull xxxxx # 根据自己的需要自行编写 测试服务显示ok，说明成功 使用pm2应用进程管理器使用node 启动服务不是很方便，推荐使用pm2123npm install -g pm2pm2 start webhook.jspm2 monit # 可以通过此命令查看服务的状态 上图显示了一些应用的基本信息，可以更好的观察到服务的状态 结束配置完成后，只要pull代码到仓库，就会触发webhook执行脚本，十分的方便，同时减少了工作量，相对采用轮询的方式消耗的资源更小。 参考：https://www.npmjs.com/package/gitee-webhook-handler]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CentOS 安装 node]]></title>
     <url>%2F2018%2F02%2F09%2Fnode-install%2F</url>
-    <content type="text"><![CDATA[下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz 解压&amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt 1vim /etc/profile 1234#设置node 环境变量export NODE_HOME=/opt/node-v8.9.4-linux-x64export PATH=$NODE_HOME/bin:$PATHsource /etc/profile 测试是否成功1node -v 或者安装nvm123456curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bashvim /etc/profile#加入下面的内容export NVM_DIR="$HOME/.nvm"[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm、source /etc/profile 检查是否安装成功1nvm --version]]></content>
+    <content type="text"><![CDATA[下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz 解压&amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt 1vim /etc/profile 1234#设置node 环境变量export NODE_HOME=/opt/node-v8.9.4-linux-x64export PATH=$NODE_HOME/bin:$PATHsource /etc/profile 测试是否成功1node -v 或者安装nvm123456curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bashvim /etc/profile#加入下面的内容export NVM_DIR="$HOME/.nvm"[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm、source /etc/profile 检查是否安装成功1nvm --version 安装node123nvm install stable # 安装稳定版nvm current # 查看当前的版本nvm ls # 列出所有版本]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -201,7 +212,7 @@
   <entry>
     <title><![CDATA[关于]]></title>
     <url>%2F2017%2F09%2F23%2Fabout%2F</url>
-    <content type="text"><![CDATA[自我介绍 目前就职于一家互联网金融公司 Java 开发工程师（3年工作经验） 邮箱 &#x61;&#x72;&#105;&#x65;&#x73;&#x2e;&#x6c;&#105;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#x6f;&#107;&#x2e;&#x63;&#111;&#x6d; 个人简历]]></content>
+    <content type="text"><![CDATA[自我介绍 目前就职于一家互联网金融公司 Java 开发工程师（3年工作经验） 邮箱 &#97;&#x72;&#105;&#101;&#115;&#x2e;&#x6c;&#105;&#x40;&#x6f;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109; 个人简历]]></content>
   </entry>
   <entry>
     <title><![CDATA[生活]]></title>
