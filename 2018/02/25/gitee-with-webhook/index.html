@@ -105,22 +105,22 @@
   <meta name="keywords" content="Linux," />
 
 
-<meta name="description" content="原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是一个个人的项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向">
+<meta name="description" content="原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向APP">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gitee码云使用webhook">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是一个个人的项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向">
+<meta property="og:description" content="原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向APP">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/image-2018-153940@2x.png">
 <meta property="og:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/WX20180225-163439@2x.png">
 <meta property="og:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/WX20180225-163748@2x.png">
 <meta property="og:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/WX20180225-164721@2x.png">
-<meta property="og:updated_time" content="2018-02-25T08:50:45.187Z">
+<meta property="og:updated_time" content="2018-02-25T09:04:46.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitee码云使用webhook">
-<meta name="twitter:description" content="原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是一个个人的项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向">
+<meta name="twitter:description" content="原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向APP">
 <meta name="twitter:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/image-2018-153940@2x.png">
 
 
@@ -426,7 +426,7 @@
       
 
       
-        <h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是一个个人的项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。</p>
+        <h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。</p>
 <h3 id="什么是webhook"><a href="#什么是webhook" class="headerlink" title="什么是webhook"></a>什么是webhook</h3><blockquote>
 <p>准确的说webhoo是一种web回调或者http的push API，是向APP或者其他应用提供实时信息的一种方式。Webhook在数据产生时立即发送数据，也就是你能实时收到数据。这一种不同于典型的API，需要用了实时性需要足够快的轮询。这无论是对生产还是对消费者都是高效的，唯一的缺点是初始建立困难。</p>
 <p>Webhook有时也被称为反向API，因为他提供了API规则，你需要设计要使用的API。Webhook将向你的应用发起http请求，典型的是post请求，应用程序由请求驱动。</p>
