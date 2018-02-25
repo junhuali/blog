@@ -1,5 +1,5 @@
 ---
-title: CentOS 安装 node 
+title: CentOS 安装 node
 date: 2018-02-09 13:05:14
 categories: Linux
 tags: Node
@@ -38,4 +38,11 @@ source /etc/profile
 ### 检查是否安装成功
 ``` shell
  nvm --version
+```
+
+### 安装node
+``` bash
+nvm install stable # 安装稳定版
+nvm current # 查看当前的版本
+nvm ls # 列出所有版本
 ```
