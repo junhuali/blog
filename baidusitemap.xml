@@ -3,6 +3,26 @@
 
 
     
+  <url>
+    <loc>https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/</loc>
+    <lastmod>2018-02-26T08:18:00.043Z</lastmod>
+    <data>
+        <display>
+        <title>DevOps实践1:基本概念和环境配置1</title>
+        <pubTime>2018-02-26T07:14:03.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="DevOps" url="https://blog.searchinfogo.com/categories/DevOps/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/</loc>
