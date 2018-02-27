@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/</loc>
+    <lastmod>2018-02-27T12:51:08.836Z</lastmod>
+    <data>
+        <display>
+        <title>DevOps实践2:Spring Boot集成Docker环境</title>
+        <pubTime>2018-02-27T06:56:50.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+        <tag>SpringCloud</tag>
+         
+        <tag>Maven</tag>
+         
+         
+           
+             
+              <breadCrumb title="DevOps" url="https://blog.searchinfogo.com/categories/DevOps/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/</loc>
+    <lastmod>2018-02-27T06:58:51.931Z</lastmod>
+    <data>
+        <display>
+        <title>DevOps实践1:基本概念和环境配置</title>
+        <pubTime>2018-02-26T07:14:03.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="DevOps" url="https://blog.searchinfogo.com/categories/DevOps/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.searchinfogo.com/2018/02/27/cnetos-install-pyenv/</loc>
     <lastmod>2018-02-27T06:53:27.074Z</lastmod>
     <data>
@@ -17,26 +61,6 @@
            
              
               <breadCrumb title="Linux" url="https://blog.searchinfogo.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/</loc>
-    <lastmod>2018-02-26T08:43:48.701Z</lastmod>
-    <data>
-        <display>
-        <title>DevOps实践1:基本概念和环境配置1</title>
-        <pubTime>2018-02-26T07:14:03.000Z</pubTime>
-        
-        <tag>Docker</tag>
-         
-         
-           
-             
-              <breadCrumb title="DevOps" url="https://blog.searchinfogo.com/categories/DevOps/"/>
           
         </display>
     </data>
