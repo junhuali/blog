@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.searchinfogo.com/about/index.html</loc>
+    
+    <lastmod>2018-03-01T07:00:05.229Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/</loc>
     
     <lastmod>2018-02-27T12:53:49.785Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>https://blog.searchinfogo.com/2018/01/15/socks5-server/</loc>
     
     <lastmod>2018-02-09T05:26:33.601Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.searchinfogo.com/about/index.html</loc>
-    
-    <lastmod>2018-02-09T03:12:32.975Z</lastmod>
     
   </url>
   
@@ -173,13 +173,6 @@
     <loc>https://blog.searchinfogo.com/2017/10/28/ubuntu-install-lamp/</loc>
     
     <lastmod>2018-02-09T02:43:28.761Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.searchinfogo.com/2017/09/23/about/</loc>
-    
-    <lastmod>2018-02-09T02:43:24.049Z</lastmod>
     
   </url>
   

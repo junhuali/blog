@@ -9,8 +9,8 @@
       </categories>
       <tags>
         <tag>Docker</tag>
-        <tag>Maven</tag>
         <tag>SpringBoot</tag>
+        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -243,11 +243,6 @@
       <tags>
         <tag>Redis</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[关于]]></title>
-    <url>%2F2017%2F09%2F23%2Fabout%2F</url>
-    <content type="text"><![CDATA[自我介绍 目前就职于一家互联网金融公司 Java 开发工程师（3年工作经验） 邮箱 &#97;&#114;&#x69;&#101;&#115;&#x2e;&#x6c;&#105;&#64;&#111;&#117;&#116;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#x6d; 个人简历]]></content>
   </entry>
   <entry>
     <title><![CDATA[生活]]></title>

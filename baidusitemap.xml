@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/</loc>
     <lastmod>2018-02-27T12:53:49.785Z</lastmod>
@@ -13,9 +14,9 @@
         
         <tag>Docker</tag>
          
-        <tag>Maven</tag>
-         
         <tag>SpringBoot</tag>
+         
+        <tag>Maven</tag>
          
          
            
@@ -147,7 +148,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>https://blog.searchinfogo.com/2018/01/04/BTC-Tutorial/</loc>
@@ -464,21 +464,6 @@
              
               <breadCrumb title="Linux" url="https://blog.searchinfogo.com/categories/Linux/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.searchinfogo.com/2017/09/23/about/</loc>
-    <lastmod>2018-02-09T02:43:24.049Z</lastmod>
-    <data>
-        <display>
-        <title>关于</title>
-        <pubTime>2017-09-23T05:57:23.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
