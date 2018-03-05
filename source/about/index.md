@@ -13,4 +13,4 @@ comments: false
 
 - 邮箱 <mailto:junhuali.dev@gmail.com>
 
-- [个人简历](http://image.searchinfogo.com/resume.html)
+- [个人简历](http://image.searchinfogo.com/resume.docx)

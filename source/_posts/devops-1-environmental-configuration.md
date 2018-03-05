@@ -1,5 +1,5 @@
 ---
-title: DevOps实践1:基本概念和环境配置1
+title: DevOps实践1:基本概念和环境配置
 date: 2018-02-26 15:14:03
 categories: DevOps
 tag: Docker
