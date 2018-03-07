@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[python通过使用requirements.txt文件记录管理依赖包]]></title>
+    <url>%2F2018%2F03%2F07%2Fpython-requirements%2F</url>
+    <content type="text"><![CDATA[python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。 使用1234# 进入项目目录创建requirements.txt文件touch requirements.txt# 将项目中使用的包冻结（freeze）到requirements.txt文件中pip freeze &gt;requirements.txt 当把项目上传到服务器以后可以执行下面的命令安装对应的包12#通过requirements.txt 文件中的记录安装依赖pip install -r requirements.txt 通过上面的方法就能将本地的包安装在服务器上了，保证了两个环境中的依赖一致，一般情况是在虚拟环境中使用，保证环境的干净，避免发生冲突。]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python 入门]]></title>
+    <url>%2F2018%2F03%2F07%2Fpthon-tutorial%2F</url>
+    <content type="text"><![CDATA[Life is short, you need Python. 上面那句话可能大家耳熟能详的一句话了，形象的表达了Python。有时候一些简单的功能验证或者是文本处理等，用Java等语言实现需要很长的时间，这个时候用Python你会发现，短短几行就搞定了，剩下的时间你就可以去喝咖啡了。 基本数据类型了解过几种语言后，会发现其实语言之间有很大的共通性。学习基本的数据类型之后，加上一些基本的语法，就能写起来了，慢慢的在写的过程中，熟悉语言的细节，用好每个语言的技巧，每个语言的出现都是为了解决一些其他语言没法解决的问题。 Python 基本数据类型（6个标注数据类型） Number (数字) String (字符串) List (列表) Tuple (元组) Sets (集合) Dictionary (字典)]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[DevOps实践2:Spring Boot集成Docker环境]]></title>
     <url>%2F2018%2F02%2F27%2Fdevops-2-springboot-docker-integrated%2F</url>
     <content type="text"><![CDATA[知之愈明,则行之愈笃；行之愈笃,则知之益明.——朱熹（宋） 我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。 创建项目进行集成创建一个Spring Boot 项目 增加项目对Docker的支持 修改pom.xml配置，增加对应的插件，可以使用Maven进行打包 12#Docker 镜像前缀，放在&lt;properties&gt; 标签中 &lt;docker.image.prefix&gt;devops&lt;/docker.image.prefix&gt; 添加视图模板支持 1234&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;&lt;/dependency&gt; 增加对应的maven 插件，插件有多种，这里采用 com.spotify 123456789101112131415161718192021222324252627282930313233343536&lt;build&gt; &lt;finalName&gt;devops&lt;/finalName&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;/plugin&gt; &lt;!-- docker打包 --&gt; &lt;plugin&gt; &lt;groupId&gt;com.spotify&lt;/groupId&gt; &lt;artifactId&gt;docker-maven-plugin&lt;/artifactId&gt; &lt;version&gt;1.0.0&lt;/version&gt; &lt;configuration&gt; &lt;serverId&gt;docker-hosted&lt;/serverId&gt; &lt;!-- docker仓库地址，用于推送镜像 --&gt; &lt;registryUrl&gt;$&#123;docker.repository&#125;&lt;/registryUrl&gt; &lt;!-- 设置为false，避免自动推送镜像 --&gt; &lt;pushImage&gt;false&lt;/pushImage&gt; &lt;!-- Dockerfile路径 --&gt; &lt;dockerDirectory&gt;src/main/docker&lt;/dockerDirectory&gt; &lt;!-- 构建的镜像名称 --&gt; &lt;imageName&gt;$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;&lt;/imageName&gt; &lt;imageTags&gt; &lt;imageTag&gt;latest&lt;/imageTag&gt; &lt;/imageTags&gt; &lt;resources&gt; &lt;resource&gt; &lt;targetPath&gt;/&lt;/targetPath&gt; &lt;directory&gt;$&#123;project.build.directory&#125;&lt;/directory&gt; &lt;include&gt;$&#123;project.build.finalName&#125;.jar&lt;/include&gt; &lt;/resource&gt; &lt;/resources&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;/plugins&gt;&lt;/build&gt; 修改Maven settings 文件配置（主要的目的是为了方便后面我们将自己的服务推送到自己的私服，方便管理） 1234567891011121314151617&lt;pluginGroups&gt; &lt;pluginGroup&gt;com.spotify&lt;/pluginGroup&gt;&lt;/pluginGroups&gt;#本地私服的配置&lt;/profiles&gt; &lt;profile&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;properties&gt; &lt;docker.repository&gt;http://192.168.100.77:8081/repository/docker&lt;/docker.repository&gt; &lt;/properties&gt; &lt;/profile&gt;&lt;/profiles&gt;#激活私服配置&lt;activeProfiles&gt; &lt;activeProfile&gt;nexus&lt;/activeProfile&gt; &lt;/activeProfiles&gt; 上面基本的pom配置就完成了，之后开始配置Docker相关的脚本 Docker脚本配置在src/main 目录下创建docker 文件夹，刚刚上面的pom配置里声明了Dockerfile的路径创建文件Dockerfile ，注意文件没有后缀，之后增加如下脚本1234FROM java:8 #基本镜像VOLUME /tmp #挂载文件位置，/tmp 为临时目录ADD devops.jar app.jar #添加对应的jar，使用maven打包后会自动到target目录找devops.jar 文件ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"] # 程序启动入口 打包、运行镜像创建对应的测试文件，打包1mvn clean package docker:build # 一气呵成O(∩_∩)O~~ 在运行docker命令前，先确认电脑上的docker环境是否配置成12345678910111213141516171819docker version# 会有如下显示Client: Version: 17.12.0-ce API version: 1.35 Go version: go1.9.2 Git commit: c97c6d6 Built: Wed Dec 27 20:03:51 2017 OS/Arch: darwin/amd64Server: Engine: Version: 17.12.0-ce API version: 1.35 (minimum version 1.12) Go version: go1.9.2 Git commit: c97c6d6 Built: Wed Dec 27 20:12:29 2017 OS/Arch: linux/amd64 Experimental: true 上面说明Docker是正常启动的 然后查看镜像1docker images 上图说明我们的镜像打包成功然后运行一下，检查镜像是否能够正常启动123#启动镜像 -d 表示后台运行，-p 端口进行映射 --name docker服务名称 devops/devops:latest 运行的镜像docker run -d -p 8080:8080 --name devops devops/devops:latest#执行docker ps 查看镜像是否运行 如果，说明服务是正常启动了，之后请求http://localhost:8080/index?name=World能够请求成功，说明镜像部署成功 停止释放镜像123# 养成好习惯，停止释放镜像docker stop 2026e45bc2cedocker rm 2026e45bc2ce 代码可在https://github.com/junhuali/devops-springboot 下载]]></content>
