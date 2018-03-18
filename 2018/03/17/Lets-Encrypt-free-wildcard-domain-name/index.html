@@ -115,7 +115,8 @@
 <meta property="og:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
-<meta property="og:updated_time" content="2018-03-18T07:03:47.576Z">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png">
+<meta property="og:updated_time" content="2018-03-18T07:33:42.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）">
 <meta name="twitter:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
@@ -450,8 +451,10 @@
 <li><p>运行certbot插件生成证书</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>重启nginx</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+</ul>
+<p><img src="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
+<ul>
+<li>重启nginx<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
