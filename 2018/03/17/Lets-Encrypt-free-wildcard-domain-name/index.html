@@ -103,26 +103,30 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Domain," />
 
 
-<meta name="description" content="Done is better than perfect.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Junhua&#39;s Blog">
-<meta property="og:url" content="https://blog.searchinfogo.com/archives/2018/02/index.html">
+<meta name="description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
+<meta name="keywords" content="Domain">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）">
+<meta property="og:url" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="Done is better than perfect.">
+<meta property="og:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
+<meta property="og:updated_time" content="2018-03-18T07:03:47.576Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Junhua&#39;s Blog">
-<meta name="twitter:description" content="Done is better than perfect.">
+<meta name="twitter:title" content="使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）">
+<meta name="twitter:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://blog.searchinfogo.com/archives/2018/02/"/>
+  <link rel="canonical" href="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/"/>
 
 
 
@@ -131,7 +135,7 @@
     sidebar: "",
   };
 </script>
-  <title>归档 | Junhua's Blog</title>
+  <title>使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善） | Junhua's Blog</title>
   
 
 
@@ -192,7 +196,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -319,228 +323,230 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunHua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junhua's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T17:38:33+08:00">2018-03-17</time>
+            
+
+            
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 27 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/27/devops-2-springboot-docker-integrated/" itemprop="url">
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
               
-                <span itemprop="name">DevOps实践2:Spring Boot集成Docker环境</span>
+                <a href="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/03/17/Lets-Encrypt-free-wildcard-domain-name/" itemprop="commentsCount"></span>
+                </a>
               
-            </a>
-        
-      </h2>
+            
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-27T14:56:50+08:00"
-              content="2018-02-27" >
-          02-27
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/27/cnetos-install-pyenv/" itemprop="url">
-              
-                <span itemprop="name">Centos7 安装 pyenv</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-27T11:38:38+08:00"
-              content="2018-02-27" >
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/26/devops-1-environmental-configuration/" itemprop="url">
-              
-                <span itemprop="name">DevOps实践1:基本概念和环境配置</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-26T15:14:03+08:00"
-              content="2018-02-26" >
-          02-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。</p>
+<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
+<p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
+<p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
+<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
+<ul>
+<li>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</li>
+<li><p>安装系统扩展包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装certbot</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行certbot插件生成证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
+<p>增加自动续期<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure></p>
+<p>上面的方法是单域名证书的创建</p>
+<h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
+<ul>
+<li>certbot-dns-cloudflare</li>
+<li>certbot-dns-cloudxns</li>
+<li>certbot-dns-digitalocean</li>
+<li>certbot-dns-dnsimple</li>
+<li>certbot-dns-dnsmadeeasy</li>
+<li>certbot-dns-google</li>
+<li>certbot-dns-luadns</li>
+<li>certbot-dns-nsone</li>
+<li>certbot-dns-rfc2136</li>
+<li>certbot-dns-route53</li>
+</ul>
+<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
+<p>未完待续。。。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/25/gitee-with-webhook/" itemprop="url">
-              
-                <span itemprop="name">gitee码云使用webhook</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-25T14:57:34+08:00"
-              content="2018-02-25" >
-          02-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/09/node-install/" itemprop="url">
-              
-                <span itemprop="name">CentOS 安装 node</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-09T13:05:14+08:00"
-              content="2018-02-09" >
-          02-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Domain/" rel="tag"><i class="fa fa-tag"></i> Domain</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/07/python-requirements/" rel="next" title="python通过使用requirements.txt文件记录管理依赖包">
+                <i class="fa fa-chevron-left"></i> python通过使用requirements.txt文件记录管理依赖包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -561,8 +567,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -683,6 +698,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#申请域名"><span class="nav-number">1.</span> <span class="nav-text">申请域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Let’s-Encrypt-单域名"><span class="nav-number">2.</span> <span class="nav-text">配置Let’s Encrypt 单域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Let’s-Encrypt-泛域名"><span class="nav-number">3.</span> <span class="nav-text">配置Let’s Encrypt 泛域名</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -817,6 +848,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
 
   
 
