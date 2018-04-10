@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[学习Shell命令行总结]]></title>
+    <url>%2F2018%2F04%2F02%2Fstudy-shell%2F</url>
+    <content type="text"><![CDATA[了解linux系统内核内核的主要作用 系统内存管理 软件程序管理 硬件设备管理 文件系统管理 什么是虚拟内存内核通过硬盘上的存储空间来实现虚拟内存，这块区域称为交换空间（swap space）。平常使用的都是阿里云，发现阿里云把swap的空间为0。查看官方文档后发现如果使用普通云盘，不建议使用swap分区，原因是因为开启SWAP可能会因频繁换页操作，导致IO性能下降，如果内存足够的情况下，建议关闭swap 分区。 软件程序管理Linux操作系统将运行中的程序称为进程。进程可以在前台运行，将输出显示在屏幕上，也可以在后台运行。内核创建第一个进程称为init进程，来启动系统上其他进程，并将其加载到虚拟内存中。 一些Linux发行版使用一个表来管理在系统开机时要自动启动的进程。在Linux系统上，这个表通常位于/etc/inittab中。另外一些系统则采用/etc/init.d目录，将开机时启动或停止某个应用的脚本放在这个目录下。 Linux 操作系统的init系统采用了运行级。运行级决定了init进程运行/etc/inittab文件或者/etc/rcX.d目录中定义好的某些特定类型的进程。Linux操作系统有5个启动运行级。（但是在使用centos7的时候发现有7个运行级别0-6） CentOS系统有7个运行级别(runlevel) 运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆运行级别2：多用户状态(没有NFS)运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式运行级别4：系统未使用，保留运行级别5：X11控制台，登陆后进入图形GUI模式运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动 不过在centos7中使用Systemd 取代init，init 是串行的，启动速度比较慢。 硬件设备管理内核的另外一个作用就是管理硬件设备。如果使用硬件，都需要在内核代码中加入其驱动程序代码。在Linux中有两种方法插入设备驱动 编译进内核的设备驱动代码 可插入内核的设备驱动代码（这种方式比较方便，利于维护） 文件系统管理Linux 内核通过支持通过不同类型的文件系统从硬盘中读写数据。这样可以支持多种文件系统，需要内核在编译时就加入可能用到的文件系统的支持。]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）]]></title>
     <url>%2F2018%2F03%2F17%2FLets-Encrypt-free-wildcard-domain-name%2F</url>
     <content type="text"><![CDATA[网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。 申请域名为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。 免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。 我申请的域名是rubys.ml,可以免费使用一年，续费的话不到10刀/年。 配置Let’s Encrypt 单域名首先访问Let’s Cncrypt官网，Get Started，然后会提供两种方式，With Shell Access和Without Shell Access， With Shell Access(官方推荐通过shell进行部署)使用Certbot ACME客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。访问certbot,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。 安装系统扩展包 1234wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpmrpm -ivh epel-release-latest-7.noarch.rpmyum -y install yum-utilsyum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional 安装certbot 1sudo yum install certbot-nginx 运行certbot插件生成证书 1sudo certbot --nginx 重启nginx1systemctl restart nginx 访问www.rubys.ml,发现链接自动定向到https://www.rubys.ml 增加自动续期12crontab -e0 0,12 * * * python -c 'import random; import time; time.sleep(random.random() * 3600)' &amp;&amp; certbot renew 上面的方法是单域名证书的创建 配置Let’s Encrypt 泛域名如果配置泛域名，还需要安装一个 Certbot&#39;s DNS plugins 插件目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持 certbot-dns-cloudflare certbot-dns-cloudxns certbot-dns-digitalocean certbot-dns-dnsimple certbot-dns-dnsmadeeasy certbot-dns-google certbot-dns-luadns certbot-dns-nsone certbot-dns-rfc2136 certbot-dns-route53 目前支持的云服务商还不多阿里云的话可以使用如下脚本https://github.com/Neilpang/acme.sh从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。 未完待续。。。]]></content>
