@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://blog.searchinfogo.com/2018/04/18/raise-github-clone-speed/</loc>
+    <lastmod>2018-04-18T03:58:22.811Z</lastmod>
+    <data>
+        <display>
+        <title>提升国内服务器Github clone速度的方法</title>
+        <pubTime>2018-04-18T03:24:25.000Z</pubTime>
+        
+        <tag>Shell</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://blog.searchinfogo.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.searchinfogo.com/2018/04/11/netty-study/</loc>
-    <lastmod>2018-04-11T03:41:58.646Z</lastmod>
+    <lastmod>2018-04-18T03:36:08.821Z</lastmod>
     <data>
         <display>
         <title>Netty 学习记录</title>

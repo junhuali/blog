@@ -106,17 +106,17 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="Netty 核心组件 Channel 回调 Future 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。FutureFuture 提供了另一种在操作完成时通知应用程序的方式。">
+<meta name="description" content="Netty 核心组件 Channel 回调 Future 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。FutureFuture 提供了另一种在操作完成时通知应用程序的方式。Channel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Netty 学习记录">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/04/11/netty-study/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="Netty 核心组件 Channel 回调 Future 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。FutureFuture 提供了另一种在操作完成时通知应用程序的方式。">
+<meta property="og:description" content="Netty 核心组件 Channel 回调 Future 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。FutureFuture 提供了另一种在操作完成时通知应用程序的方式。Channel">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-11T03:41:58.646Z">
+<meta property="og:updated_time" content="2018-04-18T03:36:08.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Netty 学习记录">
-<meta name="twitter:description" content="Netty 核心组件 Channel 回调 Future 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。FutureFuture 提供了另一种在操作完成时通知应用程序的方式。">
+<meta name="twitter:description" content="Netty 核心组件 Channel 回调 Future 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。FutureFuture 提供了另一种在操作完成时通知应用程序的方式。Channel">
 
 
 
@@ -417,7 +417,7 @@
 <li>Channel</li>
 <li>回调</li>
 <li>Future</li>
-<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。</li>
+<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
 </ul>
 
       
@@ -455,6 +455,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/18/raise-github-clone-speed/" rel="prev" title="提升国内服务器Github clone速度的方法">
+                提升国内服务器Github clone速度的方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -537,7 +541,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -649,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Netty-核心组件"><span class="nav-number">1.</span> <span class="nav-text">Netty 核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Channel"><span class="nav-number">1.1.</span> <span class="nav-text">Channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回调"><span class="nav-number">1.2.</span> <span class="nav-text">回调</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Future"><span class="nav-number">1.3.</span> <span class="nav-text">Future</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Netty-核心组件"><span class="nav-number">1.</span> <span class="nav-text">Netty 核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Channel"><span class="nav-number">1.1.</span> <span class="nav-text">Channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回调"><span class="nav-number">1.2.</span> <span class="nav-text">回调</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Future"><span class="nav-number">1.3.</span> <span class="nav-text">Future</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChannelHandler"><span class="nav-number">1.4.</span> <span class="nav-text">ChannelHandler</span></a></li></ol></li></ol></div>
             
 
           </div>
