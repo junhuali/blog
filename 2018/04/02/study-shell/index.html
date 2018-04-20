@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="了解linux系统内核内核的主要作用  系统内存管理 软件程序管理 硬件设备管理 文件系统管理  什么是虚拟内存内核通过硬盘上的存储空间来实现虚拟内存，这块区域称为交换空间（swap space）。平常使用的都是阿里云，发现阿里云把swap的空间为0。查看官方文档后发现如果使用普通云盘，不建议使用swap分区，原因是因为开启SWAP可能会因频繁换页操作，导致IO性能下降，如果内存足够的情况下，建议">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-02T13:08:49.679Z">
+<meta property="og:updated_time" content="2018-04-20T09:06:59.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Shell命令行总结">
 <meta name="twitter:description" content="了解linux系统内核内核的主要作用  系统内存管理 软件程序管理 硬件设备管理 文件系统管理  什么是虚拟内存内核通过硬盘上的存储空间来实现虚拟内存，这块区域称为交换空间（swap space）。平常使用的都是阿里云，发现阿里云把swap的空间为0。查看官方文档后发现如果使用普通云盘，不建议使用swap分区，原因是因为开启SWAP可能会因频繁换页操作，导致IO性能下降，如果内存足够的情况下，建议">
@@ -452,6 +452,14 @@
 <li>可插入内核的设备驱动代码（这种方式比较方便，利于维护）</li>
 </ul>
 <p>文件系统管理<br>Linux 内核通过支持通过不同类型的文件系统从硬盘中读写数据。这样可以支持多种文件系统，需要内核在编译时就加入可能用到的文件系统的<br>支持。</p>
+<p>Shell 的种类<br>在Linux系统上，通常由好几种Linux Shell 可用。不同的Shell有不同的特性，有些利于创建脚本，有些利于管理进程。</p>
+<ul>
+<li>ash 一种运行在内存受限环境中的简单轻量级shell，与bash shell完全兼容</li>
+<li>korn 一种与Bourne shell 兼容的编程shell，支持如关联数组和浮点运算等一些高级的编程特性</li>
+<li>tcsh 一种将C 语言中的一些元素引入到shell脚本中的shell</li>
+<li>zsh 一种结合了bash、tcsh和korn的特性，同时提供高级编程特性、共享历史文件和主体话提示符的高级shell。在Mac 下面使用zsh 还是非常方便的。</li>
+</ul>
+<p>Linux 图形化桌面 基本上用不到，就略过了。</p>
 
       
     </div>
