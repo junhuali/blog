@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://blog.searchinfogo.com/2018/05/03/config-npm-registry/</loc>
-    <lastmod>2018-05-03T02:54:18.062Z</lastmod>
+    <lastmod>2018-05-03T03:12:53.264Z</lastmod>
     <data>
         <display>
         <title>npm 更换源</title>
@@ -17,6 +17,26 @@
            
              
               <breadCrumb title="Linux" url="https://blog.searchinfogo.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/</loc>
+    <lastmod>2018-05-03T03:11:08.752Z</lastmod>
+    <data>
+        <display>
+        <title>brew 升级应用错误</title>
+        <pubTime>2018-05-03T03:01:00.000Z</pubTime>
+        
+        <tag>Brew</tag>
+         
+         
+           
+             
+              <breadCrumb title="Shell" url="https://blog.searchinfogo.com/categories/Shell/"/>
           
         </display>
     </data>
