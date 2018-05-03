@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[npm 更换源]]></title>
+    <url>%2F2018%2F05%2F03%2Fconfig-npm-registry%2F</url>
+    <content type="text"><![CDATA[由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。 换源 临时使用 1npm --registry https://registry.npm.taobao.org install express --save 持久使用 1npm config set registry https://registry.npm.taobao.org 验证 1npm config get registry 官方源 1npm config set registry https://registry.npmjs.org/ 通过 nrm 更换源最近在工作的时候，发现淘宝的源，无法正常下载，于是需要换其他的源，在网上找源的过程中，发现了nrm -- NPM registry manager，它可以帮你快速的帮你在不同的源之间切换，现在包括npm、cnpm、taobao、nj(nodejitsu)、rednpm，还可以加入你自己的私有源。 安装 1npm install -g nrm 例子 1234567$ nrm ls* npm ----- https://registry.npmjs.org/ cnpm ---- http://r.cnpmjs.org/ taobao -- https://registry.npm.taobao.org/ nj ------ https://registry.nodejitsu.com/ rednpm -- http://registry.mirror.cqupt.edu.cn skimdb -- https://skimdb.npmjs.com/registry 12# 使用$ nrm use cnpm #switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/ 通过nrm换源，体验一下就提升了很多，工作更有效率了[Smirk]。]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[提升国内服务器Github clone速度的方法]]></title>
     <url>%2F2018%2F04%2F18%2Fraise-github-clone-speed%2F</url>
     <content type="text"><![CDATA[Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。 修改hosts从http://github.global.ssl.fastly.net.ipaddress.com/ 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。 123vim /etc/hosts# GitHub Start151.101.185.194 github.global.ssl.fastly.net 保存后自动生效 通过下载Spring Boot 的源码，见上图，速度还不错。 通过代理提升本地的速度一般我们都是使用ss的本地socks5代理，速度多快，取决于提供服务的vps的速度。1234git config --global --unset http.proxygit config --global --unset https.proxygit config --global http.proxy 'socks5://127.0.0.1:1080'git config --global https.proxy 'socks5://127.0.0.1:1080' 上面的配置需要注意自己的socks5 端口，Mac 和 Windows的一般是1080，Mac的根据自己设置的进行修改，比如我的是1086，所以需要改成socks5://127.0.0.1:1086。 通过上面的两个方法，可以大幅提升服务器和本地的GitHub代码clone 速度，解决漫长的等待，特别是比较大的仓库。]]></content>
@@ -19,7 +30,7 @@
   <entry>
     <title><![CDATA[学习Shell命令行总结]]></title>
     <url>%2F2018%2F04%2F02%2Fstudy-shell%2F</url>
-    <content type="text"><![CDATA[了解linux系统内核内核的主要作用 系统内存管理 软件程序管理 硬件设备管理 文件系统管理 什么是虚拟内存内核通过硬盘上的存储空间来实现虚拟内存，这块区域称为交换空间（swap space）。平常使用的都是阿里云，发现阿里云把swap的空间为0。查看官方文档后发现如果使用普通云盘，不建议使用swap分区，原因是因为开启SWAP可能会因频繁换页操作，导致IO性能下降，如果内存足够的情况下，建议关闭swap 分区。 软件程序管理Linux操作系统将运行中的程序称为进程。进程可以在前台运行，将输出显示在屏幕上，也可以在后台运行。内核创建第一个进程称为init进程，来启动系统上其他进程，并将其加载到虚拟内存中。 一些Linux发行版使用一个表来管理在系统开机时要自动启动的进程。在Linux系统上，这个表通常位于/etc/inittab中。另外一些系统则采用/etc/init.d目录，将开机时启动或停止某个应用的脚本放在这个目录下。 Linux 操作系统的init系统采用了运行级。运行级决定了init进程运行/etc/inittab文件或者/etc/rcX.d目录中定义好的某些特定类型的进程。Linux操作系统有5个启动运行级。（但是在使用centos7的时候发现有7个运行级别0-6） CentOS系统有7个运行级别(runlevel) 运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆运行级别2：多用户状态(没有NFS)运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式运行级别4：系统未使用，保留运行级别5：X11控制台，登陆后进入图形GUI模式运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动 不过在centos7中使用Systemd 取代init，init 是串行的，启动速度比较慢。 硬件设备管理内核的另外一个作用就是管理硬件设备。如果使用硬件，都需要在内核代码中加入其驱动程序代码。在Linux中有两种方法插入设备驱动 编译进内核的设备驱动代码 可插入内核的设备驱动代码（这种方式比较方便，利于维护） 文件系统管理Linux 内核通过支持通过不同类型的文件系统从硬盘中读写数据。这样可以支持多种文件系统，需要内核在编译时就加入可能用到的文件系统的支持。 Shell 的种类在Linux系统上，通常由好几种Linux Shell 可用。不同的Shell有不同的特性，有些利于创建脚本，有些利于管理进程。 ash 一种运行在内存受限环境中的简单轻量级shell，与bash shell完全兼容 korn 一种与Bourne shell 兼容的编程shell，支持如关联数组和浮点运算等一些高级的编程特性 tcsh 一种将C 语言中的一些元素引入到shell脚本中的shell zsh 一种结合了bash、tcsh和korn的特性，同时提供高级编程特性、共享历史文件和主体话提示符的高级shell。在Mac 下面使用zsh 还是非常方便的。 Linux 图形化桌面 基本上用不到，就略过了。]]></content>
+    <content type="text"><![CDATA[了解linux系统内核内核的主要作用 系统内存管理 软件程序管理 硬件设备管理 文件系统管理 什么是虚拟内存内核通过硬盘上的存储空间来实现虚拟内存，这块区域称为交换空间（swap space）。平常使用的都是阿里云，发现阿里云把swap的空间为0。查看官方文档后发现如果使用普通云盘，不建议使用swap分区，原因是因为开启SWAP可能会因频繁换页操作，导致IO性能下降，如果内存足够的情况下，建议关闭swap 分区。 软件程序管理Linux操作系统将运行中的程序称为进程。进程可以在前台运行，将输出显示在屏幕上，也可以在后台运行。内核创建第一个进程称为init进程，来启动系统上其他进程，并将其加载到虚拟内存中。 一些Linux发行版使用一个表来管理在系统开机时要自动启动的进程。在Linux系统上，这个表通常位于/etc/inittab中。另外一些系统则采用/etc/init.d目录，将开机时启动或停止某个应用的脚本放在这个目录下。 Linux 操作系统的init系统采用了运行级。运行级决定了init进程运行/etc/inittab文件或者/etc/rcX.d目录中定义好的某些特定类型的进程。Linux操作系统有5个启动运行级。（但是在使用centos7的时候发现有7个运行级别0-6） CentOS系统有7个运行级别(runlevel) 运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆运行级别2：多用户状态(没有NFS)运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式运行级别4：系统未使用，保留运行级别5：X11控制台，登陆后进入图形GUI模式运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动 不过在centos7中使用Systemd 取代init，init 是串行的，启动速度比较慢。 硬件设备管理内核的另外一个作用就是管理硬件设备。如果使用硬件，都需要在内核代码中加入其驱动程序代码。在Linux中有两种方法插入设备驱动 编译进内核的设备驱动代码 可插入内核的设备驱动代码（这种方式比较方便，利于维护） 文件系统管理Linux 内核通过支持通过不同类型的文件系统从硬盘中读写数据。这样可以支持多种文件系统，需要内核在编译时就加入可能用到的文件系统的支持。 Shell 的种类在Linux系统上，通常由好几种Linux Shell 可用。不同的Shell有不同的特性，有些利于创建脚本，有些利于管理进程。 ash 一种运行在内存受限环境中的简单轻量级shell，与bash shell完全兼容 korn 一种与Bourne shell 兼容的编程shell，支持如关联数组和浮点运算等一些高级的编程特性 tcsh 一种将C 语言中的一些元素引入到shell脚本中的shell zsh 一种结合了bash、tcsh和korn的特性，同时提供高级编程特性、共享历史文件和主体话提示符的高级shell。在Mac 下面使用zsh 还是非常方便的。 Linux 图形化桌面 基本上用不到，就略过了。 文件路径 相对路径 绝对路劲pwd 命令查询当前所在的目录ls -F 显示出文件夹和普通文件ls -F -R -R 递归文件夹 文件拷贝copy -R 拷贝整个目录和文件 链接文件 符号链接 硬链接]]></content>
       <categories>
         <category>Shell</category>
       </categories>

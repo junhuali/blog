@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://blog.searchinfogo.com/2018/05/03/config-npm-registry/</loc>
+    <lastmod>2018-05-03T02:38:17.930Z</lastmod>
+    <data>
+        <display>
+        <title>npm 更换源</title>
+        <pubTime>2018-05-03T02:17:09.000Z</pubTime>
+        
+        <tag>Node</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://blog.searchinfogo.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.searchinfogo.com/2018/04/02/study-shell/</loc>
-    <lastmod>2018-04-20T09:06:59.310Z</lastmod>
+    <lastmod>2018-04-23T11:35:26.746Z</lastmod>
     <data>
         <display>
         <title>学习Shell命令行总结</title>
