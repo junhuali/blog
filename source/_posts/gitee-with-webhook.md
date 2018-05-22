@@ -54,7 +54,8 @@ nvm current # 查看当前的版本
 ``` bash
 mkdir /opt/webhook #创建目录
 cd /opt/webhook
-npm install -g gitee-webhook-handler # 当前的版本为v0.1.2
+npm init # 初始化项目
+npm install  gitee-webhook-handler --save # 当前的版本为v0.1.2
 ```
 3. 创建对应的webhook服务
 ``` bash

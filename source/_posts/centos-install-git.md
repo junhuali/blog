@@ -8,13 +8,13 @@ tag: Git
 ### 源码安装
 - 安装对应的依赖
 ``` bash
-yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
-yum install gcc perl-ExtUtils-MakeMaker
+yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+yum install -y gcc perl-ExtUtils-MakeMaker
 ```
 - 下载源码编译安装
 #### 确保系统git 已经被卸载
 ``` bash
-yum remove git(先执行本选项，确保卸载掉git)
+yum remove -y git(先执行本选项，确保卸载掉git)
 ```
 
 ``` bash
@@ -33,10 +33,11 @@ git --version (查看是否安装完成)
 ``` bash
 # 下载最新rpm
 wget https://centos7.iuscommunity.org/ius-release.rpm
-# 安装依赖（可能会少包，按提示安装）
+# 安装依赖（可能会少包，按提示安装 ）
+yum install -y epel-release （#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch 如果这个错误安装一下epel-release）
 rpm -Uvh ius-release*rpm
 # 安装git
-yum --enablerepo=ius-archive install git2u
+yum --enablerepo=ius-archive install git2u -y
 git --version
 ```
 ### yum 安装(安装2.x 可以yum search git 搜索到)
