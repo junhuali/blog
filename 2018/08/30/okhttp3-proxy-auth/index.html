@@ -108,17 +108,18 @@
 
 
 
-  <meta name="description" content="Done is better than perfect.">
+  <meta name="description" content="因为种种原因，没有按时写博客，最近准备把博客重新拾起来。最近在写一个项目，使用到了okhttp的代理，因为使用的代理是付费的，所以需要鉴权。在使用的过程中碰到了一些问题所以记录一下 默认的okhttp代理鉴权如下：1234567891011121314151617181920212223242526import java.net.Authenticator;import java.net.Inet">
+<meta name="keywords" content="okhttp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="okhttp3-proxy-auth">
+<meta property="og:title" content="okhttp3-proxy-auth (okhttp3 http 代理鉴权)">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/08/30/okhttp3-proxy-auth/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="Done is better than perfect.">
+<meta property="og:description" content="因为种种原因，没有按时写博客，最近准备把博客重新拾起来。最近在写一个项目，使用到了okhttp的代理，因为使用的代理是付费的，所以需要鉴权。在使用的过程中碰到了一些问题所以记录一下 默认的okhttp代理鉴权如下：1234567891011121314151617181920212223242526import java.net.Authenticator;import java.net.Inet">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-30T11:17:14.962Z">
+<meta property="og:updated_time" content="2018-08-30T11:37:24.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="okhttp3-proxy-auth">
-<meta name="twitter:description" content="Done is better than perfect.">
+<meta name="twitter:title" content="okhttp3-proxy-auth (okhttp3 http 代理鉴权)">
+<meta name="twitter:description" content="因为种种原因，没有按时写博客，最近准备把博客重新拾起来。最近在写一个项目，使用到了okhttp的代理，因为使用的代理是付费的，所以需要鉴权。在使用的过程中碰到了一些问题所以记录一下 默认的okhttp代理鉴权如下：1234567891011121314151617181920212223242526import java.net.Authenticator;import java.net.Inet">
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>okhttp3-proxy-auth | Junhua's Blog</title>
+  <title>okhttp3-proxy-auth (okhttp3 http 代理鉴权) | Junhua's Blog</title>
   
 
 
@@ -354,7 +355,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">okhttp3-proxy-auth
+          <h1 class="post-title" itemprop="name headline">okhttp3-proxy-auth (okhttp3 http 代理鉴权)
               
             
           </h1>
@@ -385,6 +386,24 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -424,7 +443,11 @@
       
 
       
-        
+        <p>因为种种原因，没有按时写博客，最近准备把博客重新拾起来。<br>最近在写一个项目，使用到了okhttp的代理，因为使用的代理是付费的，所以需要鉴权。在使用的过程中碰到了一些问题所以记录一下</p>
+<p>默认的okhttp代理鉴权如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.net.Authenticator;</span><br><span class="line"><span class="keyword">import</span> java.net.InetSocketAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.PasswordAuthentication;</span><br><span class="line"><span class="keyword">import</span> java.net.Proxy;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="comment">//设置socks代理服务器ip端口</span></span><br><span class="line">        Proxy proxy = <span class="keyword">new</span> Proxy(Proxy.Type.HTTP, <span class="keyword">new</span> InetSocketAddress(<span class="string">"127.0.0.1"</span>, <span class="number">1086</span>));</span><br><span class="line">        Authenticator.setDefault(<span class="keyword">new</span> Authenticator()</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">private</span> PasswordAuthentication authentication = <span class="keyword">new</span> PasswordAuthentication(<span class="string">"username"</span>, <span class="string">"password"</span>.toCharArray());</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> PasswordAuthentication <span class="title">getPasswordAuthentication</span><span class="params">()</span></span></span><br><span class="line"><span class="function">            </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> authentication;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient.Builder().connectTimeout(<span class="number">150</span>, TimeUnit.SECONDS).proxy(proxy).build();</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder().url(<span class="string">"https://www.baidu.com"</span>).get().build();</span><br><span class="line">        Response response = client.newCall(request).execute();</span><br><span class="line">        System.out.println(response.body().string());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是试了一下发现没有作用，于是采用另外一种方式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> okhttp3.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.InetSocketAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.Proxy;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String url = <span class="string">"https://www.baidu.com"</span>;</span><br><span class="line">        <span class="keyword">final</span> String username = <span class="string">"username"</span>;</span><br><span class="line">        <span class="keyword">final</span> String password = <span class="string">"password"</span>;</span><br><span class="line"></span><br><span class="line">        Proxy proxy = <span class="keyword">new</span> Proxy(Proxy.Type.HTTP, <span class="keyword">new</span> InetSocketAddress(<span class="string">"127.0.0.1"</span>, <span class="number">1086</span>));</span><br><span class="line"></span><br><span class="line">        Authenticator proxyAuthenticator = <span class="keyword">new</span> Authenticator() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Request <span class="title">authenticate</span><span class="params">(Route route, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                String credential = Credentials.basic(username, password);</span><br><span class="line">                <span class="keyword">return</span> response.request().newBuilder()</span><br><span class="line">                        .header(<span class="string">"Proxy-Authorization"</span>, credential)</span><br><span class="line">                        .build();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient().newBuilder().</span><br><span class="line">                connectTimeout(<span class="number">120</span>, TimeUnit.SECONDS).readTimeout(<span class="number">120</span>, TimeUnit.SECONDS).proxy(proxy)</span><br><span class="line">                .proxyAuthenticator(proxyAuthenticator)</span><br><span class="line">                <span class="comment">// 解决内存溢出问题</span></span><br><span class="line">                .connectionPool(<span class="keyword">new</span> ConnectionPool(<span class="number">5</span>, <span class="number">1</span>, TimeUnit.SECONDS)).build();</span><br><span class="line">        Request build = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">                .url(url)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        Response response = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        client.newCall(build).enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call, IOException e)</span> </span>&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (!response.isSuccessful()) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"服务器端错误: "</span> + response);</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(response.body().string());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过将用户名和密码增加到header中的这种方式解决</p>
+
       
     </div>
 
@@ -441,6 +464,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/okhttp/" rel="tag"># okhttp</a>
+          
+        </div>
       
 
       
@@ -619,7 +648,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

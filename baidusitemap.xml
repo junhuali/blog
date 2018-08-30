@@ -5,14 +5,19 @@
     
   <url>
     <loc>https://blog.searchinfogo.com/2018/08/30/okhttp3-proxy-auth/</loc>
-    <lastmod>2018-08-30T11:17:14.962Z</lastmod>
+    <lastmod>2018-08-30T11:37:24.625Z</lastmod>
     <data>
         <display>
-        <title>okhttp3-proxy-auth</title>
+        <title>okhttp3-proxy-auth (okhttp3 http 代理鉴权)</title>
         <pubTime>2018-08-30T11:17:14.000Z</pubTime>
         
+        <tag>okhttp</tag>
+         
          
            
+             
+              <breadCrumb title="Java" url="https://blog.searchinfogo.com/categories/Java/"/>
+          
         </display>
     </data>
     </url>
