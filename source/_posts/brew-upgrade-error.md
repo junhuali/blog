@@ -6,7 +6,7 @@ tags: Brew
 ---
 定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。
 ### brew 升级
-最近在使用`brew upgrade` 的过程中，喷到了一个问题几率一下。
+最近在使用`brew upgrade` 的过程中，碰到了一个问题记录一下。
 ``` shell
 Error: An unexpected error occurred during the `brew link` step
 The formula built, but is not symlinked into /usr/local
