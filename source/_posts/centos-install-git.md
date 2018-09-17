@@ -29,18 +29,6 @@ source /etc/bashrc
 git --version (查看是否安装完成)
 ```
 ### rpm 安装（基于CentOS7）
-
-``` bash
-# 下载最新rpm包
-# 安装依赖（可能会少包，按提示安装 ）
-yum install -y epel-release （#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）
-rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm
-
-# 安装git
-yum --enablerepo=ius-archive install git2u -y
-git --version
-```
-### yum 安装(安装2.x 可以yum search git 搜索到)
 ``` bash
 yum install -y epel-release （#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）
 rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm
