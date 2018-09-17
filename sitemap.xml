@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.searchinfogo.com/2017/11/06/centos-install-git/</loc>
+    
+    <lastmod>2018-09-17T07:51:44.591Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/</loc>
+    
+    <lastmod>2018-08-30T11:53:59.442Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.searchinfogo.com/2018/08/30/okhttp3-proxy-auth/</loc>
     
-    <lastmod>2018-08-30T11:43:54.515Z</lastmod>
+    <lastmod>2018-08-30T11:49:45.435Z</lastmod>
     
   </url>
   
@@ -37,23 +51,9 @@
   </url>
   
   <url>
-    <loc>https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/</loc>
-    
-    <lastmod>2018-05-22T07:40:27.744Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/</loc>
     
     <lastmod>2018-05-22T03:00:19.924Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.searchinfogo.com/2017/11/06/centos-install-git/</loc>
-    
-    <lastmod>2018-05-22T03:00:17.820Z</lastmod>
     
   </url>
   

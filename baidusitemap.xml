@@ -4,8 +4,48 @@
 
     
   <url>
+    <loc>https://blog.searchinfogo.com/2017/11/06/centos-install-git/</loc>
+    <lastmod>2018-09-17T07:51:44.591Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS 安装 git</title>
+        <pubTime>2017-11-06T07:11:35.000Z</pubTime>
+        
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://blog.searchinfogo.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/</loc>
+    <lastmod>2018-08-30T11:53:59.442Z</lastmod>
+    <data>
+        <display>
+        <title>brew 升级应用错误</title>
+        <pubTime>2018-05-03T03:01:00.000Z</pubTime>
+        
+        <tag>Brew</tag>
+         
+         
+           
+             
+              <breadCrumb title="Shell" url="https://blog.searchinfogo.com/categories/Shell/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.searchinfogo.com/2018/08/30/okhttp3-proxy-auth/</loc>
-    <lastmod>2018-08-30T11:43:54.515Z</lastmod>
+    <lastmod>2018-08-30T11:49:45.435Z</lastmod>
     <data>
         <display>
         <title>okhttp3-proxy-auth (okhttp3 http 代理鉴权)</title>
@@ -104,26 +144,6 @@
 
     
   <url>
-    <loc>https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/</loc>
-    <lastmod>2018-05-22T07:40:27.744Z</lastmod>
-    <data>
-        <display>
-        <title>brew 升级应用错误</title>
-        <pubTime>2018-05-03T03:01:00.000Z</pubTime>
-        
-        <tag>Brew</tag>
-         
-         
-           
-             
-              <breadCrumb title="Shell" url="https://blog.searchinfogo.com/categories/Shell/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/</loc>
     <lastmod>2018-05-22T03:00:19.924Z</lastmod>
     <data>
@@ -132,26 +152,6 @@
         <pubTime>2018-02-25T06:57:34.000Z</pubTime>
         
         <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="https://blog.searchinfogo.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.searchinfogo.com/2017/11/06/centos-install-git/</loc>
-    <lastmod>2018-05-22T03:00:17.820Z</lastmod>
-    <data>
-        <display>
-        <title>CentOS 安装 git</title>
-        <pubTime>2017-11-06T07:11:35.000Z</pubTime>
-        
-        <tag>Git</tag>
          
          
            
