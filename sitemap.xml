@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.searchinfogo.com/about/index.html</loc>
+    
+    <lastmod>2018-09-25T13:51:36.409Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/</loc>
     
     <lastmod>2018-09-25T08:59:51.088Z</lastmod>
@@ -117,13 +124,6 @@
     <loc>https://blog.searchinfogo.com/2018/03/07/python-requirements/</loc>
     
     <lastmod>2018-03-07T03:52:08.362Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.searchinfogo.com/about/index.html</loc>
-    
-    <lastmod>2018-03-01T07:00:05.229Z</lastmod>
     
   </url>
   
