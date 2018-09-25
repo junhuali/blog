@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true) 创建数据卷1$ docker volume create --name data">
-<meta name="keywords" content="Docker">
+  <meta name="description" content="最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记。 什么是pandas  pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python program">
+<meta name="keywords" content="pandas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker 常用命令(待完善)">
-<meta property="og:url" content="https://blog.searchinfogo.com/2017/11/30/common-commonds/index.html">
+<meta property="og:title" content="pandas学习笔记">
+<meta property="og:url" content="https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true) 创建数据卷1$ docker volume create --name data">
+<meta property="og:description" content="最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记。 什么是pandas  pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python program">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-09T02:43:43.065Z">
+<meta property="og:updated_time" content="2018-09-21T08:41:51.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker 常用命令(待完善)">
-<meta name="twitter:description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true) 创建数据卷1$ docker volume create --name data">
+<meta name="twitter:title" content="pandas学习笔记">
+<meta name="twitter:description" content="最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记。 什么是pandas  pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python program">
 
 
 
 
 
 
-  <link rel="canonical" href="https://blog.searchinfogo.com/2017/11/30/common-commonds/"/>
+  <link rel="canonical" href="https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Docker 常用命令(待完善) | Junhua's Blog</title>
+  <title>pandas学习笔记 | Junhua's Blog</title>
   
 
 
@@ -338,7 +338,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/11/30/common-commonds/">
+    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunHua">
@@ -355,7 +355,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker 常用命令(待完善)
+          <h1 class="post-title" itemprop="name headline">pandas学习笔记
               
             
           </h1>
@@ -380,7 +380,7 @@
                 
               
 
-              <time title="创建时间：2017-11-30 15:32:29" itemprop="dateCreated datePublished" datetime="2017-11-30T15:32:29+08:00">2017-11-30</time>
+              <time title="创建时间：2018-09-21 14:02:16" itemprop="dateCreated datePublished" datetime="2018-09-21T14:02:16+08:00">2018-09-21</time>
             
 
             
@@ -398,7 +398,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -414,8 +414,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/11/30/common-commonds/#SOHUCS" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/11/30/common-commonds/" itemprop="commentsCount"></span>
+                <a href="/2018/09/21/study-pandas-notes/#SOHUCS" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/09/21/study-pandas-notes/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -443,8 +443,20 @@
       
 
       
-        <h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
+        <p>最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记。</p>
+<p>什么是pandas</p>
+<blockquote>
+<p>pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
+</blockquote>
+<p>视频地址:<br><a href="https://www.bilibili.com/video/av6785636/" target="_blank" rel="noopener">bilibili-使用 pandas 进行数据分析：Data analysis in Python with pandas</a></p>
+<h3 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h3><ul>
+<li>安装python环境</li>
+<li>安装pandas<br>python 环境的安装，可以看之前的文章，在centos7上安装python。</li>
+</ul>
+<p>pandas安装：<br>1.Mac上使用brew <code>brew cask install anaconda</code><br>2.python -m pip install pandas <a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a><br>推荐使用第一种，anaconda的方式安装，比较方便</p>
+<h3 id="视频使用的资源"><a href="#视频使用的资源" class="headerlink" title="视频使用的资源"></a>视频使用的资源</h3><p><a href="https://pan.baidu.com/s/1UVT_S9BHJZS8ktjAc8Xpcw" target="_blank" rel="noopener">百度网盘]</a> 密码：dr78 （来自bilibili用户）<br>视频中的网络资源无法使用，可以使用上面百度网盘中的资源，或者使用我提供的地址</p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><h4 id="1-读取表格数据到pandas中-源码见demo1-py"><a href="#1-读取表格数据到pandas中-源码见demo1-py" class="headerlink" title="1.读取表格数据到pandas中(源码见demo1.py)"></a>1.读取表格数据到pandas中(<a href="">源码见demo1.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="string">''' 因为视频中的地址不可用，可以用网盘中的文件，或者用我提供的文件地址'''</span></span><br><span class="line"></span><br><span class="line">orders = pd.read_table(<span class="string">'https://blog.searchinfogo.com/download/data/data/chipotle.tsv'</span>)</span><br><span class="line"></span><br><span class="line">print(orders)</span><br><span class="line"></span><br><span class="line">head = orders.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">user_cols = [<span class="string">'user_id'</span>, <span class="string">'age'</span>, <span class="string">'gender'</span>, <span class="string">'occupation'</span>, <span class="string">'zip_code'</span>]</span><br><span class="line">users = pd.read_table(<span class="string">"https://blog.searchinfogo.com/download/data/data/u.user"</span>, sep=<span class="string">'|'</span>, header=<span class="keyword">None</span>, names=user_cols)</span><br><span class="line">print(users)</span><br></pre></td></tr></table></figure>
+<h4 id="2-从csv中读取数据-源码见demo2-py"><a href="#2-从csv中读取数据-源码见demo2-py" class="headerlink" title="2.从csv中读取数据(源码见demo2.py)"></a>2.从csv中读取数据(<a href="">源码见demo2.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line"></span><br><span class="line">type = type(ufo)</span><br><span class="line"></span><br><span class="line">print(type)</span><br><span class="line"></span><br><span class="line">ufo.head()</span><br><span class="line"></span><br><span class="line">type(ufo[<span class="string">'City'</span>])</span><br><span class="line"></span><br><span class="line">print(ufo[<span class="string">'City'</span>])</span><br><span class="line"></span><br><span class="line">ufo.shape</span><br><span class="line"></span><br><span class="line">ufo.City + ufo.State</span><br><span class="line"></span><br><span class="line">ufo[<span class="string">'Location'</span>] = ufo.City + <span class="string">','</span> + ufo.State</span><br><span class="line"></span><br><span class="line">print(ufo[<span class="string">'Location'</span>])</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -465,7 +477,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Docker/" rel="tag"># Docker</a>
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
           
         </div>
       
@@ -478,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/20/Machine-Learning-in-Java-1/" rel="next" title="Machine-Learning-in-Java-1">
-                <i class="fa fa-chevron-left"></i> Machine-Learning-in-Java-1
+              <a href="/2018/08/30/okhttp3-proxy-auth/" rel="next" title="okhttp3-proxy-auth (okhttp3 http 代理鉴权)">
+                <i class="fa fa-chevron-left"></i> okhttp3-proxy-auth (okhttp3 http 代理鉴权)
               </a>
             
           </div>
@@ -487,10 +499,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/02/server-over-the-wall/" rel="prev" title="服务器科学上网">
-                服务器科学上网 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -713,7 +721,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#列出所有并删除已停止容器"><span class="nav-number">1.</span> <span class="nav-text">列出所有并删除已停止容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据卷"><span class="nav-number">2.</span> <span class="nav-text">创建数据卷</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境安装"><span class="nav-number">1.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频使用的资源"><span class="nav-number">2.</span> <span class="nav-text">视频使用的资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录"><span class="nav-number">3.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-读取表格数据到pandas中-源码见demo1-py"><span class="nav-number">3.1.</span> <span class="nav-text">1.读取表格数据到pandas中(源码见demo1.py)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-从csv中读取数据-源码见demo2-py"><span class="nav-number">3.2.</span> <span class="nav-text">2.从csv中读取数据(源码见demo2.py)</span></a></li></ol></li></ol></div>
             
 
           </div>
