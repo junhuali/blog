@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[study-pandas-notes-3]]></title>
+    <title><![CDATA[pandas学习笔记-3]]></title>
     <url>%2F2018%2F09%2F26%2Fstudy-pandas-notes-3%2F</url>
     <content type="text"><![CDATA[6.pandas数据排序(源码见demo6.py)123456789101112131415161718#!/usr/bin/env python# encoding: utf-8import pandas as pdmovies = pd.read_csv('https://blog.searchinfogo.com/download/data/data/imdb_1000.csv')print(movies.head())print(movies['title'].sort_values(ascending=False))print(movies['title'])print(movies.sort_values('title'))print(movies.sort_values('duration', ascending=False))print(movies.head())print(movies.sort_values(['content_rating', 'duration'])) 7.pandas通过列名过滤行数据(源码见demo7.py)12345678910111213141516171819202122232425262728293031#!/usr/bin/env python# encoding: utf-8import pandas as pdmovies = pd.read_csv('https://blog.searchinfogo.com/download/data/data/imdb_1000.csv')print(movies.head())print(movies.shape)print(type(True))booleans = []for length in movies.duration: if length &gt;= 20: booleans.append(True) else: booleans.append(False)booleans[0:5]len(booleans)is_long = pd.Series(booleans)is_long.head()is_long = movies.duration &gt;= 200is_long.head()movies['genre']movies[movies.duration &gt;= 200]['genre']movies[is_long] p7讲解了使用sort_values() 方法对数据进行排序p8讲解了通过指定的条件对数据进行筛选]]></content>
       <categories>
