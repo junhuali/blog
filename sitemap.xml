@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.searchinfogo.com/about/index.html</loc>
+    
+    <lastmod>2019-05-18T03:22:32.832Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.searchinfogo.com/2019/05/18/apollo-eagerload/</loc>
     
     <lastmod>2019-05-18T03:02:11.126Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://blog.searchinfogo.com/2019/03/01/build-an-app-distribution-platform/</loc>
     
     <lastmod>2019-03-01T06:05:39.046Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.searchinfogo.com/about/index.html</loc>
-    
-    <lastmod>2019-01-07T04:45:45.934Z</lastmod>
     
   </url>
   
