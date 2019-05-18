@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.searchinfogo.com/2019/05/18/apollo-eagerload/</loc>
+    
+    <lastmod>2019-05-18T03:02:11.126Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.searchinfogo.com/2019/03/25/Spring-singleton-and-prototype/</loc>
     
     <lastmod>2019-05-11T03:12:57.522Z</lastmod>
