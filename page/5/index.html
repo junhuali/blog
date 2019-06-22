@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,6 +42,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -51,42 +64,15 @@
 
 
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -121,14 +107,17 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Junhua's Blog" type="application/atom+xml">
 
 
 
+  
+  
   <link rel="canonical" href="https://blog.searchinfogo.com/page/5/">
 
 
 
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -142,43 +131,34 @@
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?856b5e9d05d5a0661908b7854f41d8d7";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+
+
 
 
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -197,7 +177,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -207,6 +187,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
     
   </div>
 
@@ -230,32 +211,68 @@
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
   </li>
 
       
@@ -338,7 +355,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/10/12/nginx-load-balance-strategy/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -354,9 +371,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/12/nginx-load-balance-strategy/" itemprop="url">
-                  Nginx 负载均衡策略
-                </a>
+                
+                <a href="/2017/10/12/nginx-load-balance-strategy/" class="post-title-link" itemprop="url">Nginx 负载均衡策略</a>
               
             
           </h1>
@@ -385,6 +401,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:31" itemprop="dateModified" datetime="2018-02-09T10:43:31+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -409,13 +441,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/10/12/nginx-load-balance-strategy/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/12/nginx-load-balance-strategy/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -446,16 +481,20 @@
       
         
           
-          Nginx 作为高性能web服务器，负载均衡是其基本功能之一。 注：负载均衡至少需要两台机器
+            <p>
+              Nginx 作为高性能web服务器，负载均衡是其基本功能之一。 注：负载均衡至少需要两台机器
 负载均衡负载均衡可以将请求前端的请求分担到后端多个节点上，提升系统的响应和处理能力。
 负载均衡策略负载均衡的策略可以大致分为两大类：内置策略 和扩展策略内置策略：一般会直接编译进Nginx内核，常用的有、轮
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/12/nginx-load-balance-strategy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/10/12/nginx-load-balance-strategy/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -469,6 +508,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -511,7 +553,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/10/01/yum-install-nginx-add-modules/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -527,9 +569,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/01/yum-install-nginx-add-modules/" itemprop="url">
-                  centos yum 安装nginx 后增加模块
-                </a>
+                
+                <a href="/2017/10/01/yum-install-nginx-add-modules/" class="post-title-link" itemprop="url">centos yum 安装nginx 后增加模块</a>
               
             
           </h1>
@@ -558,6 +599,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:20" itemprop="dateModified" datetime="2018-02-09T10:43:20+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -582,13 +639,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/10/01/yum-install-nginx-add-modules/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/01/yum-install-nginx-add-modules/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -619,17 +679,21 @@
       
         
           
-          yum 和 源码安装的区别yum 安装是在线安装，优点：安装方式简单，快捷；
+            <p>
+              yum 和 源码安装的区别yum 安装是在线安装，优点：安装方式简单，快捷；
 源码安装是将源码进行编译，生成可执行文件，优点：方便的添加模块等
 yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
-1.增加对应的源1rpm -ivh http://n
-          ...
+1.增加对应的源rpm -ivh http://ng
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/01/yum-install-nginx-add-modules/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/10/01/yum-install-nginx-add-modules/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -643,6 +707,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     
 
+    
+      
+    
     
 
     
@@ -685,7 +752,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/09/30/hexo-can't-find-module/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -701,9 +768,8 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/30/hexo-can't-find-module/" itemprop="url">
-                  Cannot find module './build/Release/DTraceProviderBindings'
-                </a>
+                
+                <a href="/2017/09/30/hexo-can't-find-module/" class="post-title-link" itemprop="url">Cannot find module './build/Release/DTraceProviderBindings'</a>
               
             
           </h1>
@@ -732,6 +798,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:36" itemprop="dateModified" datetime="2018-02-09T10:43:36+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -756,13 +838,16 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/09/30/hexo-can't-find-module/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/30/hexo-can't-find-module/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -793,16 +878,20 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
       
         
           
-          有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩∩)O哈哈~)
+            <p>
+              有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩∩)O哈哈~)
 报错如下：
-123456789101112131415161718192021222324&#123; Error: Cannot find module &apos;./build/
-          ...
+&#123; Error: Cannot find module &apos;./build/Release/DTraceProviderBindings&apos;   
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/30/hexo-can't-find-module/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/09/30/hexo-can't-find-module/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -816,6 +905,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     
 
+    
+      
+    
     
 
     
@@ -858,7 +950,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/09/30/docker-install-nexus/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -874,9 +966,8 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/30/docker-install-nexus/" itemprop="url">
-                  Docker 搭建Nexus 私服
-                </a>
+                
+                <a href="/2017/09/30/docker-install-nexus/" class="post-title-link" itemprop="url">Docker 搭建Nexus 私服</a>
               
             
           </h1>
@@ -905,6 +996,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:39" itemprop="dateModified" datetime="2018-02-09T10:43:39+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -929,13 +1036,16 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/09/30/docker-install-nexus/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/30/docker-install-nexus/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -966,18 +1076,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
       
         
           
-          创建数据卷1docker volume create --name nexus-data
+            <p>
+              创建数据卷docker volume create --name nexus-data
 
-拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)
+拉取Nexus 镜像docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)
 
-启动镜像1docke
-          ...
+启动镜像docker r
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/30/docker-install-nexus/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/09/30/docker-install-nexus/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -991,6 +1105,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     
 
+    
+      
+    
     
 
     
@@ -1033,7 +1150,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/09/23/docker-install-MongoDB/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1049,9 +1166,8 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/23/docker-install-MongoDB/" itemprop="url">
-                  Docker安装MongoDB(Mongo3.x)
-                </a>
+                
+                <a href="/2017/09/23/docker-install-MongoDB/" class="post-title-link" itemprop="url">Docker安装MongoDB(Mongo3.x)</a>
               
             
           </h1>
@@ -1080,6 +1196,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:40" itemprop="dateModified" datetime="2018-02-09T10:43:40+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1104,13 +1236,16 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/09/23/docker-install-MongoDB/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/23/docker-install-MongoDB/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1141,18 +1276,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
       
         
           
-          使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data
+            <p>
+              使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-datadocker volume create --name mongo-data
 
-拉取镜像1docker pull mongo
+拉取镜像docker pull mongo
 
-运行1234567docker run -
-          ...
+运行docker run --restart=
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/23/docker-install-MongoDB/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/09/23/docker-install-MongoDB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1166,6 +1305,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     
 
+    
+      
+    
     
 
     
@@ -1208,7 +1350,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/09/23/Could-not-get-a-resource-from-the-pool/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1224,9 +1366,8 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/23/Could-not-get-a-resource-from-the-pool/" itemprop="url">
-                  Redis连接池连接没有正常释放报错
-                </a>
+                
+                <a href="/2017/09/23/Could-not-get-a-resource-from-the-pool/" class="post-title-link" itemprop="url">Redis连接池连接没有正常释放报错</a>
               
             
           </h1>
@@ -1255,6 +1396,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:42" itemprop="dateModified" datetime="2018-02-09T10:43:42+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1279,13 +1436,16 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/09/23/Could-not-get-a-resource-from-the-pool/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/23/Could-not-get-a-resource-from-the-pool/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1316,14 +1476,18 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
       
         
           
-          123456Caused by: redis.clients.jedis.exceptions.JedisException: Could not get a resource from the poolat redis.clients.util.Pool.getResource(Pool.java
-          ...
+            <p>
+              Caused by: redis.clients.jedis.exceptions.JedisException: Could not get a resource from the poolat redis.clients.util.Pool.getResource(Pool.java:51)at
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/23/Could-not-get-a-resource-from-the-pool/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/09/23/Could-not-get-a-resource-from-the-pool/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1337,6 +1501,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     
 
+    
+      
+    
     
 
     
@@ -1379,7 +1546,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/09/23/life/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1395,9 +1562,8 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/23/life/" itemprop="url">
-                  生活
-                </a>
+                
+                <a href="/2017/09/23/life/" class="post-title-link" itemprop="url">生活</a>
               
             
           </h1>
@@ -1426,6 +1592,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:34" itemprop="dateModified" datetime="2018-02-09T10:43:34+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1450,13 +1632,16 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/09/23/life/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/23/life/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1487,14 +1672,18 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
       
         
           
-          日常生活趣事记录
-          
+            <p>
+              日常生活趣事记录
+              
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/23/life/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/09/23/life/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1508,6 +1697,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     
 
+    
+      
+    
     
 
     
@@ -1550,7 +1742,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/09/22/Nginx-504-GateWay-Time-Out/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1566,9 +1758,8 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/22/Nginx-504-GateWay-Time-Out/" itemprop="url">
-                  Nginx 504 Gateway Time-out
-                </a>
+                
+                <a href="/2017/09/22/Nginx-504-GateWay-Time-Out/" class="post-title-link" itemprop="url">Nginx 504 Gateway Time-out</a>
               
             
           </h1>
@@ -1597,6 +1788,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-10 16:52:20" itemprop="dateModified" datetime="2018-07-10T16:52:20+08:00">2018-07-10</time>
+              
+            
           </span>
 
           
@@ -1621,13 +1828,16 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/09/22/Nginx-504-GateWay-Time-Out/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/22/Nginx-504-GateWay-Time-Out/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1658,18 +1868,22 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
       
         
           
-          今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置
-1proxy_connect_timeout = 3;
+            <p>
+              今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置
+proxy_connect_timeout = 3;
 
 时间过小导致的，最好用默认参数
 
-          
+              
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/22/Nginx-504-GateWay-Time-Out/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/09/22/Nginx-504-GateWay-Time-Out/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1683,6 +1897,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     
 
+    
+      
+    
     
 
     
@@ -1732,21 +1949,20 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JunHua">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Junhua">
             
-              <p class="site-author-name" itemprop="name">JunHua</p>
-              <p class="site-description motion-element" itemprop="description">Done is better than perfect.</p>
+              <p class="site-author-name" itemprop="name">Junhua</p>
+              <div class="site-description motion-element" itemprop="description">Done is better than perfect.</div>
           </div>
 
           
@@ -1766,7 +1982,11 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -1801,7 +2021,11 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -1873,10 +2097,18 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
           
 
           
-
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
+
+          
+
           
 
           
@@ -1889,7 +2121,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://yizibi.github.io/" title="一之笔" target="_blank">一之笔</a>
+                    <a href="https://yizibi.github.io/" title="https://yizibi.github.io/" rel="noopener" target="_blank">一之笔</a>
                   </li>
                 
               </ul>
@@ -1902,7 +2134,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -1910,6 +2142,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     </div>
   </aside>
+  
 
 
         
@@ -1918,11 +2151,11 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">JunHua</span>
+  <span class="author" itemprop="copyrightHolder">Junhua</span>
 
   
 
@@ -1930,13 +2163,15 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 </div>
 
 
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
+  <span class="post-meta-divider">|</span>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
 
 
 
@@ -1963,11 +2198,14 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1986,88 +2224,6 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://junhua.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
-
-
-	
-
-
-
-
-
-  
 
 
 
@@ -2081,8 +2237,70 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
 
 
   
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://junhua.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+
+
+
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -2168,7 +2386,7 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -2337,9 +2555,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -2415,6 +2633,13 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
   
 
   
+
+  
+
+  
+
+  
+
   
 
   

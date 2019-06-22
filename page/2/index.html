@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,6 +42,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -51,42 +64,15 @@
 
 
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -121,14 +107,17 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Junhua's Blog" type="application/atom+xml">
 
 
 
+  
+  
   <link rel="canonical" href="https://blog.searchinfogo.com/page/2/">
 
 
 
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -142,43 +131,34 @@
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?856b5e9d05d5a0661908b7854f41d8d7";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+
+
 
 
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -197,7 +177,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -207,6 +187,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
     
   </div>
 
@@ -230,32 +211,68 @@
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
   </li>
 
       
@@ -338,7 +355,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/09/25/study-pandas-notes-2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -354,9 +371,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/25/study-pandas-notes-2/" itemprop="url">
-                  pandas学习笔记-2
-                </a>
+                
+                <a href="/2018/09/25/study-pandas-notes-2/" class="post-title-link" itemprop="url">pandas学习笔记-2</a>
               
             
           </h1>
@@ -385,6 +401,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-26 16:29:19" itemprop="dateModified" datetime="2018-09-26T16:29:19+08:00">2018-09-26</time>
+              
+            
           </span>
 
           
@@ -409,13 +441,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/09/25/study-pandas-notes-2/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/25/study-pandas-notes-2/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -446,14 +481,18 @@
       
         
           
-          3.为什么pandas命令以括号结尾，其他的命令不呢？(源码见demo3.py)123456789101112131415161718192021#!/usr/bin/env python# encoding: utf-8import pandas as pdmovies = pd.read_csv
-          ...
+            <p>
+              3.为什么pandas命令以括号结尾，其他的命令不呢？(源码见demo3.py)#!/usr/bin/env python# encoding: utf-8import pandas as pdmovies = pd.read_csv('https://blog.searchinfogo.com/d
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/25/study-pandas-notes-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/09/25/study-pandas-notes-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -467,6 +506,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -509,7 +551,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -525,9 +567,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/21/study-pandas-notes/" itemprop="url">
-                  pandas学习笔记
-                </a>
+                
+                <a href="/2018/09/21/study-pandas-notes/" class="post-title-link" itemprop="url">pandas学习笔记</a>
               
             
           </h1>
@@ -556,6 +597,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-26 16:27:59" itemprop="dateModified" datetime="2018-09-26T16:27:59+08:00">2018-09-26</time>
+              
+            
           </span>
 
           
@@ -580,13 +637,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/09/21/study-pandas-notes/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/21/study-pandas-notes/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -617,17 +677,21 @@
       
         
           
-          最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记,笔记会参考视频，同时也会参考pandas官方文档。
+            <p>
+              最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记,笔记会参考视频，同时也会参考pandas官方文档。
 什么是pandas
 
 pandas is an open source, BSD-licensed library providing high-performance,
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/21/study-pandas-notes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/09/21/study-pandas-notes/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -641,6 +705,9 @@ pandas is an open source, BSD-licensed library providing high-performance,
 
     
 
+    
+      
+    
     
 
     
@@ -683,7 +750,7 @@ pandas is an open source, BSD-licensed library providing high-performance,
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/08/30/okhttp3-proxy-auth/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -699,9 +766,8 @@ pandas is an open source, BSD-licensed library providing high-performance,
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/30/okhttp3-proxy-auth/" itemprop="url">
-                  okhttp3-proxy-auth (okhttp3 http 代理鉴权)
-                </a>
+                
+                <a href="/2018/08/30/okhttp3-proxy-auth/" class="post-title-link" itemprop="url">okhttp3-proxy-auth (okhttp3 http 代理鉴权)</a>
               
             
           </h1>
@@ -726,9 +792,13 @@ pandas is an open source, BSD-licensed library providing high-performance,
                 
               
 
-              <time title="创建时间：2018-08-30 19:17:14" itemprop="dateCreated datePublished" datetime="2018-08-30T19:17:14+08:00">2018-08-30</time>
+              <time title="创建时间：2018-08-30 19:17:14 / 修改时间：19:49:45" itemprop="dateCreated datePublished" datetime="2018-08-30T19:17:14+08:00">2018-08-30</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -754,13 +824,16 @@ pandas is an open source, BSD-licensed library providing high-performance,
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/08/30/okhttp3-proxy-auth/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/30/okhttp3-proxy-auth/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -791,16 +864,20 @@ pandas is an open source, BSD-licensed library providing high-performance,
       
         
           
-          因为种种原因，没有按时写博客，最近准备把博客重新拾起来。最近在写一个项目，使用到了okhttp的代理，因为使用的代理是付费的，所以需要鉴权。在使用的过程中碰到了一些问题所以记录一下
+            <p>
+              因为种种原因，没有按时写博客，最近准备把博客重新拾起来。最近在写一个项目，使用到了okhttp的代理，因为使用的代理是付费的，所以需要鉴权。在使用的过程中碰到了一些问题所以记录一下
 默认的okhttp代理鉴权如下：
-123456789101112131415161718192021222324252
-          ...
+import okhttp3.*;import java.io.IOExceptio
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/30/okhttp3-proxy-auth/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/08/30/okhttp3-proxy-auth/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -814,6 +891,9 @@ pandas is an open source, BSD-licensed library providing high-performance,
 
     
 
+    
+      
+    
     
 
     
@@ -856,7 +936,7 @@ pandas is an open source, BSD-licensed library providing high-performance,
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/06/13/java-concurrency-study/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -872,9 +952,8 @@ pandas is an open source, BSD-licensed library providing high-performance,
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/13/java-concurrency-study/" itemprop="url">
-                  Java 并发编程学习
-                </a>
+                
+                <a href="/2018/06/13/java-concurrency-study/" class="post-title-link" itemprop="url">Java 并发编程学习</a>
               
             
           </h1>
@@ -903,6 +982,22 @@ pandas is an open source, BSD-licensed library providing high-performance,
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-14 21:01:36" itemprop="dateModified" datetime="2018-06-14T21:01:36+08:00">2018-06-14</time>
+              
+            
           </span>
 
           
@@ -927,13 +1022,16 @@ pandas is an open source, BSD-licensed library providing high-performance,
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/06/13/java-concurrency-study/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/13/java-concurrency-study/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -964,17 +1062,21 @@ pandas is an open source, BSD-licensed library providing high-performance,
       
         
           
-          关于并发并发在开发中广泛的应用，非常的重要，最近在读《Java并发编程的艺术》艺术，希望写一些东西来记录和巩固。
+            <p>
+              关于并发并发在开发中广泛的应用，非常的重要，最近在读《Java并发编程的艺术》艺术，希望写一些东西来记录和巩固。
 上下文切换、死锁上下文切换频繁的上下文切换不仅不能加快程序的运行，还会降低程序的性能。文中提到了一些方法减少上下文切换的方法：
 
 无锁并发编程通过将数据分段，使用不同线程处理不同的数据。
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/13/java-concurrency-study/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/06/13/java-concurrency-study/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -988,6 +1090,9 @@ pandas is an open source, BSD-licensed library providing high-performance,
 
     
 
+    
+      
+    
     
 
     
@@ -1030,7 +1135,7 @@ pandas is an open source, BSD-licensed library providing high-performance,
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/06/02/node-project-summary/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1046,9 +1151,8 @@ pandas is an open source, BSD-licensed library providing high-performance,
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/02/node-project-summary/" itemprop="url">
-                  Node 项目问题总结
-                </a>
+                
+                <a href="/2018/06/02/node-project-summary/" class="post-title-link" itemprop="url">Node 项目问题总结</a>
               
             
           </h1>
@@ -1073,9 +1177,13 @@ pandas is an open source, BSD-licensed library providing high-performance,
                 
               
 
-              <time title="创建时间：2018-06-02 14:52:15" itemprop="dateCreated datePublished" datetime="2018-06-02T14:52:15+08:00">2018-06-02</time>
+              <time title="创建时间：2018-06-02 14:52:15 / 修改时间：17:28:40" itemprop="dateCreated datePublished" datetime="2018-06-02T14:52:15+08:00">2018-06-02</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -1101,13 +1209,16 @@ pandas is an open source, BSD-licensed library providing high-performance,
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/06/02/node-project-summary/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/02/node-project-summary/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1138,16 +1249,20 @@ pandas is an open source, BSD-licensed library providing high-performance,
       
         
           
-          最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。
+            <p>
+              最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。
 RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错
-1rabbitmq typeerror can
-          ...
+rabbitmq typeerror cann
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/02/node-project-summary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/06/02/node-project-summary/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1161,6 +1276,9 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
 
     
 
+    
+      
+    
     
 
     
@@ -1203,7 +1321,7 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/05/07/use-frp/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1219,9 +1337,8 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/07/use-frp/" itemprop="url">
-                  使用frp微信本地调试
-                </a>
+                
+                <a href="/2018/05/07/use-frp/" class="post-title-link" itemprop="url">使用frp微信本地调试</a>
               
             
           </h1>
@@ -1246,9 +1363,13 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
                 
               
 
-              <time title="创建时间：2018-05-07 14:50:36" itemprop="dateCreated datePublished" datetime="2018-05-07T14:50:36+08:00">2018-05-07</time>
+              <time title="创建时间：2018-05-07 14:50:36 / 修改时间：18:32:32" itemprop="dateCreated datePublished" datetime="2018-05-07T14:50:36+08:00">2018-05-07</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -1274,13 +1395,16 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/05/07/use-frp/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/07/use-frp/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1311,15 +1435,19 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
       
         
           
-          frp 原理frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。
+            <p>
+              frp 原理frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。
 本地调试微信微信开发需要调试不少东西，本地都是没有办法进行的，需要有固定的ip才能进行正常调试，如果把代码发布到远程进行调试，效率很低，所以需要本地有个固定的ip。早期的时候我是
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/07/use-frp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/07/use-frp/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1333,6 +1461,9 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
 
     
 
+    
+      
+    
     
 
     
@@ -1375,7 +1506,7 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1391,9 +1522,8 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/03/brew-upgrade-error/" itemprop="url">
-                  brew 升级应用错误
-                </a>
+                
+                <a href="/2018/05/03/brew-upgrade-error/" class="post-title-link" itemprop="url">brew 升级应用错误</a>
               
             
           </h1>
@@ -1422,6 +1552,22 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-30 19:53:59" itemprop="dateModified" datetime="2018-08-30T19:53:59+08:00">2018-08-30</time>
+              
+            
           </span>
 
           
@@ -1446,13 +1592,16 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/05/03/brew-upgrade-error/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/03/brew-upgrade-error/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1483,16 +1632,20 @@ RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写
       
         
           
-          定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。
+            <p>
+              定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。
 brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记录一下。
-1234Error: An unexpected error occurred during the `brew link` ste
-          ...
+Error: An unexpected error occurred during the `brew link` stepThe
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/03/brew-upgrade-error/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/03/brew-upgrade-error/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1506,6 +1659,9 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
 
     
 
+    
+      
+    
     
 
     
@@ -1548,7 +1704,7 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/05/03/config-npm-registry/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1564,9 +1720,8 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/03/config-npm-registry/" itemprop="url">
-                  npm 更换源
-                </a>
+                
+                <a href="/2018/05/03/config-npm-registry/" class="post-title-link" itemprop="url">npm 更换源</a>
               
             
           </h1>
@@ -1591,9 +1746,13 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
                 
               
 
-              <time title="创建时间：2018-05-03 10:17:09" itemprop="dateCreated datePublished" datetime="2018-05-03T10:17:09+08:00">2018-05-03</time>
+              <time title="创建时间：2018-05-03 10:17:09 / 修改时间：11:31:39" itemprop="dateCreated datePublished" datetime="2018-05-03T10:17:09+08:00">2018-05-03</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -1619,13 +1778,16 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/05/03/config-npm-registry/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/03/config-npm-registry/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1656,19 +1818,23 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
       
         
           
-          由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。
+            <p>
+              由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。
 换源
 临时使用
-1npm --registry https://registry.npm.taobao.org install express --save
+npm --registry https://registry.npm.taobao.org install express --save
 
-持久
-          ...
+持久使
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/03/config-npm-registry/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/03/config-npm-registry/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1682,6 +1848,9 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
 
     
 
+    
+      
+    
     
 
     
@@ -1724,7 +1893,7 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/04/18/raise-github-clone-speed/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1740,9 +1909,8 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/18/raise-github-clone-speed/" itemprop="url">
-                  提升国内服务器Github clone速度的方法
-                </a>
+                
+                <a href="/2018/04/18/raise-github-clone-speed/" class="post-title-link" itemprop="url">提升国内服务器Github clone速度的方法</a>
               
             
           </h1>
@@ -1767,9 +1935,13 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
                 
               
 
-              <time title="创建时间：2018-04-18 11:24:25" itemprop="dateCreated datePublished" datetime="2018-04-18T11:24:25+08:00">2018-04-18</time>
+              <time title="创建时间：2018-04-18 11:24:25 / 修改时间：12:02:42" itemprop="dateCreated datePublished" datetime="2018-04-18T11:24:25+08:00">2018-04-18</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -1795,13 +1967,16 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/04/18/raise-github-clone-speed/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/18/raise-github-clone-speed/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1832,15 +2007,19 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
       
         
           
-          Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。
+            <p>
+              Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。
 修改hosts从http://github.global.ssl.fastly.net.ipaddress.com/ 可以获取
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/18/raise-github-clone-speed/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/04/18/raise-github-clone-speed/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1854,6 +2033,9 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
 
     
 
+    
+      
+    
     
 
     
@@ -1896,7 +2078,7 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/04/11/netty-study/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1912,9 +2094,8 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/11/netty-study/" itemprop="url">
-                  Netty 学习记录
-                </a>
+                
+                <a href="/2018/04/11/netty-study/" class="post-title-link" itemprop="url">Netty 学习记录</a>
               
             
           </h1>
@@ -1943,19 +2124,38 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-18 11:36:08" itemprop="dateModified" datetime="2018-04-18T11:36:08+08:00">2018-04-18</time>
+              
+            
           </span>
 
           
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/04/11/netty-study/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/11/netty-study/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1986,18 +2186,22 @@ brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记�
       
         
           
-          Netty 核心组件
+            <p>
+              Netty 核心组件
 Channel
 回调
 Future
 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/11/netty-study/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/04/11/netty-study/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -2011,6 +2215,9 @@ Future
 
     
 
+    
+      
+    
     
 
     
@@ -2060,21 +2267,20 @@ Future
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JunHua">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Junhua">
             
-              <p class="site-author-name" itemprop="name">JunHua</p>
-              <p class="site-description motion-element" itemprop="description">Done is better than perfect.</p>
+              <p class="site-author-name" itemprop="name">Junhua</p>
+              <div class="site-description motion-element" itemprop="description">Done is better than perfect.</div>
           </div>
 
           
@@ -2094,7 +2300,11 @@ Future
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -2129,7 +2339,11 @@ Future
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -2201,10 +2415,18 @@ Future
           
 
           
-
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
+
+          
+
           
 
           
@@ -2217,7 +2439,7 @@ Future
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://yizibi.github.io/" title="一之笔" target="_blank">一之笔</a>
+                    <a href="https://yizibi.github.io/" title="https://yizibi.github.io/" rel="noopener" target="_blank">一之笔</a>
                   </li>
                 
               </ul>
@@ -2230,7 +2452,7 @@ Future
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -2238,6 +2460,7 @@ Future
 
     </div>
   </aside>
+  
 
 
         
@@ -2246,11 +2469,11 @@ Future
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">JunHua</span>
+  <span class="author" itemprop="copyrightHolder">Junhua</span>
 
   
 
@@ -2258,13 +2481,15 @@ Future
 </div>
 
 
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
+  <span class="post-meta-divider">|</span>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
 
 
 
@@ -2291,11 +2516,14 @@ Future
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2314,88 +2542,6 @@ Future
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://junhua.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
-
-
-	
-
-
-
-
-
-  
 
 
 
@@ -2409,8 +2555,70 @@ Future
 
 
   
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://junhua.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+
+
+
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -2496,7 +2704,7 @@ Future
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -2665,9 +2873,9 @@ Future
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -2743,6 +2951,13 @@ Future
   
 
   
+
+  
+
+  
+
+  
+
   
 
   

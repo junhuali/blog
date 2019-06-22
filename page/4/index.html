@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,6 +42,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -51,42 +64,15 @@
 
 
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -121,14 +107,17 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Junhua's Blog" type="application/atom+xml">
 
 
 
+  
+  
   <link rel="canonical" href="https://blog.searchinfogo.com/page/4/">
 
 
 
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -142,43 +131,34 @@
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?856b5e9d05d5a0661908b7854f41d8d7";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+
+
 
 
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -197,7 +177,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -207,6 +187,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
     
   </div>
 
@@ -230,32 +211,68 @@
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
   </li>
 
       
@@ -338,7 +355,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/01/15/socks5-server/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -354,9 +371,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/15/socks5-server/" itemprop="url">
-                  CentOS7搭建socks5 服务
-                </a>
+                
+                <a href="/2018/01/15/socks5-server/" class="post-title-link" itemprop="url">CentOS7搭建socks5 服务</a>
               
             
           </h1>
@@ -385,6 +401,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 13:26:33" itemprop="dateModified" datetime="2018-02-09T13:26:33+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -409,13 +441,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/01/15/socks5-server/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/15/socks5-server/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -446,15 +481,19 @@
       
         
           
-          环境基于centsOS 7ss5-3.8.9-8
-下载源文件12345wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz#配置编译环境及安装编译SS5依赖组件yum -y install gc
-          ...
+            <p>
+              环境基于centsOS 7ss5-3.8.9-8
+下载源文件wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz#配置编译环境及安装编译SS5依赖组件yum -y install gcc aut
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/15/socks5-server/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/01/15/socks5-server/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -468,6 +507,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -510,7 +552,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/01/04/BTC-Tutorial/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -526,9 +568,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/04/BTC-Tutorial/" itemprop="url">
-                  数字货币入门
-                </a>
+                
+                <a href="/2018/01/04/BTC-Tutorial/" class="post-title-link" itemprop="url">数字货币入门</a>
               
             
           </h1>
@@ -557,6 +598,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-20 17:06:57" itemprop="dateModified" datetime="2018-04-20T17:06:57+08:00">2018-04-20</time>
+              
+            
           </span>
 
           
@@ -581,13 +638,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/01/04/BTC-Tutorial/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/04/BTC-Tutorial/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -618,15 +678,19 @@
       
         
           
-          前言最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。
+            <p>
+              前言最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。
 怎么入场交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/04/BTC-Tutorial/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/01/04/BTC-Tutorial/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -640,6 +704,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -682,7 +749,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/12/07/regular-expression-basic/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -698,9 +765,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/07/regular-expression-basic/" itemprop="url">
-                  正则表达式基础知识总结
-                </a>
+                
+                <a href="/2017/12/07/regular-expression-basic/" class="post-title-link" itemprop="url">正则表达式基础知识总结</a>
               
             
           </h1>
@@ -729,6 +795,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:30" itemprop="dateModified" datetime="2018-02-09T10:43:30+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -753,13 +835,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/12/07/regular-expression-basic/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/07/regular-expression-basic/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -790,15 +875,19 @@
       
         
           
-          最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下GitHub，选择了code4craft的webmagic作为项目的基础组件。
+            <p>
+              最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下GitHub，选择了code4craft的webmagic作为项目的基础组件。
 对于爬虫来说
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/07/regular-expression-basic/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/12/07/regular-expression-basic/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -812,6 +901,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -854,7 +946,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/12/04/docker-install-rabbitmq-cluster/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -870,9 +962,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/04/docker-install-rabbitmq-cluster/" itemprop="url">
-                  Docker 安装 RabbitMQ 集群
-                </a>
+                
+                <a href="/2017/12/04/docker-install-rabbitmq-cluster/" class="post-title-link" itemprop="url">Docker 安装 RabbitMQ 集群</a>
               
             
           </h1>
@@ -901,6 +992,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:38" itemprop="dateModified" datetime="2018-02-09T10:43:38+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -925,13 +1032,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/12/04/docker-install-rabbitmq-cluster/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/04/docker-install-rabbitmq-cluster/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -962,17 +1072,21 @@
       
         
           
-          Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。
+            <p>
+              Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。
 安装docker-compose
 检查是否安装过docker-compose
-1$ docker-compose -v #出现docker-compose 
-          ...
+$ docker-compose -v #出现docker-compose v
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/04/docker-install-rabbitmq-cluster/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/12/04/docker-install-rabbitmq-cluster/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -986,6 +1100,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -1028,7 +1145,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/12/02/kubeadm-install-kubernetes/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1044,9 +1161,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/02/kubeadm-install-kubernetes/" itemprop="url">
-                  使用kubeadm安装kubernetes集群(待续)
-                </a>
+                
+                <a href="/2017/12/02/kubeadm-install-kubernetes/" class="post-title-link" itemprop="url">使用kubeadm安装kubernetes集群(待续)</a>
               
             
           </h1>
@@ -1075,6 +1191,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:35" itemprop="dateModified" datetime="2018-02-09T10:43:35+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1099,13 +1231,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/12/02/kubeadm-install-kubernetes/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/02/kubeadm-install-kubernetes/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1136,16 +1271,20 @@
       
         
           
-          因为国内服务器无法访问google，所以服务器需要科学上网可以看我之前的文章，服务器科学上网
+            <p>
+              因为国内服务器无法访问google，所以服务器需要科学上网可以看我之前的文章，服务器科学上网
 安装docker建议使用daocloud提供的脚本进行安装，速度很快
-12$ curl -sSL https://get.daocloud.io/docker | sh #适用于Ubuntu，Debian,
-          ...
+$ curl -sSL https://get.daocloud.io/docker | sh #适用于Ubuntu，Debian,Ce
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/02/kubeadm-install-kubernetes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/12/02/kubeadm-install-kubernetes/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1159,6 +1298,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -1201,7 +1343,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/12/02/server-over-the-wall/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1217,9 +1359,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/02/server-over-the-wall/" itemprop="url">
-                  服务器科学上网
-                </a>
+                
+                <a href="/2017/12/02/server-over-the-wall/" class="post-title-link" itemprop="url">服务器科学上网</a>
               
             
           </h1>
@@ -1248,6 +1389,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:29" itemprop="dateModified" datetime="2018-02-09T10:43:29+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1272,13 +1429,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/12/02/server-over-the-wall/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/12/02/server-over-the-wall/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1309,19 +1469,23 @@
       
         
           
-          因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。
+            <p>
+              因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。
 准备
 两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4
 privoxy 包
 
 开始先用ssh 命令进行服务器socks5 
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/02/server-over-the-wall/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/12/02/server-over-the-wall/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1335,6 +1499,9 @@ privoxy 包
 
     
 
+    
+      
+    
     
 
     
@@ -1377,7 +1544,7 @@ privoxy 包
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/11/30/common-commonds/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1393,9 +1560,8 @@ privoxy 包
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/30/common-commonds/" itemprop="url">
-                  Docker 常用命令(待完善)
-                </a>
+                
+                <a href="/2017/11/30/common-commonds/" class="post-title-link" itemprop="url">Docker 常用命令(待完善)</a>
               
             
           </h1>
@@ -1424,6 +1590,22 @@ privoxy 包
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:43" itemprop="dateModified" datetime="2018-02-09T10:43:43+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1448,13 +1630,16 @@ privoxy 包
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/11/30/common-commonds/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/30/common-commonds/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1485,16 +1670,20 @@ privoxy 包
       
         
           
-          列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true)
+            <p>
+              列出所有并删除已停止容器$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true)
 
-创建数据卷1$ docker volume create -
-          ...
+创建数据卷$ docker volume create --na
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/30/common-commonds/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/30/common-commonds/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1508,6 +1697,9 @@ privoxy 包
 
     
 
+    
+      
+    
     
 
     
@@ -1550,7 +1742,7 @@ privoxy 包
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/11/20/Machine-Learning-in-Java-1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1566,9 +1758,8 @@ privoxy 包
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/20/Machine-Learning-in-Java-1/" itemprop="url">
-                  Machine-Learning-in-Java-1
-                </a>
+                
+                <a href="/2017/11/20/Machine-Learning-in-Java-1/" class="post-title-link" itemprop="url">Machine-Learning-in-Java-1</a>
               
             
           </h1>
@@ -1597,6 +1788,22 @@ privoxy 包
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:32" itemprop="dateModified" datetime="2018-02-09T10:43:32+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1621,13 +1828,16 @@ privoxy 包
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/11/20/Machine-Learning-in-Java-1/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/20/Machine-Learning-in-Java-1/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1658,20 +1868,24 @@ privoxy 包
       
         
           
-          机器学习的主要方法
+            <p>
+              机器学习的主要方法
 监督学习
 无监督学习
 强化学习
 
 监督学习检测信用卡欺诈。学习算法会学习所有带有“正常” 或 “可疑”标记（向量Y）的信用卡交易（矩阵X），并最终产生一个决策模型（f函数），对未见过的交易打标记（“正常”或“可疑”）。
 无监督学习无监督学习算法所学的数据没有给定的结果标签Y，它主
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/20/Machine-Learning-in-Java-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/20/Machine-Learning-in-Java-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1685,6 +1899,9 @@ privoxy 包
 
     
 
+    
+      
+    
     
 
     
@@ -1727,7 +1944,7 @@ privoxy 包
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/11/06/centos-install-git/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1743,9 +1960,8 @@ privoxy 包
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/06/centos-install-git/" itemprop="url">
-                  CentOS 安装 git
-                </a>
+                
+                <a href="/2017/11/06/centos-install-git/" class="post-title-link" itemprop="url">CentOS 安装 git</a>
               
             
           </h1>
@@ -1774,6 +1990,22 @@ privoxy 包
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-17 15:51:44" itemprop="dateModified" datetime="2018-09-17T15:51:44+08:00">2018-09-17</time>
+              
+            
           </span>
 
           
@@ -1798,13 +2030,16 @@ privoxy 包
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/11/06/centos-install-git/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/06/centos-install-git/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1835,19 +2070,23 @@ privoxy 包
       
         
           
-          源码安装
+            <p>
+              源码安装
 安装对应的依赖
-12yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-develyum install -y gcc perl-ExtUtils-MakeMaker
+yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-develyum install -y gcc perl-ExtUtils-MakeMaker
 
 下载源码编译安装
-确保系统gi
-          ...
+确保系统git 
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/06/centos-install-git/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/06/centos-install-git/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1861,6 +2100,9 @@ privoxy 包
 
     
 
+    
+      
+    
     
 
     
@@ -1903,7 +2145,7 @@ privoxy 包
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2017/10/28/ubuntu-install-lamp/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1919,9 +2161,8 @@ privoxy 包
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/28/ubuntu-install-lamp/" itemprop="url">
-                  Ubuntu安装LAMP
-                </a>
+                
+                <a href="/2017/10/28/ubuntu-install-lamp/" class="post-title-link" itemprop="url">Ubuntu安装LAMP</a>
               
             
           </h1>
@@ -1950,6 +2191,22 @@ privoxy 包
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 10:43:28" itemprop="dateModified" datetime="2018-02-09T10:43:28+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1974,13 +2231,16 @@ privoxy 包
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2017/10/28/ubuntu-install-lamp/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/28/ubuntu-install-lamp/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -2011,16 +2271,20 @@ privoxy 包
       
         
           
-          LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。
+            <p>
+              LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。
 环境基于Ubuntu
-开始1$ apt-get
-          ...
+开始$ apt-get 
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/28/ubuntu-install-lamp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/10/28/ubuntu-install-lamp/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -2034,6 +2298,9 @@ privoxy 包
 
     
 
+    
+      
+    
     
 
     
@@ -2083,21 +2350,20 @@ privoxy 包
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JunHua">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Junhua">
             
-              <p class="site-author-name" itemprop="name">JunHua</p>
-              <p class="site-description motion-element" itemprop="description">Done is better than perfect.</p>
+              <p class="site-author-name" itemprop="name">Junhua</p>
+              <div class="site-description motion-element" itemprop="description">Done is better than perfect.</div>
           </div>
 
           
@@ -2117,7 +2383,11 @@ privoxy 包
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -2152,7 +2422,11 @@ privoxy 包
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -2224,10 +2498,18 @@ privoxy 包
           
 
           
-
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
+
+          
+
           
 
           
@@ -2240,7 +2522,7 @@ privoxy 包
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://yizibi.github.io/" title="一之笔" target="_blank">一之笔</a>
+                    <a href="https://yizibi.github.io/" title="https://yizibi.github.io/" rel="noopener" target="_blank">一之笔</a>
                   </li>
                 
               </ul>
@@ -2253,7 +2535,7 @@ privoxy 包
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -2261,6 +2543,7 @@ privoxy 包
 
     </div>
   </aside>
+  
 
 
         
@@ -2269,11 +2552,11 @@ privoxy 包
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">JunHua</span>
+  <span class="author" itemprop="copyrightHolder">Junhua</span>
 
   
 
@@ -2281,13 +2564,15 @@ privoxy 包
 </div>
 
 
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
+  <span class="post-meta-divider">|</span>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
 
 
 
@@ -2314,11 +2599,14 @@ privoxy 包
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2337,88 +2625,6 @@ privoxy 包
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://junhua.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
-
-
-	
-
-
-
-
-
-  
 
 
 
@@ -2432,8 +2638,70 @@ privoxy 包
 
 
   
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://junhua.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+
+
+
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -2519,7 +2787,7 @@ privoxy 包
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -2688,9 +2956,9 @@ privoxy 包
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -2766,6 +3034,13 @@ privoxy 包
   
 
   
+
+  
+
+  
+
+  
+
   
 
   

@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,6 +42,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -51,42 +64,15 @@
 
 
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -121,14 +107,17 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Junhua's Blog" type="application/atom+xml">
 
 
 
+  
+  
   <link rel="canonical" href="https://blog.searchinfogo.com/page/3/">
 
 
 
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -142,43 +131,34 @@
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?856b5e9d05d5a0661908b7854f41d8d7";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+
+
 
 
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -197,7 +177,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -207,6 +187,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
     
   </div>
 
@@ -230,32 +211,68 @@
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
   </li>
 
       
@@ -338,7 +355,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/04/02/study-shell/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -354,9 +371,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/02/study-shell/" itemprop="url">
-                  学习Shell命令行总结
-                </a>
+                
+                <a href="/2018/04/02/study-shell/" class="post-title-link" itemprop="url">学习Shell命令行总结</a>
               
             
           </h1>
@@ -385,6 +401,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-26 16:27:58" itemprop="dateModified" datetime="2018-09-26T16:27:58+08:00">2018-09-26</time>
+              
+            
           </span>
 
           
@@ -409,13 +441,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/04/02/study-shell/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/02/study-shell/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -446,7 +481,8 @@
       
         
           
-          了解linux系统内核内核的主要作用
+            <p>
+              了解linux系统内核内核的主要作用
 
 系统内存管理
 软件程序管理
@@ -454,13 +490,16 @@
 文件系统管理
 
 什么是虚拟内存内核通过硬盘上的存储空间来实现虚拟内存，这块区域称为交换空间（swap space）。平常使用的都是阿里云，发现阿里云把swap的空间为0。查看官方文档后发现如果使用普通云盘，不建议使用s
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/02/study-shell/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/04/02/study-shell/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -474,6 +513,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -516,7 +558,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -532,9 +574,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/" itemprop="url">
-                  使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）
-                </a>
+                
+                <a href="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/" class="post-title-link" itemprop="url">使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</a>
               
             
           </h1>
@@ -563,6 +604,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-18 15:33:42" itemprop="dateModified" datetime="2018-03-18T15:33:42+08:00">2018-03-18</time>
+              
+            
           </span>
 
           
@@ -587,13 +644,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/17/Lets-Encrypt-free-wildcard-domain-name/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -624,14 +684,18 @@
       
         
           
-          网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻
-          ...
+            <p>
+              网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -645,6 +709,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -687,7 +754,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/03/07/python-requirements/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -703,9 +770,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/07/python-requirements/" itemprop="url">
-                  python通过使用requirements.txt文件记录管理依赖包
-                </a>
+                
+                <a href="/2018/03/07/python-requirements/" class="post-title-link" itemprop="url">python通过使用requirements.txt文件记录管理依赖包</a>
               
             
           </h1>
@@ -730,9 +796,13 @@
                 
               
 
-              <time title="创建时间：2018-03-07 11:38:55" itemprop="dateCreated datePublished" datetime="2018-03-07T11:38:55+08:00">2018-03-07</time>
+              <time title="创建时间：2018-03-07 11:38:55 / 修改时间：11:52:08" itemprop="dateCreated datePublished" datetime="2018-03-07T11:38:55+08:00">2018-03-07</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -758,13 +828,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/03/07/python-requirements/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/07/python-requirements/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -795,15 +868,19 @@
       
         
           
-          python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。
-使用1234# 进入项目目录创
-          ...
+            <p>
+              python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。
+使用# 进入项目目录创建req
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/07/python-requirements/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/03/07/python-requirements/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -817,6 +894,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -859,7 +939,7 @@
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/03/07/pthon-tutorial/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -875,9 +955,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/07/pthon-tutorial/" itemprop="url">
-                  python 入门
-                </a>
+                
+                <a href="/2018/03/07/pthon-tutorial/" class="post-title-link" itemprop="url">python 入门</a>
               
             
           </h1>
@@ -906,6 +985,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-08 14:03:09" itemprop="dateModified" datetime="2018-03-08T14:03:09+08:00">2018-03-08</time>
+              
+            
           </span>
 
           
@@ -930,13 +1025,16 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/03/07/pthon-tutorial/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/07/pthon-tutorial/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -967,18 +1065,22 @@
       
         
           
-          
+            <p>
+              
 Life is short, you need Python.
 
 上面那句话可能大家耳熟能详的一句话了，形象的表达了Python。有时候一些简单的功能验证或者是文本处理等，用Java等语言实现需要很长的时间，这个时候用Python你会发现，短短几行就搞定了，剩下的时间你就可以去喝咖啡了。
 基本数据
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/07/pthon-tutorial/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/03/07/pthon-tutorial/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -992,6 +1094,9 @@ Life is short, you need Python.
 
     
 
+    
+      
+    
     
 
     
@@ -1034,7 +1139,7 @@ Life is short, you need Python.
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1050,9 +1155,8 @@ Life is short, you need Python.
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/27/devops-2-springboot-docker-integrated/" itemprop="url">
-                  DevOps实践2:Spring Boot集成Docker环境
-                </a>
+                
+                <a href="/2018/02/27/devops-2-springboot-docker-integrated/" class="post-title-link" itemprop="url">DevOps实践2:Spring Boot集成Docker环境</a>
               
             
           </h1>
@@ -1077,9 +1181,13 @@ Life is short, you need Python.
                 
               
 
-              <time title="创建时间：2018-02-27 14:56:50" itemprop="dateCreated datePublished" datetime="2018-02-27T14:56:50+08:00">2018-02-27</time>
+              <time title="创建时间：2018-02-27 14:56:50 / 修改时间：20:53:49" itemprop="dateCreated datePublished" datetime="2018-02-27T14:56:50+08:00">2018-02-27</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -1105,13 +1213,16 @@ Life is short, you need Python.
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/02/27/devops-2-springboot-docker-integrated/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/27/devops-2-springboot-docker-integrated/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1142,17 +1253,21 @@ Life is short, you need Python.
       
         
           
-          
+            <p>
+              
 知之愈明,则行之愈笃；行之愈笃,则知之益明.——朱熹（宋）
 
 我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spr
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/27/devops-2-springboot-docker-integrated/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/02/27/devops-2-springboot-docker-integrated/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1166,6 +1281,9 @@ Life is short, you need Python.
 
     
 
+    
+      
+    
     
 
     
@@ -1208,7 +1326,7 @@ Life is short, you need Python.
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/02/27/cnetos-install-pyenv/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1224,9 +1342,8 @@ Life is short, you need Python.
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/27/cnetos-install-pyenv/" itemprop="url">
-                  Centos7 安装 pyenv
-                </a>
+                
+                <a href="/2018/02/27/cnetos-install-pyenv/" class="post-title-link" itemprop="url">Centos7 安装 pyenv</a>
               
             
           </h1>
@@ -1251,9 +1368,13 @@ Life is short, you need Python.
                 
               
 
-              <time title="创建时间：2018-02-27 11:38:38" itemprop="dateCreated datePublished" datetime="2018-02-27T11:38:38+08:00">2018-02-27</time>
+              <time title="创建时间：2018-02-27 11:38:38 / 修改时间：14:53:27" itemprop="dateCreated datePublished" datetime="2018-02-27T11:38:38+08:00">2018-02-27</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -1279,13 +1400,16 @@ Life is short, you need Python.
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/02/27/cnetos-install-pyenv/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/27/cnetos-install-pyenv/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1316,18 +1440,22 @@ Life is short, you need Python.
       
         
           
-          
+            <p>
+              
 人生苦短，我用Python
 
 Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。
-安装Pyenv1su
-          ...
+安装Pyenvsud
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/27/cnetos-install-pyenv/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/02/27/cnetos-install-pyenv/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1341,6 +1469,9 @@ Python 短小精悍，在很多小地方使用Python，能提升效率，产生�
 
     
 
+    
+      
+    
     
 
     
@@ -1383,7 +1514,7 @@ Python 短小精悍，在很多小地方使用Python，能提升效率，产生�
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1399,9 +1530,8 @@ Python 短小精悍，在很多小地方使用Python，能提升效率，产生�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/26/devops-1-environmental-configuration/" itemprop="url">
-                  DevOps实践1:基本概念和环境配置
-                </a>
+                
+                <a href="/2018/02/26/devops-1-environmental-configuration/" class="post-title-link" itemprop="url">DevOps实践1:基本概念和环境配置</a>
               
             
           </h1>
@@ -1430,6 +1560,22 @@ Python 短小精悍，在很多小地方使用Python，能提升效率，产生�
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-27 14:58:51" itemprop="dateModified" datetime="2018-02-27T14:58:51+08:00">2018-02-27</time>
+              
+            
           </span>
 
           
@@ -1454,13 +1600,16 @@ Python 短小精悍，在很多小地方使用Python，能提升效率，产生�
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/02/26/devops-1-environmental-configuration/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/26/devops-1-environmental-configuration/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1491,15 +1640,19 @@ Python 短小精悍，在很多小地方使用Python，能提升效率，产生�
       
         
           
-          什么是DevOps
+            <p>
+              什么是DevOps
 DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它的出现是由于软件行业日益清晰地认识到：为了按时交付软件产品和服务，开发和运营工作必须紧密
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/26/devops-1-environmental-configuration/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/02/26/devops-1-environmental-configuration/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1513,6 +1666,9 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
     
 
+    
+      
+    
     
 
     
@@ -1555,7 +1711,7 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1571,9 +1727,8 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/25/gitee-with-webhook/" itemprop="url">
-                  gitee码云使用webhook
-                </a>
+                
+                <a href="/2018/02/25/gitee-with-webhook/" class="post-title-link" itemprop="url">gitee码云使用webhook</a>
               
             
           </h1>
@@ -1602,6 +1757,22 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-22 11:00:19" itemprop="dateModified" datetime="2018-05-22T11:00:19+08:00">2018-05-22</time>
+              
+            
           </span>
 
           
@@ -1626,13 +1797,16 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/02/25/gitee-with-webhook/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/25/gitee-with-webhook/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1663,15 +1837,19 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
       
         
           
-          原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。
+            <p>
+              原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。
 
-          ...
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/25/gitee-with-webhook/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/02/25/gitee-with-webhook/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1685,6 +1863,9 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
     
 
+    
+      
+    
     
 
     
@@ -1727,7 +1908,7 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/02/09/node-install/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1743,9 +1924,8 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/09/node-install/" itemprop="url">
-                  CentOS 安装 node
-                </a>
+                
+                <a href="/2018/02/09/node-install/" class="post-title-link" itemprop="url">CentOS 安装 node</a>
               
             
           </h1>
@@ -1774,6 +1954,22 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-25 15:00:09" itemprop="dateModified" datetime="2018-02-25T15:00:09+08:00">2018-02-25</time>
+              
+            
           </span>
 
           
@@ -1798,13 +1994,16 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/02/09/node-install/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/09/node-install/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -1835,16 +2034,22 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
       
         
           
-          下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz
+            <p>
+              下载nodewget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz
 
-解压&amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt
-          ...
+解压&amp;配置tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt
+
+v
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/09/node-install/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/02/09/node-install/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1858,6 +2063,9 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
     
 
+    
+      
+    
     
 
     
@@ -1900,7 +2108,7 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/01/17/docker-create-mysql/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunHua">
+      <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -1916,9 +2124,8 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/17/docker-create-mysql/" itemprop="url">
-                  Docker 创建MySQL
-                </a>
+                
+                <a href="/2018/01/17/docker-create-mysql/" class="post-title-link" itemprop="url">Docker 创建MySQL</a>
               
             
           </h1>
@@ -1947,6 +2154,22 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-02-09 13:26:39" itemprop="dateModified" datetime="2018-02-09T13:26:39+08:00">2018-02-09</time>
+              
+            
           </span>
 
           
@@ -1971,13 +2194,16 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/2018/01/17/docker-create-mysql/#comments" itemprop="discussionUrl">
-                
                   <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/17/docker-create-mysql/" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -2008,18 +2234,22 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
       
         
           
-          不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像1docker pull mysql
+            <p>
+              不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像docker pull mysql
 
-创建volume （比较方便，用完方便删除）1docker volume create --name mysql-data
+创建volume （比较方便，用完方便删除）docker volume create --name mysql-data
 
-启动镜像123456docker run --restart="always
-          ...
+启动镜像docker run --restart="always" -d \  
+              ...
+            </p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/17/docker-create-mysql/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/01/17/docker-create-mysql/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -2033,6 +2263,9 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
     
 
+    
+      
+    
     
 
     
@@ -2082,21 +2315,20 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JunHua">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Junhua">
             
-              <p class="site-author-name" itemprop="name">JunHua</p>
-              <p class="site-description motion-element" itemprop="description">Done is better than perfect.</p>
+              <p class="site-author-name" itemprop="name">Junhua</p>
+              <div class="site-description motion-element" itemprop="description">Done is better than perfect.</div>
           </div>
 
           
@@ -2116,7 +2348,11 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -2151,7 +2387,11 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -2223,10 +2463,18 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
           
 
           
-
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
+
+          
+
           
 
           
@@ -2239,7 +2487,7 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://yizibi.github.io/" title="一之笔" target="_blank">一之笔</a>
+                    <a href="https://yizibi.github.io/" title="https://yizibi.github.io/" rel="noopener" target="_blank">一之笔</a>
                   </li>
                 
               </ul>
@@ -2252,7 +2500,7 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -2260,6 +2508,7 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
     </div>
   </aside>
+  
 
 
         
@@ -2268,11 +2517,11 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">JunHua</span>
+  <span class="author" itemprop="copyrightHolder">Junhua</span>
 
   
 
@@ -2280,13 +2529,15 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 </div>
 
 
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
+  <span class="post-meta-divider">|</span>
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
 
 
 
@@ -2313,11 +2564,14 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2336,88 +2590,6 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://junhua.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
-
-
-	
-
-
-
-
-
-  
 
 
 
@@ -2431,8 +2603,70 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
 
   
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
-  <script type="text/javascript">
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://junhua.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+
+
+
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -2518,7 +2752,7 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -2687,9 +2921,9 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -2765,6 +2999,13 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
   
 
   
+
+  
+
+  
+
+  
+
   
 
   
