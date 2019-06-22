@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="碰到的问题项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现${}没有生效。导致请求调用的时候出错。 解决过程首先是检查配置是否正确，请求的代码示例如下： 1234567891011@FeignClient(name = &quot;xxx&quot;, url = &quot;$&amp;#123;xxx&amp;#125;&quot;)pub">
+  <meta name="description" content="碰到的问题项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现${}没有生效。导致请求调用的时候出错。">
 <meta name="keywords" content="Apollo、Feign">
 <meta property="og:type" content="article">
 <meta property="og:title" content="apollo 配置提前加载">
 <meta property="og:url" content="https://blog.searchinfogo.com/2019/05/18/apollo-eagerload/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="碰到的问题项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现${}没有生效。导致请求调用的时候出错。 解决过程首先是检查配置是否正确，请求的代码示例如下： 1234567891011@FeignClient(name = &quot;xxx&quot;, url = &quot;$&amp;#123;xxx&amp;#125;&quot;)pub">
+<meta property="og:description" content="碰到的问题项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现${}没有生效。导致请求调用的时候出错。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-18T03:02:11.126Z">
+<meta property="og:updated_time" content="2019-06-22T08:56:11.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apollo 配置提前加载">
-<meta name="twitter:description" content="碰到的问题项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现${}没有生效。导致请求调用的时候出错。 解决过程首先是检查配置是否正确，请求的代码示例如下： 1234567891011@FeignClient(name = &quot;xxx&quot;, url = &quot;$&amp;#123;xxx&amp;#125;&quot;)pub">
+<meta name="twitter:description" content="碰到的问题项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现${}没有生效。导致请求调用的时候出错。">
 
 
 
@@ -396,12 +396,24 @@
                 
               
 
-              <time title="创建时间：2019-05-18 10:00:11 / 修改时间：11:02:11" itemprop="dateCreated datePublished" datetime="2019-05-18T10:00:11+08:00">2019-05-18</time>
+              <time title="创建时间：2019-05-18 10:00:11" itemprop="dateCreated datePublished" datetime="2019-05-18T10:00:11+08:00">2019-05-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-22 16:56:11" itemprop="dateModified" datetime="2019-06-22T16:56:11+08:00">2019-06-22</time>
               
             
           </span>
@@ -466,7 +478,7 @@
       
 
       
-        <h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。</p>
+        <h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
 <h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
 

@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示 解决办法使用StringBuilder123456StringBuilder sb = new StringBuilder();sb.append(&quot;String&quot;);sb.append(&quot;String&quot;);String str = sb.toStrin">
+  <meta name="description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示">
 <meta name="keywords" content="String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 常量字符串过长">
 <meta property="og:url" content="https://blog.searchinfogo.com/2019/04/29/Java-constant-string-is-too-long/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示 解决办法使用StringBuilder123456StringBuilder sb = new StringBuilder();sb.append(&quot;String&quot;);sb.append(&quot;String&quot;);String str = sb.toStrin">
+<meta property="og:description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-11T01:34:07.288Z">
+<meta property="og:updated_time" content="2019-06-22T08:59:12.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 常量字符串过长">
-<meta name="twitter:description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示 解决办法使用StringBuilder123456StringBuilder sb = new StringBuilder();sb.append(&quot;String&quot;);sb.append(&quot;String&quot;);String str = sb.toStrin">
+<meta name="twitter:description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示">
 
 
 
@@ -413,7 +413,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-11 09:34:07" itemprop="dateModified" datetime="2019-05-11T09:34:07+08:00">2019-05-11</time>
+                <time title="修改时间：2019-06-22 16:59:12" itemprop="dateModified" datetime="2019-06-22T16:59:12+08:00">2019-06-22</time>
               
             
           </span>
@@ -478,7 +478,7 @@
       
 
       
-        <h3 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h3><p>  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示<code>java: 常量字符串过长</code>。使用javac 进行编译也会有类似的提示</p>
+        <h3 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h3><p>  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示<code>java: 常量字符串过长</code>。使用javac 进行编译也会有类似的提示 <a id="more"></a></p>
 <h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><h4 id="使用StringBuilder"><a href="#使用StringBuilder" class="headerlink" title="使用StringBuilder"></a>使用StringBuilder</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">sb.append(<span class="string">"String"</span>);</span><br><span class="line">sb.append(<span class="string">"String"</span>);</span><br><span class="line">String str = sb.toString();</span><br><span class="line">String[] parts = str.split(<span class="string">","</span>);</span><br><span class="line">System.out.println(parts.length);</span><br></pre></td></tr></table></figure>
 
 <p>创建了一个对象，会根据实际的存储的内容分配内存，不会受到String在常量池中最大长度的限制<br>通过使用StringBuilder解析大文本和大JSON</p>
