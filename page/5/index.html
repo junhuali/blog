@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -793,7 +793,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
       
         
           
-          有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩∩)O哈哈~)报错如下：123456789101112131415161718192021222324&#123; Error: Cannot find module &apos;./build/Re
+          有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩∩)O哈哈~)
+报错如下：
+123456789101112131415161718192021222324&#123; Error: Cannot find module &apos;./build/
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -965,8 +967,10 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
         
           
           创建数据卷1docker volume create --name nexus-data
+
 拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)
-启动镜像1docker 
+
+启动镜像1docke
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1138,8 +1142,10 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
         
           
           使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data
+
 拉取镜像1docker pull mongo
-运行1234567docker run --r
+
+运行1234567docker run -
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1652,7 +1658,9 @@ yum安装nginx系统版本：CentOS Linux release 7.4.1708 (Core)
       
         
           
-          今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置1proxy_connect_timeout = 3;
+          今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置
+1proxy_connect_timeout = 3;
+
 时间过小导致的，最好用默认参数
 
           

@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -454,6 +454,7 @@
 </li>
 <li><p>官方源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h3 id="通过-nrm-更换源"><a href="#通过-nrm-更换源" class="headerlink" title="通过 nrm 更换源"></a>通过 nrm 更换源</h3><p>最近在工作的时候，发现淘宝的源，无法正常下载，于是需要换其他的源，在网上找源的过程中，发现了<code>nrm -- NPM registry manager</code>，它可以帮你快速的帮你在不同的源之间切换，现在包括<code>npm</code>、<code>cnpm</code>、<code>taobao</code>、<code>nj(nodejitsu)</code>、<code>rednpm</code>，还可以加入你自己的私有源。</p>
@@ -463,6 +464,7 @@
 </li>
 <li><p>例子</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ nrm ls</span><br><span class="line">* npm -----  https://registry.npmjs.org/</span><br><span class="line">  cnpm ----  http://r.cnpmjs.org/</span><br><span class="line">  taobao --  https://registry.npm.taobao.org/</span><br><span class="line">  nj ------  https://registry.nodejitsu.com/</span><br><span class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</span><br><span class="line">  skimdb -- https://skimdb.npmjs.com/registry</span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">$ nrm use cnpm  <span class="comment">#switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>通过nrm换源，体验一下就提升了很多，工作更有效率了。</p>

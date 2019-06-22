@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data 拉取镜像1docker pull mongo 运行1234567docker run --restart=&amp;quot;always&amp;quot; \          -d \">
+  <meta name="description" content="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data  拉取镜像1docker pull mongo  运行1234567docker run --restart=&amp;quot;always&amp;quot; \          -d \">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker安装MongoDB(Mongo3.x)">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/09/23/docker-install-MongoDB/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data 拉取镜像1docker pull mongo 运行1234567docker run --restart=&amp;quot;always&amp;quot; \          -d \">
+<meta property="og:description" content="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data  拉取镜像1docker pull mongo  运行1234567docker run --restart=&amp;quot;always&amp;quot; \          -d \">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-02-09T02:43:40.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker安装MongoDB(Mongo3.x)">
-<meta name="twitter:description" content="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data 拉取镜像1docker pull mongo 运行1234567docker run --restart=&amp;quot;always&amp;quot; \          -d \">
+<meta name="twitter:description" content="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)创建Volume 命名为mongo-data1docker volume create --name mongo-data  拉取镜像1docker pull mongo  运行1234567docker run --restart=&amp;quot;always&amp;quot; \          -d \">
 
 
 
@@ -442,11 +442,16 @@
 
       
         <h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)</h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
+
 <h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+
 <h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:/data/db\</span><br><span class="line">          -v /etc/localtime:/etc/localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
+
 <p><code>--storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
 <h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
+
 <h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>至此，MongDB 安装完成</p>
 
       

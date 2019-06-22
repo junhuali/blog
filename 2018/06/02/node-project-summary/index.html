@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错1rabbitmq typeerror cannot read property &amp;apos;create channel&amp;apos; of und">
+  <meta name="description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错 1rabbitmq typeerror cannot read property &amp;apos;create channel&amp;apos; of un">
 <meta name="keywords" content="rabbitmq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node 项目问题总结">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/06/02/node-project-summary/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错1rabbitmq typeerror cannot read property &amp;apos;create channel&amp;apos; of und">
+<meta property="og:description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错 1rabbitmq typeerror cannot read property &amp;apos;create channel&amp;apos; of un">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-06-02T09:28:40.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node 项目问题总结">
-<meta name="twitter:description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错1rabbitmq typeerror cannot read property &amp;apos;create channel&amp;apos; of und">
+<meta name="twitter:description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 RabbitMQ virtual hosts 问题项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错 1rabbitmq typeerror cannot read property &amp;apos;create channel&amp;apos; of un">
 
 
 
@@ -442,12 +442,22 @@
 
       
         <p>最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。</p>
-<h3 id="RabbitMQ-virtual-hosts-问题"><a href="#RabbitMQ-virtual-hosts-问题" class="headerlink" title="RabbitMQ virtual hosts 问题"></a>RabbitMQ virtual hosts 问题</h3><p>项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq typeerror cannot read property &apos;create channel&apos; of undefined</span><br></pre></td></tr></table></figure></p>
-<p>会碰到上面类似的错误，创建channel的报错。<br>最开始的时候怀疑是自己代码有问题，毕竟第一次用Node(Node 菜鸡一个)；因为多环境，最开始的时候使用开发环境账号进行连接，后面<br>在尝试使用管理员账号登录的时候，发现可以正常连接，还以为是运维把权限配置的有问题（错的其实永远是别人，其实是自己的锅）。<br>最后发现是因为<code>virtual hosts</code>的原因<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">'amqp://admin:123456@localhost'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>&#123; ......</span><br></pre></td></tr></table></figure></p>
-<p>默认的配置如上图所示，其实这个配置会使用默认的<code>virtual hosts</code> <code>/</code>,但是如果配置了其他的<code>virtual hosts</code>，你没有配置就会导致你<br>无法正常的连接。<br>如果你配置的有其他的<code>virtual hosts</code>，那么配置如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">'amqp://admin:123456@localhost/virtual_hosts_name'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>&#123; ......</span><br></pre></td></tr></table></figure></p>
+<h3 id="RabbitMQ-virtual-hosts-问题"><a href="#RabbitMQ-virtual-hosts-问题" class="headerlink" title="RabbitMQ virtual hosts 问题"></a>RabbitMQ virtual hosts 问题</h3><p>项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq typeerror cannot read property &apos;create channel&apos; of undefined</span><br></pre></td></tr></table></figure>
+
+<p>会碰到上面类似的错误，创建channel的报错。<br>最开始的时候怀疑是自己代码有问题，毕竟第一次用Node(Node 菜鸡一个)；因为多环境，最开始的时候使用开发环境账号进行连接，后面<br>在尝试使用管理员账号登录的时候，发现可以正常连接，还以为是运维把权限配置的有问题（错的其实永远是别人，其实是自己的锅）。<br>最后发现是因为<code>virtual hosts</code>的原因</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">'amqp://admin:123456@localhost'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>&#123; ......</span><br></pre></td></tr></table></figure>
+
+<p>默认的配置如上图所示，其实这个配置会使用默认的<code>virtual hosts</code> <code>/</code>,但是如果配置了其他的<code>virtual hosts</code>，你没有配置就会导致你<br>无法正常的连接。<br>如果你配置的有其他的<code>virtual hosts</code>，那么配置如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">'amqp://admin:123456@localhost/virtual_hosts_name'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>&#123; ......</span><br></pre></td></tr></table></figure>
+
 <p>这个问题耗费了半天的时间找原因，Java中spring 做了封装，只用配置<code>virtual hosts</code>的name就可以了。</p>
-<h3 id="RabbitMQ-message-信息消费问题"><a href="#RabbitMQ-message-信息消费问题" class="headerlink" title="RabbitMQ message 信息消费问题"></a>RabbitMQ message 信息消费问题</h3><p>项目采用node获取信息（主要是消息采集的库采用node开发，暂时还没有Java 的客），传入MQ，Java 服务端进行消费。<br>Java端的同事告诉我得到的都是数字(字节数组)，最后经过查找发现,如下代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ch.sendToQueue(q, <span class="keyword">new</span> Buffer.from(<span class="built_in">JSON</span>.stringify(orders)), &#123;<span class="attr">persistent</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>发送到队列的时候会转为Buffer，所以Java 代码获取的时候，不能直接获取字符串，应该用byte[] 去接收<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Byte[] body = <span class="keyword">null</span>;</span><br><span class="line">String message = <span class="keyword">new</span> String(body, <span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="RabbitMQ-message-信息消费问题"><a href="#RabbitMQ-message-信息消费问题" class="headerlink" title="RabbitMQ message 信息消费问题"></a>RabbitMQ message 信息消费问题</h3><p>项目采用node获取信息（主要是消息采集的库采用node开发，暂时还没有Java 的客），传入MQ，Java 服务端进行消费。<br>Java端的同事告诉我得到的都是数字(字节数组)，最后经过查找发现,如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ch.sendToQueue(q, <span class="keyword">new</span> Buffer.from(<span class="built_in">JSON</span>.stringify(orders)), &#123;<span class="attr">persistent</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>发送到队列的时候会转为Buffer，所以Java 代码获取的时候，不能直接获取字符串，应该用byte[] 去接收</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Byte[] body = <span class="keyword">null</span>;</span><br><span class="line">String message = <span class="keyword">new</span> String(body, <span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure>
+
 <p>这样就能正常解析从node 传输过来的数据。</p>
 
       

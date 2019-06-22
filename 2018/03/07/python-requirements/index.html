@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -443,7 +443,10 @@
       
         <p>python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。</p>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入项目目录创建requirements.txt文件</span></span><br><span class="line">touch requirements.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将项目中使用的包冻结（freeze）到requirements.txt文件中</span></span><br><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure>
-<p>当把项目上传到服务器以后可以执行下面的命令安装对应的包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">通过requirements.txt 文件中的记录安装依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
+
+<p>当把项目上传到服务器以后可以执行下面的命令安装对应的包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">通过requirements.txt 文件中的记录安装依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
 <p>通过上面的方法就能将本地的包安装在服务器上了，保证了两个环境中的依赖一致，一般情况是在虚拟环境中使用，保证环境的干净，避免发生冲突。</p>
 
       

@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz 解压&amp;amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt 1vim /etc/profile 1234#设置node 环境变量export NODE_HOME">
+  <meta name="description" content="下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz  解压&amp;amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt  1vim /etc/profile  1234#设置node 环境变量export NODE_H">
 <meta name="keywords" content="Node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS 安装 node">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/02/09/node-install/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz 解压&amp;amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt 1vim /etc/profile 1234#设置node 环境变量export NODE_HOME">
+<meta property="og:description" content="下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz  解压&amp;amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt  1vim /etc/profile  1234#设置node 环境变量export NODE_H">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-02-25T07:00:09.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 安装 node">
-<meta name="twitter:description" content="下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz 解压&amp;amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt 1vim /etc/profile 1234#设置node 环境变量export NODE_HOME">
+<meta name="twitter:description" content="下载node1wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz  解压&amp;amp;配置12tar xvJf node-v8.9.4-linux-x64.tar.xzmv node-v8.9.4-linux-x64 /opt  1vim /etc/profile  1234#设置node 环境变量export NODE_H">
 
 
 
@@ -442,13 +442,22 @@
 
       
         <h3 id="下载node"><a href="#下载node" class="headerlink" title="下载node"></a>下载node</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
+
 <h3 id="解压-amp-配置"><a href="#解压-amp-配置" class="headerlink" title="解压&amp;配置"></a>解压&amp;配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar xvJf node-v8.9.4-linux-x64.tar.xz</span><br><span class="line">mv node-v8.9.4-linux-x64 /opt</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置node 环境变量</span></span><br><span class="line"><span class="built_in">export</span> NODE_HOME=/opt/node-v8.9.4-linux-x64</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NODE_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
 <h3 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>或者安装nvm<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#加入下面的内容</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm、</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure></p>
+
+<p>或者安装nvm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#加入下面的内容</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm、</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
 <h3 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm --version</span><br></pre></td></tr></table></figure>
+
 <h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nvm install stable <span class="comment"># 安装稳定版</span></span><br><span class="line">nvm current <span class="comment"># 查看当前的版本</span></span><br><span class="line">nvm ls <span class="comment"># 列出所有版本</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>

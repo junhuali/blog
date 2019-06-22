@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,22 +108,22 @@
 
 
 
-  <meta name="description" content="Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。 修改hosts从http://github.global.ssl.fastly.net.ipaddress.com/ 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。 123vim /etc/hosts# G">
+  <meta name="description" content="Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。 修改hosts从http://github.global.ssl.fastly.net.ipaddress.com/ 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。  123vim /etc/hosts#">
 <meta name="keywords" content="Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="提升国内服务器Github clone速度的方法">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/04/18/raise-github-clone-speed/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。 修改hosts从http://github.global.ssl.fastly.net.ipaddress.com/ 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。 123vim /etc/hosts# G">
+<meta property="og:description" content="Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。 修改hosts从http://github.global.ssl.fastly.net.ipaddress.com/ 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。  123vim /etc/hosts#">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/04/18/raise-github-clone-speed/WX20180418-113942.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/04/18/raise-github-clone-speed/WX20180418-114759@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/04/18/raise-github-clone-speed/WX20180418-115544@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180418-113942.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180418-114759@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180418-115544@2x.png">
 <meta property="og:updated_time" content="2018-04-18T04:02:42.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="提升国内服务器Github clone速度的方法">
-<meta name="twitter:description" content="Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。 修改hosts从http://github.global.ssl.fastly.net.ipaddress.com/ 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。 123vim /etc/hosts# G">
-<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/04/18/raise-github-clone-speed/WX20180418-113942.png">
+<meta name="twitter:description" content="Github 速度慢众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。 修改hosts从http://github.global.ssl.fastly.net.ipaddress.com/ 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。  123vim /etc/hosts#">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/.com//WX20180418-113942.png">
 
 
 
@@ -447,11 +447,15 @@
       
         <h3 id="Github-速度慢"><a href="#Github-速度慢" class="headerlink" title="Github 速度慢"></a>Github 速度慢</h3><p>众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。</p>
 <h3 id="修改hosts"><a href="#修改hosts" class="headerlink" title="修改hosts"></a>修改hosts</h3><p>从<code>http://github.global.ssl.fastly.net.ipaddress.com/</code> 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。</p>
-<p><img src="/2018/04/18/raise-github-clone-speed/WX20180418-113942.png" alt="fastly"><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line"><span class="meta">#</span><span class="bash"> GitHub Start</span></span><br><span class="line">151.101.185.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure></p>
+<p><img src="/.com//WX20180418-113942.png" alt="fastly"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line"><span class="meta">#</span><span class="bash"> GitHub Start</span></span><br><span class="line">151.101.185.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
+
 <p>保存后自动生效</p>
-<p><img src="/2018/04/18/raise-github-clone-speed/WX20180418-114759@2x.png" alt="fastly"><br>通过下载Spring Boot 的源码，见上图，速度还不错。</p>
-<h3 id="通过代理提升本地的速度"><a href="#通过代理提升本地的速度" class="headerlink" title="通过代理提升本地的速度"></a>通过代理提升本地的速度</h3><p>一般我们都是使用ss的本地socks5代理，速度多快，取决于提供服务的vps的速度。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br><span class="line">git config --global http.proxy 'socks5://127.0.0.1:1080'</span><br><span class="line">git config --global https.proxy 'socks5://127.0.0.1:1080'</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/04/18/raise-github-clone-speed/WX20180418-115544@2x.png" alt="socks5"></p>
+<p><img src="/.com//WX20180418-114759@2x.png" alt="fastly"><br>通过下载Spring Boot 的源码，见上图，速度还不错。</p>
+<h3 id="通过代理提升本地的速度"><a href="#通过代理提升本地的速度" class="headerlink" title="通过代理提升本地的速度"></a>通过代理提升本地的速度</h3><p>一般我们都是使用ss的本地socks5代理，速度多快，取决于提供服务的vps的速度。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br><span class="line">git config --global http.proxy 'socks5://127.0.0.1:1080'</span><br><span class="line">git config --global https.proxy 'socks5://127.0.0.1:1080'</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.com//WX20180418-115544@2x.png" alt="socks5"></p>
 <p>上面的配置需要注意自己的socks5 端口，Mac 和 Windows的一般是1080，Mac的根据自己设置的进行修改，比如我的是1086，所以需要改成<code>socks5://127.0.0.1:1086</code>。</p>
 <p>通过上面的两个方法，可以大幅提升服务器和本地的GitHub代码clone 速度，解决漫长的等待，特别是比较大的仓库。</p>
 

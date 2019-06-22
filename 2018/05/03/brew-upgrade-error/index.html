@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。 brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记录一下。1234Error: An unexpected error occurred during the `brew link` stepThe formula built, but is not symlinked into /usr/">
+  <meta name="description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。 brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记录一下。 1234Error: An unexpected error occurred during the `brew link` stepThe formula built, but is not symlinked into /usr">
 <meta name="keywords" content="Brew">
 <meta property="og:type" content="article">
 <meta property="og:title" content="brew 升级应用错误">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。 brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记录一下。1234Error: An unexpected error occurred during the `brew link` stepThe formula built, but is not symlinked into /usr/">
+<meta property="og:description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。 brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记录一下。 1234Error: An unexpected error occurred during the `brew link` stepThe formula built, but is not symlinked into /usr">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-08-30T11:53:59.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="brew 升级应用错误">
-<meta name="twitter:description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。 brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记录一下。1234Error: An unexpected error occurred during the `brew link` stepThe formula built, but is not symlinked into /usr/">
+<meta name="twitter:description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。 brew 升级最近在使用brew upgrade 的过程中，碰到了一个问题记录一下。 1234Error: An unexpected error occurred during the `brew link` stepThe formula built, but is not symlinked into /usr">
 
 
 
@@ -442,9 +442,12 @@
 
       
         <p>定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。</p>
-<h3 id="brew-升级"><a href="#brew-升级" class="headerlink" title="brew 升级"></a>brew 升级</h3><p>最近在使用<code>brew upgrade</code> 的过程中，碰到了一个问题记录一下。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: An unexpected error occurred during the `brew link` step</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br><span class="line">Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br></pre></td></tr></table></figure></p>
+<h3 id="brew-升级"><a href="#brew-升级" class="headerlink" title="brew 升级"></a>brew 升级</h3><p>最近在使用<code>brew upgrade</code> 的过程中，碰到了一个问题记录一下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: An unexpected error occurred during the `brew link` step</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br><span class="line">Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
+
 <p>如上所示，需要创建<code>/usr/local/Frameworks</code> 目录，但是没有对应的权限</p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/local/Frameworks</span><br><span class="line">sudo chown $(whoami):admin /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
+
 <p>手动创建，赋权，之后就可以愉快的<code>brew upgrade</code> 了。</p>
 <p>最后<code>brew cleanup</code> 清理废弃的文件，释放空间。</p>
 

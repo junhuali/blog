@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像1docker pull mysql 创建volume （比较方便，用完方便删除）1docker volume create --name mysql-data 启动镜像123456docker run --restart=&quot;always&quot; -d \  -v mysql-data:/var/lib/mysql \  -v /etc/loca">
+  <meta name="description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像1docker pull mysql  创建volume （比较方便，用完方便删除）1docker volume create --name mysql-data  启动镜像123456docker run --restart=&quot;always&quot; -d \  -v mysql-data:/var/lib/mysql \  -v /etc/lo">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 创建MySQL">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/01/17/docker-create-mysql/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像1docker pull mysql 创建volume （比较方便，用完方便删除）1docker volume create --name mysql-data 启动镜像123456docker run --restart=&quot;always&quot; -d \  -v mysql-data:/var/lib/mysql \  -v /etc/loca">
+<meta property="og:description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像1docker pull mysql  创建volume （比较方便，用完方便删除）1docker volume create --name mysql-data  启动镜像123456docker run --restart=&quot;always&quot; -d \  -v mysql-data:/var/lib/mysql \  -v /etc/lo">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-02-09T05:26:39.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 创建MySQL">
-<meta name="twitter:description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像1docker pull mysql 创建volume （比较方便，用完方便删除）1docker volume create --name mysql-data 启动镜像123456docker run --restart=&quot;always&quot; -d \  -v mysql-data:/var/lib/mysql \  -v /etc/loca">
+<meta name="twitter:description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便拉取镜像1docker pull mysql  创建volume （比较方便，用完方便删除）1docker volume create --name mysql-data  启动镜像123456docker run --restart=&quot;always&quot; -d \  -v mysql-data:/var/lib/mysql \  -v /etc/lo">
 
 
 
@@ -442,8 +442,11 @@
 
       
         <h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便</h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+
 <h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
+
 <h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+
 <p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
 
       

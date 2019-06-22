@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -453,6 +453,7 @@
 </li>
 <li><p>最少连接（least_conn) <br><br><code>下一个请求将被分派到活动连接数量最少的服务器</code><br><br><code>配置</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        least_conn;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h4 id="扩展策略"><a href="#扩展策略" class="headerlink" title="扩展策略"></a>扩展策略</h4><ul>
@@ -461,10 +462,12 @@
 </li>
 <li><p>url hash<br><br><code>配置</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        <span class="built_in">hash</span> <span class="variable">$request_uri</span>;</span><br><span class="line">        hash_method crc32;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>weight=1; (weight 默认为1.weight越大，负载的权重就越大)<br>down; (down 表示单前的server暂时不参与负载)<br>backup; (其它所有的非backup机器down或者忙的时候，请求backup机器)<br>max_fails ：允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream 模块定义的错误<br>fail_timeout:max_fails次失败后，暂停的时间</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload <span class="comment">#重启nginx</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>

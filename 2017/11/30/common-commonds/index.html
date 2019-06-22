@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true) 创建数据卷1$ docker volume create --name data">
+  <meta name="description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true)  创建数据卷1$ docker volume create --name data">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 常用命令(待完善)">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/11/30/common-commonds/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true) 创建数据卷1$ docker volume create --name data">
+<meta property="og:description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true)  创建数据卷1$ docker volume create --name data">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-02-09T02:43:43.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 常用命令(待完善)">
-<meta name="twitter:description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true) 创建数据卷1$ docker volume create --name data">
+<meta name="twitter:description" content="列出所有并删除已停止容器12$ docker rm -v $(docker ps -aq -f status=exited)$ docker volume rm $(docker volume ls -qf dangling=true)  创建数据卷1$ docker volume create --name data">
 
 
 
@@ -442,7 +442,9 @@
 
       
         <h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
 <h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
+
 
       
     </div>

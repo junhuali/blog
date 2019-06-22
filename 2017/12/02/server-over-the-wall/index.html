@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。 准备 两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4 privoxy 包  开始先用ssh 命令进行服务器socks5 连接接12$ ssh -f -N -D bindaddress:port name@server$">
+  <meta name="description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。 准备 两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4 privoxy 包  开始先用ssh 命令进行服务器socks5 连接接 12$ ssh -f -N -D bindaddress:port name@server$">
 <meta name="keywords" content="Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="服务器科学上网">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/12/02/server-over-the-wall/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。 准备 两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4 privoxy 包  开始先用ssh 命令进行服务器socks5 连接接12$ ssh -f -N -D bindaddress:port name@server$">
+<meta property="og:description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。 准备 两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4 privoxy 包  开始先用ssh 命令进行服务器socks5 连接接 12$ ssh -f -N -D bindaddress:port name@server$">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-02-09T02:43:29.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="服务器科学上网">
-<meta name="twitter:description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。 准备 两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4 privoxy 包  开始先用ssh 命令进行服务器socks5 连接接12$ ssh -f -N -D bindaddress:port name@server$">
+<meta name="twitter:description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。 准备 两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4 privoxy 包  开始先用ssh 命令进行服务器socks5 连接接 12$ ssh -f -N -D bindaddress:port name@server$">
 
 
 
@@ -446,7 +446,9 @@
 <li>两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4</li>
 <li>privoxy 包</li>
 </ul>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>先用ssh 命令进行服务器socks5 连接接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -f -N -D bindaddress:port name@server</span><br><span class="line">$ ssh -f -N -D 0.0.0.0:1080 root@45.63.61.77</span><br></pre></td></tr></table></figure></p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>先用ssh 命令进行服务器socks5 连接接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -f -N -D bindaddress:port name@server</span><br><span class="line">$ ssh -f -N -D 0.0.0.0:1080 root@45.63.61.77</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>-f<br>输入密码后进入后台模式<br>(Requests ssh to go to background just before command execution.)</li>
 <li>-N<br>不执行远程命令,用于端口转发<br>( Do not execute a remote command. This is useful for just for warding ports (protocol version 2 only).)</li>
@@ -455,12 +457,19 @@
 <li>-C<br>使用数据压缩,网速快时会影响速度<br>(Compression is desirable on modem lines and other slow connections, but will only slow down things on fast networks.The compression algorithm is the same used by gzip)</li>
 </ul>
 <p>bindaddress ：指定绑定ip地址<br>port ： 指定侦听端口<br>name： ssh服务器登录名<br>server： ssh服务器地址</p>
-<p>运行完上面的命令就进行socks5连接了<br>可以执行下面的命令查看端口是否打开<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -nltp</span><br></pre></td></tr></table></figure></p>
+<p>运行完上面的命令就进行socks5连接了<br>可以执行下面的命令查看端口是否打开</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -nltp</span><br></pre></td></tr></table></figure>
+
 <p>如果能看到指定的端口打开(1080端口)就说明正常连接了。</p>
 <h3 id="安装privoxy"><a href="#安装privoxy" class="headerlink" title="安装privoxy"></a>安装privoxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install privoxy  -y <span class="comment"># 使用yum 安装比较方便，也可以使用源码安装</span></span><br></pre></td></tr></table></figure>
-<p>安装完成后需要进行配置，否则无法正常访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/privoxy/config</span><br><span class="line"><span class="comment"># :783: 找到 783行，去掉前面的注释符号，端口可以随便改</span></span><br><span class="line">$ listen-address 127.0.0.1:8118</span><br><span class="line"><span class="comment">#:1336: 找到 1336行，去掉前面的注释符号，后面的1080端口要对应ss服务里面的配置，要一致</span></span><br><span class="line">$ forward-socks5t / 127.0.0.1:1080</span><br></pre></td></tr></table></figure></p>
+
+<p>安装完成后需要进行配置，否则无法正常访问</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/privoxy/config</span><br><span class="line"><span class="comment"># :783: 找到 783行，去掉前面的注释符号，端口可以随便改</span></span><br><span class="line">$ listen-address 127.0.0.1:8118</span><br><span class="line"><span class="comment">#:1336: 找到 1336行，去掉前面的注释符号，后面的1080端口要对应ss服务里面的配置，要一致</span></span><br><span class="line">$ forward-socks5t / 127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+
 <h3 id="修改环境变量开启代理"><a href="#修改环境变量开启代理" class="headerlink" title="修改环境变量开启代理"></a>修改环境变量开启代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /ect/profile</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="comment"># 之后执行source /etc/profile 使配置生效</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="启动privoxy、测试"><a href="#启动privoxy、测试" class="headerlink" title="启动privoxy、测试"></a>启动privoxy、测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ privoxy /etc/privoxy/config  <span class="comment">#netstat -ntlp 查看8118端口</span></span><br><span class="line">$ wget www.google.com <span class="comment"># 如果能下载则说明成功</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>使用完后记得关闭代理，否则所有流量都会走代理，访问可能会变慢<br>注释掉<code>/etc/profile</code> 内的内容，刷新配置。</p>
 
       

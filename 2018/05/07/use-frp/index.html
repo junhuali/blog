@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -452,11 +452,14 @@
 </li>
 <li><p>配置配置文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改服务端配置，frps_full.ini里面有所有的示例配置和说明</span></span><br><span class="line"><span class="comment">#这里使用泛域名解析，这样可以多用户同时使用</span></span><br><span class="line">[common]</span><br><span class="line">bind_port = 7000</span><br><span class="line">vhost_http_port = 8089</span><br><span class="line">subdomain_host=frp.frpss.top</span><br><span class="line">dashboard_port = 7500</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>为了方便，可以使用nginx 进行代理，这样使用的时候就不需要配置端口号了</p>
 <h3 id="frp-客户端配置"><a href="#frp-客户端配置" class="headerlink" title="frp 客户端配置"></a>frp 客户端配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="comment">#服务端配置</span></span><br><span class="line">server_addr = 118.24.62.41</span><br><span class="line">server_port = 7000</span><br><span class="line"></span><br><span class="line"><span class="comment">#需要自己起别名，注意不要和其他人重复</span></span><br><span class="line">[server]</span><br><span class="line"><span class="built_in">type</span> = http</span><br><span class="line"></span><br><span class="line"><span class="comment">#端口</span></span><br><span class="line">local_port = 4000</span><br><span class="line"><span class="comment">#泛解析域名，自己定义 如：test,解析后为test.frp.frpss.top</span></span><br><span class="line">subdomain = <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Mac 启动</span></span><br><span class="line">./frpc -c ./frpc.ini</span><br><span class="line"><span class="comment">#Windows</span></span><br><span class="line">./frpc.exe -c ./frpc.ini</span><br></pre></td></tr></table></figure>
+
 <h3 id="本地调试"><a href="#本地调试" class="headerlink" title="本地调试"></a>本地调试</h3><p>上面的端口配置的是<code>4000</code>根据自己的项目配置端口，然后使用<code>test.frp.frpss.top</code>进行访问</p>
 <p>安装包可以去github下载，也可以在<a href="http://share.frpss.top" target="_blank" rel="noopener">http://share.frpss.top</a> 下载</p>
 

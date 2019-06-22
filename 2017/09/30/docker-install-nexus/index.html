@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3) 启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexu">
+  <meta name="description" content="创建数据卷1docker volume create --name nexus-data  拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)  启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name ne">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 搭建Nexus 私服">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/09/30/docker-install-nexus/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3) 启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexu">
+<meta property="og:description" content="创建数据卷1docker volume create --name nexus-data  拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)  启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name ne">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-02-09T02:43:39.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 搭建Nexus 私服">
-<meta name="twitter:description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3) 启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexu">
+<meta name="twitter:description" content="创建数据卷1docker volume create --name nexus-data  拉取Nexus 镜像1docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)  启动镜像1docker run --restart=&quot;always&quot; -d -p 8081:8081 --name ne">
 
 
 
@@ -442,8 +442,11 @@
 
       
         <h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name nexus-data</span><br></pre></td></tr></table></figure>
+
 <h3 id="拉取Nexus-镜像"><a href="#拉取Nexus-镜像" class="headerlink" title="拉取Nexus 镜像"></a>拉取Nexus 镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)</span><br></pre></td></tr></table></figure>
+
 <h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
+
 <h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a></p>
 <p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/" target="_blank" rel="noopener">https://hub.docker.com/r/sonatype/nexus3/</a></p>
 

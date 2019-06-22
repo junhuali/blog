@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -116,15 +116,15 @@
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向APP">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/image-2018-153940@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/WX20180225-163439@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/WX20180225-163748@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/WX20180225-164721@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//image-2018-153940@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180225-163439@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180225-163748@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180225-164721@2x.png">
 <meta property="og:updated_time" content="2018-05-22T03:00:19.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitee码云使用webhook">
 <meta name="twitter:description" content="原因我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。 什么是webhook 准确的说webhoo是一种web回调或者http的push API，是向APP">
-<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/02/25/gitee-with-webhook/image-2018-153940@2x.png">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/.com//image-2018-153940@2x.png">
 
 
 
@@ -449,6 +449,8 @@
         <h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。</p>
 <h3 id="什么是webhook"><a href="#什么是webhook" class="headerlink" title="什么是webhook"></a>什么是webhook</h3><blockquote>
 <p>准确的说webhoo是一种web回调或者http的push API，是向APP或者其他应用提供实时信息的一种方式。Webhook在数据产生时立即发送数据，也就是你能实时收到数据。这一种不同于典型的API，需要用了实时性需要足够快的轮询。这无论是对生产还是对消费者都是高效的，唯一的缺点是初始建立困难。</p>
+</blockquote>
+<blockquote>
 <p>Webhook有时也被称为反向API，因为他提供了API规则，你需要设计要使用的API。Webhook将向你的应用发起http请求，典型的是post请求，应用程序由请求驱动。</p>
 </blockquote>
 <h3 id="配置webhook"><a href="#配置webhook" class="headerlink" title="配置webhook"></a>配置webhook</h3><p>知道什么是webhook 后我们就要开始配置我们自己的项目了。<br>环境：<br>   CentOS7<br>   Gitee（网上GitHub的教程比较多，这个基于码云）</p>
@@ -462,9 +464,10 @@
 <li><p>查看公钥</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>添加公钥<br><img src="/2018/02/25/gitee-with-webhook/image-2018-153940@2x.png" alt="步骤"></p>
+<li><p>添加公钥<br><img src="/.com//image-2018-153940@2x.png" alt="步骤"></p>
 </li>
-<li>测试<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line">Welcome to Gitee.com, yourname! <span class="comment"># 返回，说明正常</span></span><br></pre></td></tr></table></figure>
+<li><p>测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line">Welcome to Gitee.com, yourname! <span class="comment"># 返回，说明正常</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <ul>
@@ -483,11 +486,13 @@
 <li><p>创建需要执行的脚本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim deploy.sh</span><br><span class="line">git pull xxxxx  <span class="comment"># 根据自己的需要自行编写</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>测试服务<br><img src="/2018/02/25/gitee-with-webhook/WX20180225-163439@2x.png" alt=""><br><img src="/2018/02/25/gitee-with-webhook/WX20180225-163748@2x.png" alt=""><br>显示ok，说明成功</p>
+<li><p>测试服务<br><img src="/.com//WX20180225-163439@2x.png" alt=""><br><img src="/.com//WX20180225-163748@2x.png" alt=""><br>显示ok，说明成功</p>
 </li>
 </ol>
-<h3 id="使用pm2应用进程管理器"><a href="#使用pm2应用进程管理器" class="headerlink" title="使用pm2应用进程管理器"></a>使用pm2应用进程管理器</h3><p>使用node 启动服务不是很方便，推荐使用pm2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br><span class="line">pm2 start webhook.js</span><br><span class="line">pm2 monit <span class="comment"># 可以通过此命令查看服务的状态</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/02/25/gitee-with-webhook/WX20180225-164721@2x.png" alt=""><br>上图显示了一些应用的基本信息，可以更好的观察到服务的状态</p>
+<h3 id="使用pm2应用进程管理器"><a href="#使用pm2应用进程管理器" class="headerlink" title="使用pm2应用进程管理器"></a>使用pm2应用进程管理器</h3><p>使用node 启动服务不是很方便，推荐使用pm2</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br><span class="line">pm2 start webhook.js</span><br><span class="line">pm2 monit <span class="comment"># 可以通过此命令查看服务的状态</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/.com//WX20180225-164721@2x.png" alt=""><br>上图显示了一些应用的基本信息，可以更好的观察到服务的状态</p>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>配置完成后，只要pull代码到仓库，就会触发webhook执行脚本，十分的方便，同时减少了工作量，相对采用轮询的方式消耗的资源更小。</p>
 <p>参考：<a href="https://www.npmjs.com/package/gitee-webhook-handler" target="_blank" rel="noopener">https://www.npmjs.com/package/gitee-webhook-handler</a></p>
 

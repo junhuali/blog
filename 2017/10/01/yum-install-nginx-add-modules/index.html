@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -445,20 +445,35 @@
 <p>源码安装是将源码进行编译，生成可执行文件，优点：方便的添加模块等</p>
 <h3 id="yum安装nginx"><a href="#yum安装nginx" class="headerlink" title="yum安装nginx"></a>yum安装nginx</h3><p>系统版本：CentOS Linux release 7.4.1708 (Core)</p>
 <h4 id="1-增加对应的源"><a href="#1-增加对应的源" class="headerlink" title="1.增加对应的源"></a>1.增加对应的源</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br></pre></td></tr></table></figure>
+
 <h4 id="2-查看nginx信息"><a href="#2-查看nginx信息" class="headerlink" title="2.查看nginx信息"></a>2.查看nginx信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info nginx  (查看nginx 版本方便后面下载对应版本)</span><br></pre></td></tr></table></figure>
+
 <h4 id="3-yum安装nginx"><a href="#3-yum安装nginx" class="headerlink" title="3.yum安装nginx"></a>3.yum安装nginx</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx</span><br></pre></td></tr></table></figure>
+
 <h3 id="nginx-相关的命令"><a href="#nginx-相关的命令" class="headerlink" title="nginx 相关的命令"></a>nginx 相关的命令</h3><h4 id="1-查看安装路径"><a href="#1-查看安装路径" class="headerlink" title="1.查看安装路径"></a>1.查看安装路径</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql nginx</span><br></pre></td></tr></table></figure>
+
 <h4 id="2-查看编译参数"><a href="#2-查看编译参数" class="headerlink" title="2.查看编译参数"></a>2.查看编译参数</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -V</span><br></pre></td></tr></table></figure>
+
 <h4 id="3-nginx-启动、停止、重启"><a href="#3-nginx-启动、停止、重启" class="headerlink" title="3.nginx 启动、停止、重启"></a>3.nginx 启动、停止、重启</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx #启动 nginx 服务</span><br><span class="line">systemctl stop nginx #停止 nginx 服务</span><br><span class="line">systemctl restart nginx #重启 nginx 服务</span><br></pre></td></tr></table></figure>
+
 <h3 id="启动检查是否启动成功"><a href="#启动检查是否启动成功" class="headerlink" title="启动检查是否启动成功"></a>启动检查是否启动成功</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i localhost</span><br></pre></td></tr></table></figure>
+
 <h4 id="如下显示说明正常启动："><a href="#如下显示说明正常启动：" class="headerlink" title="如下显示说明正常启动："></a>如下显示说明正常启动：</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">···</span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to nginx!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+
 <h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3><p>其实<code>yum</code>安装<code>nginx</code> 后想要添加第三方模块，只需对<code>yum</code>安装的<code>nginx</code>相同版本的源码进行编译后替换</p>
 <h4 id="1-安装源码安装需要的第三方包"><a href="#1-安装源码安装需要的第三方包" class="headerlink" title="1.安装源码安装需要的第三方包"></a>1.安装源码安装需要的第三方包</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel</span><br></pre></td></tr></table></figure>
-<h4 id="2-下载对应的源码"><a href="#2-下载对应的源码" class="headerlink" title="2.下载对应的源码"></a>2.下载对应的源码</h4><p>通过<code>nginx -V</code> 可以知道yum 安装nginx 的版本为1.12.1,下载对应的源码<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt</span><br><span class="line">wget http://nginx.org/download/nginx-1.12.1.tar.gz</span><br></pre></td></tr></table></figure></p>
+
+<h4 id="2-下载对应的源码"><a href="#2-下载对应的源码" class="headerlink" title="2.下载对应的源码"></a>2.下载对应的源码</h4><p>通过<code>nginx -V</code> 可以知道yum 安装nginx 的版本为1.12.1,下载对应的源码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt</span><br><span class="line">wget http://nginx.org/download/nginx-1.12.1.tar.gz</span><br></pre></td></tr></table></figure>
+
 <h4 id="3-查看对应configure"><a href="#3-查看对应configure" class="headerlink" title="3.查看对应configure"></a>3.查看对应configure</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar xf nginx-1.12.1.tar.gz</span><br><span class="line">cd nginx-1.12.1</span><br><span class="line">nginx -V</span><br><span class="line">configure arguments:  --prefix=/etc/nginx \</span><br><span class="line">            --sbin-path=/usr/sbin/nginx \</span><br><span class="line">            --conf-path=/etc/nginx/nginx.conf \</span><br><span class="line">            ...</span><br></pre></td></tr></table></figure>
+
 <h4 id="4-增加对应的模块"><a href="#4-增加对应的模块" class="headerlink" title="4.增加对应的模块"></a>4.增加对应的模块</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/etc/nginx \</span><br><span class="line">            --sbin-path=/usr/sbin/nginx \</span><br><span class="line">            --conf-path=/etc/nginx/nginx.conf \</span><br><span class="line">            ...</span><br><span class="line">            --add-module=../headers-more-nginx-module</span><br></pre></td></tr></table></figure>
+
 <h4 id="5-编译"><a href="#5-编译" class="headerlink" title="5.编译"></a>5.编译</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
 <h4 id="6-对可执行文件进行备份替换"><a href="#6-对可执行文件进行备份替换" class="headerlink" title="6.对可执行文件进行备份替换"></a>6.对可执行文件进行备份替换</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/sbin/nginx /usr/sbin/nginx.bak #备份</span><br><span class="line">cp /opt/nginx-1.12.1/objs/nginx /usr/sbin/nginx #替换</span><br><span class="line">systemctl restart nginx #重启 nginx 服务</span><br></pre></td></tr></table></figure>
+
 <p>大功告成</p>
 
       

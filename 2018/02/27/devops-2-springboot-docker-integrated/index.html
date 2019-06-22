@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -116,16 +116,16 @@
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="知之愈明,则行之愈笃；行之愈笃,则知之益明.——朱熹（宋）  我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。 创建项目进行集成创建一个Spring Boot 项">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-174110.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-174208.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-203234.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-203815.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-204116.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180227-174110.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180227-174208.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180227-203234.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180227-203815.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180227-204116.png">
 <meta property="og:updated_time" content="2018-02-27T12:53:49.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DevOps实践2:Spring Boot集成Docker环境">
 <meta name="twitter:description" content="知之愈明,则行之愈笃；行之愈笃,则知之益明.——朱熹（宋）  我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。 创建项目进行集成创建一个Spring Boot 项">
-<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-174110.png">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/.com//WX20180227-174110.png">
 
 
 
@@ -452,8 +452,8 @@
 </blockquote>
 <p>我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。</p>
 <h3 id="创建项目进行集成"><a href="#创建项目进行集成" class="headerlink" title="创建项目进行集成"></a>创建项目进行集成</h3><p>创建一个Spring Boot 项目</p>
-<p><img src="/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-174110.png" alt="名称"></p>
-<p><img src="/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-174208.png" alt="web服务"></p>
+<p><img src="/.com//WX20180227-174110.png" alt="名称"></p>
+<p><img src="/.com//WX20180227-174208.png" alt="web服务"></p>
 <h3 id="增加项目对Docker的支持"><a href="#增加项目对Docker的支持" class="headerlink" title="增加项目对Docker的支持"></a>增加项目对Docker的支持</h3><ol>
 <li><p>修改pom.xml配置，增加对应的插件，可以使用Maven进行打包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Docker 镜像前缀，放在&lt;properties&gt; 标签中</span></span><br><span class="line"> &lt;docker.image.prefix&gt;devops&lt;/docker.image.prefix&gt;</span><br></pre></td></tr></table></figure>
@@ -466,17 +466,29 @@
 </li>
 <li><p>修改Maven settings 文件配置（主要的目的是为了方便后面我们将自己的服务推送到自己的私服，方便管理）</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroup</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">pluginGroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line"></span><br><span class="line">#本地私服的配置</span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">profile</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">docker.repository</span>&gt;</span>http://192.168.100.77:8081/repository/docker<span class="tag">&lt;/<span class="name">docker.repository</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">#激活私服配置</span><br><span class="line"><span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <p>上面基本的pom配置就完成了，之后开始配置Docker相关的脚本</p>
-<h3 id="Docker脚本配置"><a href="#Docker脚本配置" class="headerlink" title="Docker脚本配置"></a>Docker脚本配置</h3><p>在src/main 目录下创建docker 文件夹，刚刚上面的pom配置里声明了Dockerfile的路径<br>创建文件Dockerfile ，注意文件没有后缀，之后增加如下脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM java:8  #基本镜像</span><br><span class="line">VOLUME /tmp  #挂载文件位置，/tmp 为临时目录</span><br><span class="line">ADD devops.jar app.jar  #添加对应的jar，使用maven打包后会自动到target目录找devops.jar 文件</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"] # 程序启动入口</span><br></pre></td></tr></table></figure></p>
-<h3 id="打包、运行镜像"><a href="#打包、运行镜像" class="headerlink" title="打包、运行镜像"></a>打包、运行镜像</h3><p>创建对应的测试文件，打包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package docker:build  # 一气呵成O(∩_∩)O~~</span><br></pre></td></tr></table></figure></p>
-<p>在运行docker命令前，先确认电脑上的docker环境是否配置成<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br><span class="line"><span class="meta">#</span><span class="bash"> 会有如下显示</span></span><br><span class="line">Client:</span><br><span class="line"> Version:	17.12.0-ce</span><br><span class="line"> API version:	1.35</span><br><span class="line"> Go version:	go1.9.2</span><br><span class="line"> Git commit:	c97c6d6</span><br><span class="line"> Built:	Wed Dec 27 20:03:51 2017</span><br><span class="line"> OS/Arch:	darwin/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:	17.12.0-ce</span><br><span class="line">  API version:	1.35 (minimum version 1.12)</span><br><span class="line">  Go version:	go1.9.2</span><br><span class="line">  Git commit:	c97c6d6</span><br><span class="line">  Built:	Wed Dec 27 20:12:29 2017</span><br><span class="line">  OS/Arch:	linux/amd64</span><br><span class="line">  Experimental:	true</span><br></pre></td></tr></table></figure></p>
+<h3 id="Docker脚本配置"><a href="#Docker脚本配置" class="headerlink" title="Docker脚本配置"></a>Docker脚本配置</h3><p>在src/main 目录下创建docker 文件夹，刚刚上面的pom配置里声明了Dockerfile的路径<br>创建文件Dockerfile ，注意文件没有后缀，之后增加如下脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM java:8  #基本镜像</span><br><span class="line">VOLUME /tmp  #挂载文件位置，/tmp 为临时目录</span><br><span class="line">ADD devops.jar app.jar  #添加对应的jar，使用maven打包后会自动到target目录找devops.jar 文件</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"] # 程序启动入口</span><br></pre></td></tr></table></figure>
+
+<h3 id="打包、运行镜像"><a href="#打包、运行镜像" class="headerlink" title="打包、运行镜像"></a>打包、运行镜像</h3><p>创建对应的测试文件，打包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package docker:build  # 一气呵成O(∩_∩)O~~</span><br></pre></td></tr></table></figure>
+
+<p>在运行docker命令前，先确认电脑上的docker环境是否配置成</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br><span class="line"><span class="meta">#</span><span class="bash"> 会有如下显示</span></span><br><span class="line">Client:</span><br><span class="line"> Version:	17.12.0-ce</span><br><span class="line"> API version:	1.35</span><br><span class="line"> Go version:	go1.9.2</span><br><span class="line"> Git commit:	c97c6d6</span><br><span class="line"> Built:	Wed Dec 27 20:03:51 2017</span><br><span class="line"> OS/Arch:	darwin/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:	17.12.0-ce</span><br><span class="line">  API version:	1.35 (minimum version 1.12)</span><br><span class="line">  Go version:	go1.9.2</span><br><span class="line">  Git commit:	c97c6d6</span><br><span class="line">  Built:	Wed Dec 27 20:12:29 2017</span><br><span class="line">  OS/Arch:	linux/amd64</span><br><span class="line">  Experimental:	true</span><br></pre></td></tr></table></figure>
+
 <p>上面说明Docker是正常启动的</p>
-<p>然后查看镜像<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-203234.png" alt="web服务"><br>上图说明我们的镜像打包成功<br>然后运行一下，检查镜像是否能够正常启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动镜像 -d 表示后台运行，-p 端口进行映射 --name docker服务名称  devops/devops:latest 运行的镜像</span></span><br><span class="line">docker run -d  -p 8080:8080 --name devops devops/devops:latest</span><br><span class="line"><span class="meta">#</span><span class="bash">执行docker ps 查看镜像是否运行</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-203815.png" alt="web服务"><br>如果，说明服务是正常启动了，之后请求<br><a href="http://localhost:8080/index?name=World" target="_blank" rel="noopener">http://localhost:8080/index?name=World</a><br><img src="/2018/02/27/devops-2-springboot-docker-integrated/WX20180227-204116.png" alt="web服务"><br>能够请求成功，说明镜像部署成功</p>
+<p>然后查看镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.com//WX20180227-203234.png" alt="web服务"><br>上图说明我们的镜像打包成功<br>然后运行一下，检查镜像是否能够正常启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动镜像 -d 表示后台运行，-p 端口进行映射 --name docker服务名称  devops/devops:latest 运行的镜像</span></span><br><span class="line">docker run -d  -p 8080:8080 --name devops devops/devops:latest</span><br><span class="line"><span class="meta">#</span><span class="bash">执行docker ps 查看镜像是否运行</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/.com//WX20180227-203815.png" alt="web服务"><br>如果，说明服务是正常启动了，之后请求<br><a href="http://localhost:8080/index?name=World" target="_blank" rel="noopener">http://localhost:8080/index?name=World</a><br><img src="/.com//WX20180227-204116.png" alt="web服务"><br>能够请求成功，说明镜像部署成功</p>
 <h3 id="停止释放镜像"><a href="#停止释放镜像" class="headerlink" title="停止释放镜像"></a>停止释放镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 养成好习惯，停止释放镜像</span></span><br><span class="line">docker stop 2026e45bc2ce</span><br><span class="line">docker rm 2026e45bc2ce</span><br></pre></td></tr></table></figure>
+
 <p>代码可在<a href="https://github.com/junhuali/devops-springboot" target="_blank" rel="noopener">https://github.com/junhuali/devops-springboot</a> 下载</p>
 
       

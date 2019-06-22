@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -446,8 +446,11 @@
 </blockquote>
 <p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。</p>
 <h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
 <p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
 
       

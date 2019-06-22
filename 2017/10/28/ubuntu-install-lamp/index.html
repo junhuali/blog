@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。 环境基于Ubuntu 开始1$ apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade #更新软件包 安装M">
+  <meta name="description" content="LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。 环境基于Ubuntu 开始1$ apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade #更新软件包  安装">
 <meta name="keywords" content="Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu安装LAMP">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/10/28/ubuntu-install-lamp/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。 环境基于Ubuntu 开始1$ apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade #更新软件包 安装M">
+<meta property="og:description" content="LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。 环境基于Ubuntu 开始1$ apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade #更新软件包  安装">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-02-09T02:43:28.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu安装LAMP">
-<meta name="twitter:description" content="LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。 环境基于Ubuntu 开始1$ apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade #更新软件包 安装M">
+<meta name="twitter:description" content="LAMP Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。 环境基于Ubuntu 开始1$ apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade #更新软件包  安装">
 
 
 
@@ -444,15 +444,24 @@
         <h3 id="LAMP"><a href="#LAMP" class="headerlink" title="LAMP"></a>LAMP</h3><p> Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。</p>
 <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>基于Ubuntu</p>
 <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get update &amp;&amp; sudo apt-get upgrade <span class="comment">#更新软件包</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install -y mysql-server</span><br><span class="line">$ sudo apt-get install -y mysql-client</span><br><span class="line">! 记得设置默认密码</span><br></pre></td></tr></table></figure>
+
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo netstat -tap | grep mysql <span class="comment">#显示监听的端口即表示安装成功</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="配置远程连接"><a href="#配置远程连接" class="headerlink" title="配置远程连接"></a>配置远程连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line"><span class="comment">#bind-address = 127.0.0.1</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="远程访问赋权"><a href="#远程访问赋权" class="headerlink" title="远程访问赋权"></a>远程访问赋权</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p</span><br><span class="line">$ grant all on *.* to root@<span class="string">'%'</span> identified by <span class="string">'root'</span>;</span><br><span class="line">$ flush privileges;  </span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line">$ service mysql restart(or: $ /etc/init.d/mysql restart)<span class="comment"># 重启</span></span><br></pre></td></tr></table></figure>
+
 <p>####安装Apache2</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install -y apache2</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改apache2.conf配置</span></span><br><span class="line">$ vi /etc/apache2/apache2.conf</span><br><span class="line">$ KeepAlive Off</span><br><span class="line"><span class="comment">#修改mpm_prefork.conf配置</span></span><br><span class="line">$ vim /etc/apache2/mods-available/mpm_prefork.conf</span><br><span class="line"> &lt;IfModule mpm_prefork_module&gt;</span><br><span class="line">   StartServers            2</span><br><span class="line">   MinSpareServers         6</span><br><span class="line">   MaxSpareServers         12</span><br><span class="line">   MaxRequestWorkers       39</span><br><span class="line">   MaxConnectionsPerChild  3000</span><br><span class="line">&lt;/IfModule&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#禁用和启动模块</span></span><br><span class="line">$ sudo a2dismod mpm_event</span><br><span class="line">$ sudo a2enmod mpm_prefork</span><br><span class="line">$ sudo systemctl restart apache2 <span class="comment">#重启Apache</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="PHP-安装"><a href="#PHP-安装" class="headerlink" title="PHP 安装"></a>PHP 安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装相关包</span></span><br><span class="line">$ sudo apt-get install php7.0 php-pear libapache2-mod-php7.0 php7.0-mysql -y</span><br><span class="line"><span class="comment"># 安装组件支持</span></span><br><span class="line">apt-get install php7.0-curl php7.0-json php7.0-cgi graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring php-gettext -y</span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">$ sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
+
 <h4 id="phpmyadmin-安装"><a href="#phpmyadmin-安装" class="headerlink" title="phpmyadmin 安装"></a>phpmyadmin 安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ sudo apt-get install -y phpmyadmin</span><br><span class="line"><span class="comment">#安装对应php包（如果没有安装对应的包）</span></span><br><span class="line">$ sudo apt-get install -y php-mbstring</span><br><span class="line">$ sudo apt-get install -y php-gettext</span><br><span class="line"><span class="comment">#安装时选择自动配置数据库，输入数据库root账号的密码</span></span><br><span class="line"><span class="comment">#如果不安装以上两个php软件包，则会报错或者白屏，提示找不到/usr/share/php/php-gettext/gettext.inc之类的错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#建立软连接</span></span><br><span class="line">$ sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin</span><br><span class="line"><span class="comment">#重启apache</span></span><br><span class="line">$ sudo /etc/init.d/apache2 restart</span><br><span class="line"><span class="comment">#访问http://localhost:127.0.0.1/phpmyadmin 输入之前创建mysql 时候的账号密码即可</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>

@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -116,13 +116,13 @@
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180318-120435@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180318-122540@2x.png">
 <meta property="og:updated_time" content="2018-03-18T07:33:42.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）">
 <meta name="twitter:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
-<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/.com//WX20180318-120435@2x.png">
 
 
 
@@ -450,7 +450,8 @@
 <p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
 <h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
 <ul>
-<li>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</li>
+<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="/.com//WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
+</li>
 <li><p>安装系统扩展包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure>
 </li>
@@ -459,15 +460,19 @@
 </li>
 <li><p>运行certbot插件生成证书</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<p><img src="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
+<p><img src="/.com//WX20180318-122540@2x.png" alt="certbot"></p>
 <ul>
 <li>重启nginx<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
-<p>增加自动续期<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure></p>
+<p>增加自动续期</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
+
 <p>上面的方法是单域名证书的创建</p>
 <h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
 <ul>

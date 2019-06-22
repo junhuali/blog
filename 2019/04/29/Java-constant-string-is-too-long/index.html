@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -443,6 +443,7 @@
       
         <h3 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h3><p>  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示<code>java: 常量字符串过长</code>。使用javac 进行编译也会有类似的提示</p>
 <h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><h4 id="使用StringBuilder"><a href="#使用StringBuilder" class="headerlink" title="使用StringBuilder"></a>使用StringBuilder</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">sb.append(<span class="string">"String"</span>);</span><br><span class="line">sb.append(<span class="string">"String"</span>);</span><br><span class="line">String str = sb.toString();</span><br><span class="line">String[] parts = str.split(<span class="string">","</span>);</span><br><span class="line">System.out.println(parts.length);</span><br></pre></td></tr></table></figure>
+
 <p>创建了一个对象，会根据实际的存储的内容分配内存，不会受到String在常量池中最大长度的限制<br>通过使用StringBuilder解析大文本和大JSON</p>
 
       
