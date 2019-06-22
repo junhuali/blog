@@ -5,7 +5,7 @@ categories: Java
 tag: String
 ---
 ### 问题出现
-  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示`java: 常量字符串过长`。使用javac 进行编译也会有类似的提示
+  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示`java: 常量字符串过长`。使用javac 进行编译也会有类似的提示 <!-- more -->
 ### 解决办法
 #### 使用StringBuilder
 ``` Java

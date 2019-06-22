@@ -4,7 +4,7 @@ date: 2019-03-25 11:10:00
 categories: Java
 tags: Spring
 ---
-在面试的时候经常被问到Spring的单例、多例之类的问题，实际上是Bean的作用域问题。当在Spring中声明一个bean时，需要声明bean的作用域。默认是`singleton`。这篇文章主要讨论Spring 单例和多例。
+在面试的时候经常被问到Spring的单例、多例之类的问题，实际上是Bean的作用域问题。当在Spring中声明一个bean时，需要声明bean的作用域。默认是`singleton`。这篇文章主要讨论Spring 单例和多例。<!-- more -->
 ### Spring bean 的作用域(Spring Bean scopes)
 作用域 | 描述
 :----: | :---:

@@ -4,7 +4,7 @@ date: 2018-06-02 14:52:15
 categories: Node
 tags: rabbitmq
 ---
-最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。
+最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 <!-- more -->
 ### RabbitMQ virtual hosts 问题
 项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错
 ``` error

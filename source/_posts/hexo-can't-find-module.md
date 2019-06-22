@@ -4,7 +4,7 @@ date: 2017-09-30 18:03:00
 categories: Linux
 tag: hexo
 ---
-有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩_∩)O哈哈~_)
+有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩_∩)O哈哈~_) <!-- more -->
 报错如下：
 ``` log
 { Error: Cannot find module './build/Release/DTraceProviderBindings'

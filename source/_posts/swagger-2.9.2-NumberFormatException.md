@@ -4,9 +4,7 @@ date: 2019-05-20 16:00:45
 categories: Java
 tags: Swagger2
 ---
-### 问题
-#### 环境
-SpringCloud、Swagger2.9.2版本,在访问swagger首页的时候，控制台报错。
+SpringCloud、Swagger2.9.2版本,在访问swagger首页的时候，控制台报错。具体错误如下:<!-- more -->
 ``` java
 [ WARN ] [2019-05-20 16:39:47] [http-nio-8080-exec-6] i.s.m.p.AbstractSerializableParameter [421]  - Illegal DefaultValue 0 for parameter type integer
 java.lang.NumberFormatException: For input string: ""

@@ -4,7 +4,7 @@ date: 2017-11-06 15:11:35
 categories: Linux
 tag: Git
 ---
-
+CentOS 7 上安装git 的几种方法。 <!-- more -->
 ### 源码安装
 - 安装对应的依赖
 ``` bash

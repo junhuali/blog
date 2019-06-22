@@ -5,7 +5,7 @@ categories: Linux
 tag: Docker
 ---
 因为国内服务器无法访问google，所以服务器需要科学上网
-可以看我之前的文章，服务器科学上网
+可以看我之前的文章，服务器科学上网<!-- more -->
 ### 安装docker
 建议使用daocloud提供的脚本进行安装，速度很快
 ``` bash

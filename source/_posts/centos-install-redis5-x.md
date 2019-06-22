@@ -5,7 +5,7 @@ categories: Linux
 tags: Redis
 ---
 ### Redis
->Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。[3]在2013年5月之前，其开发由VMware赞助。[4根据月度排行网站DB-Engines.com的数据显示，Redis是最流行的键值对存储数据库。
+>Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。[3]在2013年5月之前，其开发由VMware赞助。[4根据月度排行网站DB-Engines.com的数据显示，Redis是最流行的键值对存储数据库。<!-- more -->
 
 我们在项目的开发中很多地方都会用到reids，用户信息缓存、分布式锁、定时器、简单的队列等等，要想使用Redis，
 第一件事就是安装Redis。

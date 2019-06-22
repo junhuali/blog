@@ -7,7 +7,7 @@ tag: Nginx
 ---
 
 
-今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置
+今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置 <!-- more -->
 ``` Shell
 	proxy_connect_timeout = 3;
 ```

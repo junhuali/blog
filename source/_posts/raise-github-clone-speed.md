@@ -5,7 +5,7 @@ categories: Linux
 tags: Shell
 ---
 ### Github 速度慢
-众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。
+众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。<!-- more -->
 
 ### 修改hosts
 从`http://github.global.ssl.fastly.net.ipaddress.com/` 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。

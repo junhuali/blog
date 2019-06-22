@@ -5,7 +5,7 @@ categories: Linux
 tag: Docker
 ---
 
-### 使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)
+### 使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<!-- more -->
 
 #### 创建Volume 命名为mongo-data
 ``` Shell
