@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.searchinfogo.com/2019/06/25/centos7-docker-install-tutorial/</loc>
+    
+    <lastmod>2019-06-25T03:07:11.053Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.searchinfogo.com/about/</loc>
+    
+    <lastmod>2019-06-25T01:31:26.971Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.searchinfogo.com/2019/05/20/swagger-2.9.2-NumberFormatException/</loc>
     
     <lastmod>2019-06-22T09:02:36.594Z</lastmod>
@@ -257,13 +271,6 @@
     <loc>https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/</loc>
     
     <lastmod>2019-06-22T08:56:10.137Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.searchinfogo.com/about/</loc>
-    
-    <lastmod>2019-05-18T03:22:32.832Z</lastmod>
     
   </url>
   

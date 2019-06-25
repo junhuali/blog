@@ -168,7 +168,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -178,7 +178,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -350,20 +350,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Junhua's Blog">
     </span>
 
@@ -432,7 +432,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -493,7 +493,7 @@
 </ul>
 <p>pandas安装：<br>1.Mac上使用brew <code>brew cask install anaconda</code><br>2.python -m pip install pandas <a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a><br>推荐使用第一种，anaconda的方式安装，比较方便<br>使用第二种的话，需要下载额外的一些包，需要根据实际情况进行下载，例如<code>matplotlib</code>;</p>
 <h3 id="视频使用的资源"><a href="#视频使用的资源" class="headerlink" title="视频使用的资源"></a>视频使用的资源</h3><p>[百度网盘]](<a href="https://pan.baidu.com/s/1UVT_S9BHJZS8ktjAc8Xpcw" target="_blank" rel="noopener">https://pan.baidu.com/s/1UVT_S9BHJZS8ktjAc8Xpcw</a>) 密码：dr78 （来自bilibili用户）<br>视频中的网络资源无法使用，可以使用上面百度网盘中的资源，或者使用我提供的地址</p>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><h4 id="1-读取表格数据到pandas中-源码见demo1-py"><a href="#1-读取表格数据到pandas中-源码见demo1-py" class="headerlink" title="1.读取表格数据到pandas中(源码见demo1.py)"></a>1.读取表格数据到pandas中(<a href="https://github.com/junhuali/study-pandas/blob/master/demo1.py" target="_blank" rel="noopener">源码见demo1.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="string">''' 因为视频中的地址不可用，可以用网盘中的文件，或者用我提供的文件地址'''</span></span><br><span class="line"></span><br><span class="line">orders = pd.read_table(<span class="string">'https://blog.searchinfogo.com/download/data/data/chipotle.tsv'</span>)</span><br><span class="line"></span><br><span class="line">print(orders)</span><br><span class="line"></span><br><span class="line">head = orders.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">user_cols = [<span class="string">'user_id'</span>, <span class="string">'age'</span>, <span class="string">'gender'</span>, <span class="string">'occupation'</span>, <span class="string">'zip_code'</span>]</span><br><span class="line">users = pd.read_table(<span class="string">"https://blog.searchinfogo.com/download/data/data/u.user"</span>, sep=<span class="string">'|'</span>, header=<span class="keyword">None</span>, names=user_cols)</span><br><span class="line">print(users)</span><br></pre></td></tr></table></figure>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><h4 id="1-读取表格数据到pandas中-源码见demo1-py"><a href="#1-读取表格数据到pandas中-源码见demo1-py" class="headerlink" title="1.读取表格数据到pandas中(源码见demo1.py)"></a>1.读取表格数据到pandas中(<a href="https://github.com/junhuali/study-pandas/blob/master/demo1.py" target="_blank" rel="noopener">源码见demo1.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="string">''' 因为视频中的地址不可用，可以用网盘中的文件，或者用我提供的文件地址'''</span></span><br><span class="line"></span><br><span class="line">orders = pd.read_table(<span class="string">'https://blog.searchinfogo.com/download/data/data/chipotle.tsv'</span>)</span><br><span class="line"></span><br><span class="line">print(orders)</span><br><span class="line"></span><br><span class="line">head = orders.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">user_cols = [<span class="string">'user_id'</span>, <span class="string">'age'</span>, <span class="string">'gender'</span>, <span class="string">'occupation'</span>, <span class="string">'zip_code'</span>]</span><br><span class="line">users = pd.read_table(<span class="string">"https://blog.searchinfogo.com/download/data/data/u.user"</span>, sep=<span class="string">'|'</span>, header=<span class="literal">None</span>, names=user_cols)</span><br><span class="line">print(users)</span><br></pre></td></tr></table></figure>
 
 <h4 id="2-从csv中读取数据-源码见demo2-py"><a href="#2-从csv中读取数据-源码见demo2-py" class="headerlink" title="2.从csv中读取数据(源码见demo2.py)"></a>2.从csv中读取数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo2.py" target="_blank" rel="noopener">源码见demo2.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line"></span><br><span class="line">type = type(ufo)</span><br><span class="line"></span><br><span class="line">print(type)</span><br><span class="line"></span><br><span class="line">ufo.head()</span><br><span class="line"></span><br><span class="line">type(ufo[<span class="string">'City'</span>])</span><br><span class="line"></span><br><span class="line">print(ufo[<span class="string">'City'</span>])</span><br><span class="line"></span><br><span class="line">ufo.shape</span><br><span class="line"></span><br><span class="line">ufo.City + ufo.State</span><br><span class="line"></span><br><span class="line">ufo[<span class="string">'Location'</span>] = ufo.City + <span class="string">','</span> + ufo.State</span><br><span class="line"></span><br><span class="line">print(ufo[<span class="string">'Location'</span>])</span><br></pre></td></tr></table></figure>
 
@@ -618,7 +618,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Junhua">
             
@@ -633,7 +633,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
