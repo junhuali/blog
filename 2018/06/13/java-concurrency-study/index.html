@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="关于并发并发在开发中广泛的应用，非常的重要，最近在读《Java并发编程的艺术》艺术，希望写一些东西来记录和巩固。">
+  <meta name="description" content="&amp;#x5173;&amp;#x4E8E;&amp;#x5E76;&amp;#x53D1;&amp;#x5E76;&amp;#x53D1;&amp;#x5728;&amp;#x5F00;&amp;#x53D1;&amp;#x4E2D;&amp;#x5E7F;&amp;#x6CDB;&amp;#x7684;&amp;#x5E94;&amp;#x7528;&amp;#xFF0C;&amp;#x975E;&amp;#x5E38;&amp;#x7684;&amp;#x91CD;&amp;#x8981;&amp;#xFF0C;&amp;#x6700;&amp;#x8FD1;&amp;#x5728;">
 <meta name="keywords" content="concurrency">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 并发编程学习">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/06/13/java-concurrency-study/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="关于并发并发在开发中广泛的应用，非常的重要，最近在读《Java并发编程的艺术》艺术，希望写一些东西来记录和巩固。">
+<meta property="og:description" content="&amp;#x5173;&amp;#x4E8E;&amp;#x5E76;&amp;#x53D1;&amp;#x5E76;&amp;#x53D1;&amp;#x5728;&amp;#x5F00;&amp;#x53D1;&amp;#x4E2D;&amp;#x5E7F;&amp;#x6CDB;&amp;#x7684;&amp;#x5E94;&amp;#x7528;&amp;#xFF0C;&amp;#x975E;&amp;#x5E38;&amp;#x7684;&amp;#x91CD;&amp;#x8981;&amp;#xFF0C;&amp;#x6700;&amp;#x8FD1;&amp;#x5728;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T08:59:08.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 并发编程学习">
-<meta name="twitter:description" content="关于并发并发在开发中广泛的应用，非常的重要，最近在读《Java并发编程的艺术》艺术，希望写一些东西来记录和巩固。">
+<meta name="twitter:description" content="&amp;#x5173;&amp;#x4E8E;&amp;#x5E76;&amp;#x53D1;&amp;#x5E76;&amp;#x53D1;&amp;#x5728;&amp;#x5F00;&amp;#x53D1;&amp;#x4E2D;&amp;#x5E7F;&amp;#x6CDB;&amp;#x7684;&amp;#x5E94;&amp;#x7528;&amp;#xFF0C;&amp;#x975E;&amp;#x5E38;&amp;#x7684;&amp;#x91CD;&amp;#x8981;&amp;#xFF0C;&amp;#x6700;&amp;#x8FD1;&amp;#x5728;">
 
 
 
@@ -478,27 +478,27 @@
       
 
       
-        <h3 id="关于并发"><a href="#关于并发" class="headerlink" title="关于并发"></a>关于并发</h3><p>并发在开发中广泛的应用，非常的重要，最近在读《Java并发编程的艺术》艺术，希望写一些东西来记录和巩固。<a id="more"></a></p>
-<h3 id="上下文切换、死锁"><a href="#上下文切换、死锁" class="headerlink" title="上下文切换、死锁"></a>上下文切换、死锁</h3><h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><p>频繁的上下文切换不仅不能加快程序的运行，还会降低程序的性能。文中提到了一些方法减少上下文切换的方法：</p>
+        <h3 id="&#x5173;&#x4E8E;&#x5E76;&#x53D1;"><a href="#&#x5173;&#x4E8E;&#x5E76;&#x53D1;" class="headerlink" title="&#x5173;&#x4E8E;&#x5E76;&#x53D1;"></a>&#x5173;&#x4E8E;&#x5E76;&#x53D1;</h3><p>&#x5E76;&#x53D1;&#x5728;&#x5F00;&#x53D1;&#x4E2D;&#x5E7F;&#x6CDB;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x975E;&#x5E38;&#x7684;&#x91CD;&#x8981;&#xFF0C;&#x6700;&#x8FD1;&#x5728;&#x8BFB;&#x300A;Java&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x7684;&#x827A;&#x672F;&#x300B;&#x827A;&#x672F;&#xFF0C;&#x5E0C;&#x671B;&#x5199;&#x4E00;&#x4E9B;&#x4E1C;&#x897F;&#x6765;&#x8BB0;&#x5F55;&#x548C;&#x5DE9;&#x56FA;&#x3002;<a id="more"></a></p>
+<h3 id="&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x3001;&#x6B7B;&#x9501;"><a href="#&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x3001;&#x6B7B;&#x9501;" class="headerlink" title="&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x3001;&#x6B7B;&#x9501;"></a>&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x3001;&#x6B7B;&#x9501;</h3><h4 id="&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;"><a href="#&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;" class="headerlink" title="&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;"></a>&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;</h4><p>&#x9891;&#x7E41;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x4E0D;&#x4EC5;&#x4E0D;&#x80FD;&#x52A0;&#x5FEB;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#xFF0C;&#x8FD8;&#x4F1A;&#x964D;&#x4F4E;&#x7A0B;&#x5E8F;&#x7684;&#x6027;&#x80FD;&#x3002;&#x6587;&#x4E2D;&#x63D0;&#x5230;&#x4E86;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;&#x51CF;&#x5C11;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
 <ul>
-<li>无锁并发编程<br>通过将数据分段，使用不同线程处理不同的数据。</li>
-<li>CAS 算法<br>Java的Atomic包使用CAS算法来更新数据，而不需要加锁。</li>
-<li>使用最小线程<br>避免创建不需要的线程，避免线程处于等待状态。</li>
-<li>使用协程<br>在单线程里实现多任务的调度，并在线程里维持多个任务间的切换</li>
+<li>&#x65E0;&#x9501;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;<br>&#x901A;&#x8FC7;&#x5C06;&#x6570;&#x636E;&#x5206;&#x6BB5;&#xFF0C;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x3002;</li>
+<li>CAS &#x7B97;&#x6CD5;<br>Java&#x7684;Atomic&#x5305;&#x4F7F;&#x7528;CAS&#x7B97;&#x6CD5;&#x6765;&#x66F4;&#x65B0;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x52A0;&#x9501;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x6700;&#x5C0F;&#x7EBF;&#x7A0B;<br>&#x907F;&#x514D;&#x521B;&#x5EFA;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x907F;&#x514D;&#x7EBF;&#x7A0B;&#x5904;&#x4E8E;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x534F;&#x7A0B;<br>&#x5728;&#x5355;&#x7EBF;&#x7A0B;&#x91CC;&#x5B9E;&#x73B0;&#x591A;&#x4EFB;&#x52A1;&#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x5E76;&#x5728;&#x7EBF;&#x7A0B;&#x91CC;&#x7EF4;&#x6301;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#x95F4;&#x7684;&#x5207;&#x6362;</li>
 </ul>
-<h4 id="死锁、避免死锁的常见方法"><a href="#死锁、避免死锁的常见方法" class="headerlink" title="死锁、避免死锁的常见方法"></a>死锁、避免死锁的常见方法</h4><p>锁是一个非常有用的工具，但是出现死锁会导致系统不可用。<br>避免死锁的常见方法：</p>
+<h4 id="&#x6B7B;&#x9501;&#x3001;&#x907F;&#x514D;&#x6B7B;&#x9501;&#x7684;&#x5E38;&#x89C1;&#x65B9;&#x6CD5;"><a href="#&#x6B7B;&#x9501;&#x3001;&#x907F;&#x514D;&#x6B7B;&#x9501;&#x7684;&#x5E38;&#x89C1;&#x65B9;&#x6CD5;" class="headerlink" title="&#x6B7B;&#x9501;&#x3001;&#x907F;&#x514D;&#x6B7B;&#x9501;&#x7684;&#x5E38;&#x89C1;&#x65B9;&#x6CD5;"></a>&#x6B7B;&#x9501;&#x3001;&#x907F;&#x514D;&#x6B7B;&#x9501;&#x7684;&#x5E38;&#x89C1;&#x65B9;&#x6CD5;</h4><p>&#x9501;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x4F46;&#x662F;&#x51FA;&#x73B0;&#x6B7B;&#x9501;&#x4F1A;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x4E0D;&#x53EF;&#x7528;&#x3002;<br>&#x907F;&#x514D;&#x6B7B;&#x9501;&#x7684;&#x5E38;&#x89C1;&#x65B9;&#x6CD5;&#xFF1A;</p>
 <ul>
-<li>避免一个线程同时获取多个锁</li>
-<li>避免一个线程在锁内同时占用多个资源，尽量保证每个锁只占用一个资源。</li>
-<li>尝试使用定时锁，使用lock.tryLock(timeout)来替代使用内部锁机制。</li>
-<li>对于数据库锁，加锁和解锁必须在一个数据库连接里，否则会出现解锁失败的情况。</li>
+<li>&#x907F;&#x514D;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x83B7;&#x53D6;&#x591A;&#x4E2A;&#x9501;</li>
+<li>&#x907F;&#x514D;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5728;&#x9501;&#x5185;&#x540C;&#x65F6;&#x5360;&#x7528;&#x591A;&#x4E2A;&#x8D44;&#x6E90;&#xFF0C;&#x5C3D;&#x91CF;&#x4FDD;&#x8BC1;&#x6BCF;&#x4E2A;&#x9501;&#x53EA;&#x5360;&#x7528;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x3002;</li>
+<li>&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x5B9A;&#x65F6;&#x9501;&#xFF0C;&#x4F7F;&#x7528;lock.tryLock(timeout)&#x6765;&#x66FF;&#x4EE3;&#x4F7F;&#x7528;&#x5185;&#x90E8;&#x9501;&#x673A;&#x5236;&#x3002;</li>
+<li>&#x5BF9;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x9501;&#xFF0C;&#x52A0;&#x9501;&#x548C;&#x89E3;&#x9501;&#x5FC5;&#x987B;&#x5728;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x91CC;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x73B0;&#x89E3;&#x9501;&#x5931;&#x8D25;&#x7684;&#x60C5;&#x51B5;&#x3002;</li>
 </ul>
-<h4 id="资源限制"><a href="#资源限制" class="headerlink" title="资源限制"></a>资源限制</h4><p>带宽，内存，硬盘IO等硬件资源不足的时候，需要根据不同的资源调整程序并发大小。</p>
-<h3 id="Java并发底层相关实现"><a href="#Java并发底层相关实现" class="headerlink" title="Java并发底层相关实现"></a>Java并发底层相关实现</h3><h4 id="volatile-实现原则"><a href="#volatile-实现原则" class="headerlink" title="volatile 实现原则"></a>volatile 实现原则</h4><ul>
-<li>Lock前缀指令会引起处理器缓存回写到内存。</li>
-<li>一个处理器的缓存回写到内存会导致其他处理器缓存无效。</li>
+<h4 id="&#x8D44;&#x6E90;&#x9650;&#x5236;"><a href="#&#x8D44;&#x6E90;&#x9650;&#x5236;" class="headerlink" title="&#x8D44;&#x6E90;&#x9650;&#x5236;"></a>&#x8D44;&#x6E90;&#x9650;&#x5236;</h4><p>&#x5E26;&#x5BBD;&#xFF0C;&#x5185;&#x5B58;&#xFF0C;&#x786C;&#x76D8;IO&#x7B49;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#x4E0D;&#x8DB3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x8D44;&#x6E90;&#x8C03;&#x6574;&#x7A0B;&#x5E8F;&#x5E76;&#x53D1;&#x5927;&#x5C0F;&#x3002;</p>
+<h3 id="Java&#x5E76;&#x53D1;&#x5E95;&#x5C42;&#x76F8;&#x5173;&#x5B9E;&#x73B0;"><a href="#Java&#x5E76;&#x53D1;&#x5E95;&#x5C42;&#x76F8;&#x5173;&#x5B9E;&#x73B0;" class="headerlink" title="Java&#x5E76;&#x53D1;&#x5E95;&#x5C42;&#x76F8;&#x5173;&#x5B9E;&#x73B0;"></a>Java&#x5E76;&#x53D1;&#x5E95;&#x5C42;&#x76F8;&#x5173;&#x5B9E;&#x73B0;</h3><h4 id="volatile-&#x5B9E;&#x73B0;&#x539F;&#x5219;"><a href="#volatile-&#x5B9E;&#x73B0;&#x539F;&#x5219;" class="headerlink" title="volatile &#x5B9E;&#x73B0;&#x539F;&#x5219;"></a>volatile &#x5B9E;&#x73B0;&#x539F;&#x5219;</h4><ul>
+<li>Lock&#x524D;&#x7F00;&#x6307;&#x4EE4;&#x4F1A;&#x5F15;&#x8D77;&#x5904;&#x7406;&#x5668;&#x7F13;&#x5B58;&#x56DE;&#x5199;&#x5230;&#x5185;&#x5B58;&#x3002;</li>
+<li>&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x7684;&#x7F13;&#x5B58;&#x56DE;&#x5199;&#x5230;&#x5185;&#x5B58;&#x4F1A;&#x5BFC;&#x81F4;&#x5176;&#x4ED6;&#x5904;&#x7406;&#x5668;&#x7F13;&#x5B58;&#x65E0;&#x6548;&#x3002;</li>
 </ul>
-<h4 id="synchronized的实现原理与应用"><a href="#synchronized的实现原理与应用" class="headerlink" title="synchronized的实现原理与应用"></a>synchronized的实现原理与应用</h4>
+<h4 id="synchronized&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x4E0E;&#x5E94;&#x7528;"><a href="#synchronized&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x4E0E;&#x5E94;&#x7528;" class="headerlink" title="synchronized&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x4E0E;&#x5E94;&#x7528;"></a>synchronized&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x4E0E;&#x5E94;&#x7528;</h4>
       
     </div>
 
@@ -633,7 +633,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -749,7 +749,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

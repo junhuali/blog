@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="人生苦短，我用Python  Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。">
+  <meta name="description" content="&amp;#x4EBA;&amp;#x751F;&amp;#x82E6;&amp;#x77ED;&amp;#xFF0C;&amp;#x6211;&amp;#x7528;Python  Python &amp;#x77ED;&amp;#x5C0F;&amp;#x7CBE;&amp;#x608D;&amp;#xFF0C;&amp;#x5728;&amp;#x5F88;&amp;#x591A;&amp;#x5C0F;&amp;#x5730;&amp;#x65B9;&amp;#x4F7F;&amp;#x7528;Python&amp;#xFF0C;&amp;#x80FD;&amp;#">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos7 安装 pyenv">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/02/27/cnetos-install-pyenv/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="人生苦短，我用Python  Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。">
+<meta property="og:description" content="&amp;#x4EBA;&amp;#x751F;&amp;#x82E6;&amp;#x77ED;&amp;#xFF0C;&amp;#x6211;&amp;#x7528;Python  Python &amp;#x77ED;&amp;#x5C0F;&amp;#x7CBE;&amp;#x608D;&amp;#xFF0C;&amp;#x5728;&amp;#x5F88;&amp;#x591A;&amp;#x5C0F;&amp;#x5730;&amp;#x65B9;&amp;#x4F7F;&amp;#x7528;Python&amp;#xFF0C;&amp;#x80FD;&amp;#">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T08:57:53.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7 安装 pyenv">
-<meta name="twitter:description" content="人生苦短，我用Python  Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。">
+<meta name="twitter:description" content="&amp;#x4EBA;&amp;#x751F;&amp;#x82E6;&amp;#x77ED;&amp;#xFF0C;&amp;#x6211;&amp;#x7528;Python  Python &amp;#x77ED;&amp;#x5C0F;&amp;#x7CBE;&amp;#x608D;&amp;#xFF0C;&amp;#x5728;&amp;#x5F88;&amp;#x591A;&amp;#x5C0F;&amp;#x5730;&amp;#x65B9;&amp;#x4F7F;&amp;#x7528;Python&amp;#xFF0C;&amp;#x80FD;&amp;#">
 
 
 
@@ -479,16 +479,16 @@
 
       
         <blockquote>
-<p>人生苦短，我用Python</p>
+<p>&#x4EBA;&#x751F;&#x82E6;&#x77ED;&#xFF0C;&#x6211;&#x7528;Python</p>
 </blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+<p>Python &#x77ED;&#x5C0F;&#x7CBE;&#x608D;&#xFF0C;&#x5728;&#x5F88;&#x591A;&#x5C0F;&#x5730;&#x65B9;&#x4F7F;&#x7528;Python&#xFF0C;&#x80FD;&#x63D0;&#x5347;&#x6548;&#x7387;&#xFF0C;&#x4EA7;&#x751F;&#x66F4;&#x5927;&#x7684;&#x4EF7;&#x503C;&#x3002;&#x4E00;&#x822C;&#x6211;&#x4EEC;&#x66F4;&#x591A;&#x7684;&#x662F;&#x5728;&#x672C;&#x5730;&#x4F7F;&#x7528;&#xFF0C;&#x6216;&#x8005;&#x4E00;&#x4E2A;&#x4EBA;&#x4F7F;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x591A;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x7684;Python&#xFF0C;&#x624B;&#x52A8;&#x5B89;&#x88C5;&#x5F88;&#x5BB9;&#x6613;&#x51B2;&#x7A81;&#xFF0C;&#x6240;&#x4EE5;&#x91C7;&#x7528;&#x73AF;&#x5883;&#x7BA1;&#x7406;&#x6765;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x3002;<a id="more"></a></p>
+<h3 id="&#x5B89;&#x88C5;Pyenv"><a href="#&#x5B89;&#x88C5;Pyenv" class="headerlink" title="&#x5B89;&#x88C5;Pyenv"></a>&#x5B89;&#x88C5;Pyenv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#&#x5B89;&#x88C5;&#x6240;&#x9700;&#x7684;&#x5305;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x3001;&#x5B89;&#x88C5;</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&apos;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&apos;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&apos;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&apos;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&apos;eval &quot;$(pyenv init -)&quot;&apos;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">#&#x5217;&#x51FA;&#x6240;&#x6709;&#x7248;&#x672C;</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#&#x5B89;&#x88C5;python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#&#x5168;&#x5C40;&#x4F7F;&#x7528;</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#&#x68C0;&#x67E5;&#x7248;&#x672C;</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
 
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+<p>&#x901A;&#x8FC7;&#x73AF;&#x5883;&#x7BA1;&#x7406;&#xFF0C;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x53EF;&#x4EE5;&#x5B58;&#x5728;&#x591A;&#x4E2A;&#x73AF;&#x5883;&#xFF0C;&#x65B9;&#x4FBF;&#x90E8;&#x7F72;&#x3002;</p>
 
       
     </div>
@@ -624,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -740,7 +740,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

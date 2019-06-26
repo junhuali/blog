@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便">
+  <meta name="description" content="&amp;#x4E0D;&amp;#x8981;&amp;#x5728;&amp;#x751F;&amp;#x4EA7;&amp;#x73AF;&amp;#x5883;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;&amp;#xFF0C;&amp;#x5728;&amp;#x5F00;&amp;#x53D1;&amp;#x548C;&amp;#x6D4B;&amp;#x8BD5;&amp;#x9636;&amp;#x6BB5;&amp;#x4F7F;&amp;#x7528;&amp;#x6BD4;&amp;#x8F83;&amp;#x65B9;&amp;#x4FBF;">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 创建MySQL">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/01/17/docker-create-mysql/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便">
+<meta property="og:description" content="&amp;#x4E0D;&amp;#x8981;&amp;#x5728;&amp;#x751F;&amp;#x4EA7;&amp;#x73AF;&amp;#x5883;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;&amp;#xFF0C;&amp;#x5728;&amp;#x5F00;&amp;#x53D1;&amp;#x548C;&amp;#x6D4B;&amp;#x8BD5;&amp;#x9636;&amp;#x6BB5;&amp;#x4F7F;&amp;#x7528;&amp;#x6BD4;&amp;#x8F83;&amp;#x65B9;&amp;#x4FBF;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T08:58:33.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 创建MySQL">
-<meta name="twitter:description" content="不要在生产环境中使用，在开发和测试阶段使用比较方便">
+<meta name="twitter:description" content="&amp;#x4E0D;&amp;#x8981;&amp;#x5728;&amp;#x751F;&amp;#x4EA7;&amp;#x73AF;&amp;#x5883;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;&amp;#xFF0C;&amp;#x5728;&amp;#x5F00;&amp;#x53D1;&amp;#x548C;&amp;#x6D4B;&amp;#x8BD5;&amp;#x9636;&amp;#x6BB5;&amp;#x4F7F;&amp;#x7528;&amp;#x6BD4;&amp;#x8F83;&amp;#x65B9;&amp;#x4FBF;">
 
 
 
@@ -478,13 +478,13 @@
       
 
       
-        <h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+        <h3 id="&#x4E0D;&#x8981;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x5728;&#x5F00;&#x53D1;&#x548C;&#x6D4B;&#x8BD5;&#x9636;&#x6BB5;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;"><a href="#&#x4E0D;&#x8981;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x5728;&#x5F00;&#x53D1;&#x548C;&#x6D4B;&#x8BD5;&#x9636;&#x6BB5;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;" class="headerlink" title="&#x4E0D;&#x8981;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x5728;&#x5F00;&#x53D1;&#x548C;&#x6D4B;&#x8BD5;&#x9636;&#x6BB5;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;"></a>&#x4E0D;&#x8981;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x5728;&#x5F00;&#x53D1;&#x548C;&#x6D4B;&#x8BD5;&#x9636;&#x6BB5;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;<a id="more"></a></h3><h3 id="&#x62C9;&#x53D6;&#x955C;&#x50CF;"><a href="#&#x62C9;&#x53D6;&#x955C;&#x50CF;" class="headerlink" title="&#x62C9;&#x53D6;&#x955C;&#x50CF;"></a>&#x62C9;&#x53D6;&#x955C;&#x50CF;</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
 
-<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
+<h3 id="&#x521B;&#x5EFA;volume-&#xFF08;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#xFF0C;&#x7528;&#x5B8C;&#x65B9;&#x4FBF;&#x5220;&#x9664;&#xFF09;"><a href="#&#x521B;&#x5EFA;volume-&#xFF08;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#xFF0C;&#x7528;&#x5B8C;&#x65B9;&#x4FBF;&#x5220;&#x9664;&#xFF09;" class="headerlink" title="&#x521B;&#x5EFA;volume &#xFF08;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#xFF0C;&#x7528;&#x5B8C;&#x65B9;&#x4FBF;&#x5220;&#x9664;&#xFF09;"></a>&#x521B;&#x5EFA;volume &#xFF08;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#xFF0C;&#x7528;&#x5B8C;&#x65B9;&#x4FBF;&#x5220;&#x9664;&#xFF09;</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
 
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<h3 id="&#x542F;&#x52A8;&#x955C;&#x50CF;"><a href="#&#x542F;&#x52A8;&#x955C;&#x50CF;" class="headerlink" title="&#x542F;&#x52A8;&#x955C;&#x50CF;"></a>&#x542F;&#x52A8;&#x955C;&#x50CF;</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
 
-<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
+<p><code>restart=&quot;always&quot;</code> docker &#x91CD;&#x542F;&#x540E;&#x81EA;&#x52A8;&#x542F;&#x52A8;<br><code>/etc/localtime:/etc/localtime</code> &#x89E3;&#x51B3;mysql &#x65F6;&#x533A;&#x95EE;&#x9898;<br><code>MYSQL_ROOT_PASSWORD</code> &#x8BBE;&#x7F6E;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x5BC6;&#x7801;&#xFF0C;&#x9ED8;&#x8BA4;&#x7528;&#x6237;&#x540D;root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> &#x8BBE;&#x7F6E;&#x5B57;&#x7B26;&#x96C6;&#xFF0C;&#x9ED8;&#x8BA4;&#x9700;&#x8981;&#x4FEE;&#x6539;&#xFF0C;&#x6839;&#x636E;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x6307;&#x5B9A;</p>
 
       
     </div>
@@ -620,7 +620,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -736,7 +736,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示">
+  <meta name="description" content="&amp;#x95EE;&amp;#x9898;&amp;#x51FA;&amp;#x73B0;  &amp;#x5728;IDEA&amp;#x4E2D;&amp;#xFF0C;&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x957F;&amp;#x5EA6;&amp;#x8D85;&amp;#x8FC7;65535&amp;#xFF0C;&amp;#x8FDB;&amp;#x884C;&amp;#x6253;&amp;#x5370;&amp;#xFF0C;IDEA&amp;#x4F1A;&amp;#x63D0;&amp;#x793A;j">
 <meta name="keywords" content="String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 常量字符串过长">
 <meta property="og:url" content="https://blog.searchinfogo.com/2019/04/29/Java-constant-string-is-too-long/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示">
+<meta property="og:description" content="&amp;#x95EE;&amp;#x9898;&amp;#x51FA;&amp;#x73B0;  &amp;#x5728;IDEA&amp;#x4E2D;&amp;#xFF0C;&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x957F;&amp;#x5EA6;&amp;#x8D85;&amp;#x8FC7;65535&amp;#xFF0C;&amp;#x8FDB;&amp;#x884C;&amp;#x6253;&amp;#x5370;&amp;#xFF0C;IDEA&amp;#x4F1A;&amp;#x63D0;&amp;#x793A;j">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T08:59:12.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 常量字符串过长">
-<meta name="twitter:description" content="问题出现  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示java: 常量字符串过长。使用javac 进行编译也会有类似的提示">
+<meta name="twitter:description" content="&amp;#x95EE;&amp;#x9898;&amp;#x51FA;&amp;#x73B0;  &amp;#x5728;IDEA&amp;#x4E2D;&amp;#xFF0C;&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x957F;&amp;#x5EA6;&amp;#x8D85;&amp;#x8FC7;65535&amp;#xFF0C;&amp;#x8FDB;&amp;#x884C;&amp;#x6253;&amp;#x5370;&amp;#xFF0C;IDEA&amp;#x4F1A;&amp;#x63D0;&amp;#x793A;j">
 
 
 
@@ -478,10 +478,10 @@
       
 
       
-        <h3 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h3><p>  在IDEA中，字符串长度超过65535，进行打印，IDEA会提示<code>java: 常量字符串过长</code>。使用javac 进行编译也会有类似的提示 <a id="more"></a></p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><h4 id="使用StringBuilder"><a href="#使用StringBuilder" class="headerlink" title="使用StringBuilder"></a>使用StringBuilder</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">sb.append(<span class="string">"String"</span>);</span><br><span class="line">sb.append(<span class="string">"String"</span>);</span><br><span class="line">String str = sb.toString();</span><br><span class="line">String[] parts = str.split(<span class="string">","</span>);</span><br><span class="line">System.out.println(parts.length);</span><br></pre></td></tr></table></figure>
+        <h3 id="&#x95EE;&#x9898;&#x51FA;&#x73B0;"><a href="#&#x95EE;&#x9898;&#x51FA;&#x73B0;" class="headerlink" title="&#x95EE;&#x9898;&#x51FA;&#x73B0;"></a>&#x95EE;&#x9898;&#x51FA;&#x73B0;</h3><p>  &#x5728;IDEA&#x4E2D;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x8D85;&#x8FC7;65535&#xFF0C;&#x8FDB;&#x884C;&#x6253;&#x5370;&#xFF0C;IDEA&#x4F1A;&#x63D0;&#x793A;<code>java: &#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;&#x8FC7;&#x957F;</code>&#x3002;&#x4F7F;&#x7528;javac &#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x4E5F;&#x4F1A;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x63D0;&#x793A; <a id="more"></a></p>
+<h3 id="&#x89E3;&#x51B3;&#x529E;&#x6CD5;"><a href="#&#x89E3;&#x51B3;&#x529E;&#x6CD5;" class="headerlink" title="&#x89E3;&#x51B3;&#x529E;&#x6CD5;"></a>&#x89E3;&#x51B3;&#x529E;&#x6CD5;</h3><h4 id="&#x4F7F;&#x7528;StringBuilder"><a href="#&#x4F7F;&#x7528;StringBuilder" class="headerlink" title="&#x4F7F;&#x7528;StringBuilder"></a>&#x4F7F;&#x7528;StringBuilder</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">sb.append(<span class="string">&quot;String&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;String&quot;</span>);</span><br><span class="line">String str = sb.toString();</span><br><span class="line">String[] parts = str.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">System.out.println(parts.length);</span><br></pre></td></tr></table></figure>
 
-<p>创建了一个对象，会根据实际的存储的内容分配内存，不会受到String在常量池中最大长度的限制<br>通过使用StringBuilder解析大文本和大JSON</p>
+<p>&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x7684;&#x5B58;&#x50A8;&#x7684;&#x5185;&#x5BB9;&#x5206;&#x914D;&#x5185;&#x5B58;&#xFF0C;&#x4E0D;&#x4F1A;&#x53D7;&#x5230;String&#x5728;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x6700;&#x5927;&#x957F;&#x5EA6;&#x7684;&#x9650;&#x5236;<br>&#x901A;&#x8FC7;&#x4F7F;&#x7528;StringBuilder&#x89E3;&#x6790;&#x5927;&#x6587;&#x672C;&#x548C;&#x5927;JSON</p>
 
       
     </div>
@@ -617,7 +617,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -733,7 +733,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

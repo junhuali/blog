@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。">
+  <meta name="description" content="&amp;#x56E0;&amp;#x4E3A;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x9700;&amp;#x8981;&amp;#x4ECE;google&amp;#x4E0B;&amp;#x8F7D;&amp;#x4E1C;&amp;#x897F;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x5728;&amp;#x73B0;&amp;#x5728;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#">
 <meta name="keywords" content="Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="服务器科学上网">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/12/02/server-over-the-wall/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。">
+<meta property="og:description" content="&amp;#x56E0;&amp;#x4E3A;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x9700;&amp;#x8981;&amp;#x4ECE;google&amp;#x4E0B;&amp;#x8F7D;&amp;#x4E1C;&amp;#x897F;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x5728;&amp;#x73B0;&amp;#x5728;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T09:00:36.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="服务器科学上网">
-<meta name="twitter:description" content="因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。">
+<meta name="twitter:description" content="&amp;#x56E0;&amp;#x4E3A;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x9700;&amp;#x8981;&amp;#x4ECE;google&amp;#x4E0B;&amp;#x8F7D;&amp;#x4E1C;&amp;#x897F;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x5728;&amp;#x73B0;&amp;#x5728;&amp;#x7684;&amp;#x73AF;&amp;#x5883;&amp;#">
 
 
 
@@ -478,36 +478,36 @@
       
 
       
-        <p>因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。<a id="more"></a></p>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
-<li>两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4</li>
-<li>privoxy 包</li>
+        <p>&#x56E0;&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x4F7F;&#x7528;&#x7684;&#x9700;&#x8981;&#x4ECE;google&#x4E0B;&#x8F7D;&#x4E1C;&#x897F;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x73B0;&#x5728;&#x7684;&#x73AF;&#x5883;&#x4E0B;&#x662F;&#x65E0;&#x6CD5;&#x4E0B;&#x8F7D;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x6574;&#x7406;&#x4E86;&#x4E00;&#x4E0B;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x670D;&#x52A1;&#x5668;&#x79D1;&#x5B66;&#x4E0A;&#x7F51;&#x3002;<a id="more"></a></p>
+<h3 id="&#x51C6;&#x5907;"><a href="#&#x51C6;&#x5907;" class="headerlink" title="&#x51C6;&#x5907;"></a>&#x51C6;&#x5907;</h3><ul>
+<li>&#x4E24;&#x53F0;vps&#xFF08;&#x4E00;&#x53F0;&#x56FD;&#x5185;&#xFF0C;&#x4E00;&#x53F0;&#x56FD;&#x5916;&#xFF09;&#xFF0C;&#x56FD;&#x5916;&#x7684;&#x53EF;&#x4EE5;&#x5F00;&#x963F;&#x91CC;&#x4E91;&#x6309;&#x65F6;&#x8BA1;&#x8D39;&#x7684;&#xFF0C;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;,&#x6B64;&#x6587;&#x6863;&#x57FA;&#x4E8E;centos7.4</li>
+<li>privoxy &#x5305;</li>
 </ul>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>先用ssh 命令进行服务器socks5 连接接</p>
+<h3 id="&#x5F00;&#x59CB;"><a href="#&#x5F00;&#x59CB;" class="headerlink" title="&#x5F00;&#x59CB;"></a>&#x5F00;&#x59CB;</h3><p>&#x5148;&#x7528;ssh &#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x670D;&#x52A1;&#x5668;socks5 &#x8FDE;&#x63A5;&#x63A5;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -f -N -D bindaddress:port name@server</span><br><span class="line">$ ssh -f -N -D 0.0.0.0:1080 root@45.63.61.77</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>-f<br>输入密码后进入后台模式<br>(Requests ssh to go to background just before command execution.)</li>
-<li>-N<br>不执行远程命令,用于端口转发<br>( Do not execute a remote command. This is useful for just for warding ports (protocol version 2 only).)</li>
-<li>-D<br>socket5代理<br>(Specifies a local “dynamic” application-level port forwarding.Currently the SOCKS4 and SOCKS5 protocols are supported, and ssh will act as a SOCKS server.)</li>
-<li>-L<br>tcp转发<br>(Specifies that the given port on the local (client) host is to be forwarded to the given host and port on the remote side.)</li>
-<li>-C<br>使用数据压缩,网速快时会影响速度<br>(Compression is desirable on modem lines and other slow connections, but will only slow down things on fast networks.The compression algorithm is the same used by gzip)</li>
+<li>-f<br>&#x8F93;&#x5165;&#x5BC6;&#x7801;&#x540E;&#x8FDB;&#x5165;&#x540E;&#x53F0;&#x6A21;&#x5F0F;<br>(Requests ssh to go to background just before command execution.)</li>
+<li>-N<br>&#x4E0D;&#x6267;&#x884C;&#x8FDC;&#x7A0B;&#x547D;&#x4EE4;,&#x7528;&#x4E8E;&#x7AEF;&#x53E3;&#x8F6C;&#x53D1;<br>( Do not execute a remote command. This is useful for just for warding ports (protocol version 2 only).)</li>
+<li>-D<br>socket5&#x4EE3;&#x7406;<br>(Specifies a local &#x201C;dynamic&#x201D; application-level port forwarding.Currently the SOCKS4 and SOCKS5 protocols are supported, and ssh will act as a SOCKS server.)</li>
+<li>-L<br>tcp&#x8F6C;&#x53D1;<br>(Specifies that the given port on the local (client) host is to be forwarded to the given host and port on the remote side.)</li>
+<li>-C<br>&#x4F7F;&#x7528;&#x6570;&#x636E;&#x538B;&#x7F29;,&#x7F51;&#x901F;&#x5FEB;&#x65F6;&#x4F1A;&#x5F71;&#x54CD;&#x901F;&#x5EA6;<br>(Compression is desirable on modem lines and other slow connections, but will only slow down things on fast networks.The compression algorithm is the same used by gzip)</li>
 </ul>
-<p>bindaddress ：指定绑定ip地址<br>port ： 指定侦听端口<br>name： ssh服务器登录名<br>server： ssh服务器地址</p>
-<p>运行完上面的命令就进行socks5连接了<br>可以执行下面的命令查看端口是否打开</p>
+<p>bindaddress &#xFF1A;&#x6307;&#x5B9A;&#x7ED1;&#x5B9A;ip&#x5730;&#x5740;<br>port &#xFF1A; &#x6307;&#x5B9A;&#x4FA6;&#x542C;&#x7AEF;&#x53E3;<br>name&#xFF1A; ssh&#x670D;&#x52A1;&#x5668;&#x767B;&#x5F55;&#x540D;<br>server&#xFF1A; ssh&#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;</p>
+<p>&#x8FD0;&#x884C;&#x5B8C;&#x4E0A;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x5C31;&#x8FDB;&#x884C;socks5&#x8FDE;&#x63A5;&#x4E86;<br>&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#x662F;&#x5426;&#x6253;&#x5F00;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -nltp</span><br></pre></td></tr></table></figure>
 
-<p>如果能看到指定的端口打开(1080端口)就说明正常连接了。</p>
-<h3 id="安装privoxy"><a href="#安装privoxy" class="headerlink" title="安装privoxy"></a>安装privoxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install privoxy  -y <span class="comment"># 使用yum 安装比较方便，也可以使用源码安装</span></span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x80FD;&#x770B;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x7AEF;&#x53E3;&#x6253;&#x5F00;(1080&#x7AEF;&#x53E3;)&#x5C31;&#x8BF4;&#x660E;&#x6B63;&#x5E38;&#x8FDE;&#x63A5;&#x4E86;&#x3002;</p>
+<h3 id="&#x5B89;&#x88C5;privoxy"><a href="#&#x5B89;&#x88C5;privoxy" class="headerlink" title="&#x5B89;&#x88C5;privoxy"></a>&#x5B89;&#x88C5;privoxy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install privoxy  -y <span class="comment"># &#x4F7F;&#x7528;yum &#x5B89;&#x88C5;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6E90;&#x7801;&#x5B89;&#x88C5;</span></span><br></pre></td></tr></table></figure>
 
-<p>安装完成后需要进行配置，否则无法正常访问</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/privoxy/config</span><br><span class="line"><span class="comment"># :783: 找到 783行，去掉前面的注释符号，端口可以随便改</span></span><br><span class="line">$ listen-address 127.0.0.1:8118</span><br><span class="line"><span class="comment">#:1336: 找到 1336行，去掉前面的注释符号，后面的1080端口要对应ss服务里面的配置，要一致</span></span><br><span class="line">$ forward-socks5t / 127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#xFF0C;&#x5426;&#x5219;&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x8BBF;&#x95EE;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/privoxy/config</span><br><span class="line"><span class="comment"># :783: &#x627E;&#x5230; 783&#x884C;&#xFF0C;&#x53BB;&#x6389;&#x524D;&#x9762;&#x7684;&#x6CE8;&#x91CA;&#x7B26;&#x53F7;&#xFF0C;&#x7AEF;&#x53E3;&#x53EF;&#x4EE5;&#x968F;&#x4FBF;&#x6539;</span></span><br><span class="line">$ listen-address 127.0.0.1:8118</span><br><span class="line"><span class="comment">#:1336: &#x627E;&#x5230; 1336&#x884C;&#xFF0C;&#x53BB;&#x6389;&#x524D;&#x9762;&#x7684;&#x6CE8;&#x91CA;&#x7B26;&#x53F7;&#xFF0C;&#x540E;&#x9762;&#x7684;1080&#x7AEF;&#x53E3;&#x8981;&#x5BF9;&#x5E94;ss&#x670D;&#x52A1;&#x91CC;&#x9762;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x8981;&#x4E00;&#x81F4;</span></span><br><span class="line">$ forward-socks5t / 127.0.0.1:1080</span><br></pre></td></tr></table></figure>
 
-<h3 id="修改环境变量开启代理"><a href="#修改环境变量开启代理" class="headerlink" title="修改环境变量开启代理"></a>修改环境变量开启代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /ect/profile</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="comment"># 之后执行source /etc/profile 使配置生效</span></span><br></pre></td></tr></table></figure>
+<h3 id="&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x5F00;&#x542F;&#x4EE3;&#x7406;"><a href="#&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x5F00;&#x542F;&#x4EE3;&#x7406;" class="headerlink" title="&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x5F00;&#x542F;&#x4EE3;&#x7406;"></a>&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x5F00;&#x542F;&#x4EE3;&#x7406;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /ect/profile</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="comment"># &#x4E4B;&#x540E;&#x6267;&#x884C;source /etc/profile &#x4F7F;&#x914D;&#x7F6E;&#x751F;&#x6548;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="启动privoxy、测试"><a href="#启动privoxy、测试" class="headerlink" title="启动privoxy、测试"></a>启动privoxy、测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ privoxy /etc/privoxy/config  <span class="comment">#netstat -ntlp 查看8118端口</span></span><br><span class="line">$ wget www.google.com <span class="comment"># 如果能下载则说明成功</span></span><br></pre></td></tr></table></figure>
+<h3 id="&#x542F;&#x52A8;privoxy&#x3001;&#x6D4B;&#x8BD5;"><a href="#&#x542F;&#x52A8;privoxy&#x3001;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x542F;&#x52A8;privoxy&#x3001;&#x6D4B;&#x8BD5;"></a>&#x542F;&#x52A8;privoxy&#x3001;&#x6D4B;&#x8BD5;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ privoxy /etc/privoxy/config  <span class="comment">#netstat -ntlp &#x67E5;&#x770B;8118&#x7AEF;&#x53E3;</span></span><br><span class="line">$ wget www.google.com <span class="comment"># &#x5982;&#x679C;&#x80FD;&#x4E0B;&#x8F7D;&#x5219;&#x8BF4;&#x660E;&#x6210;&#x529F;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>使用完后记得关闭代理，否则所有流量都会走代理，访问可能会变慢<br>注释掉<code>/etc/profile</code> 内的内容，刷新配置。</p>
+<h3 id="&#x540E;&#x8BB0;"><a href="#&#x540E;&#x8BB0;" class="headerlink" title="&#x540E;&#x8BB0;"></a>&#x540E;&#x8BB0;</h3><p>&#x4F7F;&#x7528;&#x5B8C;&#x540E;&#x8BB0;&#x5F97;&#x5173;&#x95ED;&#x4EE3;&#x7406;&#xFF0C;&#x5426;&#x5219;&#x6240;&#x6709;&#x6D41;&#x91CF;&#x90FD;&#x4F1A;&#x8D70;&#x4EE3;&#x7406;&#xFF0C;&#x8BBF;&#x95EE;&#x53EF;&#x80FD;&#x4F1A;&#x53D8;&#x6162;<br>&#x6CE8;&#x91CA;&#x6389;<code>/etc/profile</code> &#x5185;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5237;&#x65B0;&#x914D;&#x7F6E;&#x3002;</p>
 
       
     </div>
@@ -643,7 +643,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -759,7 +759,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

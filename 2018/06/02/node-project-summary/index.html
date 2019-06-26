@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。">
+  <meta name="description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5728;&amp;#x5199;&amp;#x4E00;&amp;#x4E2A;Node&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#xFF0C;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#x78B0;&amp;#x5230;&amp;#x4E86;&amp;#x4E0D;&amp;#x5C11;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x505A;&amp;#x4E00;&amp;#x4E2A;&amp;#x8">
 <meta name="keywords" content="rabbitmq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node 项目问题总结">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/06/02/node-project-summary/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。">
+<meta property="og:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5728;&amp;#x5199;&amp;#x4E00;&amp;#x4E2A;Node&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#xFF0C;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#x78B0;&amp;#x5230;&amp;#x4E86;&amp;#x4E0D;&amp;#x5C11;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x505A;&amp;#x4E00;&amp;#x4E2A;&amp;#x8">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T09:00:05.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node 项目问题总结">
-<meta name="twitter:description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。">
+<meta name="twitter:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5728;&amp;#x5199;&amp;#x4E00;&amp;#x4E2A;Node&amp;#x7684;&amp;#x9879;&amp;#x76EE;&amp;#xFF0C;&amp;#x9879;&amp;#x76EE;&amp;#x4E2D;&amp;#x78B0;&amp;#x5230;&amp;#x4E86;&amp;#x4E0D;&amp;#x5C11;&amp;#x95EE;&amp;#x9898;&amp;#xFF0C;&amp;#x505A;&amp;#x4E00;&amp;#x4E2A;&amp;#x8">
 
 
 
@@ -478,24 +478,24 @@
       
 
       
-        <p>最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 <a id="more"></a></p>
-<h3 id="RabbitMQ-virtual-hosts-问题"><a href="#RabbitMQ-virtual-hosts-问题" class="headerlink" title="RabbitMQ virtual hosts 问题"></a>RabbitMQ virtual hosts 问题</h3><p>项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错</p>
+        <p>&#x6700;&#x8FD1;&#x5728;&#x5199;&#x4E00;&#x4E2A;Node&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x9879;&#x76EE;&#x4E2D;&#x78B0;&#x5230;&#x4E86;&#x4E0D;&#x5C11;&#x95EE;&#x9898;&#xFF0C;&#x505A;&#x4E00;&#x4E2A;&#x8BB0;&#x5F55;&#x3002; <a id="more"></a></p>
+<h3 id="RabbitMQ-virtual-hosts-&#x95EE;&#x9898;"><a href="#RabbitMQ-virtual-hosts-&#x95EE;&#x9898;" class="headerlink" title="RabbitMQ virtual hosts &#x95EE;&#x9898;"></a>RabbitMQ virtual hosts &#x95EE;&#x9898;</h3><p>&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;RabbitMQ&#xFF0C;&#x6309;&#x7167;&#x5B98;&#x65B9;demo&#x7F16;&#x5199;&#xFF0C;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#x7684;&#x65F6;&#x5019;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#xFF08;&#x6709;&#x79CD;bug&#x53EB;&#x505A;&#x672C;&#x5730;&#x662F;&#x597D;&#x7684;:-D,&#x4F46;&#x662F;&#x5728;&#x94FE;&#x63A5;&#x516C;&#x53F8;&#x7684;MQ&#x7684;&#x65F6;&#x5019;&#x62A5;&#x9519;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq typeerror cannot read property &apos;create channel&apos; of undefined</span><br></pre></td></tr></table></figure>
 
-<p>会碰到上面类似的错误，创建channel的报错。<br>最开始的时候怀疑是自己代码有问题，毕竟第一次用Node(Node 菜鸡一个)；因为多环境，最开始的时候使用开发环境账号进行连接，后面<br>在尝试使用管理员账号登录的时候，发现可以正常连接，还以为是运维把权限配置的有问题（错的其实永远是别人，其实是自己的锅）。<br>最后发现是因为<code>virtual hosts</code>的原因</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">'amqp://admin:123456@localhost'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>&#123; ......</span><br></pre></td></tr></table></figure>
+<p>&#x4F1A;&#x78B0;&#x5230;&#x4E0A;&#x9762;&#x7C7B;&#x4F3C;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x521B;&#x5EFA;channel&#x7684;&#x62A5;&#x9519;&#x3002;<br>&#x6700;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#x6000;&#x7591;&#x662F;&#x81EA;&#x5DF1;&#x4EE3;&#x7801;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x6BD5;&#x7ADF;&#x7B2C;&#x4E00;&#x6B21;&#x7528;Node(Node &#x83DC;&#x9E21;&#x4E00;&#x4E2A;)&#xFF1B;&#x56E0;&#x4E3A;&#x591A;&#x73AF;&#x5883;&#xFF0C;&#x6700;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x8D26;&#x53F7;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#xFF0C;&#x540E;&#x9762;<br>&#x5728;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x7BA1;&#x7406;&#x5458;&#x8D26;&#x53F7;&#x767B;&#x5F55;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D1;&#x73B0;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8FDE;&#x63A5;&#xFF0C;&#x8FD8;&#x4EE5;&#x4E3A;&#x662F;&#x8FD0;&#x7EF4;&#x628A;&#x6743;&#x9650;&#x914D;&#x7F6E;&#x7684;&#x6709;&#x95EE;&#x9898;&#xFF08;&#x9519;&#x7684;&#x5176;&#x5B9E;&#x6C38;&#x8FDC;&#x662F;&#x522B;&#x4EBA;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x9505;&#xFF09;&#x3002;<br>&#x6700;&#x540E;&#x53D1;&#x73B0;&#x662F;&#x56E0;&#x4E3A;<code>virtual hosts</code>&#x7684;&#x539F;&#x56E0;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">&apos;amqp://admin:123456@localhost&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>{ ......</span><br></pre></td></tr></table></figure>
 
-<p>默认的配置如上图所示，其实这个配置会使用默认的<code>virtual hosts</code> <code>/</code>,但是如果配置了其他的<code>virtual hosts</code>，你没有配置就会导致你<br>无法正常的连接。<br>如果你配置的有其他的<code>virtual hosts</code>，那么配置如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">'amqp://admin:123456@localhost/virtual_hosts_name'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>&#123; ......</span><br></pre></td></tr></table></figure>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x914D;&#x7F6E;&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x5176;&#x5B9E;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x4F1A;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;<code>virtual hosts</code> <code>/</code>,&#x4F46;&#x662F;&#x5982;&#x679C;&#x914D;&#x7F6E;&#x4E86;&#x5176;&#x4ED6;&#x7684;<code>virtual hosts</code>&#xFF0C;&#x4F60;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x4F60;<br>&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x7684;&#x8FDE;&#x63A5;&#x3002;<br>&#x5982;&#x679C;&#x4F60;&#x914D;&#x7F6E;&#x7684;&#x6709;&#x5176;&#x4ED6;&#x7684;<code>virtual hosts</code>&#xFF0C;&#x90A3;&#x4E48;&#x914D;&#x7F6E;&#x5982;&#x4E0B;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">&apos;amqp://admin:123456@localhost/virtual_hosts_name&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>{ ......</span><br></pre></td></tr></table></figure>
 
-<p>这个问题耗费了半天的时间找原因，Java中spring 做了封装，只用配置<code>virtual hosts</code>的name就可以了。</p>
-<h3 id="RabbitMQ-message-信息消费问题"><a href="#RabbitMQ-message-信息消费问题" class="headerlink" title="RabbitMQ message 信息消费问题"></a>RabbitMQ message 信息消费问题</h3><p>项目采用node获取信息（主要是消息采集的库采用node开发，暂时还没有Java 的客），传入MQ，Java 服务端进行消费。<br>Java端的同事告诉我得到的都是数字(字节数组)，最后经过查找发现,如下代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ch.sendToQueue(q, <span class="keyword">new</span> Buffer.from(<span class="built_in">JSON</span>.stringify(orders)), &#123;<span class="attr">persistent</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x8017;&#x8D39;&#x4E86;&#x534A;&#x5929;&#x7684;&#x65F6;&#x95F4;&#x627E;&#x539F;&#x56E0;&#xFF0C;Java&#x4E2D;spring &#x505A;&#x4E86;&#x5C01;&#x88C5;&#xFF0C;&#x53EA;&#x7528;&#x914D;&#x7F6E;<code>virtual hosts</code>&#x7684;name&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<h3 id="RabbitMQ-message-&#x4FE1;&#x606F;&#x6D88;&#x8D39;&#x95EE;&#x9898;"><a href="#RabbitMQ-message-&#x4FE1;&#x606F;&#x6D88;&#x8D39;&#x95EE;&#x9898;" class="headerlink" title="RabbitMQ message &#x4FE1;&#x606F;&#x6D88;&#x8D39;&#x95EE;&#x9898;"></a>RabbitMQ message &#x4FE1;&#x606F;&#x6D88;&#x8D39;&#x95EE;&#x9898;</h3><p>&#x9879;&#x76EE;&#x91C7;&#x7528;node&#x83B7;&#x53D6;&#x4FE1;&#x606F;&#xFF08;&#x4E3B;&#x8981;&#x662F;&#x6D88;&#x606F;&#x91C7;&#x96C6;&#x7684;&#x5E93;&#x91C7;&#x7528;node&#x5F00;&#x53D1;&#xFF0C;&#x6682;&#x65F6;&#x8FD8;&#x6CA1;&#x6709;Java &#x7684;&#x5BA2;&#xFF09;&#xFF0C;&#x4F20;&#x5165;MQ&#xFF0C;Java &#x670D;&#x52A1;&#x7AEF;&#x8FDB;&#x884C;&#x6D88;&#x8D39;&#x3002;<br>Java&#x7AEF;&#x7684;&#x540C;&#x4E8B;&#x544A;&#x8BC9;&#x6211;&#x5F97;&#x5230;&#x7684;&#x90FD;&#x662F;&#x6570;&#x5B57;(&#x5B57;&#x8282;&#x6570;&#x7EC4;)&#xFF0C;&#x6700;&#x540E;&#x7ECF;&#x8FC7;&#x67E5;&#x627E;&#x53D1;&#x73B0;,&#x5982;&#x4E0B;&#x4EE3;&#x7801;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ch.sendToQueue(q, <span class="keyword">new</span> Buffer.from(<span class="built_in">JSON</span>.stringify(orders)), {<span class="attr">persistent</span>: <span class="literal">true</span>});</span><br></pre></td></tr></table></figure>
 
-<p>发送到队列的时候会转为Buffer，所以Java 代码获取的时候，不能直接获取字符串，应该用byte[] 去接收</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Byte[] body = <span class="keyword">null</span>;</span><br><span class="line">String message = <span class="keyword">new</span> String(body, <span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure>
+<p>&#x53D1;&#x9001;&#x5230;&#x961F;&#x5217;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x8F6C;&#x4E3A;Buffer&#xFF0C;&#x6240;&#x4EE5;Java &#x4EE3;&#x7801;&#x83B7;&#x53D6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5E94;&#x8BE5;&#x7528;byte[] &#x53BB;&#x63A5;&#x6536;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Byte[] body = <span class="keyword">null</span>;</span><br><span class="line">String message = <span class="keyword">new</span> String(body, <span class="string">&quot;UTF-8&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>这样就能正常解析从node 传输过来的数据。</p>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x80FD;&#x6B63;&#x5E38;&#x89E3;&#x6790;&#x4ECE;node &#x4F20;&#x8F93;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;&#x3002;</p>
 
       
     </div>
@@ -631,7 +631,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -747,7 +747,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="CentOS 7 上安装git 的几种方法。">
+  <meta name="description" content="CentOS 7 &amp;#x4E0A;&amp;#x5B89;&amp;#x88C5;git &amp;#x7684;&amp;#x51E0;&amp;#x79CD;&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS 安装 git">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/11/06/centos-install-git/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="CentOS 7 上安装git 的几种方法。">
+<meta property="og:description" content="CentOS 7 &amp;#x4E0A;&amp;#x5B89;&amp;#x88C5;git &amp;#x7684;&amp;#x51E0;&amp;#x79CD;&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T08:57:07.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 安装 git">
-<meta name="twitter:description" content="CentOS 7 上安装git 的几种方法。">
+<meta name="twitter:description" content="CentOS 7 &amp;#x4E0A;&amp;#x5B89;&amp;#x88C5;git &amp;#x7684;&amp;#x51E0;&amp;#x79CD;&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;">
 
 
 
@@ -478,19 +478,19 @@
       
 
       
-        <p>CentOS 7 上安装git 的几种方法。 <a id="more"></a></p>
-<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><ul>
-<li><p>安装对应的依赖</p>
+        <p>CentOS 7 &#x4E0A;&#x5B89;&#x88C5;git &#x7684;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#x3002; <a id="more"></a></p>
+<h3 id="&#x6E90;&#x7801;&#x5B89;&#x88C5;"><a href="#&#x6E90;&#x7801;&#x5B89;&#x88C5;" class="headerlink" title="&#x6E90;&#x7801;&#x5B89;&#x88C5;"></a>&#x6E90;&#x7801;&#x5B89;&#x88C5;</h3><ul>
+<li><p>&#x5B89;&#x88C5;&#x5BF9;&#x5E94;&#x7684;&#x4F9D;&#x8D56;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line">yum install -y gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>下载源码编译安装</p>
-<h4 id="确保系统git-已经被卸载"><a href="#确保系统git-已经被卸载" class="headerlink" title="确保系统git 已经被卸载"></a>确保系统git 已经被卸载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove -y git(先执行本选项，确保卸载掉git)</span><br></pre></td></tr></table></figure>
+<li><p>&#x4E0B;&#x8F7D;&#x6E90;&#x7801;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;</p>
+<h4 id="&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;git-&#x5DF2;&#x7ECF;&#x88AB;&#x5378;&#x8F7D;"><a href="#&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;git-&#x5DF2;&#x7ECF;&#x88AB;&#x5378;&#x8F7D;" class="headerlink" title="&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;git &#x5DF2;&#x7ECF;&#x88AB;&#x5378;&#x8F7D;"></a>&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;git &#x5DF2;&#x7ECF;&#x88AB;&#x5378;&#x8F7D;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove -y git(&#x5148;&#x6267;&#x884C;&#x672C;&#x9009;&#x9879;&#xFF0C;&#x786E;&#x4FDD;&#x5378;&#x8F7D;&#x6389;git)</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src</span><br><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gz</span><br><span class="line">tar xzf git-2.9.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.9.3</span><br><span class="line">make prefix=/usr/bin/git all</span><br><span class="line">make prefix=/usr/bin/git install</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$PATH</span>:/usr/bin/git/bin"</span> &gt;&gt; /etc/bashrc</span><br><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">git --version (查看是否安装完成)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src</span><br><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gz</span><br><span class="line">tar xzf git-2.9.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.9.3</span><br><span class="line">make prefix=/usr/bin/git all</span><br><span class="line">make prefix=/usr/bin/git install</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export PATH=<span class="variable">$PATH</span>:/usr/bin/git/bin&quot;</span> &gt;&gt; /etc/bashrc</span><br><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">git --version (&#x67E5;&#x770B;&#x662F;&#x5426;&#x5B89;&#x88C5;&#x5B8C;&#x6210;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="rpm-安装（基于CentOS7）"><a href="#rpm-安装（基于CentOS7）" class="headerlink" title="rpm 安装（基于CentOS7）"></a>rpm 安装（基于CentOS7）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release （<span class="comment">#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）</span></span><br><span class="line">rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">yum install git2u</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<h3 id="rpm-&#x5B89;&#x88C5;&#xFF08;&#x57FA;&#x4E8E;CentOS7&#xFF09;"><a href="#rpm-&#x5B89;&#x88C5;&#xFF08;&#x57FA;&#x4E8E;CentOS7&#xFF09;" class="headerlink" title="rpm &#x5B89;&#x88C5;&#xFF08;&#x57FA;&#x4E8E;CentOS7&#xFF09;"></a>rpm &#x5B89;&#x88C5;&#xFF08;&#x57FA;&#x4E8E;CentOS7&#xFF09;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release &#xFF08;<span class="comment">#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch&#xFF09;</span></span><br><span class="line">rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">yum install git2u</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
 
 
       
@@ -627,7 +627,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -743,7 +743,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

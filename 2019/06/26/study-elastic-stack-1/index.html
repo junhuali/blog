@@ -94,18 +94,20 @@
 
 
 
-  <meta name="description" content="&amp;#x7531;&amp;#x4E8E;npm&amp;#x7684;&amp;#x6E90;&amp;#x5728;&amp;#x56FD;&amp;#x5916;&amp;#xFF0C;&amp;#x6240;&amp;#x4EE5;&amp;#x6709;&amp;#x65F6;&amp;#x5019;&amp;#x4F7F;&amp;#x7528;&amp;#x8D77;&amp;#x6765;&amp;#xFF0C;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x901F;&amp;#x5EA6;&amp;#x6781;&amp;#x61">
-<meta name="keywords" content="Node">
+  <meta name="description" content="&amp;#x524D;&amp;#x4E24;&amp;#x5929;&amp;#x5728;&amp;#x6781;&amp;#x5BA2;&amp;#x65F6;&amp;#x95F4;&amp;#x4E70;&amp;#x4E86;Elasticsearch&amp;#x6838;&amp;#x5FC3;&amp;#x6280;&amp;#x672F;&amp;#x4E0E;&amp;#x5B9E;&amp;#x6218;&amp;#x7684;&amp;#x89C6;&amp;#x9891;&amp;#x8BFE;&amp;#x7A0B;&amp;#xFF0C;&amp;#x">
+<meta name="keywords" content="Docker、Elastic">
 <meta property="og:type" content="article">
-<meta property="og:title" content="npm 更换源">
-<meta property="og:url" content="https://blog.searchinfogo.com/2018/05/03/config-npm-registry/index.html">
+<meta property="og:title" content="学习Elastic Stack（一）">
+<meta property="og:url" content="https://blog.searchinfogo.com/2019/06/26/study-elastic-stack-1/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="&amp;#x7531;&amp;#x4E8E;npm&amp;#x7684;&amp;#x6E90;&amp;#x5728;&amp;#x56FD;&amp;#x5916;&amp;#xFF0C;&amp;#x6240;&amp;#x4EE5;&amp;#x6709;&amp;#x65F6;&amp;#x5019;&amp;#x4F7F;&amp;#x7528;&amp;#x8D77;&amp;#x6765;&amp;#xFF0C;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x901F;&amp;#x5EA6;&amp;#x6781;&amp;#x61">
+<meta property="og:description" content="&amp;#x524D;&amp;#x4E24;&amp;#x5929;&amp;#x5728;&amp;#x6781;&amp;#x5BA2;&amp;#x65F6;&amp;#x95F4;&amp;#x4E70;&amp;#x4E86;Elasticsearch&amp;#x6838;&amp;#x5FC3;&amp;#x6280;&amp;#x672F;&amp;#x4E0E;&amp;#x5B9E;&amp;#x6218;&amp;#x7684;&amp;#x89C6;&amp;#x9891;&amp;#x8BFE;&amp;#x7A0B;&amp;#xFF0C;&amp;#x">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-22T08:58:01.892Z">
+<meta property="og:image" content="https://blog.searchinfogo.com/2019/06/26/study-elastic-stack-1/elk-stack-elkb-diagram.png">
+<meta property="og:updated_time" content="2019-06-26T07:20:45.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="npm 更换源">
-<meta name="twitter:description" content="&amp;#x7531;&amp;#x4E8E;npm&amp;#x7684;&amp;#x6E90;&amp;#x5728;&amp;#x56FD;&amp;#x5916;&amp;#xFF0C;&amp;#x6240;&amp;#x4EE5;&amp;#x6709;&amp;#x65F6;&amp;#x5019;&amp;#x4F7F;&amp;#x7528;&amp;#x8D77;&amp;#x6765;&amp;#xFF0C;&amp;#x4F1A;&amp;#x78B0;&amp;#x5230;&amp;#x901F;&amp;#x5EA6;&amp;#x6781;&amp;#x61">
+<meta name="twitter:title" content="学习Elastic Stack（一）">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x4E24;&amp;#x5929;&amp;#x5728;&amp;#x6781;&amp;#x5BA2;&amp;#x65F6;&amp;#x95F4;&amp;#x4E70;&amp;#x4E86;Elasticsearch&amp;#x6838;&amp;#x5FC3;&amp;#x6280;&amp;#x672F;&amp;#x4E0E;&amp;#x5B9E;&amp;#x6218;&amp;#x7684;&amp;#x89C6;&amp;#x9891;&amp;#x8BFE;&amp;#x7A0B;&amp;#xFF0C;&amp;#x">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/2019/06/26/study-elastic-stack-1/elk-stack-elkb-diagram.png">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://blog.searchinfogo.com/2018/05/03/config-npm-registry/">
+  <link rel="canonical" href="https://blog.searchinfogo.com/2019/06/26/study-elastic-stack-1/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>npm 更换源 | Junhua's Blog</title>
+  <title>学习Elastic Stack（一） | Junhua's Blog</title>
   
 
 
@@ -353,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/05/03/config-npm-registry/">
+    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2019/06/26/study-elastic-stack-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Junhua">
@@ -370,7 +372,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">npm 更换源
+          <h1 class="post-title" itemprop="name headline">学习Elastic Stack（一）
 
               
             
@@ -396,24 +398,12 @@
                 
               
 
-              <time title="创建时间：2018-05-03 10:17:09" itemprop="dateCreated datePublished" datetime="2018-05-03T10:17:09+08:00">2018-05-03</time>
+              <time title="创建时间：2019-06-26 13:35:14 / 修改时间：15:20:45" itemprop="dateCreated datePublished" datetime="2019-06-26T13:35:14+08:00">2019-06-26</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-22 16:58:01" itemprop="dateModified" datetime="2019-06-22T16:58:01+08:00">2019-06-22</time>
               
             
           </span>
@@ -449,8 +439,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/05/03/config-npm-registry/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/03/config-npm-registry/" itemprop="commentCount"></span>
+                <a href="/2019/06/26/study-elastic-stack-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/26/study-elastic-stack-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -478,33 +468,23 @@
       
 
       
-        <p>&#x7531;&#x4E8E;npm&#x7684;&#x6E90;&#x5728;&#x56FD;&#x5916;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#xFF0C;&#x4F1A;&#x78B0;&#x5230;&#x901F;&#x5EA6;&#x6781;&#x6162;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x597D;&#x5728;&#x4E00;&#x4E9B;&#x516C;&#x53F8;&#x505A;&#x4E86;&#x6E90;&#x7684;&#x540C;&#x6B65;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x6E90;&#x6765;&#x8FBE;&#x5230;&#x52A0;&#x901F;&#x4E0B;&#x8F7D;&#xFF0C;&#x51CF;&#x5C11;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x3002;<a id="more"></a></p>
-<h3 id="&#x6362;&#x6E90;"><a href="#&#x6362;&#x6E90;" class="headerlink" title="&#x6362;&#x6E90;"></a>&#x6362;&#x6E90;</h3><ul>
-<li><p>&#x4E34;&#x65F6;&#x4F7F;&#x7528;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>&#x6301;&#x4E45;&#x4F7F;&#x7528;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>&#x9A8C;&#x8BC1;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>&#x5B98;&#x65B9;&#x6E90;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
+        <p>&#x524D;&#x4E24;&#x5929;&#x5728;<code>&#x6781;&#x5BA2;&#x65F6;&#x95F4;</code>&#x4E70;&#x4E86;<code>Elasticsearch&#x6838;&#x5FC3;&#x6280;&#x672F;&#x4E0E;&#x5B9E;&#x6218;</code>&#x7684;&#x89C6;&#x9891;&#x8BFE;&#x7A0B;&#xFF0C;&#x5E0C;&#x671B;&#x52A0;&#x6DF1;&#x5BF9;Elastic Stack&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x63D0;&#x5347;&#x81EA;&#x5DF1;&#x7684;&#x80FD;&#x529B;&#x3002;&#x5B9E;&#x9645;&#x7684;&#x5DE5;&#x4F5C;&#x4E2D;&#x4E5F;&#x7528;&#x5230;&#x4E86; ELK&#x8FDB;&#x884C;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x7684;&#x65E5;&#x5FD7;&#x67E5;&#x8BE2;&#x4E0E;&#x5206;&#x6790;&#xFF0C;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x4E86;&#x89E3;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x4F46;&#x662F;&#x66F4;&#x9AD8;&#x9636;&#x7684;&#x5185;&#x5BB9;&#x5E76;&#x4E0D;&#x4E86;&#x89E3;&#x3002;&#x5B66;&#x4E60;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;&#x6700;&#x540E;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x53BB;&#x5B9E;&#x8DF5;&#xFF0C;&#x540C;&#x65F6;&#x505A;&#x4E00;&#x4E9B;&#x8BB0;&#x5F55;&#x8FDB;&#x884C;&#x8F93;&#x51FA;&#x3002;<a id="more"></a></p>
+<p><img src="/2019/06/26/study-elastic-stack-1/elk-stack-elkb-diagram.png" alt="Elastic Stack"></p>
+<h3 id="Elastic-Stack&#x6982;&#x5FF5;"><a href="#Elastic-Stack&#x6982;&#x5FF5;" class="headerlink" title="Elastic Stack&#x6982;&#x5FF5;"></a>Elastic Stack&#x6982;&#x5FF5;</h3><p>&#x9996;&#x5148;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;<code>ELK</code>&#xFF0C;<code>&#x4E3A;&#x4EC0;&#x4E48;&#x662F;Elastic Stack</code>&#xFF0C;<a href="https://www.elastic.co/cn/elk-stack" target="_blank" rel="noopener">What is the ELK Stack? Why, it&#x2019;s the Elastic Stack.</a></p>
+<blockquote>
+<p>So, what is the ELK Stack? &#x201C;ELK&#x201D; is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and analytics engine. Logstash is a server&#x2011;side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a &#x201C;stash&#x201D; like Elasticsearch. Kibana lets users visualize data with charts and graphs in Elasticsearch.<br>The Elastic Stack is the next evolution of the ELK Stack.</p>
+</blockquote>
+<h3 id="&#x5B89;&#x88C5;&#x73AF;&#x5883;"><a href="#&#x5B89;&#x88C5;&#x73AF;&#x5883;" class="headerlink" title="&#x5B89;&#x88C5;&#x73AF;&#x5883;"></a>&#x5B89;&#x88C5;&#x73AF;&#x5883;</h3><p>&#x56E0;&#x4E3A;&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x5B66;&#x4E60;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;docker&#x8FDB;&#x884C;&#x73AF;&#x5883;&#x7684;&#x642D;&#x5EFA;&#xFF0C;&#x4F7F;&#x7528;docker-compose &#x8FDB;&#x884C;&#x642D;&#x5EFA;&#xFF0C;Elastic&#x5B98;&#x65B9;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x5E94;&#x7684;<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html" target="_blank" rel="noopener">&#x811A;&#x672C;</a>&#xFF0C;&#x6781;&#x5BA2;&#x65F6;&#x95F4;&#x4E0A;&#x7684;&#x662F;&#x57FA;&#x4E8E;7.1&#x7248;&#x672C;ES&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x533A;&#x522B;&#x4E0D;&#x662F;&#x5F88;&#x5927;&#x3002;</p>
+<h4 id="&#x8FD0;&#x884C;-docker-compose-&#x547D;&#x4EE4;"><a href="#&#x8FD0;&#x884C;-docker-compose-&#x547D;&#x4EE4;" class="headerlink" title="&#x8FD0;&#x884C; docker-compose &#x547D;&#x4EE4;"></a>&#x8FD0;&#x884C; docker-compose &#x547D;&#x4EE4;</h4><p><code>docker-compose.yml</code> &#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5982;&#x4E0B;</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;2.2&apos;</span><br><span class="line">services:</span><br><span class="line">  es01:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es01</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es01</span><br><span class="line">      - discovery.seed_hosts=es02</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata01:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - 9200:9200</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line">  es02:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es02</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es02</span><br><span class="line">      - discovery.seed_hosts=es01</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata02:/usr/share/elasticsearch/data</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  esdata01:</span><br><span class="line">    driver: local</span><br><span class="line">  esdata02:</span><br><span class="line">    driver: local</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  esnet:</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h3 id="&#x901A;&#x8FC7;-nrm-&#x66F4;&#x6362;&#x6E90;"><a href="#&#x901A;&#x8FC7;-nrm-&#x66F4;&#x6362;&#x6E90;" class="headerlink" title="&#x901A;&#x8FC7; nrm &#x66F4;&#x6362;&#x6E90;"></a>&#x901A;&#x8FC7; nrm &#x66F4;&#x6362;&#x6E90;</h3><p>&#x6700;&#x8FD1;&#x5728;&#x5DE5;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D1;&#x73B0;&#x6DD8;&#x5B9D;&#x7684;&#x6E90;&#xFF0C;&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x4E0B;&#x8F7D;&#xFF0C;&#x4E8E;&#x662F;&#x9700;&#x8981;&#x6362;&#x5176;&#x4ED6;&#x7684;&#x6E90;&#xFF0C;&#x5728;&#x7F51;&#x4E0A;&#x627E;&#x6E90;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x53D1;&#x73B0;&#x4E86;<code>nrm -- NPM registry manager</code>&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x5E2E;&#x4F60;&#x5FEB;&#x901F;&#x7684;&#x5E2E;&#x4F60;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6E90;&#x4E4B;&#x95F4;&#x5207;&#x6362;&#xFF0C;&#x73B0;&#x5728;&#x5305;&#x62EC;<code>npm</code>&#x3001;<code>cnpm</code>&#x3001;<code>taobao</code>&#x3001;<code>nj(nodejitsu)</code>&#x3001;<code>rednpm</code>&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x52A0;&#x5165;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x79C1;&#x6709;&#x6E90;&#x3002;</p>
-<ul>
-<li><p>&#x5B89;&#x88C5;</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>&#x4F8B;&#x5B50;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ nrm ls</span><br><span class="line">* npm -----  https://registry.npmjs.org/</span><br><span class="line">  cnpm ----  http://r.cnpmjs.org/</span><br><span class="line">  taobao --  https://registry.npm.taobao.org/</span><br><span class="line">  nj ------  https://registry.nodejitsu.com/</span><br><span class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</span><br><span class="line">  skimdb -- https://skimdb.npmjs.com/registry</span><br><span class="line"><span class="comment"># &#x4F7F;&#x7528;</span></span><br><span class="line">$ nrm use cnpm  <span class="comment">#switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/</span></span><br></pre></td></tr></table></figure>
+<p>&#x542F;&#x52A8;&#x3001;&#x505C;&#x6B62;&#x3001;&#x9500;&#x6BC1;</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">&#x542F;&#x52A8;</span></span><br><span class="line">docker-compose up</span><br><span class="line"><span class="meta">#</span><span class="bash">&#x505C;&#x6B62;</span></span><br><span class="line">docker-compose down</span><br><span class="line"><span class="meta">#</span><span class="bash">&#x9500;&#x6BC1;</span></span><br><span class="line">docker-compose down -v</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<p>&#x901A;&#x8FC7;nrm&#x6362;&#x6E90;&#xFF0C;&#x4F53;&#x9A8C;&#x4E00;&#x4E0B;&#x5C31;&#x63D0;&#x5347;&#x4E86;&#x5F88;&#x591A;&#xFF0C;&#x5DE5;&#x4F5C;&#x66F4;&#x6709;&#x6548;&#x7387;&#x4E86;&#x3002;</p>
+<h4 id="&#x68C0;&#x67E5;&#x96C6;&#x7FA4;&#x72B6;&#x6001;"><a href="#&#x68C0;&#x67E5;&#x96C6;&#x7FA4;&#x72B6;&#x6001;" class="headerlink" title="&#x68C0;&#x67E5;&#x96C6;&#x7FA4;&#x72B6;&#x6001;"></a>&#x68C0;&#x67E5;&#x96C6;&#x7FA4;&#x72B6;&#x6001;</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl http://127.0.0.1:9200/_cat/health</span><br><span class="line"><span class="meta">#</span><span class="bash">&#x8868;&#x793A;&#x6CA1;&#x6709;&#x6B63;&#x5E38;&#x8FD0;&#x884C;</span></span><br><span class="line">curl: (52) Empty reply from server</span><br><span class="line"><span class="meta">#</span><span class="bash">&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x5982;&#x4E0B;</span></span><br><span class="line">1561531623 06:47:03 docker-cluster green 2 2 4 2 0 0 0 0 - 100.0%</span><br></pre></td></tr></table></figure>
+
+<h4 id="Elasticsearch-Docker-&#x914D;&#x7F6E;&#x4FEE;&#x6539;"><a href="#Elasticsearch-Docker-&#x914D;&#x7F6E;&#x4FEE;&#x6539;" class="headerlink" title="Elasticsearch Docker &#x914D;&#x7F6E;&#x4FEE;&#x6539;"></a>Elasticsearch Docker &#x914D;&#x7F6E;&#x4FEE;&#x6539;</h4><p>Elasticsearch &#x4ECE;<code>/usr/share/elasticsearch/config/</code> &#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E9B;&#x914D;&#x7F6E;&#x5305;&#x62EC; &#x914D;&#x7F6E;Elasticsearch&#x548C;&#x8BBE;&#x7F6E;JVM&#x9009;&#x9879;&#x3002;</p>
+<p>&#x66F4;&#x591A;&#x7684;&#x914D;&#x7F6E;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x67E5;&#x770B;Elastic&#x7684;&#x5B98;&#x7F51;&#xFF0C;&#x6709;&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x4ECB;&#x7ECD;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x5DE5;&#x4F5C;&#x5C31;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x6700;&#x57FA;&#x672C;&#x7684;&#x914D;&#x7F6E;&#x4E86;</p>
 
       
     </div>
@@ -537,7 +517,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/Node/" rel="tag"># Node</a>
+            <a href="/tags/Docker、Elastic/" rel="tag"># Docker、Elastic</a>
           
         </div>
       
@@ -550,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/18/raise-github-clone-speed/" rel="next" title="提升国内服务器Github clone速度的方法">
-                <i class="fa fa-chevron-left"></i> 提升国内服务器Github clone速度的方法
+              <a href="/2019/06/25/centos7-docker-install-tutorial/" rel="next" title="CentOS7 安装Docker">
+                <i class="fa fa-chevron-left"></i> CentOS7 安装Docker
               </a>
             
           </div>
@@ -559,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/03/brew-upgrade-error/" rel="prev" title="brew 升级应用错误">
-                brew 升级应用错误 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -817,7 +793,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#换源"><span class="nav-number">1.</span> <span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-nrm-更换源"><span class="nav-number">2.</span> <span class="nav-text">通过 nrm 更换源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Stack概念"><span class="nav-number">1.</span> <span class="nav-text">Elastic Stack概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装环境"><span class="nav-number">2.</span> <span class="nav-text">安装环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运行-docker-compose-命令"><span class="nav-number">2.1.</span> <span class="nav-text">运行 docker-compose 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查集群状态"><span class="nav-number">2.2.</span> <span class="nav-text">检查集群状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Elasticsearch-Docker-配置修改"><span class="nav-number">2.3.</span> <span class="nav-text">Elasticsearch Docker 配置修改</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -987,9 +963,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "https://blog.searchinfogo.com/2018/05/03/config-npm-registry/";
-    this.page.identifier = "2018/05/03/config-npm-registry/";
-    this.page.title = 'npm 更换源';
+    this.page.url = "https://blog.searchinfogo.com/2019/06/26/study-elastic-stack-1/";
+    this.page.identifier = "2019/06/26/study-elastic-stack-1/";
+    this.page.title = '学习Elastic Stack（一）';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');

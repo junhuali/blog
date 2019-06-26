@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。">
+  <meta name="description" content="&amp;#x5B9A;&amp;#x671F;&amp;#x5347;&amp;#x7EA7;&amp;#x7535;&amp;#x8111;&amp;#x4E0A;&amp;#x7684;&amp;#x5E94;&amp;#x7528;&amp;#xFF0C;&amp;#x662F;&amp;#x4E2A;&amp;#x597D;&amp;#x4E60;&amp;#x60EF;&amp;#xFF0C;&amp;#x907F;&amp;#x514D;&amp;#x5728;&amp;#x9700;&amp;#x8981;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;">
 <meta name="keywords" content="Brew">
 <meta property="og:type" content="article">
 <meta property="og:title" content="brew 升级应用错误">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/05/03/brew-upgrade-error/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。">
+<meta property="og:description" content="&amp;#x5B9A;&amp;#x671F;&amp;#x5347;&amp;#x7EA7;&amp;#x7535;&amp;#x8111;&amp;#x4E0A;&amp;#x7684;&amp;#x5E94;&amp;#x7528;&amp;#xFF0C;&amp;#x662F;&amp;#x4E2A;&amp;#x597D;&amp;#x4E60;&amp;#x60EF;&amp;#xFF0C;&amp;#x907F;&amp;#x514D;&amp;#x5728;&amp;#x9700;&amp;#x8981;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T08:56:10.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="brew 升级应用错误">
-<meta name="twitter:description" content="定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。">
+<meta name="twitter:description" content="&amp;#x5B9A;&amp;#x671F;&amp;#x5347;&amp;#x7EA7;&amp;#x7535;&amp;#x8111;&amp;#x4E0A;&amp;#x7684;&amp;#x5E94;&amp;#x7528;&amp;#xFF0C;&amp;#x662F;&amp;#x4E2A;&amp;#x597D;&amp;#x4E60;&amp;#x60EF;&amp;#xFF0C;&amp;#x907F;&amp;#x514D;&amp;#x5728;&amp;#x9700;&amp;#x8981;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;">
 
 
 
@@ -478,15 +478,15 @@
       
 
       
-        <p>定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。<a id="more"></a></p>
-<h3 id="brew-升级"><a href="#brew-升级" class="headerlink" title="brew 升级"></a>brew 升级</h3><p>最近在使用<code>brew upgrade</code> 的过程中，碰到了一个问题记录一下。</p>
+        <p>&#x5B9A;&#x671F;&#x5347;&#x7EA7;&#x7535;&#x8111;&#x4E0A;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x662F;&#x4E2A;&#x597D;&#x4E60;&#x60EF;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x51FA;&#x73B0;&#x5404;&#x79CD;&#x83AB;&#x540D;&#x5176;&#x5999;&#x7684;&#x95EE;&#x9898;&#x3002;<a id="more"></a></p>
+<h3 id="brew-&#x5347;&#x7EA7;"><a href="#brew-&#x5347;&#x7EA7;" class="headerlink" title="brew &#x5347;&#x7EA7;"></a>brew &#x5347;&#x7EA7;</h3><p>&#x6700;&#x8FD1;&#x5728;&#x4F7F;&#x7528;<code>brew upgrade</code> &#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x78B0;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#x3002;</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: An unexpected error occurred during the `brew link` step</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br><span class="line">Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
 
-<p>如上所示，需要创建<code>/usr/local/Frameworks</code> 目录，但是没有对应的权限</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/local/Frameworks</span><br><span class="line">sudo chown $(whoami):admin /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x4E0A;&#x6240;&#x793A;&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;<code>/usr/local/Frameworks</code> &#x76EE;&#x5F55;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x6743;&#x9650;</p>
+<h3 id="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6CD5;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/local/Frameworks</span><br><span class="line">sudo chown $(whoami):admin /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
 
-<p>手动创建，赋权，之后就可以愉快的<code>brew upgrade</code> 了。</p>
-<p>最后<code>brew cleanup</code> 清理废弃的文件，释放空间。</p>
+<p>&#x624B;&#x52A8;&#x521B;&#x5EFA;&#xFF0C;&#x8D4B;&#x6743;&#xFF0C;&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x6109;&#x5FEB;&#x7684;<code>brew upgrade</code> &#x4E86;&#x3002;</p>
+<p>&#x6700;&#x540E;<code>brew cleanup</code> &#x6E05;&#x7406;&#x5E9F;&#x5F03;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x91CA;&#x653E;&#x7A7A;&#x95F4;&#x3002;</p>
 
       
     </div>
@@ -622,7 +622,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -738,7 +738,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

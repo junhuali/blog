@@ -94,21 +94,21 @@
 
 
 
-  <meta name="description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
+  <meta name="description" content="&amp;#x7F51;&amp;#x7EDC;&amp;#x5B89;&amp;#x5168;&amp;#x8D8A;&amp;#x6765;&amp;#x8D8A;&amp;#x91CD;&amp;#x8981;&amp;#xFF0C;&amp;#x5F88;&amp;#x591A;&amp;#x7684;&amp;#x7F51;&amp;#x7AD9;&amp;#x90FD;&amp;#x5F00;&amp;#x59CB;&amp;#x4F7F;&amp;#x7528;https&amp;#x6765;&amp;#x589E;&amp;#x52A0;&amp;#x7F51;&amp;#x">
 <meta name="keywords" content="Domain">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）">
 <meta property="og:url" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
+<meta property="og:description" content="&amp;#x7F51;&amp;#x7EDC;&amp;#x5B89;&amp;#x5168;&amp;#x8D8A;&amp;#x6765;&amp;#x8D8A;&amp;#x91CD;&amp;#x8981;&amp;#xFF0C;&amp;#x5F88;&amp;#x591A;&amp;#x7684;&amp;#x7F51;&amp;#x7AD9;&amp;#x90FD;&amp;#x5F00;&amp;#x59CB;&amp;#x4F7F;&amp;#x7528;https&amp;#x6765;&amp;#x589E;&amp;#x52A0;&amp;#x7F51;&amp;#x">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180318-120435@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180318-122540@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png">
 <meta property="og:updated_time" content="2019-06-22T08:59:20.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）">
-<meta name="twitter:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
-<meta name="twitter:image" content="https://blog.searchinfogo.com/.com//WX20180318-120435@2x.png">
+<meta name="twitter:description" content="&amp;#x7F51;&amp;#x7EDC;&amp;#x5B89;&amp;#x5168;&amp;#x8D8A;&amp;#x6765;&amp;#x8D8A;&amp;#x91CD;&amp;#x8981;&amp;#xFF0C;&amp;#x5F88;&amp;#x591A;&amp;#x7684;&amp;#x7F51;&amp;#x7AD9;&amp;#x90FD;&amp;#x5F00;&amp;#x59CB;&amp;#x4F7F;&amp;#x7528;https&amp;#x6765;&amp;#x589E;&amp;#x52A0;&amp;#x7F51;&amp;#x">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
 
 
 
@@ -481,37 +481,37 @@
       
 
       
-        <p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。<a id="more"></a></p>
-<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
-<p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
-<p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
-<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
+        <p>&#x7F51;&#x7EDC;&#x5B89;&#x5168;&#x8D8A;&#x6765;&#x8D8A;&#x91CD;&#x8981;&#xFF0C;&#x5F88;&#x591A;&#x7684;&#x7F51;&#x7AD9;&#x90FD;&#x5F00;&#x59CB;&#x4F7F;&#x7528;https&#x6765;&#x589E;&#x52A0;&#x7F51;&#x7AD9;&#x7684;&#x5B89;&#x5168;&#x6027;&#xFF0C;Let&#x2019;s Encrypt &#x6700;&#x8FD1;&#x652F;&#x6301;&#x4E86;&#x6CDB;&#x57DF;&#x540D;SSL<br>&#x8BC1;&#x4E66;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x57DF;&#x540D;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;SSL&#x8BC1;&#x4E66;&#x5C31;&#x641E;&#x5B9A;&#x4E86;&#xFF0C;&#x4E4B;&#x524D;&#x963F;&#x91CC;&#x4E91;&#x7B49;&#x4E91;&#x670D;&#x52A1;&#x5546;&#x63D0;&#x4F9B;&#x4E86;&#x514D;&#x8D39;&#x7684;SSL&#x8BC1;&#x4E66;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x652F;&#x6301;&#x4E00;&#x4E2A;&#x5B50;&#x57DF;&#x540D;&#x4E00;&#x4E2A;&#x8BC1;&#x4E66;&#xFF0C;&#x6700;&#x591A;20&#x4E2A;&#xFF08;&#x4E00;&#x822C;&#x4EBA;&#x5176;&#x5B9E;&#x591F;&#x7528;&#x4E86;&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x7533;&#x8BF7;&#x591A;&#x4E2A;&#x8BC1;&#x4E66;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#xFF0C;&#x800C;&#x4E14;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x4E2A;&#x539F;&#x56E0;&#xFF0C;&#x4E91;&#x670D;&#x52A1;&#x5546;&#x63D0;&#x4F9B;&#x7684;&#x901A;&#x914D;&#x7B26;&#x8BC1;&#x4E66;&#x4EF7;&#x683C;&#x5F88;&#x8D35;&#xFF0C;&#x4F7F;&#x7528;Let&#x2019;s Encrypt&#x8D39;&#x7528;&#x5C31;&#x53EF;&#x4EE5;&#x7701;&#x4E86;&#xFF0C;&#x552F;&#x4E00;&#x9700;&#x8981;&#x505A;&#x7684;&#x5C31;&#x662F;&#x8981;&#x8FDB;&#x884C;&#x8BC1;&#x4E66;&#x7EED;&#x671F;&#x3002;<a id="more"></a></p>
+<h3 id="&#x7533;&#x8BF7;&#x57DF;&#x540D;"><a href="#&#x7533;&#x8BF7;&#x57DF;&#x540D;" class="headerlink" title="&#x7533;&#x8BF7;&#x57DF;&#x540D;"></a>&#x7533;&#x8BF7;&#x57DF;&#x540D;</h3><p>&#x4E3A;&#x4E86;&#x6F14;&#x793A;&#xFF0C;&#x9700;&#x8981;&#x7533;&#x8BF7;&#x4E00;&#x4E2A;&#x514D;&#x8D39;&#x57DF;&#x540D;,&#x6211;&#x662F;&#x5728;freenom&#x7533;&#x8BF7;&#x7684;&#xFF0C;freenom&#x81EA;&#x5E26;&#x7684;&#x6709;&#x514D;&#x8D39;&#x7684;DNS&#x89E3;&#x6790;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x56FD;&#x5185;&#x7684;&#x4F53;&#x9A8C;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x66F4;&#x597D;&#x7684;&#x4F53;&#x9A8C;&#xFF0C;&#x4F7F;&#x7528;dnspod&#x3002;</p>
+<p>&#x514D;&#x8D39;&#x7684;&#x57DF;&#x540D;&#x548C;DNS&#x670D;&#x52A1;&#x5546;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x53BB;&#x9009;&#x62E9;&#xFF0C;&#x4E0A;&#x9762;&#x53EA;&#x662F;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>&#x6211;&#x7533;&#x8BF7;&#x7684;&#x57DF;&#x540D;&#x662F;<code>rubys.ml</code>,&#x53EF;&#x4EE5;&#x514D;&#x8D39;&#x4F7F;&#x7528;&#x4E00;&#x5E74;&#xFF0C;&#x7EED;&#x8D39;&#x7684;&#x8BDD;&#x4E0D;&#x5230;10&#x5200;/&#x5E74;&#x3002;</p>
+<h3 id="&#x914D;&#x7F6E;Let&#x2019;s-Encrypt-&#x5355;&#x57DF;&#x540D;"><a href="#&#x914D;&#x7F6E;Let&#x2019;s-Encrypt-&#x5355;&#x57DF;&#x540D;" class="headerlink" title="&#x914D;&#x7F6E;Let&#x2019;s Encrypt &#x5355;&#x57DF;&#x540D;"></a>&#x914D;&#x7F6E;Let&#x2019;s Encrypt &#x5355;&#x57DF;&#x540D;</h3><p>&#x9996;&#x5148;&#x8BBF;&#x95EE;<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let&#x2019;s Cncrypt&#x5B98;&#x7F51;</a>&#xFF0C;<code>Get Started</code>&#xFF0C;&#x7136;&#x540E;&#x4F1A;&#x63D0;&#x4F9B;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;<code>With Shell Access</code>&#x548C;<code>Without Shell Access</code>&#xFF0C;</p>
 <ul>
-<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="/.com//WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
+<li><p>With Shell Access(&#x5B98;&#x65B9;&#x63A8;&#x8350;&#x901A;&#x8FC7;shell&#x8FDB;&#x884C;&#x90E8;&#x7F72;)<br>&#x4F7F;&#x7528;<code>Certbot ACME</code>&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x8BC1;&#x4E66;&#x9881;&#x53D1;&#x548C;&#x5B89;&#x88C5;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x505C;&#x673A;&#xFF0C;&#x5B83;&#x5F88;&#x5BB9;&#x6613;&#x4F7F;&#x7528;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x591A;&#x79CD;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x5E76;&#x4E14;&#x5177;&#x6709;&#x51FA;&#x8272;&#x7684;&#x6587;&#x6863;&#x3002;<br><img src="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>&#x8BBF;&#x95EE;<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,&#x9009;&#x62E9;&#x81EA;&#x5DF1;&#x4F7F;&#x7528;&#x7684;&#x670D;&#x52A1;&#x5668;&#x548C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;&#x6709;&#x81EA;&#x52A8;&#x5316;&#x548C;&#x9AD8;&#x7EA7;&#x4E24;&#x79CD;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x3002;&#x8FD9;&#x91CC;&#x9009;&#x62E9;&#x81EA;&#x52A8;&#x5316;&#x3002;</p>
 </li>
-<li><p>安装系统扩展包</p>
+<li><p>&#x5B89;&#x88C5;&#x7CFB;&#x7EDF;&#x6269;&#x5C55;&#x5305;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>安装certbot</p>
+<li><p>&#x5B89;&#x88C5;certbot</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>运行certbot插件生成证书</p>
+<li><p>&#x8FD0;&#x884C;certbot&#x63D2;&#x4EF6;&#x751F;&#x6210;&#x8BC1;&#x4E66;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p><img src="/.com//WX20180318-122540@2x.png" alt="certbot"></p>
+<p><img src="/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
 <ul>
-<li>重启nginx<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<li>&#x91CD;&#x542F;nginx<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
-<p>增加自动续期</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
+<p>&#x8BBF;&#x95EE;<a href="www.rubys.ml">www.rubys.ml</a>,&#x53D1;&#x73B0;&#x94FE;&#x63A5;&#x81EA;&#x52A8;&#x5B9A;&#x5411;&#x5230;<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
+<p>&#x589E;&#x52A0;&#x81EA;&#x52A8;&#x7EED;&#x671F;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">&apos;import random; import time; time.sleep(random.random() * 3600)&apos;</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
 
-<p>上面的方法是单域名证书的创建</p>
-<h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x5355;&#x57DF;&#x540D;&#x8BC1;&#x4E66;&#x7684;&#x521B;&#x5EFA;</p>
+<h3 id="&#x914D;&#x7F6E;Let&#x2019;s-Encrypt-&#x6CDB;&#x57DF;&#x540D;"><a href="#&#x914D;&#x7F6E;Let&#x2019;s-Encrypt-&#x6CDB;&#x57DF;&#x540D;" class="headerlink" title="&#x914D;&#x7F6E;Let&#x2019;s Encrypt &#x6CDB;&#x57DF;&#x540D;"></a>&#x914D;&#x7F6E;Let&#x2019;s Encrypt &#x6CDB;&#x57DF;&#x540D;</h3><p>&#x5982;&#x679C;&#x914D;&#x7F6E;&#x6CDB;&#x57DF;&#x540D;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x4E00;&#x4E2A; <code>Certbot&apos;s DNS plugins</code> &#x63D2;&#x4EF6;<br>&#x76EE;&#x524D;&#x7684;&#x4EE3;&#x7801;&#x8FD8;&#x4E0D;&#x591F;&#x5B8C;&#x5584;&#xFF0C;&#x76EE;&#x524D;&#x6839;&#x636E;&#x6587;&#x6863;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x53EA;&#x652F;&#x6301;&#xFF0C;&#x901A;&#x8FC7;Docker &#x5B89;&#x88C5;&#xFF0C;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x6027;&#x83B7;&#x53D6;&#x4E0B;&#x9762;&#x7684;&#x670D;&#x52A1;&#x5546;&#x7684;&#x652F;&#x6301;</p>
 <ul>
 <li>certbot-dns-cloudflare</li>
 <li>certbot-dns-cloudxns</li>
@@ -524,8 +524,8 @@
 <li>certbot-dns-rfc2136</li>
 <li>certbot-dns-route53</li>
 </ul>
-<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
-<p>未完待续。。。</p>
+<p>&#x76EE;&#x524D;&#x652F;&#x6301;&#x7684;&#x4E91;&#x670D;&#x52A1;&#x5546;&#x8FD8;&#x4E0D;&#x591A;<br>&#x963F;&#x91CC;&#x4E91;&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x811A;&#x672C;<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>&#x4ECE;&#x4E91;&#x670D;&#x52A1;&#x5546;&#x90A3;&#x91CC;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;APIKey&#xFF0C;APISecret&#xFF0C;&#x586B;&#x5165;&#x811A;&#x672C;,&#x5177;&#x4F53;&#x53C2;&#x8003;&#x4E0A;&#x9762;&#x5730;&#x5740;&#x4E2D;&#x7684;&#x6587;&#x6863;&#x3002;</p>
+<p>&#x672A;&#x5B8C;&#x5F85;&#x7EED;&#x3002;&#x3002;&#x3002;</p>
 
       
     </div>
@@ -661,7 +661,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -777,7 +777,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

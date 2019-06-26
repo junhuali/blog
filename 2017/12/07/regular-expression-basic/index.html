@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下GitHub，选择了code4craft的webmagic作为项目的基础组件。">
+  <meta name="description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x9879;&amp;#x76EE;&amp;#x9700;&amp;#x8981;&amp;#x722C;&amp;#x53D6;&amp;#x4E00;&amp;#x4E9B;&amp;#x7F51;&amp;#x7AD9;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#xFF0C;&amp;#x4E8E;&amp;#x662F;&amp;#x6211;&amp;#x5F00;&amp;#x59CB;&amp;#x4E86;&amp;#x722C;&amp;#x866B;&amp;#x751F;">
 <meta name="keywords" content="Regular">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式基础知识总结">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/12/07/regular-expression-basic/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下GitHub，选择了code4craft的webmagic作为项目的基础组件。">
+<meta property="og:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x9879;&amp;#x76EE;&amp;#x9700;&amp;#x8981;&amp;#x722C;&amp;#x53D6;&amp;#x4E00;&amp;#x4E9B;&amp;#x7F51;&amp;#x7AD9;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#xFF0C;&amp;#x4E8E;&amp;#x662F;&amp;#x6211;&amp;#x5F00;&amp;#x59CB;&amp;#x4E86;&amp;#x722C;&amp;#x866B;&amp;#x751F;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-22T09:00:31.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式基础知识总结">
-<meta name="twitter:description" content="最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下GitHub，选择了code4craft的webmagic作为项目的基础组件。">
+<meta name="twitter:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x9879;&amp;#x76EE;&amp;#x9700;&amp;#x8981;&amp;#x722C;&amp;#x53D6;&amp;#x4E00;&amp;#x4E9B;&amp;#x7F51;&amp;#x7AD9;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#xFF0C;&amp;#x4E8E;&amp;#x662F;&amp;#x6211;&amp;#x5F00;&amp;#x59CB;&amp;#x4E86;&amp;#x722C;&amp;#x866B;&amp;#x751F;">
 
 
 
@@ -478,9 +478,9 @@
       
 
       
-        <p>最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch<br>（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下<br>GitHub，选择了<a href="https://github.com/code4craft" target="_blank" rel="noopener">code4craft</a>的<a href="https://github.com/code4craft/webmagic" target="_blank" rel="noopener">webmagic</a><br>作为项目的基础组件。<a id="more"></a></p>
-<p>对于爬虫来说，数据的获取是基本，获取到数据后需要进行数据清洗之后入库，XPath、正则表达式就是获取<br>这些数据的利器，所以我们只要掌握这些技能就能很好的获取到我们需要的数据。</p>
-<p>[0-9]这种形式的正则表达式称作字符组、字符集。<br>\d 字符组简写。<br>(.) 匹配任意字符，通配符，一般不匹配行起始符。</p>
+        <p>&#x6700;&#x8FD1;&#x9879;&#x76EE;&#x9700;&#x8981;&#x722C;&#x53D6;&#x4E00;&#x4E9B;&#x7F51;&#x7AD9;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4E8E;&#x662F;&#x6211;&#x5F00;&#x59CB;&#x4E86;&#x722C;&#x866B;&#x751F;&#x6DAF;&#x3002;&#x4EE5;&#x524D;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x73A9;&#x8FC7;&#x4E00;&#x4E9B;&#x722C;&#x866B;&#xFF0C;&#x4E86;&#x89E3;&#x8FC7;nutch<br>&#xFF08;&#x5206;&#x5E03;&#x5F0F;&#x722C;&#x866B;&#xFF09;&#xFF0C;Python&#x4E0B;&#x7684;scrapy&#x7B49;&#x722C;&#x866B;&#x9879;&#x76EE;&#x3002;&#x56E0;&#x4E3A;&#x516C;&#x53F8;&#x7684;&#x6280;&#x672F;&#x6808;&#x90FD;&#x662F;&#x57FA;&#x4E8E;Java&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x7B80;&#x5355;&#x7684;&#x770B;&#x4E86;&#x4E0B;<br>GitHub&#xFF0C;&#x9009;&#x62E9;&#x4E86;<a href="https://github.com/code4craft" target="_blank" rel="noopener">code4craft</a>&#x7684;<a href="https://github.com/code4craft/webmagic" target="_blank" rel="noopener">webmagic</a><br>&#x4F5C;&#x4E3A;&#x9879;&#x76EE;&#x7684;&#x57FA;&#x7840;&#x7EC4;&#x4EF6;&#x3002;<a id="more"></a></p>
+<p>&#x5BF9;&#x4E8E;&#x722C;&#x866B;&#x6765;&#x8BF4;&#xFF0C;&#x6570;&#x636E;&#x7684;&#x83B7;&#x53D6;&#x662F;&#x57FA;&#x672C;&#xFF0C;&#x83B7;&#x53D6;&#x5230;&#x6570;&#x636E;&#x540E;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x6E05;&#x6D17;&#x4E4B;&#x540E;&#x5165;&#x5E93;&#xFF0C;XPath&#x3001;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5C31;&#x662F;&#x83B7;&#x53D6;<br>&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x7684;&#x5229;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EA;&#x8981;&#x638C;&#x63E1;&#x8FD9;&#x4E9B;&#x6280;&#x80FD;&#x5C31;&#x80FD;&#x5F88;&#x597D;&#x7684;&#x83B7;&#x53D6;&#x5230;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>[0-9]&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x79F0;&#x4F5C;&#x5B57;&#x7B26;&#x7EC4;&#x3001;&#x5B57;&#x7B26;&#x96C6;&#x3002;<br>\d &#x5B57;&#x7B26;&#x7EC4;&#x7B80;&#x5199;&#x3002;<br>(.) &#x5339;&#x914D;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#xFF0C;&#x901A;&#x914D;&#x7B26;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x5339;&#x914D;&#x884C;&#x8D77;&#x59CB;&#x7B26;&#x3002;</p>
 
       
     </div>
@@ -607,7 +607,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -723,7 +723,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
