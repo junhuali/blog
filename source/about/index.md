@@ -11,4 +11,4 @@ comments: false
 
 - Java 开发工程师（4年工作经验）
 
-- 邮箱 <mailto:junhuali.dev@gmail.com>
+- 邮箱 <a href = "mailto:junhuali.dev@gmail.com">junhuali.dev@gmail.com</a>
