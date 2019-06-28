@@ -1748,6 +1748,7 @@ pre .javascript .function {
 }
 .links-of-author {
   margin-top: 20px;
+  text-align: center;
 }
 .links-of-author a,
 .links-of-author span.exturl {
@@ -1767,7 +1768,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e96bc9;
+  background: #8a0aaa;
 }
 .feed-link,
 .chat {
