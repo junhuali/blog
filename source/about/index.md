@@ -5,10 +5,11 @@ comments: false
 ---
 
 
-### 自我介绍
+### 关于我
 
 - 目前就职于一家物联网公司，从事供应链金融开发工作。
+- Java 开发工程师（5年工作经验）
+- 技能：熟悉Java开发、Java Web开发、Linux、分布式服务开发、Docker、Elastic Stack
 
-- Java 开发工程师（4年工作经验）
-
-- 邮箱 <a href = "mailto:junhuali.dev@gmail.com">junhuali.dev@gmail.com</a>
+### 关于博客
+博客创建于2017年9月，博客的目的是记录自己在开发和生活中的问题，希望自己能坚持下去，不要荒废。
