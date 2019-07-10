@@ -3,7 +3,7 @@ title: 学习Elastic Stack（二）
 date: 2019-06-27 09:01:53
 categories: Linux
 tags: Docker、Elastic
-visible: hide
+#visible: hide
 ---
 Elastic官方提供了Elastic Stack 和 相关产品的[文档](https://www.elastic.co/guide/index.html)，而且提供了中文的文档，[`《Elasticsearch 权威指南》中文版`](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html),不过这边书是基于Elasticsearch 2.x版本的，可能有些过时。Elasticsearch需要先了解基本概念一些常规操作`CRUD`。
 
