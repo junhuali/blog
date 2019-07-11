@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;DevOps DevOps&amp;#xFF08;&amp;#x82F1;&amp;#x6587;Development&amp;#x548C;Operations&amp;#x7684;&amp;#x7EC4;&amp;#x5408;&amp;#xFF09;&amp;#x662F;&amp;#x4E00;&amp;#x7EC4;&amp;#x8FC7;&amp;#x7A0B;&amp;#x3001;&amp;#x65B9;&amp;#x6CD5;&amp;#x4E0E;&amp;#x7CF">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DevOps实践1:基本概念和环境配置">
+<meta property="og:url" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/index.html">
+<meta property="og:site_name" content="Junhua&#39;s Blog">
+<meta property="og:description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;DevOps DevOps&amp;#xFF08;&amp;#x82F1;&amp;#x6587;Development&amp;#x548C;Operations&amp;#x7684;&amp;#x7EC4;&amp;#x5408;&amp;#xFF09;&amp;#x662F;&amp;#x4E00;&amp;#x7EC4;&amp;#x8FC7;&amp;#x7A0B;&amp;#x3001;&amp;#x65B9;&amp;#x6CD5;&amp;#x4E0E;&amp;#x7CF">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/191800078ffdfe660fb3.jpeg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/191500078c0b39a29f95.jpeg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/1916000764d774a3eee4.jpeg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/191700078c8d4238617c.jpeg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/191b000762026287366b.jpeg">
+<meta property="og:updated_time" content="2019-06-22T08:58:21.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DevOps实践1:基本概念和环境配置">
+<meta name="twitter:description" content="&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;DevOps DevOps&amp;#xFF08;&amp;#x82F1;&amp;#x6587;Development&amp;#x548C;Operations&amp;#x7684;&amp;#x7EC4;&amp;#x5408;&amp;#xFF09;&amp;#x662F;&amp;#x4E00;&amp;#x7EC4;&amp;#x8FC7;&amp;#x7A0B;&amp;#x3001;&amp;#x65B9;&amp;#x6CD5;&amp;#x4E0E;&amp;#x7CF">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Junhua's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>DevOps实践1:基本概念和环境配置 | Junhua's Blog</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?856b5e9d05d5a0661908b7854f41d8d7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Junhua's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junhua">
+      <meta itemprop="description" content="Done is better than perfect.">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junhua's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DevOps实践1:基本概念和环境配置
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-26 15:14:03" itemprop="dateCreated datePublished" datetime="2018-02-26T15:14:03+08:00">2018-02-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-22 16:58:21" itemprop="dateModified" datetime="2019-06-22T16:58:21+08:00">2019-06-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/02/26/devops-1-environmental-configuration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/26/devops-1-environmental-configuration/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="&#x4EC0;&#x4E48;&#x662F;DevOps"><a href="#&#x4EC0;&#x4E48;&#x662F;DevOps" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;DevOps"></a>&#x4EC0;&#x4E48;&#x662F;DevOps</h3><blockquote>
+<p>DevOps&#xFF08;&#x82F1;&#x6587;Development&#x548C;Operations&#x7684;&#x7EC4;&#x5408;&#xFF09;&#x662F;&#x4E00;&#x7EC4;&#x8FC7;&#x7A0B;&#x3001;&#x65B9;&#x6CD5;&#x4E0E;&#x7CFB;&#x7EDF;&#x7684;&#x7EDF;&#x79F0;&#xFF0C;&#x7528;&#x4E8E;&#x4FC3;&#x8FDB;&#x5F00;&#x53D1;&#xFF08;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;/&#x8F6F;&#x4EF6;&#x5DE5;&#x7A0B;&#xFF09;&#x3001;&#x6280;&#x672F;&#x8FD0;&#x8425;&#x548C;&#x8D28;&#x91CF;&#x4FDD;&#x969C;&#xFF08;QA&#xFF09;&#x90E8;&#x95E8;&#x4E4B;&#x95F4;&#x7684;&#x6C9F;&#x901A;&#x3001;&#x534F;&#x4F5C;&#x4E0E;&#x6574;&#x5408;&#x3002;&#x5B83;&#x7684;&#x51FA;&#x73B0;&#x662F;&#x7531;&#x4E8E;&#x8F6F;&#x4EF6;&#x884C;&#x4E1A;&#x65E5;&#x76CA;&#x6E05;&#x6670;&#x5730;&#x8BA4;&#x8BC6;&#x5230;&#xFF1A;&#x4E3A;&#x4E86;&#x6309;&#x65F6;&#x4EA4;&#x4ED8;&#x8F6F;&#x4EF6;&#x4EA7;&#x54C1;&#x548C;&#x670D;&#x52A1;&#xFF0C;&#x5F00;&#x53D1;&#x548C;&#x8FD0;&#x8425;&#x5DE5;&#x4F5C;&#x5FC5;&#x987B;&#x7D27;&#x5BC6;&#x5408;&#x4F5C;&#x3002;<a id="more"></a></p>
+</blockquote>
+<p><img src="/2018/02/26/devops-1-environmental-configuration/v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg" alt><br>&#x6211;&#x8BA4;&#x4E3A;DevOps&#x66F4;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x79CD;&#x5DE5;&#x7A0B;&#x5E08;&#x6587;&#x5316;&#xFF0C;&#x4FC3;&#x8FDB;&#x7814;&#x53D1;&#x3001;&#x6D4B;&#x8BD5;&#x548C;&#x8FD0;&#x7EF4;&#x4E4B;&#x95F4;&#x7684;&#x6C9F;&#x901A;&#x548C;&#x95ED;&#x73AF;&#x534F;&#x4F5C;&#xFF0C;&#x5171;&#x540C;&#x8FBE;&#x6210;&#x4E1A;&#x52A1;&#x76EE;&#x6807;&#x3002;&#x540C;&#x65F6;&#x9700;&#x8981;&#x76F8;&#x5E94;&#x7684;&#x6D41;&#x7A0B;&#x548C;&#x5DE5;&#x5177;&#x53BB;&#x914D;&#x5408;&#xFF0C;&#x5E76;&#x7B80;&#x5316;&#x5DE5;&#x4F5C;&#xFF0C;&#x63D0;&#x5347;&#x6548;&#x7387;&#x3002;</p>
+<h3 id="DevOps&#x5404;&#x4E2A;&#x9636;&#x6BB5;"><a href="#DevOps&#x5404;&#x4E2A;&#x9636;&#x6BB5;" class="headerlink" title="DevOps&#x5404;&#x4E2A;&#x9636;&#x6BB5;"></a>DevOps&#x5404;&#x4E2A;&#x9636;&#x6BB5;</h3><ol>
+<li>&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#xFF1A;&#x6D41;&#x7A0B;&#x5316;<br>&#x57FA;&#x4E8E;Jenkins&#x548C;Docker&#x8FDB;&#x884C;&#x5B9E;&#x65BD;&#xFF0C;&#x80FD;&#x591F;&#x521D;&#x6B65;&#x5C06;&#x6301;&#x7EED;&#x6784;&#x5EFA;&#x3001;&#x6301;&#x7EED;&#x90E8;&#x7F72;&#x3001;&#x6301;&#x7EED;&#x53D1;&#x5E03;&#x8FDE;&#x63A5;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x51CF;&#x5C11;&#x624B;&#x5DE5;&#x914D;&#x7F6E;&#xFF0C;&#x63D0;&#x5347;&#x6548;&#x7387;&#xFF08;&#x57FA;&#x4E8E;&#x672C;&#x5730;&#x73AF;&#x5883;&#x8FDB;&#x884C;&#x5B9E;&#x8DF5;&#xFF0C;&#x5C3D;&#x53EF;&#x80FD;&#x6D4B;&#x8BD5;&#x51FA;&#x95EE;&#x9898;&#xFF0C;&#x4E3A;&#x7EBF;&#x4E0A;&#x73AF;&#x5883;&#x505A;&#x51C6;&#x5907;&#xFF09;&#x3002;</li>
+<li>&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#xFF1A;&#x81EA;&#x52A8;&#x5316;&#x670D;&#x52A1;&#xFF08;&#x90E8;&#x5206;&#xFF09;<br>&#x57FA;&#x4E8E;&#x963F;&#x91CC;&#x4E91;EDAS&#xFF0C;&#x57FA;&#x672C;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x7684;&#x670D;&#x52A1;&#x5168;&#x90E8;&#x90E8;&#x7F72;&#x5728;&#x963F;&#x91CC;&#x4E91;&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x963F;&#x91CC;&#x4E91;&#x7684;&#x670D;&#x52A1;&#x4E3A;&#x7EBF;&#x4E0A;&#x7684;&#x5E94;&#x7528;&#x63D0;&#x4F9B;&#x8FD0;&#x7EF4;&#x3001;&#x53D1;&#x5E03;&#x3001;&#x56DE;&#x6EDA;&#x3001;&#x76D1;&#x63A7;&#x3001;&#x8BCA;&#x65AD;&#x7B49;&#xFF1B;&#x6B64;&#x9636;&#x6BB5;&#x51C6;&#x5907;&#x5C06;&#x90E8;&#x5206;&#x975E;&#x6838;&#x5FC3;&#x670D;&#x52A1;&#x8FDB;&#x884C;DevOps&#x5316;&#xFF1B;&#x540C;&#x65F6;&#x5F15;&#x5165;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#xFF0C;UI&#x81EA;&#x52A8;&#x5316;&#x3001;&#x63A5;&#x53E3;&#x81EA;&#x52A8;&#x5316;&#xFF0C;&#x63D0;&#x9AD8;&#x6D4B;&#x8BD5;&#x6548;&#x7387;&#x3002;</li>
+<li>&#x7B2C;&#x4E09;&#x9636;&#x6BB5;&#xFF1A;&#x667A;&#x80FD;&#x5316;<br>&#x6839;&#x636E;&#x5B9E;&#x9645;&#x7684;&#x4E1A;&#x52A1;&#x60C5;&#x51B5;&#xFF0C;&#x901A;&#x8FC7;DevOps&#x63D0;&#x5347;&#x5F00;&#x53D1;&#x3001;&#x6D4B;&#x8BD5;&#x3001;&#x8FD0;&#x7EF4;&#x6548;&#x7387;</li>
+</ol>
+<p><img src="/2018/02/26/devops-1-environmental-configuration/191800078ffdfe660fb3.jpeg" alt="&#x5982;&#x4F55;&#x4E00;&#x6B65;&#x6B65;&#x5B9E;&#x73B0;DevOps"><br><img src="/2018/02/26/devops-1-environmental-configuration/191500078c0b39a29f95.jpeg" alt="CI/CD"><br><img src="/2018/02/26/devops-1-environmental-configuration/1916000764d774a3eee4.jpeg" alt="&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;"><br><img src="/2018/02/26/devops-1-environmental-configuration/191700078c8d4238617c.jpeg" alt="&#x6301;&#x7EED;&#x96C6;&#x6210;"><br><img src="/2018/02/26/devops-1-environmental-configuration/191b000762026287366b.jpeg" alt="&#x5FAE;&#x670D;&#x52A1;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;"></p>
+<h3 id="&#x5DE5;&#x5177;&#x8BF4;&#x660E;"><a href="#&#x5DE5;&#x5177;&#x8BF4;&#x660E;" class="headerlink" title="&#x5DE5;&#x5177;&#x8BF4;&#x660E;"></a>&#x5DE5;&#x5177;&#x8BF4;&#x660E;</h3><p>&#x76EE;&#x524D;&#x5904;&#x4E8E;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#xFF0C;&#x5E0C;&#x671B;&#x901A;&#x8FC7;&#x76F8;&#x5E94;&#x7684;&#x5DE5;&#x5177;&#x94FE;&#x63D0;&#x5347;&#x5F00;&#x53D1;&#x7684;&#x6548;&#x7387;&#xFF0C;&#x8FDB;&#x884C;&#x6301;&#x7EED;&#x6784;&#x5EFA;&#x3001;&#x6301;&#x7EED;&#x90E8;&#x7F72;&#xFF08;dev&#x3001;test&#x4E24;&#x4E2A;&#x73AF;&#x5883;&#xFF09;&#xFF0C;&#x540C;&#x65F6;&#x5728;&#x7EBF;&#x4E0B;&#x73AF;&#x5883;&#x8FDB;&#x884C;&#x5B9E;&#x9A8C;&#x3002;<br>&#x6240;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x8F6F;&#x4EF6;&#x548C;&#x5DE5;&#x5177;:</p>
+<ul>
+<li>Jenkins</li>
+<li>Dokcer</li>
+<li>IDEA</li>
+<li>Git<br>&#x4E3B;&#x8981;&#x662F;&#x4E0A;&#x9762;&#x51E0;&#x79CD;&#x5DE5;&#x5177;&#xFF0C;&#x5C3D;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x5C11;&#x91CF;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x51CF;&#x5C11;&#x5F00;&#x53D1;&#x3001;&#x6D4B;&#x8BD5;&#x3001;&#x8FD0;&#x7EF4;&#x7684;&#x5B66;&#x4E60;&#x538B;&#x529B;&#xFF0C;&#x65B9;&#x4FBF;&#x5FEB;&#x901F;&#x4E0A;&#x624B;&#xFF0C;&#x540C;&#x65F6;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x5176;&#x4ED6;&#x8F6F;&#x4EF6;&#x5305;&#x4F1A;&#x5728;&#x6587;&#x6863;&#x91CC;&#x9762;&#x5217;&#x51FA;&#x3002;</li>
+</ul>
+<h3 id="Docker-&#x73AF;&#x5883;&#x914D;&#x7F6E;"><a href="#Docker-&#x73AF;&#x5883;&#x914D;&#x7F6E;" class="headerlink" title="Docker &#x73AF;&#x5883;&#x914D;&#x7F6E;"></a>Docker &#x73AF;&#x5883;&#x914D;&#x7F6E;</h3><p>&#x56E0;&#x4E3A;&#x4F17;&#x6240;&#x5468;&#x77E5;&#x7684;&#x539F;&#x56E0;&#xFF0C;Docker&#x7684;&#x4E0B;&#x8F7D;&#x901F;&#x5EA6;&#x5728;&#x56FD;&#x5185;&#x4E0B;&#x8F7D;&#x901F;&#x5EA6;&#x6BD4;&#x8F83;&#x6162;&#xFF0C;&#x6240;&#x4EE5;&#x91C7;&#x7528;&#x955C;&#x50CF;&#x5730;&#x5740;&#x8FDB;&#x884C;&#x5B89;&#x88C5;&#x3002;</p>
+<ul>
+<li>Windows &#x73AF;&#x5883;</li>
+</ul>
+<p>Docker for Windows &#x5728;Windows&#x4E0A;&#x8FD0;&#x884C;Docker&#x3002;&#x7CFB;&#x7EDF;&#x8981;&#x6C42;&#xFF0C;Windows10x64&#x4F4D;&#xFF0C;&#x652F;&#x6301;Hyper-V&#x3002;<br><code>https://dn-dao-github-mirror.qbox.me/docker/install/windows/InstallDocker.msi</code><br>&#x53C2;&#x8003;&#x2019;<a href="http://www.widuu.com/docker/installation/windows.html&apos;" target="_blank" rel="noopener">http://www.widuu.com/docker/installation/windows.html&apos;</a></p>
+<ul>
+<li>Mac &#x73AF;&#x5883;</li>
+</ul>
+<p>Docker for Mac &#x5728;Mac&#x4E0A;&#x8FD0;&#x884C;Docker&#x3002;&#x7CFB;&#x7EDF;&#x8981;&#x6C42;&#xFF0C;OS X 10.10.3 &#x6216;&#x8005;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#xFF0C;&#x81F3;&#x5C11;4G&#x5185;&#x5B58;&#xFF0C;4.3.30&#x7248;&#x672C;&#x4EE5;&#x524D;&#x7684;VirtualBox&#x4F1A;&#x4E0E;Docker for Mac&#x4EA7;&#x751F;&#x51B2;&#x7A81;&#xFF0C;&#x6240;&#x4EE5;&#x8BF7;&#x5378;&#x8F7D;&#x65E7;&#x7248;&#x672C;&#x7684;VitrualBox&#x3002;<br><code>https://dn-dao-github-mirror.qbox.me/docker/install/mac/Docker.dmg</code><br>&#x53EF;&#x53C2;&#x8003;&#xFF1A;<code>http://blog.csdn.net/jiang_xinxing/article/details/58025417</code></p>
+<ul>
+<li>Linux &#x73AF;&#x5883;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x9AD8;&#x901F;&#x5B89;&#x88C5;&#xFF08;&#x9002;&#x7528;&#x4E8E;Ubuntu&#xFF0C;Debian,Centos&#x7B49;&#x5927;&#x90E8;&#x5206;Linux&#xFF09;</span><br><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure>
+
+<p>&#x5982;&#x679C;&#x60A8;&#x7684;&#x7535;&#x8111;&#x7248;&#x672C;&#x8FC7;&#x65E7;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Docker Toolbox &#x5728;Windows&#x6216;&#x8005;Mac&#x4E0A;&#x8FD0;&#x884C;Docker&#x3002;&#x9002;&#x7528;&#x4E8E;Mac OS X 10.8+ &#x6216;&#x8005; Windows 7/8.1&#x3002;<br><code>https://get.daocloud.io/toolbox/</code> (&#x81EA;&#x884C;&#x4E0B;&#x8F7D;&#x76F8;&#x5E94;&#x7684;&#x7248;&#x672C;&#xFF0C;window&#x7684;&#x9009;exe&#x6587;&#x4EF6;&#xFF0C;Mac &#x9009;pkg&#x6587;&#x4EF6;)</p>
+<h3 id="Docker-&#x5E38;&#x7528;&#x547D;&#x4EE4;"><a href="#Docker-&#x5E38;&#x7528;&#x547D;&#x4EE4;" class="headerlink" title="Docker &#x5E38;&#x7528;&#x547D;&#x4EE4;"></a>Docker &#x5E38;&#x7528;&#x547D;&#x4EE4;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search XXX  #&#x67E5;&#x8BE2;docker&#x955C;&#x50CF;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull XXX #&#x62C9;&#x53D6;docker &#x955C;&#x50CF;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images #&#x67E5;&#x770B;&#x5DF2;&#x4E0B;&#x8F7D;&#x7684;docker&#x955C;&#x50CF;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run XXX #&#x8FD0;&#x884C;docker&#x5BB9;&#x5668;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps #&#x67E5;&#x770B;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;docker&#x5BB9;&#x5668;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop XXX #&#x505C;&#x6B62;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x5BB9;&#x5668;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f XXX #&#x5220;&#x9664;&#x5BB9;&#x5668;</span><br></pre></td></tr></table></figure>
+
+<p>&#x8981;&#x60F3;&#x66F4;&#x597D;&#x7684;&#x4F7F;&#x7528;Docker&#x548C;&#x5404;&#x79CD;&#x6280;&#x672F;&#x9700;&#x8981;&#x4E0D;&#x65AD;&#x5145;&#x7535;&#x548C;&#x63A2;&#x7D22;&#x3002;</p>
+<p>&#x90E8;&#x5206;&#x56FE;&#x7247;&#x6765;&#x81EA; <code>http://blog.csdn.net/ghostcloud2016/article/details/62426612</code></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat_qrcode.jpg" alt="Junhua wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的微信公众号！</div>
+</div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/25/gitee-with-webhook/" rel="next" title="gitee码云使用webhook">
+                <i class="fa fa-chevron-left"></i> gitee码云使用webhook
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/27/cnetos-install-pyenv/" rel="prev" title="Centos7 安装 pyenv">
+                Centos7 安装 pyenv <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Junhua">
+            
+              <p class="site-author-name" itemprop="name">Junhua</p>
+              <div class="site-description motion-element" itemprop="description">Done is better than perfect.</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/junhuali" title="GitHub &rarr; https://github.com/junhuali" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:junhuali.dev@gmail.com" title="E-Mail &rarr; mailto:junhuali.dev@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.jianshu.com/u/4d6c39ea6b2c" title="简书 &rarr; https://www.jianshu.com/u/4d6c39ea6b2c" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yizibi.github.io/" title="https://yizibi.github.io/" rel="noopener" target="_blank">一之笔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://chensenlin.cn/" title="https://chensenlin.cn/" rel="noopener" target="_blank">你好我是森林</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是DevOps"><span class="nav-number">1.</span> <span class="nav-text">什么是DevOps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DevOps各个阶段"><span class="nav-number">2.</span> <span class="nav-text">DevOps各个阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具说明"><span class="nav-number">3.</span> <span class="nav-text">工具说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-环境配置"><span class="nav-number">4.</span> <span class="nav-text">Docker 环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-常用命令"><span class="nav-number">5.</span> <span class="nav-text">Docker 常用命令</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junhua</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://junhua.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/";
+    this.page.identifier = "2018/02/26/devops-1-environmental-configuration/";
+    this.page.title = 'DevOps实践1:基本概念和环境配置';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://junhua.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        window.addEventListener('load', loadComments, false);
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
