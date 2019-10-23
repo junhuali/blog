@@ -1,133 +1,83 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.2" color="#222">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<link rel="stylesheet" href="/css/main.css?v=7.4.2">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
-<link rel="stylesheet" href="/css/main.css?v=7.1.2">
 
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '7.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-
-  
-
-
-
-
-  <meta name="description" content="Flutter is Google&amp;#x2019;s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.">
+  <meta name="description" content="Flutter is Google’s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.">
 <meta name="keywords" content="flutter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第一个flutter">
-<meta property="og:url" content="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;07&#x2F;11&#x2F;first-flutter-app&#x2F;index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="Flutter is Google&amp;#x2019;s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.">
+<meta property="og:description" content="Flutter is Google’s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/WX20190711-203332@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/WX20190711-203810@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/WX20190711-204747@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/WX20190711-212257@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/WX20190711-212915@2x.png">
-<meta property="og:updated_time" content="2019-07-11T13:31:37.369Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;07&#x2F;11&#x2F;first-flutter-app&#x2F;first-flutter-app&#x2F;WX20190711-203332@2x.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;07&#x2F;11&#x2F;first-flutter-app&#x2F;first-flutter-app&#x2F;WX20190711-203810@2x.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;07&#x2F;11&#x2F;first-flutter-app&#x2F;first-flutter-app&#x2F;WX20190711-204747@2x.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;07&#x2F;11&#x2F;first-flutter-app&#x2F;first-flutter-app&#x2F;WX20190711-212257@2x.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;07&#x2F;11&#x2F;first-flutter-app&#x2F;first-flutter-app&#x2F;WX20190711-212915@2x.png">
+<meta property="og:updated_time" content="2019-10-20T04:54:47.390Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一个flutter">
-<meta name="twitter:description" content="Flutter is Google&amp;#x2019;s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.">
-<meta name="twitter:image" content="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/WX20190711-203332@2x.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;07&#x2F;11&#x2F;first-flutter-app&#x2F;first-flutter-app&#x2F;WX20190711-203332@2x.png">
+
+<link rel="canonical" href="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="Junhua's Blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
@@ -137,38 +87,12 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106923734-1"></script>
-  <script>
-    var host = window.location.hostname;
-    if (host !== "localhost" || !true) {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-106923734-1');
-    }
-  </script>
-
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?856b5e9d05d5a0661908b7854f41d8d7";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
 
 
 
 
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -177,9 +101,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -193,296 +116,155 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Junhua's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
-  
-
-
-
+  </div>
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
+
+          <div class="content">
             
 
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+  <div class="posts-expand">
+      
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2019/07/11/first-flutter-app/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Junhua">
       <meta itemprop="description" content="Done is better than perfect.">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Junhua's Blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">第一个flutter
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          第一个flutter
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-07-11 20:16:53 / 修改时间：21:31:37" itemprop="dateCreated datePublished" datetime="2019-07-11T20:16:53+08:00">2019-07-11</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="创建时间：2019-07-11 20:16:53" itemprop="dateCreated datePublished" datetime="2019-07-11T20:16:53+08:00">2019-07-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-20 12:54:47" itemprop="dateModified" datetime="2019-10-20T12:54:47+08:00">2019-10-20</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/flutter/" itemprop="url" rel="index"><span itemprop="name">flutter</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">flutter</span>
+                  </a>
                 </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/07/11/first-flutter-app/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/11/first-flutter-app/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -490,111 +272,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <p><a href="https://flutter.dev/" target="_blank" rel="noopener">Flutter</a> is Google&#x2019;s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.<a id="more"></a></p>
+        <p><a href="https://flutter.dev/" target="_blank" rel="noopener">Flutter</a> is Google’s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.<a id="more"></a></p>
 <blockquote>
-<p>Flutter&#x662F;&#x4E00;&#x4E2A;&#x7531;&#x8C37;&#x6B4C;&#x5F00;&#x53D1;&#x7684;&#x5F00;&#x6E90;&#x79FB;&#x52A8;&#x5E94;&#x7528;&#x8F6F;&#x4EF6;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#x5305;&#xFF0C;&#x7528;&#x4E8E;&#x4E3A;Android&#x548C;iOS&#x5F00;&#x53D1;&#x5E94;&#x7528;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x5C06;&#x662F;Google Fuchsia&#x4E0B;&#x5F00;&#x53D1;&#x5E94;&#x7528;&#x7684;&#x4E3B;&#x8981;&#x5DE5;&#x5177;</p>
+<p>Flutter是一个由谷歌开发的开源移动应用软件开发工具包，用于为Android和iOS开发应用，同时也将是Google Fuchsia下开发应用的主要工具</p>
 </blockquote>
-<p>&#x6700;&#x8FD1;&#x770B;&#x5230;&#x5F88;&#x591A;&#x7684;&#x6280;&#x672F;&#x7F51;&#x7AD9;&#x90FD;&#x5728;&#x53D1;Flutter&#x76F8;&#x5173;&#x7684;&#x6280;&#x672F;&#x6587;&#x7AE0;&#xFF0C;&#x6240;&#x4EE5;&#x81EA;&#x5DF1;&#x4E5F;&#x82B1;&#x65F6;&#x95F4;&#x4E86;&#x89E3;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x5199;&#x4E86;&#x4E2A;&#x7B80;&#x5355;&#x7684;HelloWorld&#x4F53;&#x9A8C;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x611F;&#x89C9;&#x5F88;&#x4E0D;&#x9519;&#x3002;&#x7B80;&#x5355;&#x7684;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#x3002;</p>
-<p>###&#x5B89;&#x88C5;<br>&#x5B89;&#x88C5;&#x73AF;&#x5883;&#x57FA;&#x4E8E;MAC&#xFF0C;Windows&#x4E0A;&#x4E5F;&#x6CA1;&#x6709;&#x592A;&#x5927;&#x7684;&#x533A;&#x522B;&#x3002;</p>
-<p>####&#x5B89;&#x88C5;Xcode&#x3001;Android Stuido</p>
-<p>#####Xcode &#x5B89;&#x88C5;<br>Xocde &#x7684;&#x5B89;&#x88C5;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x76F4;&#x63A5;&#x53BB;App Store&#x641C;&#x7D22;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;<img src="/2019/07/11/first-flutter-app/WX20190711-203332@2x.png" alt="&#x793A;&#x4F8B;">&#x4E4B;&#x540E;&#x9700;&#x8981;&#x6253;&#x5F00;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x7684;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
-<p>#####Android Studio &#x5B89;&#x88C5;<br><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Android Studio&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;</a><br><img src="/2019/07/11/first-flutter-app/WX20190711-203810@2x.png" alt="&#x793A;&#x4F8B;"><br>&#x5F53;&#x524D;&#x7248;&#x672C;&#x4E3A;3.4.2<br>&#x914D;&#x5408;&#x76F8;&#x5173;&#x7684;SDK&#xFF0C;&#x7136;&#x540E;&#x589E;&#x52A0;&#x865A;&#x62DF;&#x673A;<img src="/2019/07/11/first-flutter-app/WX20190711-204747@2x.png" alt="&#x793A;&#x4F8B;"><br>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;API28,28&#x7684;&#x7248;&#x672C;flutter&#x4F1A;&#x62A5;&#x9519;</p>
-<h5 id="&#x5B89;&#x88C5;flutter"><a href="#&#x5B89;&#x88C5;flutter" class="headerlink" title="&#x5B89;&#x88C5;flutter"></a>&#x5B89;&#x88C5;flutter</h5><p>Flutter&#x5728;&#x56FD;&#x5185;&#x8BBF;&#x95EE;&#x7684;&#x901F;&#x5EA6;&#x4E0D;&#x592A;&#x597D;&#xFF0C;&#x8BBF;&#x95EE;<a href="https://flutter.dev/docs/get-started/install" target="_blank" rel="noopener">Flutter</a>&#xFF0C;&#x8FDB;&#x884C;&#x4E0B;&#x8F7D;&#x914D;&#x7F6E;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x68AF;&#x5B50;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x55B5;&#x5E15;&#x65AF;&#xFF0C;&#x53EF;&#x4EE5;&#x8054;&#x7CFB;&#x6211;&#x83B7;&#x53D6;&#x9080;&#x8BF7;&#x7801;&#x3002;</p>
+<p>最近看到很多的技术网站都在发Flutter相关的技术文章，所以自己也花时间了解了一下，写了个简单的HelloWorld体验了一下，感觉很不错。简单的记录一下。</p>
+<p>###安装<br>安装环境基于MAC，Windows上也没有太大的区别。<br>####安装Xcode、Android Stuido<br>#####Xcode 安装<br>Xocde 的安装比较简单，直接去App Store搜索就可以了，<img src="first-flutter-app/WX20190711-203332@2x.png" alt="示例">之后需要打开，会自动的进行相应的配置。<br>#####Android Studio 安装<br><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Android Studio官网下载</a><br><img src="first-flutter-app/WX20190711-203810@2x.png" alt="示例"><br>当前版本为3.4.2<br>配合相关的SDK，然后增加虚拟机<img src="first-flutter-app/WX20190711-204747@2x.png" alt="示例"><br>需要注意的是，建议使用API28,28的版本flutter会报错</p>
+<h5 id="安装flutter"><a href="#安装flutter" class="headerlink" title="安装flutter"></a>安装flutter</h5><p>Flutter在国内访问的速度不太好，访问<a href="https://flutter.dev/docs/get-started/install" target="_blank" rel="noopener">Flutter</a>，进行下载配置，建议使用梯子，推荐使用喵帕斯，可以联系我获取邀请码。</p>
 <ul>
-<li>&#x589E;&#x52A0;&#x6E90;&#x7AD9;&#x955C;&#x50CF;&#x73AF;&#x5883;&#x53D8;&#x91CF;(&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x5305;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x7528;&#x5230;)</li>
+<li>增加源站镜像环境变量(使用第三方的包的时候需要用到)</li>
 </ul>
 <p>Windows</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">&#x6211;&#x7684;&#x7535;&#x8111;-&gt;&#x5C5E;&#x6027;-&gt;&#x9AD8;&#x7EA7;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;-&gt;&#x9AD8;&#x7EA7;-&gt;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x65B0;&#x5EFA;&#x7528;&#x6237;&#x73AF;&#x5883;&#x53D8;&#x91CF;,&#x589E;&#x52A0;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;</span></span><br><span class="line">PUB_HOSTED_URL https://pub.flutter-io.cn </span><br><span class="line">FLUTTER_STORAGE_BASE_URL https://storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">我的电脑-&gt;属性-&gt;高级系统设置-&gt;高级-&gt;环境变量，新建用户环境变量,增加下面两个变量</span></span><br><span class="line">PUB_HOSTED_URL https://pub.flutter-io.cn </span><br><span class="line">FLUTTER_STORAGE_BASE_URL https://storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
 
 <p>Mac OS</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">~ cd ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash">&#x589E;&#x52A0;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#x73AF;&#x5883;&#x53D8;&#x91CF;</span></span><br><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn  </span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br><span class="line"><span class="meta">#</span><span class="bash">&#x4FDD;&#x5B58; ,&#x6FC0;&#x6D3B;&#x751F;&#x6548;</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">~ cd ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash">增加下面两个环境变量</span></span><br><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn  </span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br><span class="line"><span class="meta">#</span><span class="bash">保存 ,激活生效</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>将下载的安装包解压，当前的版本为<code>1.7</code>，然后配置环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">~ vi ~/.bash_profile</span><br><span class="line"><span class="comment">#增加如下,根据你实际的位置进行配置</span></span><br><span class="line"><span class="comment">#flutter</span></span><br><span class="line"><span class="built_in">export</span> PATH=/Users/xxx/develop/flutter/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br><span class="line"><span class="comment">#验证</span></span><br><span class="line">flutter --version</span><br><span class="line">  ╔════════════════════════════════════════════════════════════════════════════╗</span><br><span class="line">  ║ A new version of Flutter is available!                                     ║</span><br><span class="line">  ║                                                                            ║</span><br><span class="line">  ║ To update to the latest version, run <span class="string">"flutter upgrade"</span>.                    ║</span><br><span class="line">  ╚════════════════════════════════════════════════════════════════════════════╝</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Flutter 1.5.4-hotfix.2 • channel stable • https://github.com/flutter/flutter.git</span><br><span class="line">Framework • revision 7a4c33425d (2 months ago) • 2019-04-29 11:05:24 -0700</span><br><span class="line">Engine • revision 52c7a1e849</span><br><span class="line">Tools • Dart 2.3.0 (build 2.3.0-dev.0.5 a1668566e5)</span><br><span class="line"><span class="comment">#提示我更新，我当时安装的是1.5.4,更新完成再次验证，更新会花点时间，使用下面的命令行走代理，或者全局也可以，根据实际情况配置</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1087;</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1087;</span><br><span class="line"><span class="built_in">export</span> all_proxy=socks5://127.0.0.1:1086</span><br><span class="line"><span class="comment">#运行doctor 检测配置，第一次安装需要安装额外的几个包，按照提示安装即可</span></span><br><span class="line">Running flutter doctor...</span><br><span class="line">Doctor summary (to see all details, run flutter doctor -v):</span><br><span class="line">[✓] Flutter (Channel stable, v1.7.8+hotfix.3, on Mac OS X 10.14.5 18F132, locale zh-Hans-CN)</span><br><span class="line">[!] Android toolchain - develop <span class="keyword">for</span> Android devices (Android SDK version 28.0.3)</span><br><span class="line">    ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses</span><br><span class="line">[!] Xcode - develop <span class="keyword">for</span> iOS and macOS (Xcode 10.2.1)</span><br><span class="line">    ! CocoaPods out of date (1.6.0 is recommended).</span><br><span class="line">        CocoaPods is used to retrieve the iOS and macOS platform side<span class="string">'s plugin code that responds to your plugin usage on the Dart side.</span></span><br><span class="line"><span class="string">        Without CocoaPods, plugins will not work on iOS or macOS.</span></span><br><span class="line"><span class="string">        For more info, see https://flutter.dev/platform-plugins</span></span><br><span class="line"><span class="string">      To upgrade:</span></span><br><span class="line"><span class="string">        brew upgrade cocoapods</span></span><br><span class="line"><span class="string">        pod setup</span></span><br><span class="line"><span class="string">[!] iOS tools - develop for iOS devices</span></span><br><span class="line"><span class="string">    ✗ ios-deploy not installed. To install:</span></span><br><span class="line"><span class="string">        brew install ios-deploy</span></span><br><span class="line"><span class="string">[✓] Android Studio (version 3.4)</span></span><br><span class="line"><span class="string">[!] IntelliJ IDEA Ultimate Edition (version 2019.1.3)</span></span><br><span class="line"><span class="string">    ✗ Flutter plugin not installed; this adds Flutter specific functionality.</span></span><br><span class="line"><span class="string">    ✗ Dart plugin not installed; this adds Dart specific functionality.</span></span><br><span class="line"><span class="string">[!] VS Code (version 1.35.1)</span></span><br><span class="line"><span class="string">    ✗ Flutter extension not installed; install from</span></span><br><span class="line"><span class="string">      https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter</span></span><br><span class="line"><span class="string">[!] Proxy Configuration</span></span><br><span class="line"><span class="string">    ! NO_PROXY is not set</span></span><br><span class="line"><span class="string">[!] Connected device</span></span><br><span class="line"><span class="string">    ! No devices available</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">! Doctor found issues in 7 categories.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#第一次安装，需要安装下面的包，brew 的使用可用搜我之前发的文章</span></span><br><span class="line"><span class="string">brew update</span></span><br><span class="line"><span class="string">brew install --HEAD usbmuxd</span></span><br><span class="line"><span class="string">brew link usbmuxd</span></span><br><span class="line"><span class="string">brew install --HEAD libimobiledevice</span></span><br><span class="line"><span class="string">brew install ideviceinstaller</span></span><br></pre></td></tr></table></figure>
 
-<p>&#x5C06;&#x4E0B;&#x8F7D;&#x7684;&#x5B89;&#x88C5;&#x5305;&#x89E3;&#x538B;&#xFF0C;&#x5F53;&#x524D;&#x7684;&#x7248;&#x672C;&#x4E3A;<code>1.7</code>&#xFF0C;&#x7136;&#x540E;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">~ vi ~/.bash_profile</span><br><span class="line"><span class="comment">#&#x589E;&#x52A0;&#x5982;&#x4E0B;,&#x6839;&#x636E;&#x4F60;&#x5B9E;&#x9645;&#x7684;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x914D;&#x7F6E;</span></span><br><span class="line"><span class="comment">#flutter</span></span><br><span class="line"><span class="built_in">export</span> PATH=/Users/xxx/develop/flutter/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br><span class="line"><span class="comment">#&#x9A8C;&#x8BC1;</span></span><br><span class="line">flutter --version</span><br><span class="line">  &#x2554;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2557;</span><br><span class="line">  &#x2551; A new version of Flutter is available!                                     &#x2551;</span><br><span class="line">  &#x2551;                                                                            &#x2551;</span><br><span class="line">  &#x2551; To update to the latest version, run <span class="string">&quot;flutter upgrade&quot;</span>.                    &#x2551;</span><br><span class="line">  &#x255A;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x255D;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Flutter 1.5.4-hotfix.2 &#x2022; channel stable &#x2022; https://github.com/flutter/flutter.git</span><br><span class="line">Framework &#x2022; revision 7a4c33425d (2 months ago) &#x2022; 2019-04-29 11:05:24 -0700</span><br><span class="line">Engine &#x2022; revision 52c7a1e849</span><br><span class="line">Tools &#x2022; Dart 2.3.0 (build 2.3.0-dev.0.5 a1668566e5)</span><br><span class="line"><span class="comment">#&#x63D0;&#x793A;&#x6211;&#x66F4;&#x65B0;&#xFF0C;&#x6211;&#x5F53;&#x65F6;&#x5B89;&#x88C5;&#x7684;&#x662F;1.5.4,&#x66F4;&#x65B0;&#x5B8C;&#x6210;&#x518D;&#x6B21;&#x9A8C;&#x8BC1;&#xFF0C;&#x66F4;&#x65B0;&#x4F1A;&#x82B1;&#x70B9;&#x65F6;&#x95F4;&#xFF0C;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x8D70;&#x4EE3;&#x7406;&#xFF0C;&#x6216;&#x8005;&#x5168;&#x5C40;&#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x914D;&#x7F6E;</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1087;</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1087;</span><br><span class="line"><span class="built_in">export</span> all_proxy=socks5://127.0.0.1:1086</span><br><span class="line"><span class="comment">#&#x8FD0;&#x884C;doctor &#x68C0;&#x6D4B;&#x914D;&#x7F6E;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x5B89;&#x88C5;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x989D;&#x5916;&#x7684;&#x51E0;&#x4E2A;&#x5305;&#xFF0C;&#x6309;&#x7167;&#x63D0;&#x793A;&#x5B89;&#x88C5;&#x5373;&#x53EF;</span></span><br><span class="line">Running flutter doctor...</span><br><span class="line">Doctor summary (to see all details, run flutter doctor -v):</span><br><span class="line">[&#x2713;] Flutter (Channel stable, v1.7.8+hotfix.3, on Mac OS X 10.14.5 18F132, locale zh-Hans-CN)</span><br><span class="line">[!] Android toolchain - develop <span class="keyword">for</span> Android devices (Android SDK version 28.0.3)</span><br><span class="line">    ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses</span><br><span class="line">[!] Xcode - develop <span class="keyword">for</span> iOS and macOS (Xcode 10.2.1)</span><br><span class="line">    ! CocoaPods out of date (1.6.0 is recommended).</span><br><span class="line">        CocoaPods is used to retrieve the iOS and macOS platform side<span class="string">&apos;s plugin code that responds to your plugin usage on the Dart side.</span></span><br><span class="line"><span class="string">        Without CocoaPods, plugins will not work on iOS or macOS.</span></span><br><span class="line"><span class="string">        For more info, see https://flutter.dev/platform-plugins</span></span><br><span class="line"><span class="string">      To upgrade:</span></span><br><span class="line"><span class="string">        brew upgrade cocoapods</span></span><br><span class="line"><span class="string">        pod setup</span></span><br><span class="line"><span class="string">[!] iOS tools - develop for iOS devices</span></span><br><span class="line"><span class="string">    &#x2717; ios-deploy not installed. To install:</span></span><br><span class="line"><span class="string">        brew install ios-deploy</span></span><br><span class="line"><span class="string">[&#x2713;] Android Studio (version 3.4)</span></span><br><span class="line"><span class="string">[!] IntelliJ IDEA Ultimate Edition (version 2019.1.3)</span></span><br><span class="line"><span class="string">    &#x2717; Flutter plugin not installed; this adds Flutter specific functionality.</span></span><br><span class="line"><span class="string">    &#x2717; Dart plugin not installed; this adds Dart specific functionality.</span></span><br><span class="line"><span class="string">[!] VS Code (version 1.35.1)</span></span><br><span class="line"><span class="string">    &#x2717; Flutter extension not installed; install from</span></span><br><span class="line"><span class="string">      https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter</span></span><br><span class="line"><span class="string">[!] Proxy Configuration</span></span><br><span class="line"><span class="string">    ! NO_PROXY is not set</span></span><br><span class="line"><span class="string">[!] Connected device</span></span><br><span class="line"><span class="string">    ! No devices available</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">! Doctor found issues in 7 categories.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#&#x7B2C;&#x4E00;&#x6B21;&#x5B89;&#x88C5;&#xFF0C;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x4E0B;&#x9762;&#x7684;&#x5305;&#xFF0C;brew &#x7684;&#x4F7F;&#x7528;&#x53EF;&#x7528;&#x641C;&#x6211;&#x4E4B;&#x524D;&#x53D1;&#x7684;&#x6587;&#x7AE0;</span></span><br><span class="line"><span class="string">brew update</span></span><br><span class="line"><span class="string">brew install --HEAD usbmuxd</span></span><br><span class="line"><span class="string">brew link usbmuxd</span></span><br><span class="line"><span class="string">brew install --HEAD libimobiledevice</span></span><br><span class="line"><span class="string">brew install ideviceinstaller</span></span><br></pre></td></tr></table></figure>
-
-<p>&#x8FDB;&#x5165;flutter&#x7684;&#x76EE;&#x5F55;</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">~ tree -L 1 </span><br><span class="line">.</span><br><span class="line">&#x251C;&#x2500;&#x2500; AUTHORS</span><br><span class="line">&#x251C;&#x2500;&#x2500; CODE_OF_CONDUCT.md</span><br><span class="line">&#x251C;&#x2500;&#x2500; CONTRIBUTING.md</span><br><span class="line">&#x251C;&#x2500;&#x2500; LICENSE</span><br><span class="line">&#x251C;&#x2500;&#x2500; PATENTS</span><br><span class="line">&#x251C;&#x2500;&#x2500; README.md</span><br><span class="line">&#x251C;&#x2500;&#x2500; analysis_options.yaml</span><br><span class="line">&#x251C;&#x2500;&#x2500; bin</span><br><span class="line">&#x251C;&#x2500;&#x2500; dartdoc_options.yaml</span><br><span class="line">&#x251C;&#x2500;&#x2500; dev</span><br><span class="line">&#x251C;&#x2500;&#x2500; examples</span><br><span class="line">&#x251C;&#x2500;&#x2500; flutter_console.bat</span><br><span class="line">&#x251C;&#x2500;&#x2500; flutter_root.iml</span><br><span class="line">&#x251C;&#x2500;&#x2500; packages</span><br><span class="line">&#x2514;&#x2500;&#x2500; version</span><br></pre></td></tr></table></figure>
-
-<p>&#x5728;&#x76EE;&#x5F55;&#x4E2D;&#x770B;&#x5230;&#x6709;&#x4E2A;<code>examples-helloworld</code> &#x91CC;&#x9762;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x4F7F;&#x7528;Android Studio &#x6253;&#x5F00;&#xFF1A;<br><img src="/2019/07/11/first-flutter-app/WX20190711-212257@2x.png" alt="&#x793A;&#x4F8B;">,&#x9009;&#x62E9;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x62DF;&#x5668;&#xFF0C;Android &#x7684;&#x548C;iOS &#x90FD;&#x53EF;&#x4EE5;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x771F;&#x673A;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x53F3;&#x4E0A;&#x89D2;&#x8FD0;&#x884C;&#x5373;&#x53EF;<br>&#x4F7F;&#x7528;29&#x7684;API&#x4F1A;&#x51FA;&#x73B0;&#x5982;&#x4E0B;&#x9519;&#x8BEF;&#xFF1A;</p>
+<p>进入flutter的目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">~ tree -L 1 </span><br><span class="line">.</span><br><span class="line">├── AUTHORS</span><br><span class="line">├── CODE_OF_CONDUCT.md</span><br><span class="line">├── CONTRIBUTING.md</span><br><span class="line">├── LICENSE</span><br><span class="line">├── PATENTS</span><br><span class="line">├── README.md</span><br><span class="line">├── analysis_options.yaml</span><br><span class="line">├── bin</span><br><span class="line">├── dartdoc_options.yaml</span><br><span class="line">├── dev</span><br><span class="line">├── examples</span><br><span class="line">├── flutter_console.bat</span><br><span class="line">├── flutter_root.iml</span><br><span class="line">├── packages</span><br><span class="line">└── version</span><br></pre></td></tr></table></figure>
+<p>在目录中看到有个<code>examples-helloworld</code> 里面有对应的示例，使用Android Studio 打开：<br><img src="first-flutter-app/WX20190711-212257@2x.png" alt="示例">,选择对应的模拟器，Android 的和iOS 都可以，也可以使用真机，然后点击右上角运行即可<br>使用29的API会出现如下错误：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error connecting to the service protocol: HttpException: Connection closed before full header was received, uri = http://127.0.0.1:53668/CCQP0ed9oCM=/ws</span><br></pre></td></tr></table></figure>
+<p>运行后的效果：<br><img src="first-flutter-app/WX20190711-212915@2x.png" alt="效果"></p>
+<p>demo比较简单，但是感觉非常的方便，后面有空继续深入学习。</p>
 
-<p>&#x8FD0;&#x884C;&#x540E;&#x7684;&#x6548;&#x679C;&#xFF1A;<br><img src="/2019/07/11/first-flutter-app/WX20190711-212915@2x.png" alt="&#x6548;&#x679C;"></p>
-<p>demo&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x611F;&#x89C9;&#x975E;&#x5E38;&#x7684;&#x65B9;&#x4FBF;&#xFF0C;&#x540E;&#x9762;&#x6709;&#x7A7A;&#x7EE7;&#x7EED;&#x6DF1;&#x5165;&#x5B66;&#x4E60;&#x3002;</p>
-
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
-  <img id="wechat_subscriber_qcode" src="/uploads/wechat_qrcode.jpg" alt="Junhua wechat" style="width: 200px; max-width: 100%;">
-  <div>欢迎您扫一扫上面的微信公众号，订阅我的微信公众号！</div>
-</div>
-
-    
-
-    
-      
     
     
 
-    
-
-    <footer class="post-footer">
-      
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/flutter/" rel="tag"># flutter</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/07/02/use-a-fake-system-clock-with-docker/" rel="next" title="使用模拟时间在Docker 中进行测试">
-                <i class="fa fa-chevron-left"></i> 使用模拟时间在Docker 中进行测试
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/flutter/" rel="tag"># flutter</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/12/what-is-libra/" rel="prev" title="什么是Libra(天秤座)">
-                什么是Libra(天秤座) <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/07/02/use-a-fake-system-clock-with-docker/" rel="next" title="使用模拟时间在Docker 中进行测试">
+                  <i class="fa fa-chevron-left"></i> 使用模拟时间在Docker 中进行测试
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/07/12/what-is-libra/" rel="prev" title="什么是Libra(天秤座)">
+                  什么是Libra(天秤座) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
+    
   </article>
-
+  
+  
+  
 
   </div>
 
@@ -602,341 +338,125 @@
           </div>
           
 
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
-    </div>
-
-  
-
-
-
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装flutter"><span class="nav-number">1.</span> <span class="nav-text">安装flutter</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Junhua">
-            
-              <p class="site-author-name" itemprop="name">Junhua</p>
-              <div class="site-description motion-element" itemprop="description">Done is better than perfect.</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">56</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">35</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/junhuali" title="GitHub &rarr; https://github.com/junhuali" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:junhuali.dev@gmail.com" title="E-Mail &rarr; mailto:junhuali.dev@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://www.jianshu.com/u/4d6c39ea6b2c" title="简书 &rarr; https://www.jianshu.com/u/4d6c39ea6b2c" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i>简书</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                友情链接
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://yizibi.github.io/" title="https://yizibi.github.io/" rel="noopener" target="_blank">一之笔</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://chensenlin.cn/" title="https://chensenlin.cn/" rel="noopener" target="_blank">你好我是森林</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Junhua"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Junhua</p>
+  <div class="site-description" itemprop="description">Done is better than perfect.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/junhuali" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;junhuali" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:junhuali.dev@gmail.com" title="E-Mail &amp;rarr; mailto:junhuali.dev@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/4d6c39ea6b2c" title="简书 &amp;rarr; https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;4d6c39ea6b2c" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i>简书</a>
+      </span>
+  </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
 
-            
-            
-            
-            
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://yizibi.github.io/" title="https:&#x2F;&#x2F;yizibi.github.io&#x2F;" rel="noopener" target="_blank">一之笔</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://chensenlin.cn/" title="https:&#x2F;&#x2F;chensenlin.cn&#x2F;" rel="noopener" target="_blank">你好我是森林</a>
+        </li>
+    </ul>
+  </div>
 
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装flutter"><span class="nav-number">1.</span> <span class="nav-text">安装flutter</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
+      </div>
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-
-  
-
-  
 </div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-
-
-
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
-
-
-
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
 
         
+
+
+
+
 
 
 
@@ -948,504 +468,38 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
   </div>
 
   
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-
-  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.2"></script>
-
-  <script src="/js/motion.js?v=7.1.2"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/affix.js?v=7.1.2"></script>
-
-  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
-
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.1.2"></script>
-<script src="/js/post-details.js?v=7.1.2"></script>
+<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
+<script src="/js/schemes/pisces.js?v=7.4.2"></script>
+<script src="/js/next-boot.js?v=7.4.2"></script>
 
 
 
   
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script>
 
 
-  
-
-  
-
-  
-
-  
-  
-<script>
-  function loadCount() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://junhua.disqus.com/count.js';
-    s.id = 'dsq-count-scr';
-    (d.head || d.body).appendChild(s);
-  }
-  // defer loading until the whole page loading is completed
-  window.addEventListener('load', loadCount, false);
-</script>
 
 
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://blog.searchinfogo.com/2019/07/11/first-flutter-app/";
-    this.page.identifier = "2019/07/11/first-flutter-app/";
-    this.page.title = '第一个flutter';
-    };
-  function loadComments() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://junhua.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
-    (d.head || d.body).appendChild(s);
-  }
-  
-    $(function() {
-      var offsetTop = $('#comments').offset().top - $(window).height();
-      if (offsetTop <= 0) {
-        // load directly when there's no a scrollbar
-        window.addEventListener('load', loadComments, false);
-      } else {
-        $(window).on('scroll.disqus_scroll', function() {
-          // offsetTop may changes because of manually resizing browser window or lazy loading images.
-          var offsetTop = $('#comments').offset().top - $(window).height();
-          var scrollTop = $(window).scrollTop();
-
-          // pre-load comments a bit? (margin or anything else)
-          if (offsetTop - scrollTop < 60) {
-            $(window).off('.disqus_scroll');
-            loadComments();
-          }
-        });
-      }
-    });
-  
-</script>
+  <script src="/js/local-search.js?v=7.4.2"></script>
 
 
 
 
 
-  
-
-
-  
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
 
 
 
 
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 
