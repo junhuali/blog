@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>lightsail使用root用户登录</title>
+    <url>/2019/11/22/lightsail-use-root-logn/</url>
+    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>初识Dart(一)</title>
     <url>/2019/07/15/study-dart-1/</url>
     <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>

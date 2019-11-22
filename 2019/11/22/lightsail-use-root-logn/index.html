@@ -50,17 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="Netty 核心组件 Channel 回调 Future 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。FutureFuture 提供了另一种在操作完成时通知应用程序的方式。Channel">
+  <meta name="description" content="在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Netty 学习记录">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;04&#x2F;11&#x2F;netty-study&#x2F;index.html">
+<meta property="og:title" content="lightsail使用root用户登录">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;11&#x2F;22&#x2F;lightsail-use-root-logn&#x2F;index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="Netty 核心组件 Channel 回调 Future 事件和ChannelHandlerChannelChannel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。回调一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。FutureFuture 提供了另一种在操作完成时通知应用程序的方式。Channel">
+<meta property="og:description" content="在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-20T04:54:47.399Z">
+<meta property="og:updated_time" content="2019-11-22T02:35:20.090Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.searchinfogo.com/2018/04/11/netty-study/">
+<link rel="canonical" href="https://blog.searchinfogo.com/2019/11/22/lightsail-use-root-logn/">
 
 
 <script id="page-configurations">
@@ -74,7 +75,7 @@
   };
 </script>
 
-  <title>Netty 学习记录 | Junhua's Blog</title>
+  <title>lightsail使用root用户登录 | Junhua's Blog</title>
   
 
 
@@ -210,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/04/11/netty-study/">
+    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2019/11/22/lightsail-use-root-logn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -223,7 +224,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Netty 学习记录
+          lightsail使用root用户登录
         </h1>
 
         <div class="post-meta">
@@ -232,16 +233,21 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2018-04-11 10:44:49" itemprop="dateCreated datePublished" datetime="2018-04-11T10:44:49+08:00">2018-04-11</time>
+              <time title="创建时间：2019-11-22 10:29:26 / 修改时间：10:35:20" itemprop="dateCreated datePublished" datetime="2019-11-22T10:29:26+08:00">2019-11-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-20 12:54:47" itemprop="dateModified" datetime="2019-10-20T12:54:47+08:00">2019-10-20</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
 
           
   
@@ -252,8 +258,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2018/04/11/netty-study/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/11/netty-study/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2019/11/22/lightsail-use-root-logn/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/22/lightsail-use-root-logn/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -268,12 +274,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Netty-核心组件"><a href="#Netty-核心组件" class="headerlink" title="Netty 核心组件"></a>Netty 核心组件</h3><ul>
-<li>Channel</li>
-<li>回调</li>
-<li>Future</li>
-<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
-</ul>
+        <p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
 
     </div>
 
@@ -287,22 +290,22 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2018/04/02/study-shell/" rel="next" title="学习Shell命令行总结">
-                  <i class="fa fa-chevron-left"></i> 学习Shell命令行总结
+                <a href="/2019/07/15/study-dart-1/" rel="next" title="初识Dart(一)">
+                  <i class="fa fa-chevron-left"></i> 初识Dart(一)
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2018/04/18/raise-github-clone-speed/" rel="prev" title="提升国内服务器Github clone速度的方法">
-                  提升国内服务器Github clone速度的方法 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -348,7 +351,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Netty-核心组件"><span class="nav-number">1.</span> <span class="nav-text">Netty 核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Channel"><span class="nav-number">1.1.</span> <span class="nav-text">Channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回调"><span class="nav-number">1.2.</span> <span class="nav-text">回调</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Future"><span class="nav-number">1.3.</span> <span class="nav-text">Future</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChannelHandler"><span class="nav-number">1.4.</span> <span class="nav-text">ChannelHandler</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -510,9 +512,9 @@
       DISQUS.reset({
         reload: true,
         config: {page: {
-            url: "https://blog.searchinfogo.com/2018/04/11/netty-study/",
-            identifier: "2018/04/11/netty-study/",
-            title: "Netty 学习记录"
+            url: "https://blog.searchinfogo.com/2019/11/22/lightsail-use-root-logn/",
+            identifier: "2019/11/22/lightsail-use-root-logn/",
+            title: "lightsail使用root用户登录"
           }
         }
       });
