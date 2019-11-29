@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.searchinfogo.com/"/>
-  <updated>2019-11-22T02:35:20.090Z</updated>
+  <updated>2019-11-22T02:48:29.880Z</updated>
   <id>https://blog.searchinfogo.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.searchinfogo.com/2019/11/22/lightsail-use-root-logn/"/>
     <id>https://blog.searchinfogo.com/2019/11/22/lightsail-use-root-logn/</id>
     <published>2019-11-22T02:29:26.137Z</published>
-    <updated>2019-11-22T02:35:20.090Z</updated>
+    <updated>2019-11-22T02:48:29.880Z</updated>
     
     <content type="html"><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure><p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>]]></content>
     
