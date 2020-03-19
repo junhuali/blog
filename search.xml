@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SpringCloud 引入链路跟踪Sleuth及Zipkin</title>
+    <url>/2020/03/19/spring-seluth-zipkin/</url>
+    <content><![CDATA[<p>Zipkin是一种分布式跟踪系统，它有助于收集解决微服务架构中得延迟问题所需的时序数据，它管理这些数据的收集和查找。<a id="more"></a></p>
+<h3 id="下载-官方推荐直接下载打包好的应用，建议使用docker镜像或者jar"><a href="#下载-官方推荐直接下载打包好的应用，建议使用docker镜像或者jar" class="headerlink" title="下载 官方推荐直接下载打包好的应用，建议使用docker镜像或者jar"></a>下载 官方推荐直接下载打包好的应用，建议使用docker镜像或者jar</h3><p>使用官方一键脚本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -sSL https://zipkin.io/quickstart.sh | bash -s</span><br><span class="line">java -jar zipkin.jar</span><br></pre></td></tr></table></figure>
+<p>docker</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -d -p 9411:9411 openzipkin/zipkin</span><br></pre></td></tr></table></figure>
+<p>访问<br>任一方式启动后，访问 <a href="http://localhost:9411/zipkin/" target="_blank" rel="noopener">http://localhost:9411/zipkin/</a> ，如下图<br><img src="WX20200319-113846.png" alt="zipkin"></p>
+<h3 id="项目集成"><a href="#项目集成" class="headerlink" title="项目集成"></a>项目集成</h3><p>2.pom.xml 配置</p>
+<p>增加如下依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-zipkin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果项目中包含  aspectjweaver 这个jar ，需要指定jar包版本为1.8.10，否则项目启动会出错</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjweaver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.8.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置采样等参数"><a href="#配置采样等参数" class="headerlink" title="配置采样等参数"></a>配置采样等参数</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#zipkin配置 # 指定了 Zipkin 服务器的地址</span></span><br><span class="line"><span class="string">spring.zipkin.base-url</span> <span class="string">=</span> <span class="attr">http://localhost:9411/</span> </span><br><span class="line"><span class="comment">#采样率 1.0表示全部采样</span></span><br><span class="line"><span class="string">spring.sleuth.sampler.probability</span> <span class="string">=</span> <span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<p>服务调用以后，就可以看到具体的调用请求时间，但是在这个过程中也碰到了一些问题</p>
+<ul>
+<li>如果屏蔽一些接口记录，例如 健康检查会产生大量的无用数据，影响查询</li>
+<li>如果使用mysql查询会有一定的影响，官方也不建议使用</li>
+<li>使用官方的jar后，无法进行改造，满足不了一些额外的需求</li>
+<li>存储数据安全规范等问题</li>
+</ul>
+<h3 id="如果使用ES进行存储（建议使用）"><a href="#如果使用ES进行存储（建议使用）" class="headerlink" title="如果使用ES进行存储（建议使用）"></a>如果使用ES进行存储（建议使用）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> STORAGE_TYPE 指定存储类型 ES_HOSTS es ip 通过逗号隔开，可以使用多个，ES_USERNAME ES用户名 ES_PASSWORD ES密码 ES_INDEX 自定义存储索引</span></span><br><span class="line">STORAGE_TYPE=elasticsearch ES_HOSTS=172.16.28.56:9200,172.16.28.57:9200  ES_USERNAME=admin ES_PASSWORD=123456 ES_INDEX=zipkin-trace  java -jar /zipkin.jar</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>调用链监控</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>lightsail使用root用户登录</title>
     <url>/2019/11/22/lightsail-use-root-logn/</url>
     <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
