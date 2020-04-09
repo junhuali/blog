@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -51,22 +51,24 @@
 </script>
 
   <meta name="description" content="什么是DevOps DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序&#x2F;软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它的出现是由于软件行业日益清晰地认识到：为了按时交付软件产品和服务，开发和运营工作必须紧密合作。">
-<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DevOps实践1:基本概念和环境配置">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;26&#x2F;devops-1-environmental-configuration&#x2F;index.html">
+<meta property="og:url" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="什么是DevOps DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序&#x2F;软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它的出现是由于软件行业日益清晰地认识到：为了按时交付软件产品和服务，开发和运营工作必须紧密合作。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;26&#x2F;devops-1-environmental-configuration&#x2F;devops-1-environmental-configuration&#x2F;v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;26&#x2F;devops-1-environmental-configuration&#x2F;devops-1-environmental-configuration&#x2F;191800078ffdfe660fb3.jpeg">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;26&#x2F;devops-1-environmental-configuration&#x2F;devops-1-environmental-configuration&#x2F;191500078c0b39a29f95.jpeg">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;26&#x2F;devops-1-environmental-configuration&#x2F;devops-1-environmental-configuration&#x2F;1916000764d774a3eee4.jpeg">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;26&#x2F;devops-1-environmental-configuration&#x2F;devops-1-environmental-configuration&#x2F;191700078c8d4238617c.jpeg">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;26&#x2F;devops-1-environmental-configuration&#x2F;devops-1-environmental-configuration&#x2F;191b000762026287366b.jpeg">
-<meta property="og:updated_time" content="2019-10-20T04:54:47.373Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/devops-1-environmental-configuration/v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/devops-1-environmental-configuration/191800078ffdfe660fb3.jpeg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/devops-1-environmental-configuration/191500078c0b39a29f95.jpeg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/devops-1-environmental-configuration/1916000764d774a3eee4.jpeg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/devops-1-environmental-configuration/191700078c8d4238617c.jpeg">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/devops-1-environmental-configuration/191b000762026287366b.jpeg">
+<meta property="article:published_time" content="2018-02-26T07:14:03.000Z">
+<meta property="article:modified_time" content="2019-10-20T04:54:47.373Z">
+<meta property="article:author" content="Junhua">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;26&#x2F;devops-1-environmental-configuration&#x2F;devops-1-environmental-configuration&#x2F;v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/devops-1-environmental-configuration/v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg">
 
 <link rel="canonical" href="https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/">
 
@@ -335,7 +337,7 @@
 <ul>
 <li>Linux 环境</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#执行以下脚本可以高速安装（适用于Ubuntu，Debian,Centos等大部分Linux）</span><br><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#执行以下脚本可以高速安装（适用于Ubuntu，Debian,Centos等大部分Linux）</span><br><span class="line">curl -sSL https:&#x2F;&#x2F;get.daocloud.io&#x2F;docker | sh</span><br></pre></td></tr></table></figure>
 
 <p>如果您的电脑版本过旧，可以使用 Docker Toolbox 在Windows或者Mac上运行Docker。适用于Mac OS X 10.8+ 或者 Windows 7/8.1。<br><code>https://get.daocloud.io/toolbox/</code> (自行下载相应的版本，window的选exe文件，Mac 选pkg文件)</p>
 <h3 id="Docker-常用命令"><a href="#Docker-常用命令" class="headerlink" title="Docker 常用命令"></a>Docker 常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search XXX  #查询docker镜像</span><br></pre></td></tr></table></figure>
@@ -525,7 +527,7 @@
   <span class="author" itemprop="copyrightHolder">Junhua</span>
   <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -555,9 +557,17 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
-<script src="/js/schemes/pisces.js?v=7.4.2"></script>
-<script src="/js/next-boot.js?v=7.4.2"></script>
+
+<script src="/js/utils.js?v=7.4.2.js"></script>
+
+<script src="/js/motion.js?v=7.4.2.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.2.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.2.js"></script>
+
 
 
 
@@ -568,7 +578,9 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.2"></script>
+  
+<script src="/js/local-search.js?v=7.4.2.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -51,14 +51,16 @@
 </script>
 
   <meta name="description" content="Redis Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。[3]在2013年5月之前，其开发由VMware赞助。[4根据月度排行网站DB-Engines.com的数据显示，Redis是最流行的键值对存储数据库。">
-<meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos安装redis5.x">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;12&#x2F;14&#x2F;centos-install-redis5-x&#x2F;index.html">
+<meta property="og:url" content="https://blog.searchinfogo.com/2018/12/14/centos-install-redis5-x/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="Redis Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。[3]在2013年5月之前，其开发由VMware赞助。[4根据月度排行网站DB-Engines.com的数据显示，Redis是最流行的键值对存储数据库。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-20T04:54:47.364Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-14T02:35:35.000Z">
+<meta property="article:modified_time" content="2019-10-20T04:54:47.364Z">
+<meta property="article:author" content="Junhua">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.searchinfogo.com/2018/12/14/centos-install-redis5-x/">
@@ -305,9 +307,9 @@
 <p>我们在项目的开发中很多地方都会用到reids，用户信息缓存、分布式锁、定时器、简单的队列等等，要想使用Redis，<br>第一件事就是安装Redis。</p>
 <h4 id="安装Redis（默认CentOS-7）"><a href="#安装Redis（默认CentOS-7）" class="headerlink" title="安装Redis（默认CentOS 7）"></a>安装Redis（默认CentOS 7）</h4><ul>
 <li>下载Redis<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-5.0.3.tar.gz</span><br></pre></td></tr></table></figure></li>
-<li>解压编译<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">tar xzf redis-5.0.3.tar.gz</span><br><span class="line">cd redis-5.0.3</span><br><span class="line">make install</span><br><span class="line">#安装redis-server（默认配置）</span><br><span class="line">sh ./utils/install_server.sh</span><br><span class="line"></span><br><span class="line">Welcome to the redis service installer</span><br><span class="line">This script will help you easily set up a running redis server</span><br><span class="line"></span><br><span class="line">Please select the redis port for this instance: [6379]</span><br><span class="line">Selecting default: 6379</span><br><span class="line">Please select the redis config file name [/etc/redis/6379.conf]</span><br><span class="line">Selected default - /etc/redis/6379.conf</span><br><span class="line">Please select the redis log file name [/var/log/redis_6379.log]</span><br><span class="line">Selected default - /var/log/redis_6379.log</span><br><span class="line">Please select the data directory for this instance [/var/lib/redis/6379]</span><br><span class="line">Selected default - /var/lib/redis/6379</span><br><span class="line">Please select the redis executable path [/usr/local/bin/redis-server]</span><br><span class="line">Selected config:</span><br><span class="line">Port           : 6379</span><br><span class="line">Config file    : /etc/redis/6379.conf</span><br><span class="line">Log file       : /var/log/redis_6379.log</span><br><span class="line">Data dir       : /var/lib/redis/6379</span><br><span class="line">Executable     : /usr/local/bin/redis-server</span><br><span class="line">Cli Executable : /usr/local/bin/redis-cli</span><br><span class="line">Is this ok? Then press ENTER to go on or Ctrl-C to abort.</span><br><span class="line">Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379</span><br><span class="line">Installing service...</span><br><span class="line">Successfully added to chkconfig!</span><br><span class="line">Successfully added to runlevels 345!</span><br><span class="line">Starting Redis server...</span><br><span class="line">Installation successful!</span><br></pre></td></tr></table></figure>
+<li>解压编译<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">tar xzf redis-5.0.3.tar.gz</span><br><span class="line">cd redis-5.0.3</span><br><span class="line">make install</span><br><span class="line">#安装redis-server（默认配置）</span><br><span class="line">sh .&#x2F;utils&#x2F;install_server.sh</span><br><span class="line"></span><br><span class="line">Welcome to the redis service installer</span><br><span class="line">This script will help you easily set up a running redis server</span><br><span class="line"></span><br><span class="line">Please select the redis port for this instance: [6379]</span><br><span class="line">Selecting default: 6379</span><br><span class="line">Please select the redis config file name [&#x2F;etc&#x2F;redis&#x2F;6379.conf]</span><br><span class="line">Selected default - &#x2F;etc&#x2F;redis&#x2F;6379.conf</span><br><span class="line">Please select the redis log file name [&#x2F;var&#x2F;log&#x2F;redis_6379.log]</span><br><span class="line">Selected default - &#x2F;var&#x2F;log&#x2F;redis_6379.log</span><br><span class="line">Please select the data directory for this instance [&#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379]</span><br><span class="line">Selected default - &#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379</span><br><span class="line">Please select the redis executable path [&#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-server]</span><br><span class="line">Selected config:</span><br><span class="line">Port           : 6379</span><br><span class="line">Config file    : &#x2F;etc&#x2F;redis&#x2F;6379.conf</span><br><span class="line">Log file       : &#x2F;var&#x2F;log&#x2F;redis_6379.log</span><br><span class="line">Data dir       : &#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379</span><br><span class="line">Executable     : &#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-server</span><br><span class="line">Cli Executable : &#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-cli</span><br><span class="line">Is this ok? Then press ENTER to go on or Ctrl-C to abort.</span><br><span class="line">Copied &#x2F;tmp&#x2F;6379.conf &#x3D;&gt; &#x2F;etc&#x2F;init.d&#x2F;redis_6379</span><br><span class="line">Installing service...</span><br><span class="line">Successfully added to chkconfig!</span><br><span class="line">Successfully added to runlevels 345!</span><br><span class="line">Starting Redis server...</span><br><span class="line">Installation successful!</span><br></pre></td></tr></table></figure>
 <h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/redis/6379.config</span><br><span class="line"><span class="meta">#</span><span class="bash">设置后台启动</span></span><br><span class="line">daemonize yes</span><br><span class="line"><span class="meta">#</span><span class="bash">设置数据持久化</span></span><br><span class="line">appendonly yes</span><br><span class="line"><span class="meta">#</span><span class="bash">设置ip 默认最好不修改</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">bind</span> 127.0.0.1</span></span><br><span class="line"><span class="meta">#</span><span class="bash">设置密码</span></span><br><span class="line"><span class="meta">#</span><span class="bash">requirepass 123456</span></span><br></pre></td></tr></table></figure>
-<h4 id="创建服务脚本"><a href="#创建服务脚本" class="headerlink" title="创建服务脚本"></a>创建服务脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#启动</span><br><span class="line">systemctl start /etc/init.d/redis_6379</span><br></pre></td></tr></table></figure>
+<h4 id="创建服务脚本"><a href="#创建服务脚本" class="headerlink" title="创建服务脚本"></a>创建服务脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#启动</span><br><span class="line">systemctl start &#x2F;etc&#x2F;init.d&#x2F;redis_6379</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -482,7 +484,7 @@
   <span class="author" itemprop="copyrightHolder">Junhua</span>
   <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -512,9 +514,17 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
-<script src="/js/schemes/pisces.js?v=7.4.2"></script>
-<script src="/js/next-boot.js?v=7.4.2"></script>
+
+<script src="/js/utils.js?v=7.4.2.js"></script>
+
+<script src="/js/motion.js?v=7.4.2.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.2.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.2.js"></script>
+
 
 
 
@@ -525,7 +535,9 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.2"></script>
+  
+<script src="/js/local-search.js?v=7.4.2.js"></script>
+
 
 
 

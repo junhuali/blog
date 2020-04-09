@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -51,21 +51,25 @@
 </script>
 
   <meta name="description" content="知之愈明,则行之愈笃；行之愈笃,则知之益明.——朱熹（宋）  我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。">
-<meta name="keywords" content="Docker,SpringBoot,Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DevOps实践2:Spring Boot集成Docker环境">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;27&#x2F;devops-2-springboot-docker-integrated&#x2F;index.html">
+<meta property="og:url" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="知之愈明,则行之愈笃；行之愈笃,则知之益明.——朱熹（宋）  我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;27&#x2F;devops-2-springboot-docker-integrated&#x2F;devops-2-springboot-docker-integrated&#x2F;WX20180227-174110.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;27&#x2F;devops-2-springboot-docker-integrated&#x2F;devops-2-springboot-docker-integrated&#x2F;WX20180227-174208.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;27&#x2F;devops-2-springboot-docker-integrated&#x2F;devops-2-springboot-docker-integrated&#x2F;WX20180227-203234.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;27&#x2F;devops-2-springboot-docker-integrated&#x2F;devops-2-springboot-docker-integrated&#x2F;WX20180227-203815.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;27&#x2F;devops-2-springboot-docker-integrated&#x2F;devops-2-springboot-docker-integrated&#x2F;WX20180227-204116.png">
-<meta property="og:updated_time" content="2019-10-20T04:54:47.378Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/devops-2-springboot-docker-integrated/WX20180227-174110.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/devops-2-springboot-docker-integrated/WX20180227-174208.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/devops-2-springboot-docker-integrated/WX20180227-203234.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/devops-2-springboot-docker-integrated/WX20180227-203815.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/devops-2-springboot-docker-integrated/WX20180227-204116.png">
+<meta property="article:published_time" content="2018-02-27T06:56:50.000Z">
+<meta property="article:modified_time" content="2019-10-20T04:54:47.378Z">
+<meta property="article:author" content="Junhua">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Maven">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;02&#x2F;27&#x2F;devops-2-springboot-docker-integrated&#x2F;devops-2-springboot-docker-integrated&#x2F;WX20180227-174110.png">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/devops-2-springboot-docker-integrated/WX20180227-174110.png">
 
 <link rel="canonical" href="https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/">
 
@@ -517,7 +521,7 @@
   <span class="author" itemprop="copyrightHolder">Junhua</span>
   <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -547,9 +551,17 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
-<script src="/js/schemes/pisces.js?v=7.4.2"></script>
-<script src="/js/next-boot.js?v=7.4.2"></script>
+
+<script src="/js/utils.js?v=7.4.2.js"></script>
+
+<script src="/js/motion.js?v=7.4.2.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.2.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.2.js"></script>
+
 
 
 
@@ -560,7 +572,9 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.2"></script>
+  
+<script src="/js/local-search.js?v=7.4.2.js"></script>
+
 
 
 

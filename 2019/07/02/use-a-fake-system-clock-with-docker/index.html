@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -51,14 +51,16 @@
 </script>
 
   <meta name="description" content="在测试应用程序时，定义假系统时钟以执行使用日期和时间的代码通常很有用。虽然总是可以直接更改系统时钟，但许多人认为这种风格是不受欢迎的：  它会影响计算机上运行的所有程序，而不仅仅是正在测试的应用程序 反复更改系统时钟可能既费时又麻烦">
-<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用模拟时间在Docker 中进行测试">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2019&#x2F;07&#x2F;02&#x2F;use-a-fake-system-clock-with-docker&#x2F;index.html">
+<meta property="og:url" content="https://blog.searchinfogo.com/2019/07/02/use-a-fake-system-clock-with-docker/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="在测试应用程序时，定义假系统时钟以执行使用日期和时间的代码通常很有用。虽然总是可以直接更改系统时钟，但许多人认为这种风格是不受欢迎的：  它会影响计算机上运行的所有程序，而不仅仅是正在测试的应用程序 反复更改系统时钟可能既费时又麻烦">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-20T04:54:47.424Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-02T12:49:48.000Z">
+<meta property="article:modified_time" content="2019-10-20T04:54:47.424Z">
+<meta property="article:author" content="Junhua">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.searchinfogo.com/2019/07/02/use-a-fake-system-clock-with-docker/">
@@ -340,7 +342,7 @@
 <p>解决方案是在容器中伪造它。 这个lib 拦截所有系统调用程序用于检索当前时间和日期。<br>实施很容易。根据需要为Dockerfile添加功能：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd WORKDIR /</span><br><span class="line">git clone https://github.com/wolfcw/libfaketime.git</span><br><span class="line">cd  /libfaketime/src</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <p>请记住设置环境变量 LD_PRELOAD 在运行应用程序之前，您需要应用伪造的时间。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMD [&quot;/bin/sh&quot;, &quot;-c&quot;, &quot;LD_PRELOAD=/usr/local/lib/faketime/libfaketime.so.1 FAKETIME_NO_CACHE=1 python /srv/intercept/manage.py runserver 0.0.0.0:3000]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMD [&quot;&#x2F;bin&#x2F;sh&quot;, &quot;-c&quot;, &quot;LD_PRELOAD&#x3D;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;faketime&#x2F;libfaketime.so.1 FAKETIME_NO_CACHE&#x3D;1 python &#x2F;srv&#x2F;intercept&#x2F;manage.py runserver 0.0.0.0:3000]</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_time</span><span class="params">(request)</span>:</span></span><br><span class="line">    print(datetime.today())</span><br><span class="line">    os.environ[<span class="string">"FAKETIME"</span>] = <span class="string">"2020-01-01"</span>  <span class="comment"># Note: time of type string must be in the format "YYYY-MM-DD hh:mm:ss" or "+15d"</span></span><br><span class="line">    print(datetime.today())</span><br></pre></td></tr></table></figure>
 
@@ -520,7 +522,7 @@
   <span class="author" itemprop="copyrightHolder">Junhua</span>
   <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -550,9 +552,17 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
-<script src="/js/schemes/pisces.js?v=7.4.2"></script>
-<script src="/js/next-boot.js?v=7.4.2"></script>
+
+<script src="/js/utils.js?v=7.4.2.js"></script>
+
+<script src="/js/motion.js?v=7.4.2.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.2.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.2.js"></script>
+
 
 
 
@@ -563,7 +573,9 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.2"></script>
+  
+<script src="/js/local-search.js?v=7.4.2.js"></script>
+
 
 
 

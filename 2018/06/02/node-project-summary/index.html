@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -51,14 +51,16 @@
 </script>
 
   <meta name="description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。">
-<meta name="keywords" content="rabbitmq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node 项目问题总结">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.searchinfogo.com&#x2F;2018&#x2F;06&#x2F;02&#x2F;node-project-summary&#x2F;index.html">
+<meta property="og:url" content="https://blog.searchinfogo.com/2018/06/02/node-project-summary/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-20T04:54:47.400Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-02T06:52:15.000Z">
+<meta property="article:modified_time" content="2019-10-20T04:54:47.400Z">
+<meta property="article:author" content="Junhua">
+<meta property="article:tag" content="rabbitmq">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.searchinfogo.com/2018/06/02/node-project-summary/">
@@ -301,7 +303,7 @@
       
         <p>最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 <a id="more"></a></p>
 <h3 id="RabbitMQ-virtual-hosts-问题"><a href="#RabbitMQ-virtual-hosts-问题" class="headerlink" title="RabbitMQ virtual hosts 问题"></a>RabbitMQ virtual hosts 问题</h3><p>项目中使用了RabbitMQ，按照官方demo编写，本地调试的时候没有问题（有种bug叫做本地是好的:-D,但是在链接公司的MQ的时候报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq typeerror cannot read property &apos;create channel&apos; of undefined</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq typeerror cannot read property &#39;create channel&#39; of undefined</span><br></pre></td></tr></table></figure>
 <p>会碰到上面类似的错误，创建channel的报错。<br>最开始的时候怀疑是自己代码有问题，毕竟第一次用Node(Node 菜鸡一个)；因为多环境，最开始的时候使用开发环境账号进行连接，后面<br>在尝试使用管理员账号登录的时候，发现可以正常连接，还以为是运维把权限配置的有问题（错的其实永远是别人，其实是自己的锅）。<br>最后发现是因为<code>virtual hosts</code>的原因</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqp.connect(<span class="string">'amqp://admin:123456@localhost'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, conn</span>) </span>&#123; ......</span><br></pre></td></tr></table></figure>
 <p>默认的配置如上图所示，其实这个配置会使用默认的<code>virtual hosts</code> <code>/</code>,但是如果配置了其他的<code>virtual hosts</code>，你没有配置就会导致你<br>无法正常的连接。<br>如果你配置的有其他的<code>virtual hosts</code>，那么配置如下</p>
@@ -484,7 +486,7 @@
   <span class="author" itemprop="copyrightHolder">Junhua</span>
   <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
@@ -514,9 +516,17 @@
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
-<script src="/js/schemes/pisces.js?v=7.4.2"></script>
-<script src="/js/next-boot.js?v=7.4.2"></script>
+
+<script src="/js/utils.js?v=7.4.2.js"></script>
+
+<script src="/js/motion.js?v=7.4.2.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.2.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.2.js"></script>
+
 
 
 
@@ -527,7 +537,9 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.2"></script>
+  
+<script src="/js/local-search.js?v=7.4.2.js"></script>
+
 
 
 
