@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.searchinfogo.com/"/>
-  <updated>2020-03-19T03:55:18.174Z</updated>
+  <updated>2020-04-14T05:40:22.153Z</updated>
   <id>https://blog.searchinfogo.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>方舟服务器搭建 Ark-Server-Build</title>
+    <link href="https://blog.searchinfogo.com/2020/04/14/ark-server/"/>
+    <id>https://blog.searchinfogo.com/2020/04/14/ark-server/</id>
+    <published>2020-04-14T13:28:48.000Z</published>
+    <updated>2020-04-14T05:40:22.153Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p><h3 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h3><p>因为玩的人不是很多，所以服务器选的是阿里云4C16G,200Mbps带宽按流量付费(根据这几天玩下来，流量一般稳定在100kb/s左右)，弹性ip，系统选择的是CentOS7.8 64 bit，基于LinuxGSM 方案，阿里云入网是不收费的，200Mbps 带宽有利于下载游戏。</p><h3 id="配置服务器"><a href="#配置服务器" class="headerlink" title="配置服务器"></a>配置服务器</h3><h4 id="增加Hosts"><a href="#增加Hosts" class="headerlink" title="增加Hosts"></a>增加Hosts</h4><p>因为国内的关系，服务器访问github拉取代码容易出现失败的情况，所以需要修改一下hosts。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line"><span class="meta">#</span><span class="bash">增加下面的配置，保存 这样可以避免脚本下载的时候失败</span></span><br><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure><h4 id="设置安全组"><a href="#设置安全组" class="headerlink" title="设置安全组"></a>设置安全组</h4><p>游戏需要用到几个端口，默认的阿里云服务器只开了80，443 ，打开服务器的安全组配置</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开对应的UDP端口, 0.0.0.0/0</span></span><br><span class="line">7777</span><br><span class="line">27015</span><br></pre></td></tr></table></figure><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> root 权限下执行,还可能会缺少，但是后面脚本会自行安装</span></span><br><span class="line">yum install epel-release -y</span><br><span class="line">yum install mailx postfix curl wget tar bzip2 gzip unzip python3 binutils bc jq tmux glibc.i686 libstdc++ libstdc++.i686 -y</span><br></pre></td></tr></table></figure><h4 id="增加用户"><a href="#增加用户" class="headerlink" title="增加用户"></a>增加用户</h4><p>创建非root用户</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 增加用户</span></span><br><span class="line">adduser arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置密码，可以根据自己的需求设置</span></span><br><span class="line">passwd 1234546</span><br></pre></td></tr></table></figure><h4 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 切换用户、安装</span></span><br><span class="line">su - arkserver</span><br><span class="line">cd ~</span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载linuxgsm.sh 脚本</span></span><br><span class="line">wget -O linuxgsm.sh https://linuxgsm.sh &amp;&amp; chmod +x linuxgsm.sh &amp;&amp; bash linuxgsm.sh arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装、如果下载失败，多执行几次</span></span><br><span class="line">./arkserver install</span><br></pre></td></tr></table></figure><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 可以通过键入找到命令的完整列表。</span></span><br><span class="line">./arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">./arkserver start</span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止</span></span><br><span class="line">./arkserver stop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启</span></span><br><span class="line">./arkserver restart</span><br><span class="line"><span class="meta">#</span><span class="bash"> 更新</span></span><br><span class="line">./arkserver update</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制更新</span></span><br><span class="line">./arkserver force-update</span><br></pre></td></tr></table></figure><h5 id="参考LinuxGSM"><a href="#参考LinuxGSM" class="headerlink" title="参考LinuxGSM"></a><a href="https://linuxgsm.com/lgsm/arkserver/" target="_blank" rel="noopener">参考LinuxGSM</a></h5>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近被朋友拉着入了&lt;code&gt;方舟:进化生存&lt;/code&gt;的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。
+    
+    </summary>
+    
+      <category term="Game" scheme="https://blog.searchinfogo.com/categories/Game/"/>
+    
+    
+      <category term="Ark" scheme="https://blog.searchinfogo.com/tags/Ark/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringCloud 引入链路跟踪Sleuth及Zipkin</title>
@@ -435,31 +457,6 @@
     
     
       <category term="加密" scheme="https://blog.searchinfogo.com/tags/%E5%8A%A0%E5%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pandas学习笔记-3</title>
-    <link href="https://blog.searchinfogo.com/2018/09/26/study-pandas-notes-3/"/>
-    <id>https://blog.searchinfogo.com/2018/09/26/study-pandas-notes-3/</id>
-    <published>2018-09-26T08:19:09.000Z</published>
-    <updated>2019-10-20T04:54:47.421Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py" target="_blank" rel="noopener">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'title'</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'duration'</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">'content_rating'</span>, <span class="string">'duration'</span>]))</span><br></pre></td></tr></table></figure><h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py" target="_blank" rel="noopener">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">'genre'</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">'genre'</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure><p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;6-pandas数据排序-源码见demo6-py&quot;&gt;&lt;a href=&quot;#6-pandas数据排序-源码见demo6-py&quot; class=&quot;headerlink&quot; title=&quot;6.pandas数据排序(源码见demo6.py)&quot;&gt;&lt;/a&gt;6.pandas数据排序(
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="https://blog.searchinfogo.com/categories/Python/"/>
-    
-    
-      <category term="pandas" scheme="https://blog.searchinfogo.com/tags/pandas/"/>
     
   </entry>
   

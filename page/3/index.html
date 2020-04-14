@@ -229,6 +229,99 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/09/26/study-pandas-notes-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Junhua">
+      <meta itemprop="description" content="Done is better than perfect.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junhua's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/26/study-pandas-notes-3/" class="post-title-link" itemprop="url">pandas学习笔记-3</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-26 16:19:09" itemprop="dateCreated datePublished" datetime="2018-09-26T16:19:09+08:00">2018-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-20 12:54:47" itemprop="dateModified" datetime="2019-10-20T12:54:47+08:00">2019-10-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/09/26/study-pandas-notes-3/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/26/study-pandas-notes-3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py" target="_blank" rel="noopener">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'title'</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'duration'</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">'content_rating'</span>, <span class="string">'duration'</span>]))</span><br></pre></td></tr></table></figure>
+<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py" target="_blank" rel="noopener">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">'genre'</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">'genre'</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
+
+<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/09/25/study-pandas-notes-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1104,90 +1197,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/04/11/netty-study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Junhua">
-      <meta itemprop="description" content="Done is better than perfect.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junhua's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/11/netty-study/" class="post-title-link" itemprop="url">Netty 学习记录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-11 10:44:49" itemprop="dateCreated datePublished" datetime="2018-04-11T10:44:49+08:00">2018-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-20 12:54:47" itemprop="dateModified" datetime="2019-10-20T12:54:47+08:00">2019-10-20</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2018/04/11/netty-study/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/11/netty-study/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Netty-核心组件"><a href="#Netty-核心组件" class="headerlink" title="Netty 核心组件"></a>Netty 核心组件</h3><ul>
-<li>Channel</li>
-<li>回调</li>
-<li>Future</li>
-<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1238,20 +1247,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
