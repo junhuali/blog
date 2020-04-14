@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>数字货币入门</title>
-    <url>/2018/01/04/BTC-Tutorial/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。<a id="more"></a></p>
-<h3 id="怎么入场"><a href="#怎么入场" class="headerlink" title="怎么入场"></a>怎么入场</h3><p>交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要<br>进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所<br>平台做担保（避免被骗），建议用实时性比较强的到账方式，不管是买还是卖。<br>我主要是在火币进行兑换，也叫OTC（场外交易）</p>
-<p><a href="https://www.huobipro.pro" target="_blank" rel="noopener">https://www.huobipro.pro</a><br>如果请求不到，可以使用<br><a href="https://www.huobi.br.com/zh-cn/" target="_blank" rel="noopener">https://www.huobi.br.com/zh-cn/</a></p>
-<p>2018年04月20日11:38:10<br>市场一扫之前的低沉，开始变的活跃起来，现在还不能确定是否是向牛市开始转变，但是趋势在慢慢变好，场外的USDT 已经开始有溢价了，说明场外资金开始进入。</p>
-]]></content>
-      <categories>
-        <category>数字货币</category>
-      </categories>
-      <tags>
-        <tag>数字货币</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Redis连接池连接没有正常释放报错</title>
     <url>/2017/09/23/Could-not-get-a-resource-from-the-pool/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Caused by: redis.clients.jedis.exceptions.JedisException: Could not get a resource from the pool</span><br><span class="line">at redis.clients.util.Pool.getResource(Pool.java:51)</span><br><span class="line">at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)</span><br><span class="line">at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)</span><br><span class="line">at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)</span><br><span class="line">... 71 common frames omitted</span><br></pre></td></tr></table></figure>
@@ -44,6 +29,21 @@
       </categories>
       <tags>
         <tag>String</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数字货币入门</title>
+    <url>/2018/01/04/BTC-Tutorial/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。<a id="more"></a></p>
+<h3 id="怎么入场"><a href="#怎么入场" class="headerlink" title="怎么入场"></a>怎么入场</h3><p>交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要<br>进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所<br>平台做担保（避免被骗），建议用实时性比较强的到账方式，不管是买还是卖。<br>我主要是在火币进行兑换，也叫OTC（场外交易）</p>
+<p><a href="https://www.huobipro.pro" target="_blank" rel="noopener">https://www.huobipro.pro</a><br>如果请求不到，可以使用<br><a href="https://www.huobi.br.com/zh-cn/" target="_blank" rel="noopener">https://www.huobi.br.com/zh-cn/</a></p>
+<p>2018年04月20日11:38:10<br>市场一扫之前的低沉，开始变的活跃起来，现在还不能确定是否是向牛市开始转变，但是趋势在慢慢变好，场外的USDT 已经开始有溢价了，说明场外资金开始进入。</p>
+]]></content>
+      <categories>
+        <category>数字货币</category>
+      </categories>
+      <tags>
+        <tag>数字货币</tag>
       </tags>
   </entry>
   <entry>
@@ -137,6 +137,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Nginx 504 Gateway Time-out</title>
+    <url>/2017/09/22/Nginx-504-GateWay-Time-Out/</url>
+    <content><![CDATA[<p>今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置 <a id="more"></a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">proxy_connect_timeout = 3;</span><br></pre></td></tr></table></figure>
+<p>时间过小导致的，最好用默认参数</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</title>
     <url>/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/</url>
     <content><![CDATA[<p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。<a id="more"></a></p>
@@ -185,113 +199,6 @@
       </categories>
       <tags>
         <tag>Domain</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>方舟服务器搭建 Ark-Server-Build</title>
-    <url>/2020/04/14/ark-server/</url>
-    <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
-<h3 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h3><p>因为玩的人不是很多，所以服务器选的是阿里云4C16G,200Mbps带宽按流量付费(根据这几天玩下来，流量一般稳定在100kb/s左右)，弹性ip，系统选择的是CentOS7.8 64 bit，基于LinuxGSM 方案，阿里云入网是不收费的，200Mbps 带宽有利于下载游戏。</p>
-<h3 id="配置服务器"><a href="#配置服务器" class="headerlink" title="配置服务器"></a>配置服务器</h3><h4 id="增加Hosts"><a href="#增加Hosts" class="headerlink" title="增加Hosts"></a>增加Hosts</h4><p>因为国内的关系，服务器访问github拉取代码容易出现失败的情况，所以需要修改一下hosts。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line"><span class="meta">#</span><span class="bash">增加下面的配置，保存 这样可以避免脚本下载的时候失败</span></span><br><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<h4 id="设置安全组"><a href="#设置安全组" class="headerlink" title="设置安全组"></a>设置安全组</h4><p>游戏需要用到几个端口，默认的阿里云服务器只开了80，443 ，打开服务器的安全组配置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开对应的UDP端口, 0.0.0.0/0</span></span><br><span class="line">7777</span><br><span class="line">27015</span><br></pre></td></tr></table></figure>
-<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> root 权限下执行,还可能会缺少，但是后面脚本会自行安装</span></span><br><span class="line">yum install epel-release -y</span><br><span class="line">yum install mailx postfix curl wget tar bzip2 gzip unzip python3 binutils bc jq tmux glibc.i686 libstdc++ libstdc++.i686 -y</span><br></pre></td></tr></table></figure>
-<h4 id="增加用户"><a href="#增加用户" class="headerlink" title="增加用户"></a>增加用户</h4><p>创建非root用户</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 增加用户</span></span><br><span class="line">adduser arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置密码，可以根据自己的需求设置</span></span><br><span class="line">passwd 1234546</span><br></pre></td></tr></table></figure>
-<h4 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 切换用户、安装</span></span><br><span class="line">su - arkserver</span><br><span class="line">cd ~</span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载linuxgsm.sh 脚本</span></span><br><span class="line">wget -O linuxgsm.sh https://linuxgsm.sh &amp;&amp; chmod +x linuxgsm.sh &amp;&amp; bash linuxgsm.sh arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装、如果下载失败，多执行几次</span></span><br><span class="line">./arkserver install</span><br></pre></td></tr></table></figure>
-
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 可以通过键入找到命令的完整列表。</span></span><br><span class="line">./arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">./arkserver start</span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止</span></span><br><span class="line">./arkserver stop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启</span></span><br><span class="line">./arkserver restart</span><br><span class="line"><span class="meta">#</span><span class="bash"> 更新</span></span><br><span class="line">./arkserver update</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制更新</span></span><br><span class="line">./arkserver force-update</span><br></pre></td></tr></table></figure>
-
-
-<h5 id="参考LinuxGSM"><a href="#参考LinuxGSM" class="headerlink" title="参考LinuxGSM"></a><a href="https://linuxgsm.com/lgsm/arkserver/" target="_blank" rel="noopener">参考LinuxGSM</a></h5>]]></content>
-      <categories>
-        <category>Game</category>
-      </categories>
-      <tags>
-        <tag>Ark</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>apollo 配置提前加载</title>
-    <url>/2019/05/18/apollo-eagerload/</url>
-    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
-<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
-<p>当url使用固定时，可以正常的解析出请求的url，使用<code>${}</code>没有生效。<br>这个时候查询了Apollo的文档<a href=""https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90"">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
-<blockquote>
-<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
-</blockquote>
-<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">"此处写你需要提前初始化的key"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>通过在启动前将配置注入，<code>${}</code> 就可以获取到正确的链接了。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Apollo、Feign</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS 安装 git</title>
-    <url>/2017/11/06/centos-install-git/</url>
-    <content><![CDATA[<p>CentOS 7 上安装git 的几种方法。 <a id="more"></a></p>
-<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><ul>
-<li>安装对应的依赖<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line">yum install -y gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure></li>
-<li>下载源码编译安装<h4 id="确保系统git-已经被卸载"><a href="#确保系统git-已经被卸载" class="headerlink" title="确保系统git 已经被卸载"></a>确保系统git 已经被卸载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove -y git(先执行本选项，确保卸载掉git)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src</span><br><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gz</span><br><span class="line">tar xzf git-2.9.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.9.3</span><br><span class="line">make prefix=/usr/bin/git all</span><br><span class="line">make prefix=/usr/bin/git install</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$PATH</span>:/usr/bin/git/bin"</span> &gt;&gt; /etc/bashrc</span><br><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">git --version (查看是否安装完成)</span><br></pre></td></tr></table></figure>
-<h3 id="rpm-安装（基于CentOS7）"><a href="#rpm-安装（基于CentOS7）" class="headerlink" title="rpm 安装（基于CentOS7）"></a>rpm 安装（基于CentOS7）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y epel-release （<span class="comment">#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）</span></span><br><span class="line">rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">yum install git2u</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx 504 Gateway Time-out</title>
-    <url>/2017/09/22/Nginx-504-GateWay-Time-Out/</url>
-    <content><![CDATA[<p>今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置 <a id="more"></a></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">proxy_connect_timeout = 3;</span><br></pre></td></tr></table></figure>
-<p>时间过小导致的，最好用默认参数</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建一个简单的app分发平台</title>
-    <url>/2019/03/01/build-an-app-distribution-platform/</url>
-    <content><![CDATA[<h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><p>   app开发的时候需要进行测试，每次频繁的拷贝发送；iOS 的企业包上传到分发平台无法通过，有限制等等，这个时候就需要我们自己有自己的分发平台。Android的apk<br>比较好解决，比较麻烦的是iOS的分发(主要针对企业包，或者加了uuid的测试包)。第三方分发平台也有第三方的好处，但是自己搭建的更自由。<a id="more"></a></p>
-<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul>
-<li>企业签名过后的ipa包、apk</li>
-<li>一个域名</li>
-<li>一台服务器</li>
-<li>一个https证书<h4 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h4><h3 id="搭建一个nginx-web-环境"><a href="#搭建一个nginx-web-环境" class="headerlink" title="搭建一个nginx web 环境"></a>搭建一个nginx web 环境</h3>首先使用nignx搭建一个web环境，web的页面可以自己写，或者抓取第三方的(页面的内容其实简单，主要包括判断是否在微信，如果在微信，提示使用浏览器打开)。<br>大家一般都是使用微信的扫一扫<h3 id="获取apk、ipa、plist、iOS-app-icon文件公网地址"><a href="#获取apk、ipa、plist、iOS-app-icon文件公网地址" class="headerlink" title="获取apk、ipa、plist、iOS app icon文件公网地址"></a>获取apk、ipa、plist、iOS app icon文件公网地址</h3>配置好域名解析、对应的nginx文件配置后，得到apk、ipa、plist、icon四个文件的下载地址。<br><code>https://xxxx.xxxx.com/xxx.apk</code><br><code>https://xxxx.xxxx.com/xxx.ipa</code><br><code>https://xxxx.xxxx.com/xxx.plist</code><br><code>https://xxxx.xxxx.com/xxx.png</code></li>
-</ul>
-<h3 id="配置plist文件的内容"><a href="#配置plist文件的内容" class="headerlink" title="配置plist文件的内容"></a>配置plist文件的内容</h3><figure class="highlight plist"><figcaption><span>文件</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">key</span>&gt;</span>items<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">key</span>&gt;</span>assets<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>kind<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">string</span>&gt;</span>software-package<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>url<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">string</span>&gt;</span>https://xxx.xxx.com/download/xxx.ipa<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>kind<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">string</span>&gt;</span>display-image<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>needs-shine<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>url<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">string</span>&gt;</span>https://xxx.xxx.com/img/xxx.png<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">key</span>&gt;</span>metadata<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>bundle-identifier<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>io.xxx.xxx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>bundle-version<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>kind<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>software<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>subtitle<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>title<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>需要修改<code>software-package</code>、<code>display-image</code> 、<code>subtitle</code>、<code>title</code><br><code>software-package</code> 使用 <code>https://xxxx.xxxx.com/xxx.ipa</code> 的地址</p>
-<h3 id="配置地址"><a href="#配置地址" class="headerlink" title="配置地址"></a>配置地址</h3><p>在下载页面配置<code>apk</code>下载地址以及<code>plist</code>地址，这里需要注意，由于iOS 的安全机制，plist文件需要使用https地址，否则会导致ipa 文件无法正常安装。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>主要配置的其实就是iOS 的下载所需的plist文件，以及https访问，如果这两个地方出错，会导致ipa 下载正常，确无法正常安装。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>app 分发</tag>
       </tags>
   </entry>
   <entry>
@@ -386,6 +293,57 @@
       </tags>
   </entry>
   <entry>
+    <title>方舟服务器搭建 Ark-Server-Build</title>
+    <url>/2020/04/14/ark-server/</url>
+    <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
+<h3 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h3><p>因为玩的人不是很多，所以服务器选的是阿里云4C16G,200Mbps带宽按流量付费(根据这几天玩下来，流量一般稳定在100kb/s左右)，弹性ip，系统选择的是CentOS7.8 64 bit，基于LinuxGSM 方案，阿里云入网是不收费的，200Mbps 带宽有利于下载游戏。</p>
+<h3 id="配置服务器"><a href="#配置服务器" class="headerlink" title="配置服务器"></a>配置服务器</h3><h4 id="增加Hosts"><a href="#增加Hosts" class="headerlink" title="增加Hosts"></a>增加Hosts</h4><p>因为国内的关系，服务器访问github拉取代码容易出现失败的情况，所以需要修改一下hosts。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/hosts</span><br><span class="line"><span class="meta">#</span><span class="bash">增加下面的配置，保存 这样可以避免脚本下载的时候失败</span></span><br><span class="line">199.232.4.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置安全组"><a href="#设置安全组" class="headerlink" title="设置安全组"></a>设置安全组</h4><p>游戏需要用到几个端口，默认的阿里云服务器只开了80，443 ，打开服务器的安全组配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开对应的UDP端口, 0.0.0.0/0</span></span><br><span class="line">7777</span><br><span class="line">27015</span><br></pre></td></tr></table></figure>
+<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> root 权限下执行,还可能会缺少，但是后面脚本会自行安装</span></span><br><span class="line">yum install epel-release -y</span><br><span class="line">yum install mailx postfix curl wget tar bzip2 gzip unzip python3 binutils bc jq tmux glibc.i686 libstdc++ libstdc++.i686 -y</span><br></pre></td></tr></table></figure>
+<h4 id="增加用户"><a href="#增加用户" class="headerlink" title="增加用户"></a>增加用户</h4><p>创建非root用户</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 增加用户</span></span><br><span class="line">adduser arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置密码，可以根据自己的需求设置</span></span><br><span class="line">passwd 1234546</span><br></pre></td></tr></table></figure>
+<h4 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 切换用户、安装</span></span><br><span class="line">su - arkserver</span><br><span class="line">cd ~</span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载linuxgsm.sh 脚本</span></span><br><span class="line">wget -O linuxgsm.sh https://linuxgsm.sh &amp;&amp; chmod +x linuxgsm.sh &amp;&amp; bash linuxgsm.sh arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装、如果下载失败，多执行几次</span></span><br><span class="line">./arkserver install</span><br></pre></td></tr></table></figure>
+
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 可以通过键入找到命令的完整列表。</span></span><br><span class="line">./arkserver</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">./arkserver start</span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止</span></span><br><span class="line">./arkserver stop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启</span></span><br><span class="line">./arkserver restart</span><br><span class="line"><span class="meta">#</span><span class="bash"> 更新</span></span><br><span class="line">./arkserver update</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制更新</span></span><br><span class="line">./arkserver force-update</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="参考LinuxGSM"><a href="#参考LinuxGSM" class="headerlink" title="参考LinuxGSM"></a><a href="https://linuxgsm.com/lgsm/arkserver/" target="_blank" rel="noopener">参考LinuxGSM</a></h5>]]></content>
+      <categories>
+        <category>Game</category>
+      </categories>
+      <tags>
+        <tag>Ark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>apollo 配置提前加载</title>
+    <url>/2019/05/18/apollo-eagerload/</url>
+    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
+<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
+<p>当url使用固定时，可以正常的解析出请求的url，使用<code>${}</code>没有生效。<br>这个时候查询了Apollo的文档<a href=""https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90"">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
+<blockquote>
+<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
+</blockquote>
+<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
+<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">"此处写你需要提前初始化的key"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>通过在启动前将配置注入，<code>${}</code> 就可以获取到正确的链接了。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Apollo、Feign</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>brew 升级应用错误</title>
     <url>/2018/05/03/brew-upgrade-error/</url>
     <content><![CDATA[<p>定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。<a id="more"></a></p>
@@ -404,16 +362,45 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker 常用命令(待完善)</title>
-    <url>/2017/11/30/common-commonds/</url>
-    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
+    <title>搭建一个简单的app分发平台</title>
+    <url>/2019/03/01/build-an-app-distribution-platform/</url>
+    <content><![CDATA[<h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><p>   app开发的时候需要进行测试，每次频繁的拷贝发送；iOS 的企业包上传到分发平台无法通过，有限制等等，这个时候就需要我们自己有自己的分发平台。Android的apk<br>比较好解决，比较麻烦的是iOS的分发(主要针对企业包，或者加了uuid的测试包)。第三方分发平台也有第三方的好处，但是自己搭建的更自由。<a id="more"></a></p>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul>
+<li>企业签名过后的ipa包、apk</li>
+<li>一个域名</li>
+<li>一台服务器</li>
+<li>一个https证书<h4 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h4><h3 id="搭建一个nginx-web-环境"><a href="#搭建一个nginx-web-环境" class="headerlink" title="搭建一个nginx web 环境"></a>搭建一个nginx web 环境</h3>首先使用nignx搭建一个web环境，web的页面可以自己写，或者抓取第三方的(页面的内容其实简单，主要包括判断是否在微信，如果在微信，提示使用浏览器打开)。<br>大家一般都是使用微信的扫一扫<h3 id="获取apk、ipa、plist、iOS-app-icon文件公网地址"><a href="#获取apk、ipa、plist、iOS-app-icon文件公网地址" class="headerlink" title="获取apk、ipa、plist、iOS app icon文件公网地址"></a>获取apk、ipa、plist、iOS app icon文件公网地址</h3>配置好域名解析、对应的nginx文件配置后，得到apk、ipa、plist、icon四个文件的下载地址。<br><code>https://xxxx.xxxx.com/xxx.apk</code><br><code>https://xxxx.xxxx.com/xxx.ipa</code><br><code>https://xxxx.xxxx.com/xxx.plist</code><br><code>https://xxxx.xxxx.com/xxx.png</code></li>
+</ul>
+<h3 id="配置plist文件的内容"><a href="#配置plist文件的内容" class="headerlink" title="配置plist文件的内容"></a>配置plist文件的内容</h3><figure class="highlight plist"><figcaption><span>文件</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">key</span>&gt;</span>items<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">key</span>&gt;</span>assets<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>kind<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">string</span>&gt;</span>software-package<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>url<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">string</span>&gt;</span>https://xxx.xxx.com/download/xxx.ipa<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>kind<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">string</span>&gt;</span>display-image<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>needs-shine<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">key</span>&gt;</span>url<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">string</span>&gt;</span>https://xxx.xxx.com/img/xxx.png<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">key</span>&gt;</span>metadata<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>bundle-identifier<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>io.xxx.xxx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>bundle-version<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>kind<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>software<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>subtitle<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>title<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要修改<code>software-package</code>、<code>display-image</code> 、<code>subtitle</code>、<code>title</code><br><code>software-package</code> 使用 <code>https://xxxx.xxxx.com/xxx.ipa</code> 的地址</p>
+<h3 id="配置地址"><a href="#配置地址" class="headerlink" title="配置地址"></a>配置地址</h3><p>在下载页面配置<code>apk</code>下载地址以及<code>plist</code>地址，这里需要注意，由于iOS 的安全机制，plist文件需要使用https地址，否则会导致ipa 文件无法正常安装。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>主要配置的其实就是iOS 的下载所需的plist文件，以及https访问，如果这两个地方出错，会导致ipa 下载正常，确无法正常安装。</p>
 ]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
+        <tag>app 分发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS 安装 git</title>
+    <url>/2017/11/06/centos-install-git/</url>
+    <content><![CDATA[<p>CentOS 7 上安装git 的几种方法。 <a id="more"></a></p>
+<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><ul>
+<li>安装对应的依赖<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line">yum install -y gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure></li>
+<li>下载源码编译安装<h4 id="确保系统git-已经被卸载"><a href="#确保系统git-已经被卸载" class="headerlink" title="确保系统git 已经被卸载"></a>确保系统git 已经被卸载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove -y git(先执行本选项，确保卸载掉git)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src</span><br><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gz</span><br><span class="line">tar xzf git-2.9.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.9.3</span><br><span class="line">make prefix=/usr/bin/git all</span><br><span class="line">make prefix=/usr/bin/git install</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$PATH</span>:/usr/bin/git/bin"</span> &gt;&gt; /etc/bashrc</span><br><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">git --version (查看是否安装完成)</span><br></pre></td></tr></table></figure>
+<h3 id="rpm-安装（基于CentOS7）"><a href="#rpm-安装（基于CentOS7）" class="headerlink" title="rpm 安装（基于CentOS7）"></a>rpm 安装（基于CentOS7）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y epel-release （<span class="comment">#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）</span></span><br><span class="line">rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">yum install git2u</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -436,28 +423,6 @@
       </categories>
       <tags>
         <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Centos7 安装 pyenv</title>
-    <url>/2018/02/27/cnetos-install-pyenv/</url>
-    <content><![CDATA[<blockquote>
-<p>人生苦短，我用Python</p>
-</blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
-
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -516,6 +481,41 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Centos7 安装 pyenv</title>
+    <url>/2018/02/27/cnetos-install-pyenv/</url>
+    <content><![CDATA[<blockquote>
+<p>人生苦短，我用Python</p>
+</blockquote>
+<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
+<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 常用命令(待完善)</title>
+    <url>/2017/11/30/common-commonds/</url>
+    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>npm 更换源</title>
     <url>/2018/05/03/config-npm-registry/</url>
     <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
@@ -541,6 +541,21 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 创建MySQL</title>
+    <url>/2018/01/17/docker-create-mysql/</url>
+    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -653,35 +668,20 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker 创建MySQL</title>
-    <url>/2018/01/17/docker-create-mysql/</url>
-    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
-<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
-<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 安装 RabbitMQ 集群</title>
-    <url>/2017/12/04/docker-install-rabbitmq-cluster/</url>
-    <content><![CDATA[<p>Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。<a id="more"></a></p>
-<h3 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h3><ul>
-<li>检查是否安装过docker-compose<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker-compose -v <span class="comment">#出现docker-compose version 1.16.1, build 6d1ac21 类似，说明安装成功</span></span><br></pre></td></tr></table></figure></li>
-<li>如果没有安装docker-compose，进行安装<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#服务器安装</span></span><br><span class="line">$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">$ chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></li>
-<li>在windows 和 Mac 下载对应的安装包进行安装<br><a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe" target="_blank" rel="noopener">Windows下载地址</a><br><a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">Mac下载地址</a></li>
-</ul>
-<h3 id="下载对应的脚本"><a href="#下载对应的脚本" class="headerlink" title="下载对应的脚本"></a>下载对应的脚本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/bijukunjummen/docker-rabbitmq-cluster.git</span><br></pre></td></tr></table></figure>
-<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> docker-rabbitmq-cluster/cluster/</span><br><span class="line">$ docker-compose up -d <span class="comment">#启动</span></span><br></pre></td></tr></table></figure>
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
-<li>登录的账号密码（可以自行在脚本里面修改）<br>user: myuser<br>password: mypass<br>然后访问<code>localhost:15672</code>进行访问</li>
-</ul>
-<p>以上使用bijukunjummen 的脚本，可参见<a href="https://github.com/bijukunjummen/docker-rabbitmq-cluster" target="_blank" rel="noopener">github</a><br>以及<a href="http://get.daocloud.io/#install-docker" target="_blank" rel="noopener">daocloud</a> docker-compose脚本</p>
+    <title>Docker安装MongoDB(Mongo3.x)</title>
+    <url>/2017/09/23/docker-install-MongoDB/</url>
+    <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
+
+<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --restart&#x3D;&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:&#x2F;data&#x2F;db\</span><br><span class="line">          -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
+
+<p><code>--storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
+<h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>至此，MongDB 安装完成</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -707,20 +707,20 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker安装MongoDB(Mongo3.x)</title>
-    <url>/2017/09/23/docker-install-MongoDB/</url>
-    <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
-
-<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
-
-<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --restart&#x3D;&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:&#x2F;data&#x2F;db\</span><br><span class="line">          -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
-
-<p><code>--storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
-<h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>至此，MongDB 安装完成</p>
+    <title>Docker 安装 RabbitMQ 集群</title>
+    <url>/2017/12/04/docker-install-rabbitmq-cluster/</url>
+    <content><![CDATA[<p>Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。<a id="more"></a></p>
+<h3 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h3><ul>
+<li>检查是否安装过docker-compose<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker-compose -v <span class="comment">#出现docker-compose version 1.16.1, build 6d1ac21 类似，说明安装成功</span></span><br></pre></td></tr></table></figure></li>
+<li>如果没有安装docker-compose，进行安装<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#服务器安装</span></span><br><span class="line">$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">$ chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></li>
+<li>在windows 和 Mac 下载对应的安装包进行安装<br><a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe" target="_blank" rel="noopener">Windows下载地址</a><br><a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">Mac下载地址</a></li>
+</ul>
+<h3 id="下载对应的脚本"><a href="#下载对应的脚本" class="headerlink" title="下载对应的脚本"></a>下载对应的脚本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/bijukunjummen/docker-rabbitmq-cluster.git</span><br></pre></td></tr></table></figure>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> docker-rabbitmq-cluster/cluster/</span><br><span class="line">$ docker-compose up -d <span class="comment">#启动</span></span><br></pre></td></tr></table></figure>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
+<li>登录的账号密码（可以自行在脚本里面修改）<br>user: myuser<br>password: mypass<br>然后访问<code>localhost:15672</code>进行访问</li>
+</ul>
+<p>以上使用bijukunjummen 的脚本，可参见<a href="https://github.com/bijukunjummen/docker-rabbitmq-cluster" target="_blank" rel="noopener">github</a><br>以及<a href="http://get.daocloud.io/#install-docker" target="_blank" rel="noopener">daocloud</a> docker-compose脚本</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -878,6 +878,50 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>使用kubeadm安装kubernetes集群(待续)</title>
+    <url>/2017/12/02/kubeadm-install-kubernetes/</url>
+    <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>建议使用daocloud提供的脚本进行安装，速度很快</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/docker | sh <span class="comment">#适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker &amp;&amp; systemctl start docker <span class="comment">#设置开机启动，启动docker</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装kubeadm-kubelet-and-kubectl"><a href="#安装kubeadm-kubelet-and-kubectl" class="headerlink" title="安装kubeadm, kubelet and kubectl"></a>安装kubeadm, kubelet and kubectl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line">$ setenforce 0 <span class="comment">#关闭SELinux</span></span><br><span class="line">$ yum install -y kubelet kubeadm kubectl</span><br><span class="line">$ systemctl <span class="built_in">enable</span> kubelet &amp;&amp; systemctl start kubelet <span class="comment"># 设置开机启动，启动</span></span><br></pre></td></tr></table></figure>
+<p>安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum --enablerepo=kubernetes clean metadata <span class="comment"># 如果还是不行，需要先清理缓存</span></span><br><span class="line">$ yum clean metadata</span><br><span class="line">$ yum clean all</span><br><span class="line">$ rm -rf /var/cache/yum</span><br></pre></td></tr></table></figure>
+<h3 id="使用-kubeadm-创建集群"><a href="#使用-kubeadm-创建集群" class="headerlink" title="使用 kubeadm 创建集群"></a>使用 kubeadm 创建集群</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubeadm init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
+<p>待续。。。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>生活</title>
+    <url>/2017/09/23/life/</url>
+    <content><![CDATA[<h3 id="日常生活趣事记录"><a href="#日常生活趣事记录" class="headerlink" title="日常生活趣事记录"></a>日常生活趣事记录</h3>]]></content>
+      <categories>
+        <category>Other</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lightsail使用root用户登录</title>
+    <url>/2019/11/22/lightsail-use-root-logn/</url>
+    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面试总结</title>
     <url>/2019/04/18/interview-experience/</url>
     <content><![CDATA[<p>最近参加了一些面试，面试中碰到了各种各样的问题，想通过简单的记录进行回顾、总结。后期会花一些时间，对立面的部分问题进行深入了解、并进行记录。<a id="more"></a></p>
@@ -921,36 +965,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>使用kubeadm安装kubernetes集群(待续)</title>
-    <url>/2017/12/02/kubeadm-install-kubernetes/</url>
-    <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
-<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>建议使用daocloud提供的脚本进行安装，速度很快</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/docker | sh <span class="comment">#适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker &amp;&amp; systemctl start docker <span class="comment">#设置开机启动，启动docker</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装kubeadm-kubelet-and-kubectl"><a href="#安装kubeadm-kubelet-and-kubectl" class="headerlink" title="安装kubeadm, kubelet and kubectl"></a>安装kubeadm, kubelet and kubectl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line">$ setenforce 0 <span class="comment">#关闭SELinux</span></span><br><span class="line">$ yum install -y kubelet kubeadm kubectl</span><br><span class="line">$ systemctl <span class="built_in">enable</span> kubelet &amp;&amp; systemctl start kubelet <span class="comment"># 设置开机启动，启动</span></span><br></pre></td></tr></table></figure>
-<p>安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum --enablerepo=kubernetes clean metadata <span class="comment"># 如果还是不行，需要先清理缓存</span></span><br><span class="line">$ yum clean metadata</span><br><span class="line">$ yum clean all</span><br><span class="line">$ rm -rf /var/cache/yum</span><br></pre></td></tr></table></figure>
-<h3 id="使用-kubeadm-创建集群"><a href="#使用-kubeadm-创建集群" class="headerlink" title="使用 kubeadm 创建集群"></a>使用 kubeadm 创建集群</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubeadm init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
-<p>待续。。。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>生活</title>
-    <url>/2017/09/23/life/</url>
-    <content><![CDATA[<h3 id="日常生活趣事记录"><a href="#日常生活趣事记录" class="headerlink" title="日常生活趣事记录"></a>日常生活趣事记录</h3>]]></content>
-      <categories>
-        <category>Other</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MD5、SALT加密浅析</title>
     <url>/2018/11/06/md5-and-salt-encryption/</url>
     <content><![CDATA[<p>密码的保存是开发的过程中必不可少的一部分，通常我们一般使用MD5加密，来对密码安全进行简单的加强，但是只是使用MD5进行加密，如果密码相同，MD5值就会一样，<br>通过一些在线的MD5解析网站的解析，密码大概率就会被解析出来，使用相同密码的人，也会受到影响。通过“加盐” ，可以提高密码被破解的难度。<a id="more"></a></p>
@@ -989,20 +1003,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>lightsail使用root用户登录</title>
-    <url>/2019/11/22/lightsail-use-root-logn/</url>
-    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>Nginx 负载均衡策略</title>
@@ -1149,58 +1149,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>提升国内服务器Github clone速度的方法</title>
-    <url>/2018/04/18/raise-github-clone-speed/</url>
-    <content><![CDATA[<h3 id="Github-速度慢"><a href="#Github-速度慢" class="headerlink" title="Github 速度慢"></a>Github 速度慢</h3><p>众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。<a id="more"></a></p>
-<h3 id="修改hosts"><a href="#修改hosts" class="headerlink" title="修改hosts"></a>修改hosts</h3><p>从<code>http://github.global.ssl.fastly.net.ipaddress.com/</code> 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。</p>
-<p><img src="raise-github-clone-speed/WX20180418-113942.png" alt="fastly"></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line"><span class="meta">#</span><span class="bash"> GitHub Start</span></span><br><span class="line">151.101.185.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
-<p>保存后自动生效</p>
-<p><img src="raise-github-clone-speed/WX20180418-114759@2x.png" alt="fastly"><br>通过下载Spring Boot 的源码，见上图，速度还不错。</p>
-<h3 id="通过代理提升本地的速度"><a href="#通过代理提升本地的速度" class="headerlink" title="通过代理提升本地的速度"></a>通过代理提升本地的速度</h3><p>一般我们都是使用ss的本地socks5代理，速度多快，取决于提供服务的vps的速度。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br><span class="line">git config --global http.proxy 'socks5://127.0.0.1:1080'</span><br><span class="line">git config --global https.proxy 'socks5://127.0.0.1:1080'</span><br></pre></td></tr></table></figure>
-<p><img src="raise-github-clone-speed/WX20180418-115544@2x.png" alt="socks5"></p>
-<p>上面的配置需要注意自己的socks5 端口，Mac 和 Windows的一般是1080，Mac的根据自己设置的进行修改，比如我的是1086，所以需要改成<code>socks5://127.0.0.1:1086</code>。</p>
-<p>通过上面的两个方法，可以大幅提升服务器和本地的GitHub代码clone 速度，解决漫长的等待，特别是比较大的仓库。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>正则表达式基础知识总结</title>
-    <url>/2017/12/07/regular-expression-basic/</url>
-    <content><![CDATA[<p>最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch<br>（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下<br>GitHub，选择了<a href="https://github.com/code4craft" target="_blank" rel="noopener">code4craft</a>的<a href="https://github.com/code4craft/webmagic" target="_blank" rel="noopener">webmagic</a><br>作为项目的基础组件。<a id="more"></a></p>
-<p>对于爬虫来说，数据的获取是基本，获取到数据后需要进行数据清洗之后入库，XPath、正则表达式就是获取<br>这些数据的利器，所以我们只要掌握这些技能就能很好的获取到我们需要的数据。</p>
-<p>[0-9]这种形式的正则表达式称作字符组、字符集。<br>\d 字符组简写。<br>(.) 匹配任意字符，通配符，一般不匹配行起始符。</p>
-]]></content>
-      <categories>
-        <category>Regular</category>
-      </categories>
-      <tags>
-        <tag>Regular</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS7搭建socks5 服务</title>
-    <url>/2018/01/15/socks5-server/</url>
-    <content><![CDATA[<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>基于centsOS 7<br>ss5-3.8.9-8</p>
-<h3 id="下载源文件"><a href="#下载源文件" class="headerlink" title="下载源文件"></a>下载源文件</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">配置编译环境及安装编译SS5依赖组件</span></span><br><span class="line">yum -y install gcc automake make</span><br><span class="line">yum install gcc openldap-devel pam-devel openssl-devel</span><br></pre></td></tr></table></figure>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar xf ss5-3.8.9-8.tar.gz</span><br><span class="line">mv ss5-3.8.9-8 ss5</span><br><span class="line">cd  ss5</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<h3 id="启动脚本加执行权限"><a href="#启动脚本加执行权限" class="headerlink" title="启动脚本加执行权限"></a>启动脚本加执行权限</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /etc/init.d/ss5</span><br></pre></td></tr></table></figure>
-<h3 id="进行配置并启动"><a href="#进行配置并启动" class="headerlink" title="进行配置并启动"></a>进行配置并启动</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/sysconfig/ss5  </span><br><span class="line">SS5_OPTS=" -u root -b 0.0.0.0:18080" #绑定端口为18080</span><br><span class="line">systemctl start ss5 #启动服务</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">增加用户登录权限</span></span><br><span class="line">vi /etc/opt/ss5/ss5.conf  </span><br><span class="line">auth 0.0.0.0/0 - u  </span><br><span class="line">permit u 0.0.0.0/0 - 0.0.0.0/0 - - - - -</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">设置用户名和密码，一个用户和密码一行，用空格间隔</span></span><br><span class="line">vi /etc/opt/ss5/ss5.passwd  </span><br><span class="line">user1 123456</span><br><span class="line">user2 123456</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Socks5</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>服务器科学上网</title>
     <url>/2017/12/02/server-over-the-wall/</url>
     <content><![CDATA[<p>因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。<a id="more"></a></p>
@@ -1257,36 +1205,55 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>初识Dart(一)</title>
-    <url>/2019/07/15/study-dart-1/</url>
-    <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
-<p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
-<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart" target="_blank" rel="noopener">repl</a>新建一个<code>main.dart</code>文件</p>
-<h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>点击<code>run</code><br>可以看到右边打印出来内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on "linux_x64"</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
-<p>Dart 也是用main做函数的入口的，跟Java很像。</p>
-<h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
-<li>Numbers</li>
-<li>Strings</li>
-<li>Booleans</li>
-<li>Lists</li>
-<li>Sets</li>
-<li>Maps</li>
-<li>Runes</li>
-<li>Symbols</li>
-</ul>
-<p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
-<li>const 表示常量在编译期能确定的值</li>
-<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。" target="_blank" rel="noopener">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
-</ul>
+    <title>提升国内服务器Github clone速度的方法</title>
+    <url>/2018/04/18/raise-github-clone-speed/</url>
+    <content><![CDATA[<h3 id="Github-速度慢"><a href="#Github-速度慢" class="headerlink" title="Github 速度慢"></a>Github 速度慢</h3><p>众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。<a id="more"></a></p>
+<h3 id="修改hosts"><a href="#修改hosts" class="headerlink" title="修改hosts"></a>修改hosts</h3><p>从<code>http://github.global.ssl.fastly.net.ipaddress.com/</code> 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。</p>
+<p><img src="raise-github-clone-speed/WX20180418-113942.png" alt="fastly"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line"><span class="meta">#</span><span class="bash"> GitHub Start</span></span><br><span class="line">151.101.185.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
+<p>保存后自动生效</p>
+<p><img src="raise-github-clone-speed/WX20180418-114759@2x.png" alt="fastly"><br>通过下载Spring Boot 的源码，见上图，速度还不错。</p>
+<h3 id="通过代理提升本地的速度"><a href="#通过代理提升本地的速度" class="headerlink" title="通过代理提升本地的速度"></a>通过代理提升本地的速度</h3><p>一般我们都是使用ss的本地socks5代理，速度多快，取决于提供服务的vps的速度。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br><span class="line">git config --global http.proxy 'socks5://127.0.0.1:1080'</span><br><span class="line">git config --global https.proxy 'socks5://127.0.0.1:1080'</span><br></pre></td></tr></table></figure>
+<p><img src="raise-github-clone-speed/WX20180418-115544@2x.png" alt="socks5"></p>
+<p>上面的配置需要注意自己的socks5 端口，Mac 和 Windows的一般是1080，Mac的根据自己设置的进行修改，比如我的是1086，所以需要改成<code>socks5://127.0.0.1:1086</code>。</p>
+<p>通过上面的两个方法，可以大幅提升服务器和本地的GitHub代码clone 速度，解决漫长的等待，特别是比较大的仓库。</p>
 ]]></content>
       <categories>
-        <category>Dart</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>Dart</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正则表达式基础知识总结</title>
+    <url>/2017/12/07/regular-expression-basic/</url>
+    <content><![CDATA[<p>最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch<br>（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下<br>GitHub，选择了<a href="https://github.com/code4craft" target="_blank" rel="noopener">code4craft</a>的<a href="https://github.com/code4craft/webmagic" target="_blank" rel="noopener">webmagic</a><br>作为项目的基础组件。<a id="more"></a></p>
+<p>对于爬虫来说，数据的获取是基本，获取到数据后需要进行数据清洗之后入库，XPath、正则表达式就是获取<br>这些数据的利器，所以我们只要掌握这些技能就能很好的获取到我们需要的数据。</p>
+<p>[0-9]这种形式的正则表达式称作字符组、字符集。<br>\d 字符组简写。<br>(.) 匹配任意字符，通配符，一般不匹配行起始符。</p>
+]]></content>
+      <categories>
+        <category>Regular</category>
+      </categories>
+      <tags>
+        <tag>Regular</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS7搭建socks5 服务</title>
+    <url>/2018/01/15/socks5-server/</url>
+    <content><![CDATA[<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>基于centsOS 7<br>ss5-3.8.9-8</p>
+<h3 id="下载源文件"><a href="#下载源文件" class="headerlink" title="下载源文件"></a>下载源文件</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">配置编译环境及安装编译SS5依赖组件</span></span><br><span class="line">yum -y install gcc automake make</span><br><span class="line">yum install gcc openldap-devel pam-devel openssl-devel</span><br></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar xf ss5-3.8.9-8.tar.gz</span><br><span class="line">mv ss5-3.8.9-8 ss5</span><br><span class="line">cd  ss5</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h3 id="启动脚本加执行权限"><a href="#启动脚本加执行权限" class="headerlink" title="启动脚本加执行权限"></a>启动脚本加执行权限</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x /etc/init.d/ss5</span><br></pre></td></tr></table></figure>
+<h3 id="进行配置并启动"><a href="#进行配置并启动" class="headerlink" title="进行配置并启动"></a>进行配置并启动</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/sysconfig/ss5  </span><br><span class="line">SS5_OPTS=" -u root -b 0.0.0.0:18080" #绑定端口为18080</span><br><span class="line">systemctl start ss5 #启动服务</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">增加用户登录权限</span></span><br><span class="line">vi /etc/opt/ss5/ss5.conf  </span><br><span class="line">auth 0.0.0.0/0 - u  </span><br><span class="line">permit u 0.0.0.0/0 - 0.0.0.0/0 - - - - -</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">设置用户名和密码，一个用户和密码一行，用空格间隔</span></span><br><span class="line">vi /etc/opt/ss5/ss5.passwd  </span><br><span class="line">user1 123456</span><br><span class="line">user2 123456</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Socks5</tag>
       </tags>
   </entry>
   <entry>
@@ -1325,6 +1292,39 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>调用链监控</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>初识Dart(一)</title>
+    <url>/2019/07/15/study-dart-1/</url>
+    <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
+<p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
+<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart" target="_blank" rel="noopener">repl</a>新建一个<code>main.dart</code>文件</p>
+<h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击<code>run</code><br>可以看到右边打印出来内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on "linux_x64"</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+<p>Dart 也是用main做函数的入口的，跟Java很像。</p>
+<h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
+<li>Numbers</li>
+<li>Strings</li>
+<li>Booleans</li>
+<li>Lists</li>
+<li>Sets</li>
+<li>Maps</li>
+<li>Runes</li>
+<li>Symbols</li>
+</ul>
+<p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
+<li>const 表示常量在编译期能确定的值</li>
+<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。" target="_blank" rel="noopener">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Dart</category>
+      </categories>
+      <tags>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
