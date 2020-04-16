@@ -293,31 +293,6 @@
       </tags>
   </entry>
   <entry>
-    <title>apollo 配置提前加载</title>
-    <url>/2019/05/18/apollo-eagerload/</url>
-    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
-<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
-<p>当url使用固定时，可以正常的解析出请求的url，使用<code>${}</code>没有生效。<br>这个时候查询了Apollo的文档<a href=""https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90"">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
-<blockquote>
-<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
-</blockquote>
-<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">"此处写你需要提前初始化的key"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>通过在启动前将配置注入，<code>${}</code> 就可以获取到正确的链接了。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Apollo、Feign</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>方舟服务器搭建 Ark-Server-Build</title>
     <url>/2020/04/14/ark-server/</url>
     <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
@@ -344,21 +319,28 @@
       </tags>
   </entry>
   <entry>
-    <title>brew 升级应用错误</title>
-    <url>/2018/05/03/brew-upgrade-error/</url>
-    <content><![CDATA[<p>定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。<a id="more"></a></p>
-<h3 id="brew-升级"><a href="#brew-升级" class="headerlink" title="brew 升级"></a>brew 升级</h3><p>最近在使用<code>brew upgrade</code> 的过程中，碰到了一个问题记录一下。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Error: An unexpected error occurred during the `brew link` step</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br><span class="line">Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
-<p>如上所示，需要创建<code>/usr/local/Frameworks</code> 目录，但是没有对应的权限</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /usr/local/Frameworks</span><br><span class="line">sudo chown $(whoami):admin /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
-<p>手动创建，赋权，之后就可以愉快的<code>brew upgrade</code> 了。</p>
-<p>最后<code>brew cleanup</code> 清理废弃的文件，释放空间。</p>
+    <title>apollo 配置提前加载</title>
+    <url>/2019/05/18/apollo-eagerload/</url>
+    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
+<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
+<p>当url使用固定时，可以正常的解析出请求的url，使用<code>${}</code>没有生效。<br>这个时候查询了Apollo的文档<a href=""https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90"">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
+<blockquote>
+<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
+</blockquote>
+<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
+<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">"此处写你需要提前初始化的key"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>通过在启动前将配置注入，<code>${}</code> 就可以获取到正确的链接了。</p>
 ]]></content>
       <categories>
-        <category>Shell</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>Brew</tag>
+        <tag>Apollo、Feign</tag>
       </tags>
   </entry>
   <entry>
@@ -404,6 +386,24 @@
       </tags>
   </entry>
   <entry>
+    <title>brew 升级应用错误</title>
+    <url>/2018/05/03/brew-upgrade-error/</url>
+    <content><![CDATA[<p>定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。<a id="more"></a></p>
+<h3 id="brew-升级"><a href="#brew-升级" class="headerlink" title="brew 升级"></a>brew 升级</h3><p>最近在使用<code>brew upgrade</code> 的过程中，碰到了一个问题记录一下。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Error: An unexpected error occurred during the `brew link` step</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br><span class="line">Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
+<p>如上所示，需要创建<code>/usr/local/Frameworks</code> 目录，但是没有对应的权限</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /usr/local/Frameworks</span><br><span class="line">sudo chown $(whoami):admin /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
+<p>手动创建，赋权，之后就可以愉快的<code>brew upgrade</code> 了。</p>
+<p>最后<code>brew cleanup</code> 清理废弃的文件，释放空间。</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Brew</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>centos安装redis5.x</title>
     <url>/2018/12/14/centos-install-redis5-x/</url>
     <content><![CDATA[<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
@@ -423,28 +423,6 @@
       </categories>
       <tags>
         <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Centos7 安装 pyenv</title>
-    <url>/2018/02/27/cnetos-install-pyenv/</url>
-    <content><![CDATA[<blockquote>
-<p>人生苦短，我用Python</p>
-</blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
-
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -500,6 +478,28 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos7 安装 pyenv</title>
+    <url>/2018/02/27/cnetos-install-pyenv/</url>
+    <content><![CDATA[<blockquote>
+<p>人生苦短，我用Python</p>
+</blockquote>
+<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
+<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -668,22 +668,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker 搭建Nexus 私服</title>
-    <url>/2017/09/30/docker-install-nexus/</url>
-    <content><![CDATA[<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name nexus-data</span><br></pre></td></tr></table></figure>
-<h3 id="拉取Nexus-镜像"><a href="#拉取Nexus-镜像" class="headerlink" title="拉取Nexus 镜像"></a>拉取Nexus 镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
-<h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a></p>
-<p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/" target="_blank" rel="noopener">https://hub.docker.com/r/sonatype/nexus3/</a></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker安装MongoDB(Mongo3.x)</title>
     <url>/2017/09/23/docker-install-MongoDB/</url>
     <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
@@ -698,6 +682,22 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>至此，MongDB 安装完成</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 搭建Nexus 私服</title>
+    <url>/2017/09/30/docker-install-nexus/</url>
+    <content><![CDATA[<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name nexus-data</span><br></pre></td></tr></table></figure>
+<h3 id="拉取Nexus-镜像"><a href="#拉取Nexus-镜像" class="headerlink" title="拉取Nexus 镜像"></a>拉取Nexus 镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)</span><br></pre></td></tr></table></figure>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
+<h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a></p>
+<p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/" target="_blank" rel="noopener">https://hub.docker.com/r/sonatype/nexus3/</a></p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -951,6 +951,20 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>lightsail使用root用户登录</title>
+    <url>/2019/11/22/lightsail-use-root-logn/</url>
+    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MD5、SALT加密浅析</title>
     <url>/2018/11/06/md5-and-salt-encryption/</url>
     <content><![CDATA[<p>密码的保存是开发的过程中必不可少的一部分，通常我们一般使用MD5加密，来对密码安全进行简单的加强，但是只是使用MD5进行加密，如果密码相同，MD5值就会一样，<br>通过一些在线的MD5解析网站的解析，密码大概率就会被解析出来，使用相同密码的人，也会受到影响。通过“加盐” ，可以提高密码被破解的难度。<a id="more"></a></p>
@@ -1026,20 +1040,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lightsail使用root用户登录</title>
-    <url>/2019/11/22/lightsail-use-root-logn/</url>
-    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1257,39 +1257,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>初识Dart(一)</title>
-    <url>/2019/07/15/study-dart-1/</url>
-    <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
-<p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
-<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart" target="_blank" rel="noopener">repl</a>新建一个<code>main.dart</code>文件</p>
-<h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>点击<code>run</code><br>可以看到右边打印出来内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on "linux_x64"</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
-<p>Dart 也是用main做函数的入口的，跟Java很像。</p>
-<h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
-<li>Numbers</li>
-<li>Strings</li>
-<li>Booleans</li>
-<li>Lists</li>
-<li>Sets</li>
-<li>Maps</li>
-<li>Runes</li>
-<li>Symbols</li>
-</ul>
-<p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
-<li>const 表示常量在编译期能确定的值</li>
-<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。" target="_blank" rel="noopener">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Dart</category>
-      </categories>
-      <tags>
-        <tag>Dart</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SpringCloud 引入链路跟踪Sleuth及Zipkin</title>
     <url>/2020/03/19/spring-seluth-zipkin/</url>
     <content><![CDATA[<p>Zipkin是一种分布式跟踪系统，它有助于收集解决微服务架构中得延迟问题所需的时序数据，它管理这些数据的收集和查找。<a id="more"></a></p>
@@ -1325,6 +1292,39 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>调用链监控</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>初识Dart(一)</title>
+    <url>/2019/07/15/study-dart-1/</url>
+    <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
+<p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
+<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart" target="_blank" rel="noopener">repl</a>新建一个<code>main.dart</code>文件</p>
+<h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击<code>run</code><br>可以看到右边打印出来内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on "linux_x64"</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+<p>Dart 也是用main做函数的入口的，跟Java很像。</p>
+<h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
+<li>Numbers</li>
+<li>Strings</li>
+<li>Booleans</li>
+<li>Lists</li>
+<li>Sets</li>
+<li>Maps</li>
+<li>Runes</li>
+<li>Symbols</li>
+</ul>
+<p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
+<li>const 表示常量在编译期能确定的值</li>
+<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。" target="_blank" rel="noopener">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Dart</category>
+      </categories>
+      <tags>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
