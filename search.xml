@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数字货币入门</title>
+    <url>/2018/01/04/BTC-Tutorial/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。<a id="more"></a></p>
+<h3 id="怎么入场"><a href="#怎么入场" class="headerlink" title="怎么入场"></a>怎么入场</h3><p>交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要<br>进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所<br>平台做担保（避免被骗），建议用实时性比较强的到账方式，不管是买还是卖。<br>我主要是在火币进行兑换，也叫OTC（场外交易）</p>
+<p><a href="https://www.huobipro.pro" target="_blank" rel="noopener">https://www.huobipro.pro</a><br>如果请求不到，可以使用<br><a href="https://www.huobi.br.com/zh-cn/" target="_blank" rel="noopener">https://www.huobi.br.com/zh-cn/</a></p>
+<p>2018年04月20日11:38:10<br>市场一扫之前的低沉，开始变的活跃起来，现在还不能确定是否是向牛市开始转变，但是趋势在慢慢变好，场外的USDT 已经开始有溢价了，说明场外资金开始进入。</p>
+]]></content>
+      <categories>
+        <category>数字货币</category>
+      </categories>
+      <tags>
+        <tag>数字货币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redis连接池连接没有正常释放报错</title>
     <url>/2017/09/23/Could-not-get-a-resource-from-the-pool/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Caused by: redis.clients.jedis.exceptions.JedisException: Could not get a resource from the pool</span><br><span class="line">at redis.clients.util.Pool.getResource(Pool.java:51)</span><br><span class="line">at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)</span><br><span class="line">at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)</span><br><span class="line">at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)</span><br><span class="line">... 71 common frames omitted</span><br></pre></td></tr></table></figure>
@@ -32,18 +47,54 @@
       </tags>
   </entry>
   <entry>
-    <title>数字货币入门</title>
-    <url>/2018/01/04/BTC-Tutorial/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。<a id="more"></a></p>
-<h3 id="怎么入场"><a href="#怎么入场" class="headerlink" title="怎么入场"></a>怎么入场</h3><p>交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要<br>进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所<br>平台做担保（避免被骗），建议用实时性比较强的到账方式，不管是买还是卖。<br>我主要是在火币进行兑换，也叫OTC（场外交易）</p>
-<p><a href="https://www.huobipro.pro" target="_blank" rel="noopener">https://www.huobipro.pro</a><br>如果请求不到，可以使用<br><a href="https://www.huobi.br.com/zh-cn/" target="_blank" rel="noopener">https://www.huobi.br.com/zh-cn/</a></p>
-<p>2018年04月20日11:38:10<br>市场一扫之前的低沉，开始变的活跃起来，现在还不能确定是否是向牛市开始转变，但是趋势在慢慢变好，场外的USDT 已经开始有溢价了，说明场外资金开始进入。</p>
+    <title>使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</title>
+    <url>/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/</url>
+    <content><![CDATA[<p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。<a id="more"></a></p>
+<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
+<p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
+<p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
+<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
+<ul>
+<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
+</li>
+<li><p>安装系统扩展包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
+<li><p>安装certbot</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>运行certbot插件生成证书</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+<p><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
+</li>
+<li><p>重启nginx</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
+</li>
+</ul>
+<p>增加自动续期</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
+
+<p>上面的方法是单域名证书的创建</p>
+<h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
+<ul>
+<li>certbot-dns-cloudflare</li>
+<li>certbot-dns-cloudxns</li>
+<li>certbot-dns-digitalocean</li>
+<li>certbot-dns-dnsimple</li>
+<li>certbot-dns-dnsmadeeasy</li>
+<li>certbot-dns-google</li>
+<li>certbot-dns-luadns</li>
+<li>certbot-dns-nsone</li>
+<li>certbot-dns-rfc2136</li>
+<li>certbot-dns-route53</li>
+</ul>
+<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
+<p>未完待续。。。</p>
 ]]></content>
       <categories>
-        <category>数字货币</category>
+        <category>Shell</category>
       </categories>
       <tags>
-        <tag>数字货币</tag>
+        <tag>Domain</tag>
       </tags>
   </entry>
   <entry>
@@ -151,57 +202,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</title>
-    <url>/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/</url>
-    <content><![CDATA[<p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。<a id="more"></a></p>
-<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
-<p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
-<p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
-<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
-<ul>
-<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
-</li>
-<li><p>安装系统扩展包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
-<li><p>安装certbot</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>运行certbot插件生成证书</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
-<p><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
-</li>
-<li><p>重启nginx</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
-</li>
-</ul>
-<p>增加自动续期</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
-
-<p>上面的方法是单域名证书的创建</p>
-<h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
-<ul>
-<li>certbot-dns-cloudflare</li>
-<li>certbot-dns-cloudxns</li>
-<li>certbot-dns-digitalocean</li>
-<li>certbot-dns-dnsimple</li>
-<li>certbot-dns-dnsmadeeasy</li>
-<li>certbot-dns-google</li>
-<li>certbot-dns-luadns</li>
-<li>certbot-dns-nsone</li>
-<li>certbot-dns-rfc2136</li>
-<li>certbot-dns-route53</li>
-</ul>
-<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
-<p>未完待续。。。</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Domain</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring单例和多例</title>
     <url>/2019/03/25/Spring-singleton-and-prototype/</url>
     <content><![CDATA[<p>在面试的时候经常被问到Spring的单例、多例之类的问题，实际上是Bean的作用域问题。当在Spring中声明一个bean时，需要声明bean的作用域。默认是<code>singleton</code>。这篇文章主要讨论Spring 单例和多例。<a id="more"></a></p>
@@ -293,6 +293,31 @@
       </tags>
   </entry>
   <entry>
+    <title>apollo 配置提前加载</title>
+    <url>/2019/05/18/apollo-eagerload/</url>
+    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
+<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
+<p>当url使用固定时，可以正常的解析出请求的url，使用<code>${}</code>没有生效。<br>这个时候查询了Apollo的文档<a href=""https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90"">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
+<blockquote>
+<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
+</blockquote>
+<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
+<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">"此处写你需要提前初始化的key"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>通过在启动前将配置注入，<code>${}</code> 就可以获取到正确的链接了。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Apollo、Feign</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>方舟服务器搭建 Ark-Server-Build</title>
     <url>/2020/04/14/ark-server/</url>
     <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
@@ -316,31 +341,6 @@
       </categories>
       <tags>
         <tag>Ark</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>apollo 配置提前加载</title>
-    <url>/2019/05/18/apollo-eagerload/</url>
-    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
-<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
-<p>当url使用固定时，可以正常的解析出请求的url，使用<code>${}</code>没有生效。<br>这个时候查询了Apollo的文档<a href=""https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90"">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
-<blockquote>
-<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
-</blockquote>
-<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">"此处写你需要提前初始化的key"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>通过在启动前将配置注入，<code>${}</code> 就可以获取到正确的链接了。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Apollo、Feign</tag>
       </tags>
   </entry>
   <entry>
@@ -426,6 +426,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Centos7 安装 pyenv</title>
+    <url>/2018/02/27/cnetos-install-pyenv/</url>
+    <content><![CDATA[<blockquote>
+<p>人生苦短，我用Python</p>
+</blockquote>
+<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
+<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS7 安装Docker</title>
     <url>/2019/06/25/centos7-docker-install-tutorial/</url>
     <content><![CDATA[<p>Docker在越来越多的项目中使用，快捷、高效的部署，为我们提供了一个统一的环境，方便部署，当然还有其他很多的优点，就不一一列举了。安装基于<a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">Docker官方文档</a><a id="more"></a></p>
@@ -481,28 +503,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Centos7 安装 pyenv</title>
-    <url>/2018/02/27/cnetos-install-pyenv/</url>
-    <content><![CDATA[<blockquote>
-<p>人生苦短，我用Python</p>
-</blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
-
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker 常用命令(待完善)</title>
     <url>/2017/11/30/common-commonds/</url>
     <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
@@ -541,72 +541,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Node</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 创建MySQL</title>
-    <url>/2018/01/17/docker-create-mysql/</url>
-    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
-<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
-<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DevOps实践2:Spring Boot集成Docker环境</title>
-    <url>/2018/02/27/devops-2-springboot-docker-integrated/</url>
-    <content><![CDATA[<blockquote>
-<p>知之愈明,则行之愈笃；行之愈笃,则知之益明.——朱熹（宋）</p>
-</blockquote>
-<p>我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。 <a id="more"></a></p>
-<h3 id="创建项目进行集成"><a href="#创建项目进行集成" class="headerlink" title="创建项目进行集成"></a>创建项目进行集成</h3><p>创建一个Spring Boot 项目</p>
-<p><img src="devops-2-springboot-docker-integrated/WX20180227-174110.png" alt="名称"></p>
-<p><img src="devops-2-springboot-docker-integrated/WX20180227-174208.png" alt="web服务"></p>
-<h3 id="增加项目对Docker的支持"><a href="#增加项目对Docker的支持" class="headerlink" title="增加项目对Docker的支持"></a>增加项目对Docker的支持</h3><ol>
-<li><p>修改pom.xml配置，增加对应的插件，可以使用Maven进行打包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Docker 镜像前缀，放在&lt;properties&gt; 标签中</span></span><br><span class="line"> &lt;docker.image.prefix&gt;devops&lt;/docker.image.prefix&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>添加视图模板支持</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>增加对应的maven 插件，插件有多种，这里采用 <groupId>com.spotify</groupId></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>devops<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span>  </span><br><span class="line">    <span class="comment">&lt;!-- docker打包 --&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">serverId</span>&gt;</span>docker-hosted<span class="tag">&lt;/<span class="name">serverId</span>&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!-- docker仓库地址，用于推送镜像 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">registryUrl</span>&gt;</span>$&#123;docker.repository&#125;<span class="tag">&lt;/<span class="name">registryUrl</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 设置为false，避免自动推送镜像 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pushImage</span>&gt;</span>false<span class="tag">&lt;/<span class="name">pushImage</span>&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!-- Dockerfile路径 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>src/main/docker<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!-- 构建的镜像名称 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">imageTags</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">imageTag</span>&gt;</span>latest<span class="tag">&lt;/<span class="name">imageTag</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">imageTags</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改Maven settings 文件配置（主要的目的是为了方便后面我们将自己的服务推送到自己的私服，方便管理）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroup</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">pluginGroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line"></span><br><span class="line">#本地私服的配置</span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">profile</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">docker.repository</span>&gt;</span>http://192.168.100.77:8081/repository/docker<span class="tag">&lt;/<span class="name">docker.repository</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">#激活私服配置</span><br><span class="line"><span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>上面基本的pom配置就完成了，之后开始配置Docker相关的脚本</p>
-<h3 id="Docker脚本配置"><a href="#Docker脚本配置" class="headerlink" title="Docker脚本配置"></a>Docker脚本配置</h3><p>在src/main 目录下创建docker 文件夹，刚刚上面的pom配置里声明了Dockerfile的路径<br>创建文件Dockerfile ，注意文件没有后缀，之后增加如下脚本</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">FROM java:8  #基本镜像</span><br><span class="line">VOLUME /tmp  #挂载文件位置，/tmp 为临时目录</span><br><span class="line">ADD devops.jar app.jar  #添加对应的jar，使用maven打包后会自动到target目录找devops.jar 文件</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"] # 程序启动入口</span><br></pre></td></tr></table></figure>
-
-<h3 id="打包、运行镜像"><a href="#打包、运行镜像" class="headerlink" title="打包、运行镜像"></a>打包、运行镜像</h3><p>创建对应的测试文件，打包</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mvn clean package docker:build  # 一气呵成O(∩_∩)O~~</span><br></pre></td></tr></table></figure>
-<p>在运行docker命令前，先确认电脑上的docker环境是否配置成</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker version</span><br><span class="line"><span class="meta">#</span><span class="bash"> 会有如下显示</span></span><br><span class="line">Client:</span><br><span class="line"> Version:	17.12.0-ce</span><br><span class="line"> API version:	1.35</span><br><span class="line"> Go version:	go1.9.2</span><br><span class="line"> Git commit:	c97c6d6</span><br><span class="line"> Built:	Wed Dec 27 20:03:51 2017</span><br><span class="line"> OS/Arch:	darwin/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:	17.12.0-ce</span><br><span class="line">  API version:	1.35 (minimum version 1.12)</span><br><span class="line">  Go version:	go1.9.2</span><br><span class="line">  Git commit:	c97c6d6</span><br><span class="line">  Built:	Wed Dec 27 20:12:29 2017</span><br><span class="line">  OS/Arch:	linux/amd64</span><br><span class="line">  Experimental:	true</span><br></pre></td></tr></table></figure>
-<p>上面说明Docker是正常启动的</p>
-<p>然后查看镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p><img src="devops-2-springboot-docker-integrated/WX20180227-203234.png" alt="web服务"><br>上图说明我们的镜像打包成功<br>然后运行一下，检查镜像是否能够正常启动</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动镜像 -d 表示后台运行，-p 端口进行映射 --name docker服务名称  devops/devops:latest 运行的镜像</span></span><br><span class="line">docker run -d  -p 8080:8080 --name devops devops/devops:latest</span><br><span class="line"><span class="meta">#</span><span class="bash">执行docker ps 查看镜像是否运行</span></span><br></pre></td></tr></table></figure>
-<p><img src="devops-2-springboot-docker-integrated/WX20180227-203815.png" alt="web服务"><br>如果，说明服务是正常启动了，之后请求<br><a href="http://localhost:8080/index?name=World" target="_blank" rel="noopener">http://localhost:8080/index?name=World</a><br><img src="devops-2-springboot-docker-integrated/WX20180227-204116.png" alt="web服务"><br>能够请求成功，说明镜像部署成功</p>
-<h3 id="停止释放镜像"><a href="#停止释放镜像" class="headerlink" title="停止释放镜像"></a>停止释放镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 养成好习惯，停止释放镜像</span></span><br><span class="line">docker stop 2026e45bc2ce</span><br><span class="line">docker rm 2026e45bc2ce</span><br></pre></td></tr></table></figure>
-
-<p>代码可在<a href="https://github.com/junhuali/devops-springboot" target="_blank" rel="noopener">https://github.com/junhuali/devops-springboot</a> 下载</p>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>SpringBoot</tag>
-        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -668,20 +602,63 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker安装MongoDB(Mongo3.x)</title>
-    <url>/2017/09/23/docker-install-MongoDB/</url>
-    <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
+    <title>DevOps实践2:Spring Boot集成Docker环境</title>
+    <url>/2018/02/27/devops-2-springboot-docker-integrated/</url>
+    <content><![CDATA[<blockquote>
+<p>知之愈明,则行之愈笃；行之愈笃,则知之益明.——朱熹（宋）</p>
+</blockquote>
+<p>我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。 <a id="more"></a></p>
+<h3 id="创建项目进行集成"><a href="#创建项目进行集成" class="headerlink" title="创建项目进行集成"></a>创建项目进行集成</h3><p>创建一个Spring Boot 项目</p>
+<p><img src="devops-2-springboot-docker-integrated/WX20180227-174110.png" alt="名称"></p>
+<p><img src="devops-2-springboot-docker-integrated/WX20180227-174208.png" alt="web服务"></p>
+<h3 id="增加项目对Docker的支持"><a href="#增加项目对Docker的支持" class="headerlink" title="增加项目对Docker的支持"></a>增加项目对Docker的支持</h3><ol>
+<li><p>修改pom.xml配置，增加对应的插件，可以使用Maven进行打包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Docker 镜像前缀，放在&lt;properties&gt; 标签中</span></span><br><span class="line"> &lt;docker.image.prefix&gt;devops&lt;/docker.image.prefix&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>添加视图模板支持</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增加对应的maven 插件，插件有多种，这里采用 <groupId>com.spotify</groupId></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>devops<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span>  </span><br><span class="line">    <span class="comment">&lt;!-- docker打包 --&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">serverId</span>&gt;</span>docker-hosted<span class="tag">&lt;/<span class="name">serverId</span>&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!-- docker仓库地址，用于推送镜像 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">registryUrl</span>&gt;</span>$&#123;docker.repository&#125;<span class="tag">&lt;/<span class="name">registryUrl</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 设置为false，避免自动推送镜像 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pushImage</span>&gt;</span>false<span class="tag">&lt;/<span class="name">pushImage</span>&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!-- Dockerfile路径 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>src/main/docker<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!-- 构建的镜像名称 --&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">imageTags</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">imageTag</span>&gt;</span>latest<span class="tag">&lt;/<span class="name">imageTag</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">imageTags</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改Maven settings 文件配置（主要的目的是为了方便后面我们将自己的服务推送到自己的私服，方便管理）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroup</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">pluginGroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line"></span><br><span class="line">#本地私服的配置</span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">profile</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span>    </span><br><span class="line">   <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">docker.repository</span>&gt;</span>http://192.168.100.77:8081/repository/docker<span class="tag">&lt;/<span class="name">docker.repository</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">#激活私服配置</span><br><span class="line"><span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上面基本的pom配置就完成了，之后开始配置Docker相关的脚本</p>
+<h3 id="Docker脚本配置"><a href="#Docker脚本配置" class="headerlink" title="Docker脚本配置"></a>Docker脚本配置</h3><p>在src/main 目录下创建docker 文件夹，刚刚上面的pom配置里声明了Dockerfile的路径<br>创建文件Dockerfile ，注意文件没有后缀，之后增加如下脚本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">FROM java:8  #基本镜像</span><br><span class="line">VOLUME /tmp  #挂载文件位置，/tmp 为临时目录</span><br><span class="line">ADD devops.jar app.jar  #添加对应的jar，使用maven打包后会自动到target目录找devops.jar 文件</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"] # 程序启动入口</span><br></pre></td></tr></table></figure>
 
-<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --restart&#x3D;&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:&#x2F;data&#x2F;db\</span><br><span class="line">          -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
+<h3 id="打包、运行镜像"><a href="#打包、运行镜像" class="headerlink" title="打包、运行镜像"></a>打包、运行镜像</h3><p>创建对应的测试文件，打包</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mvn clean package docker:build  # 一气呵成O(∩_∩)O~~</span><br></pre></td></tr></table></figure>
+<p>在运行docker命令前，先确认电脑上的docker环境是否配置成</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker version</span><br><span class="line"><span class="meta">#</span><span class="bash"> 会有如下显示</span></span><br><span class="line">Client:</span><br><span class="line"> Version:	17.12.0-ce</span><br><span class="line"> API version:	1.35</span><br><span class="line"> Go version:	go1.9.2</span><br><span class="line"> Git commit:	c97c6d6</span><br><span class="line"> Built:	Wed Dec 27 20:03:51 2017</span><br><span class="line"> OS/Arch:	darwin/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:	17.12.0-ce</span><br><span class="line">  API version:	1.35 (minimum version 1.12)</span><br><span class="line">  Go version:	go1.9.2</span><br><span class="line">  Git commit:	c97c6d6</span><br><span class="line">  Built:	Wed Dec 27 20:12:29 2017</span><br><span class="line">  OS/Arch:	linux/amd64</span><br><span class="line">  Experimental:	true</span><br></pre></td></tr></table></figure>
+<p>上面说明Docker是正常启动的</p>
+<p>然后查看镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p><img src="devops-2-springboot-docker-integrated/WX20180227-203234.png" alt="web服务"><br>上图说明我们的镜像打包成功<br>然后运行一下，检查镜像是否能够正常启动</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动镜像 -d 表示后台运行，-p 端口进行映射 --name docker服务名称  devops/devops:latest 运行的镜像</span></span><br><span class="line">docker run -d  -p 8080:8080 --name devops devops/devops:latest</span><br><span class="line"><span class="meta">#</span><span class="bash">执行docker ps 查看镜像是否运行</span></span><br></pre></td></tr></table></figure>
+<p><img src="devops-2-springboot-docker-integrated/WX20180227-203815.png" alt="web服务"><br>如果，说明服务是正常启动了，之后请求<br><a href="http://localhost:8080/index?name=World" target="_blank" rel="noopener">http://localhost:8080/index?name=World</a><br><img src="devops-2-springboot-docker-integrated/WX20180227-204116.png" alt="web服务"><br>能够请求成功，说明镜像部署成功</p>
+<h3 id="停止释放镜像"><a href="#停止释放镜像" class="headerlink" title="停止释放镜像"></a>停止释放镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 养成好习惯，停止释放镜像</span></span><br><span class="line">docker stop 2026e45bc2ce</span><br><span class="line">docker rm 2026e45bc2ce</span><br></pre></td></tr></table></figure>
 
-<p><code>--storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
-<h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>至此，MongDB 安装完成</p>
+<p>代码可在<a href="https://github.com/junhuali/devops-springboot" target="_blank" rel="noopener">https://github.com/junhuali/devops-springboot</a> 下载</p>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>SpringBoot</tag>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 创建MySQL</title>
+    <url>/2018/01/17/docker-create-mysql/</url>
+    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -698,6 +675,29 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
 <h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a></p>
 <p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/" target="_blank" rel="noopener">https://hub.docker.com/r/sonatype/nexus3/</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker安装MongoDB(Mongo3.x)</title>
+    <url>/2017/09/23/docker-install-MongoDB/</url>
+    <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
+
+<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --restart&#x3D;&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:&#x2F;data&#x2F;db\</span><br><span class="line">          -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
+
+<p><code>--storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
+<h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>至此，MongDB 安装完成</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -786,23 +786,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Cannot find module &#39;./build/Release/DTraceProviderBindings&#39;</title>
-    <url>/2017/09/30/hexo-can&#39;t-find-module/</url>
-    <content><![CDATA[<p>有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩<em>∩)O哈哈~</em>) <a id="more"></a><br>报错如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; Error: Cannot find module &#39;.&#x2F;build&#x2F;Release&#x2F;DTraceProviderBindings&#39;</span><br><span class="line">    at Function.Module._resolveFilename (module.js:527:15)</span><br><span class="line">    at Function.Module._load (module.js:476:23)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;dtrace-provider&#x2F;dtrace-provider.js:18:23)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;bunyan&#x2F;lib&#x2F;bunyan.js:79:18)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;hexo-log&#x2F;lib&#x2F;log.js:3:14)</span><br><span class="line">    at Module._compile (module.js:624:30) code: &#39;MODULE_NOT_FOUND&#39; &#125;</span><br><span class="line">INFO  Deleted database.</span><br></pre></td></tr></table></figure>
-<p>上面的错误看的非常的影响心情有木有？</p>
-<p>找了网上的很多方法，最后选择了一种比较粗暴的方法<br>删除hexo目录下的<code>node_modules</code>目录，之后执行以下命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>然后执行hexo server，就会惊喜的发现错误没有了 O(∩<em>∩)O~~</em>)</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>gitee码云使用webhook</title>
     <url>/2018/02/25/gitee-with-webhook/</url>
     <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。<a id="more"></a></p>
@@ -844,6 +827,66 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cannot find module &#39;./build/Release/DTraceProviderBindings&#39;</title>
+    <url>/2017/09/30/hexo-can&#39;t-find-module/</url>
+    <content><![CDATA[<p>有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩<em>∩)O哈哈~</em>) <a id="more"></a><br>报错如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; Error: Cannot find module &#39;.&#x2F;build&#x2F;Release&#x2F;DTraceProviderBindings&#39;</span><br><span class="line">    at Function.Module._resolveFilename (module.js:527:15)</span><br><span class="line">    at Function.Module._load (module.js:476:23)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;dtrace-provider&#x2F;dtrace-provider.js:18:23)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;bunyan&#x2F;lib&#x2F;bunyan.js:79:18)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;hexo-log&#x2F;lib&#x2F;log.js:3:14)</span><br><span class="line">    at Module._compile (module.js:624:30) code: &#39;MODULE_NOT_FOUND&#39; &#125;</span><br><span class="line">INFO  Deleted database.</span><br></pre></td></tr></table></figure>
+<p>上面的错误看的非常的影响心情有木有？</p>
+<p>找了网上的很多方法，最后选择了一种比较粗暴的方法<br>删除hexo目录下的<code>node_modules</code>目录，之后执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>然后执行hexo server，就会惊喜的发现错误没有了 O(∩<em>∩)O~~</em>)</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试总结</title>
+    <url>/2019/04/18/interview-experience/</url>
+    <content><![CDATA[<p>最近参加了一些面试，面试中碰到了各种各样的问题，想通过简单的记录进行回顾、总结。后期会花一些时间，对立面的部分问题进行深入了解、并进行记录。<a id="more"></a></p>
+<p>下面是一些常见的问题:</p>
+<h4 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h4><ul>
+<li>HashMap的数据结构、底层实现。</li>
+<li>常用的集合类有哪些</li>
+<li>session 和 cookie 的区别，cookie中有哪些键值对</li>
+<li>Java 静态块 、构造块、构造函数执行顺序</li>
+</ul>
+<h4 id="锁、缓存、消息队列"><a href="#锁、缓存、消息队列" class="headerlink" title="锁、缓存、消息队列"></a>锁、缓存、消息队列</h4><ul>
+<li>分布式锁实现</li>
+<li>乐观锁、悲观锁的实现</li>
+<li>Redis 常用的数据结构、谈谈对缓存穿透、缓存雪崩的理解以及如何解决</li>
+</ul>
+<h4 id="Spring-框架"><a href="#Spring-框架" class="headerlink" title="Spring 框架"></a>Spring 框架</h4><ul>
+<li>Spring 几种常用的单例模式</li>
+<li>Spring 事务（隔离级别、传播行为、回滚策略、是否只读、超时）</li>
+<li>Dubbo 和 Spring Cloud 的区别以及优劣</li>
+<li>消息队列的使用、消息幂等</li>
+<li>Spring bean 的生命周期</li>
+<li>@Autowired 和 @Resource 的区别</li>
+</ul>
+<h4 id="ORM、数据库"><a href="#ORM、数据库" class="headerlink" title="ORM、数据库"></a>ORM、数据库</h4><ul>
+<li>MyBatis 中#和$的区别</li>
+<li>左连接的时候,条件在where中和不在where中结果的区别</li>
+</ul>
+<h4 id="微服务、分布式"><a href="#微服务、分布式" class="headerlink" title="微服务、分布式"></a>微服务、分布式</h4><ul>
+<li>Session 分布式方案</li>
+<li>Spring Cloud 中的常用组件以及用途</li>
+<li>分布式事务</li>
+<li>限流、降级</li>
+</ul>
+<p>上面是根据记忆进行的整理，还有一些遗漏，想起来后会慢慢补上。</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>工作经历</tag>
       </tags>
   </entry>
   <entry>
@@ -905,63 +948,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lightsail使用root用户登录</title>
-    <url>/2019/11/22/lightsail-use-root-logn/</url>
-    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试总结</title>
-    <url>/2019/04/18/interview-experience/</url>
-    <content><![CDATA[<p>最近参加了一些面试，面试中碰到了各种各样的问题，想通过简单的记录进行回顾、总结。后期会花一些时间，对立面的部分问题进行深入了解、并进行记录。<a id="more"></a></p>
-<p>下面是一些常见的问题:</p>
-<h4 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h4><ul>
-<li>HashMap的数据结构、底层实现。</li>
-<li>常用的集合类有哪些</li>
-<li>session 和 cookie 的区别，cookie中有哪些键值对</li>
-<li>Java 静态块 、构造块、构造函数执行顺序</li>
-</ul>
-<h4 id="锁、缓存、消息队列"><a href="#锁、缓存、消息队列" class="headerlink" title="锁、缓存、消息队列"></a>锁、缓存、消息队列</h4><ul>
-<li>分布式锁实现</li>
-<li>乐观锁、悲观锁的实现</li>
-<li>Redis 常用的数据结构、谈谈对缓存穿透、缓存雪崩的理解以及如何解决</li>
-</ul>
-<h4 id="Spring-框架"><a href="#Spring-框架" class="headerlink" title="Spring 框架"></a>Spring 框架</h4><ul>
-<li>Spring 几种常用的单例模式</li>
-<li>Spring 事务（隔离级别、传播行为、回滚策略、是否只读、超时）</li>
-<li>Dubbo 和 Spring Cloud 的区别以及优劣</li>
-<li>消息队列的使用、消息幂等</li>
-<li>Spring bean 的生命周期</li>
-<li>@Autowired 和 @Resource 的区别</li>
-</ul>
-<h4 id="ORM、数据库"><a href="#ORM、数据库" class="headerlink" title="ORM、数据库"></a>ORM、数据库</h4><ul>
-<li>MyBatis 中#和$的区别</li>
-<li>左连接的时候,条件在where中和不在where中结果的区别</li>
-</ul>
-<h4 id="微服务、分布式"><a href="#微服务、分布式" class="headerlink" title="微服务、分布式"></a>微服务、分布式</h4><ul>
-<li>Session 分布式方案</li>
-<li>Spring Cloud 中的常用组件以及用途</li>
-<li>分布式事务</li>
-<li>限流、降级</li>
-</ul>
-<p>上面是根据记忆进行的整理，还有一些遗漏，想起来后会慢慢补上。</p>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>工作经历</tag>
       </tags>
   </entry>
   <entry>
@@ -1040,6 +1026,20 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lightsail使用root用户登录</title>
+    <url>/2019/11/22/lightsail-use-root-logn/</url>
+    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1149,62 +1149,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>服务器科学上网</title>
-    <url>/2017/12/02/server-over-the-wall/</url>
-    <content><![CDATA[<p>因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。<a id="more"></a></p>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
-<li>两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4</li>
-<li>privoxy 包</li>
-</ul>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>先用ssh 命令进行服务器socks5 连接接</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh -f -N -D bindaddress:port name@server</span><br><span class="line">$ ssh -f -N -D 0.0.0.0:1080 root@45.63.61.77</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-f<br>输入密码后进入后台模式<br>(Requests ssh to go to background just before command execution.)</li>
-<li>-N<br>不执行远程命令,用于端口转发<br>( Do not execute a remote command. This is useful for just for warding ports (protocol version 2 only).)</li>
-<li>-D<br>socket5代理<br>(Specifies a local “dynamic” application-level port forwarding.Currently the SOCKS4 and SOCKS5 protocols are supported, and ssh will act as a SOCKS server.)</li>
-<li>-L<br>tcp转发<br>(Specifies that the given port on the local (client) host is to be forwarded to the given host and port on the remote side.)</li>
-<li>-C<br>使用数据压缩,网速快时会影响速度<br>(Compression is desirable on modem lines and other slow connections, but will only slow down things on fast networks.The compression algorithm is the same used by gzip)</li>
-</ul>
-<p>bindaddress ：指定绑定ip地址<br>port ： 指定侦听端口<br>name： ssh服务器登录名<br>server： ssh服务器地址</p>
-<p>运行完上面的命令就进行socks5连接了<br>可以执行下面的命令查看端口是否打开</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ netstat -nltp</span><br></pre></td></tr></table></figure>
-<p>如果能看到指定的端口打开(1080端口)就说明正常连接了。</p>
-<h3 id="安装privoxy"><a href="#安装privoxy" class="headerlink" title="安装privoxy"></a>安装privoxy</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum install privoxy  -y <span class="comment"># 使用yum 安装比较方便，也可以使用源码安装</span></span><br></pre></td></tr></table></figure>
-<p>安装完成后需要进行配置，否则无法正常访问</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vim /etc/privoxy/config</span><br><span class="line"><span class="comment"># :783: 找到 783行，去掉前面的注释符号，端口可以随便改</span></span><br><span class="line">$ listen-address 127.0.0.1:8118</span><br><span class="line"><span class="comment">#:1336: 找到 1336行，去掉前面的注释符号，后面的1080端口要对应ss服务里面的配置，要一致</span></span><br><span class="line">$ forward-socks5t / 127.0.0.1:1080</span><br></pre></td></tr></table></figure>
-<h3 id="修改环境变量开启代理"><a href="#修改环境变量开启代理" class="headerlink" title="修改环境变量开启代理"></a>修改环境变量开启代理</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /ect/profile</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="comment"># 之后执行source /etc/profile 使配置生效</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="启动privoxy、测试"><a href="#启动privoxy、测试" class="headerlink" title="启动privoxy、测试"></a>启动privoxy、测试</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ privoxy /etc/privoxy/config  <span class="comment">#netstat -ntlp 查看8118端口</span></span><br><span class="line">$ wget www.google.com <span class="comment"># 如果能下载则说明成功</span></span><br></pre></td></tr></table></figure>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>使用完后记得关闭代理，否则所有流量都会走代理，访问可能会变慢<br>注释掉<code>/etc/profile</code> 内的内容，刷新配置。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>几款常用的性能测试工具</title>
-    <url>/2019/06/28/some-pressure-measuring-tools/</url>
-    <content><![CDATA[<p>在我们开发的过程中，我们难免需要对我们的接口进行压测，这样上线以后才更有信心。常用的性能测试工具：ab、Jmeter、Postman、阿里云PTS等。<a id="more"></a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="CentOS7-下安装ad"><a href="#CentOS7-下安装ad" class="headerlink" title="CentOS7 下安装ad"></a>CentOS7 下安装ad</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install httpd-tools</span><br></pre></td></tr></table></figure>
-
-<p>然后使用百度做个测试</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@VM_0_15_centos ~]#  ab -n 1000 -c 10 https://www.baidu.com/</span><br><span class="line">This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;</span><br><span class="line">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span><br><span class="line">Licensed to The Apache Software Foundation, http://www.apache.org/</span><br><span class="line"></span><br><span class="line">Benchmarking www.baidu.com (be patient)</span><br><span class="line">Completed 100 requests</span><br><span class="line">Completed 200 requests</span><br><span class="line">Completed 300 requests</span><br><span class="line">Completed 400 requests</span><br><span class="line">Completed 500 requests</span><br><span class="line">Completed 600 requests</span><br><span class="line">Completed 700 requests</span><br><span class="line">Completed 800 requests</span><br><span class="line">Completed 900 requests</span><br><span class="line">Completed 1000 requests</span><br><span class="line">Finished 1000 requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server Software:        BWS/1.1</span><br><span class="line">Server Hostname:        www.baidu.com</span><br><span class="line">Server Port:            443</span><br><span class="line">SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128</span><br><span class="line"></span><br><span class="line">Document Path:          /</span><br><span class="line">Document Length:        227 bytes</span><br><span class="line"></span><br><span class="line">Concurrency Level:      10</span><br><span class="line">Time taken for tests:   15.518 seconds</span><br><span class="line">Complete requests:      1000</span><br><span class="line">Failed requests:        0</span><br><span class="line">Write errors:           0</span><br><span class="line">Total transferred:      893000 bytes</span><br><span class="line">HTML transferred:       227000 bytes</span><br><span class="line">Requests per second:    64.44 [#/sec] (mean)</span><br><span class="line">Time per request:       155.176 [ms] (mean)</span><br><span class="line">Time per request:       15.518 [ms] (mean, across all concurrent requests)</span><br><span class="line">Transfer rate:          56.20 [Kbytes/sec] received</span><br><span class="line"></span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:      104  114   6.8    116     172</span><br><span class="line">Processing:    35   39   5.1     39     140</span><br><span class="line">Waiting:       35   38   5.1     39     140</span><br><span class="line">Total:        139  153   9.8    156     264</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line"><span class="meta">  50%</span><span class="bash">    156</span></span><br><span class="line"><span class="meta">  66%</span><span class="bash">    159</span></span><br><span class="line"><span class="meta">  75%</span><span class="bash">    160</span></span><br><span class="line"><span class="meta">  80%</span><span class="bash">    161</span></span><br><span class="line"><span class="meta">  90%</span><span class="bash">    163</span></span><br><span class="line"><span class="meta">  95%</span><span class="bash">    164</span></span><br><span class="line"><span class="meta">  98%</span><span class="bash">    165</span></span><br><span class="line"><span class="meta">  99%</span><span class="bash">    175</span></span><br><span class="line"><span class="meta"> 100%</span><span class="bash">    264 (longest request)</span></span><br></pre></td></tr></table></figure>
-<p>上面就是请求后的结果。注意请求的地址后面要加<code>/</code>否则会报无效的url。</p>
-<h4 id="Mac-上使用"><a href="#Mac-上使用" class="headerlink" title="Mac 上使用"></a>Mac 上使用</h4><p>Mac 上好像有自带的ab 工具，请求效果如下<br><img src="some-pressure-measuring-tools/WX20190628-171039@2x.png" alt="Mac 请求效果"></p>
-<h3 id="使用Jmeter"><a href="#使用Jmeter" class="headerlink" title="使用Jmeter"></a>使用Jmeter</h3><p>具体可以查看<a href="https://jmeter.apache.org/" target="_blank" rel="noopener">Jmeter</a>,后面会补充这一部分的内容</p>
-<h3 id="使用阿里云PTS"><a href="#使用阿里云PTS" class="headerlink" title="使用阿里云PTS"></a>使用阿里云PTS</h3><p>具体可参考<a href="https://www.aliyun.com/product/pts" target="_blank" rel="noopener">PTS</a></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>性能测试工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>提升国内服务器Github clone速度的方法</title>
     <url>/2018/04/18/raise-github-clone-speed/</url>
     <content><![CDATA[<h3 id="Github-速度慢"><a href="#Github-速度慢" class="headerlink" title="Github 速度慢"></a>Github 速度慢</h3><p>众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。<a id="more"></a></p>
@@ -1241,6 +1185,42 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>服务器科学上网</title>
+    <url>/2017/12/02/server-over-the-wall/</url>
+    <content><![CDATA[<p>因为服务器使用的需要从google下载东西，但是在现在的环境下是无法下载的，所以就整理了一下下面的方法进行服务器科学上网。<a id="more"></a></p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>两台vps（一台国内，一台国外），国外的可以开阿里云按时计费的，比较方便,此文档基于centos7.4</li>
+<li>privoxy 包</li>
+</ul>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>先用ssh 命令进行服务器socks5 连接接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh -f -N -D bindaddress:port name@server</span><br><span class="line">$ ssh -f -N -D 0.0.0.0:1080 root@45.63.61.77</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-f<br>输入密码后进入后台模式<br>(Requests ssh to go to background just before command execution.)</li>
+<li>-N<br>不执行远程命令,用于端口转发<br>( Do not execute a remote command. This is useful for just for warding ports (protocol version 2 only).)</li>
+<li>-D<br>socket5代理<br>(Specifies a local “dynamic” application-level port forwarding.Currently the SOCKS4 and SOCKS5 protocols are supported, and ssh will act as a SOCKS server.)</li>
+<li>-L<br>tcp转发<br>(Specifies that the given port on the local (client) host is to be forwarded to the given host and port on the remote side.)</li>
+<li>-C<br>使用数据压缩,网速快时会影响速度<br>(Compression is desirable on modem lines and other slow connections, but will only slow down things on fast networks.The compression algorithm is the same used by gzip)</li>
+</ul>
+<p>bindaddress ：指定绑定ip地址<br>port ： 指定侦听端口<br>name： ssh服务器登录名<br>server： ssh服务器地址</p>
+<p>运行完上面的命令就进行socks5连接了<br>可以执行下面的命令查看端口是否打开</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ netstat -nltp</span><br></pre></td></tr></table></figure>
+<p>如果能看到指定的端口打开(1080端口)就说明正常连接了。</p>
+<h3 id="安装privoxy"><a href="#安装privoxy" class="headerlink" title="安装privoxy"></a>安装privoxy</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum install privoxy  -y <span class="comment"># 使用yum 安装比较方便，也可以使用源码安装</span></span><br></pre></td></tr></table></figure>
+<p>安装完成后需要进行配置，否则无法正常访问</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vim /etc/privoxy/config</span><br><span class="line"><span class="comment"># :783: 找到 783行，去掉前面的注释符号，端口可以随便改</span></span><br><span class="line">$ listen-address 127.0.0.1:8118</span><br><span class="line"><span class="comment">#:1336: 找到 1336行，去掉前面的注释符号，后面的1080端口要对应ss服务里面的配置，要一致</span></span><br><span class="line">$ forward-socks5t / 127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<h3 id="修改环境变量开启代理"><a href="#修改环境变量开启代理" class="headerlink" title="修改环境变量开启代理"></a>修改环境变量开启代理</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /ect/profile</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="comment"># 之后执行source /etc/profile 使配置生效</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动privoxy、测试"><a href="#启动privoxy、测试" class="headerlink" title="启动privoxy、测试"></a>启动privoxy、测试</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ privoxy /etc/privoxy/config  <span class="comment">#netstat -ntlp 查看8118端口</span></span><br><span class="line">$ wget www.google.com <span class="comment"># 如果能下载则说明成功</span></span><br></pre></td></tr></table></figure>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>使用完后记得关闭代理，否则所有流量都会走代理，访问可能会变慢<br>注释掉<code>/etc/profile</code> 内的内容，刷新配置。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS7搭建socks5 服务</title>
     <url>/2018/01/15/socks5-server/</url>
     <content><![CDATA[<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>基于centsOS 7<br>ss5-3.8.9-8</p>
@@ -1254,6 +1234,59 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Socks5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>几款常用的性能测试工具</title>
+    <url>/2019/06/28/some-pressure-measuring-tools/</url>
+    <content><![CDATA[<p>在我们开发的过程中，我们难免需要对我们的接口进行压测，这样上线以后才更有信心。常用的性能测试工具：ab、Jmeter、Postman、阿里云PTS等。<a id="more"></a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="CentOS7-下安装ad"><a href="#CentOS7-下安装ad" class="headerlink" title="CentOS7 下安装ad"></a>CentOS7 下安装ad</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install httpd-tools</span><br></pre></td></tr></table></figure>
+
+<p>然后使用百度做个测试</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@VM_0_15_centos ~]#  ab -n 1000 -c 10 https://www.baidu.com/</span><br><span class="line">This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;</span><br><span class="line">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span><br><span class="line">Licensed to The Apache Software Foundation, http://www.apache.org/</span><br><span class="line"></span><br><span class="line">Benchmarking www.baidu.com (be patient)</span><br><span class="line">Completed 100 requests</span><br><span class="line">Completed 200 requests</span><br><span class="line">Completed 300 requests</span><br><span class="line">Completed 400 requests</span><br><span class="line">Completed 500 requests</span><br><span class="line">Completed 600 requests</span><br><span class="line">Completed 700 requests</span><br><span class="line">Completed 800 requests</span><br><span class="line">Completed 900 requests</span><br><span class="line">Completed 1000 requests</span><br><span class="line">Finished 1000 requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server Software:        BWS/1.1</span><br><span class="line">Server Hostname:        www.baidu.com</span><br><span class="line">Server Port:            443</span><br><span class="line">SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128</span><br><span class="line"></span><br><span class="line">Document Path:          /</span><br><span class="line">Document Length:        227 bytes</span><br><span class="line"></span><br><span class="line">Concurrency Level:      10</span><br><span class="line">Time taken for tests:   15.518 seconds</span><br><span class="line">Complete requests:      1000</span><br><span class="line">Failed requests:        0</span><br><span class="line">Write errors:           0</span><br><span class="line">Total transferred:      893000 bytes</span><br><span class="line">HTML transferred:       227000 bytes</span><br><span class="line">Requests per second:    64.44 [#/sec] (mean)</span><br><span class="line">Time per request:       155.176 [ms] (mean)</span><br><span class="line">Time per request:       15.518 [ms] (mean, across all concurrent requests)</span><br><span class="line">Transfer rate:          56.20 [Kbytes/sec] received</span><br><span class="line"></span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:      104  114   6.8    116     172</span><br><span class="line">Processing:    35   39   5.1     39     140</span><br><span class="line">Waiting:       35   38   5.1     39     140</span><br><span class="line">Total:        139  153   9.8    156     264</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line"><span class="meta">  50%</span><span class="bash">    156</span></span><br><span class="line"><span class="meta">  66%</span><span class="bash">    159</span></span><br><span class="line"><span class="meta">  75%</span><span class="bash">    160</span></span><br><span class="line"><span class="meta">  80%</span><span class="bash">    161</span></span><br><span class="line"><span class="meta">  90%</span><span class="bash">    163</span></span><br><span class="line"><span class="meta">  95%</span><span class="bash">    164</span></span><br><span class="line"><span class="meta">  98%</span><span class="bash">    165</span></span><br><span class="line"><span class="meta">  99%</span><span class="bash">    175</span></span><br><span class="line"><span class="meta"> 100%</span><span class="bash">    264 (longest request)</span></span><br></pre></td></tr></table></figure>
+<p>上面就是请求后的结果。注意请求的地址后面要加<code>/</code>否则会报无效的url。</p>
+<h4 id="Mac-上使用"><a href="#Mac-上使用" class="headerlink" title="Mac 上使用"></a>Mac 上使用</h4><p>Mac 上好像有自带的ab 工具，请求效果如下<br><img src="some-pressure-measuring-tools/WX20190628-171039@2x.png" alt="Mac 请求效果"></p>
+<h3 id="使用Jmeter"><a href="#使用Jmeter" class="headerlink" title="使用Jmeter"></a>使用Jmeter</h3><p>具体可以查看<a href="https://jmeter.apache.org/" target="_blank" rel="noopener">Jmeter</a>,后面会补充这一部分的内容</p>
+<h3 id="使用阿里云PTS"><a href="#使用阿里云PTS" class="headerlink" title="使用阿里云PTS"></a>使用阿里云PTS</h3><p>具体可参考<a href="https://www.aliyun.com/product/pts" target="_blank" rel="noopener">PTS</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>性能测试工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>初识Dart(一)</title>
+    <url>/2019/07/15/study-dart-1/</url>
+    <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
+<p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
+<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart" target="_blank" rel="noopener">repl</a>新建一个<code>main.dart</code>文件</p>
+<h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击<code>run</code><br>可以看到右边打印出来内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on "linux_x64"</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+<p>Dart 也是用main做函数的入口的，跟Java很像。</p>
+<h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
+<li>Numbers</li>
+<li>Strings</li>
+<li>Booleans</li>
+<li>Lists</li>
+<li>Sets</li>
+<li>Maps</li>
+<li>Runes</li>
+<li>Symbols</li>
+</ul>
+<p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
+<li>const 表示常量在编译期能确定的值</li>
+<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。" target="_blank" rel="noopener">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Dart</category>
+      </categories>
+      <tags>
+        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
@@ -1292,39 +1325,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>调用链监控</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>初识Dart(一)</title>
-    <url>/2019/07/15/study-dart-1/</url>
-    <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
-<p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
-<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart" target="_blank" rel="noopener">repl</a>新建一个<code>main.dart</code>文件</p>
-<h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>点击<code>run</code><br>可以看到右边打印出来内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on "linux_x64"</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
-<p>Dart 也是用main做函数的入口的，跟Java很像。</p>
-<h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
-<li>Numbers</li>
-<li>Strings</li>
-<li>Booleans</li>
-<li>Lists</li>
-<li>Sets</li>
-<li>Maps</li>
-<li>Runes</li>
-<li>Symbols</li>
-</ul>
-<p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
-<li>const 表示常量在编译期能确定的值</li>
-<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。" target="_blank" rel="noopener">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Dart</category>
-      </categories>
-      <tags>
-        <tag>Dart</tag>
       </tags>
   </entry>
   <entry>
