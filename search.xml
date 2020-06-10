@@ -47,6 +47,57 @@
       </tags>
   </entry>
   <entry>
+    <title>使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</title>
+    <url>/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/</url>
+    <content><![CDATA[<p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。<a id="more"></a></p>
+<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
+<p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
+<p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
+<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
+<ul>
+<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
+</li>
+<li><p>安装系统扩展包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
+<li><p>安装certbot</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>运行certbot插件生成证书</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+<p><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
+</li>
+<li><p>重启nginx</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
+</li>
+</ul>
+<p>增加自动续期</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
+
+<p>上面的方法是单域名证书的创建</p>
+<h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
+<ul>
+<li>certbot-dns-cloudflare</li>
+<li>certbot-dns-cloudxns</li>
+<li>certbot-dns-digitalocean</li>
+<li>certbot-dns-dnsimple</li>
+<li>certbot-dns-dnsmadeeasy</li>
+<li>certbot-dns-google</li>
+<li>certbot-dns-luadns</li>
+<li>certbot-dns-nsone</li>
+<li>certbot-dns-rfc2136</li>
+<li>certbot-dns-route53</li>
+</ul>
+<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
+<p>未完待续。。。</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Domain</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Machine-Learning-in-Java-1</title>
     <url>/2017/11/20/Machine-Learning-in-Java-1/</url>
     <content><![CDATA[<h3 id="机器学习的主要方法"><a href="#机器学习的主要方法" class="headerlink" title="机器学习的主要方法"></a>机器学习的主要方法</h3><ul>
@@ -134,71 +185,6 @@
       </categories>
       <tags>
         <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</title>
-    <url>/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/</url>
-    <content><![CDATA[<p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。<a id="more"></a></p>
-<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
-<p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
-<p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
-<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
-<ul>
-<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
-</li>
-<li><p>安装系统扩展包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
-<li><p>安装certbot</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>运行certbot插件生成证书</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
-<p><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
-</li>
-<li><p>重启nginx</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
-</li>
-</ul>
-<p>增加自动续期</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
-
-<p>上面的方法是单域名证书的创建</p>
-<h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
-<ul>
-<li>certbot-dns-cloudflare</li>
-<li>certbot-dns-cloudxns</li>
-<li>certbot-dns-digitalocean</li>
-<li>certbot-dns-dnsimple</li>
-<li>certbot-dns-dnsmadeeasy</li>
-<li>certbot-dns-google</li>
-<li>certbot-dns-luadns</li>
-<li>certbot-dns-nsone</li>
-<li>certbot-dns-rfc2136</li>
-<li>certbot-dns-route53</li>
-</ul>
-<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
-<p>未完待续。。。</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Domain</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx 504 Gateway Time-out</title>
-    <url>/2017/09/22/Nginx-504-GateWay-Time-Out/</url>
-    <content><![CDATA[<p>今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置 <a id="more"></a></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">proxy_connect_timeout = 3;</span><br></pre></td></tr></table></figure>
-<p>时间过小导致的，最好用默认参数</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -318,6 +304,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Nginx 504 Gateway Time-out</title>
+    <url>/2017/09/22/Nginx-504-GateWay-Time-Out/</url>
+    <content><![CDATA[<p>今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置 <a id="more"></a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">proxy_connect_timeout = 3;</span><br></pre></td></tr></table></figure>
+<p>时间过小导致的，最好用默认参数</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>方舟服务器搭建 Ark-Server-Build</title>
     <url>/2020/04/14/ark-server/</url>
     <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
@@ -426,69 +426,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Centos7 安装 pyenv</title>
-    <url>/2018/02/27/cnetos-install-pyenv/</url>
-    <content><![CDATA[<blockquote>
-<p>人生苦短，我用Python</p>
-</blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
-
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm 更换源</title>
-    <url>/2018/05/03/config-npm-registry/</url>
-    <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
-<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><ul>
-<li>临时使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express --save</span><br></pre></td></tr></table></figure></li>
-<li>持久使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
-<li>验证<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure></li>
-<li>官方源<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="通过-nrm-更换源"><a href="#通过-nrm-更换源" class="headerlink" title="通过 nrm 更换源"></a>通过 nrm 更换源</h3><p>最近在工作的时候，发现淘宝的源，无法正常下载，于是需要换其他的源，在网上找源的过程中，发现了<code>nrm -- NPM registry manager</code>，它可以帮你快速的帮你在不同的源之间切换，现在包括<code>npm</code>、<code>cnpm</code>、<code>taobao</code>、<code>nj(nodejitsu)</code>、<code>rednpm</code>，还可以加入你自己的私有源。</p>
-<ul>
-<li>安装<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure></li>
-<li>例子<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nrm ls</span><br><span class="line">* npm -----  https://registry.npmjs.org/</span><br><span class="line">  cnpm ----  http://r.cnpmjs.org/</span><br><span class="line">  taobao --  https://registry.npm.taobao.org/</span><br><span class="line">  nj ------  https://registry.nodejitsu.com/</span><br><span class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</span><br><span class="line">  skimdb -- https://skimdb.npmjs.com/registry</span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">$ nrm use cnpm  <span class="comment">#switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>通过nrm换源，体验一下就提升了很多，工作更有效率了。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 常用命令(待完善)</title>
-    <url>/2017/11/30/common-commonds/</url>
-    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS7 安装Docker</title>
     <url>/2019/06/25/centos7-docker-install-tutorial/</url>
     <content><![CDATA[<p>Docker在越来越多的项目中使用，快捷、高效的部署，为我们提供了一个统一的环境，方便部署，当然还有其他很多的优点，就不一一列举了。安装基于<a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">Docker官方文档</a><a id="more"></a></p>
@@ -535,6 +472,47 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h5 id="启动Docker-1"><a href="#启动Docker-1" class="headerlink" title="启动Docker"></a>启动Docker</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start docker</span></span><br></pre></td></tr></table></figure>
 <h5 id="通过运行hello-world-验证Docker-CE-安装正确-1"><a href="#通过运行hello-world-验证Docker-CE-安装正确-1" class="headerlink" title="通过运行hello-world 验证Docker CE 安装正确"></a>通过运行<code>hello-world</code> 验证Docker CE 安装正确</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo docker run hello-world</span></span><br></pre></td></tr></table></figure>
 <h4 id="通过使用便捷脚本安装"><a href="#通过使用便捷脚本安装" class="headerlink" title="通过使用便捷脚本安装"></a>通过使用便捷脚本安装</h4><p>Docker 提供了便捷脚本在<a href="https://get.docker.com/" target="_blank" rel="noopener">get.docker.com</a>和<a href="https://test.docker.com/" target="_blank" rel="noopener">test.docker.com</a>,使用脚本安装可能会存在安全风险，建议不要在生产环境中使用</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm 更换源</title>
+    <url>/2018/05/03/config-npm-registry/</url>
+    <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
+<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><ul>
+<li>临时使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express --save</span><br></pre></td></tr></table></figure></li>
+<li>持久使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
+<li>验证<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure></li>
+<li>官方源<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="通过-nrm-更换源"><a href="#通过-nrm-更换源" class="headerlink" title="通过 nrm 更换源"></a>通过 nrm 更换源</h3><p>最近在工作的时候，发现淘宝的源，无法正常下载，于是需要换其他的源，在网上找源的过程中，发现了<code>nrm -- NPM registry manager</code>，它可以帮你快速的帮你在不同的源之间切换，现在包括<code>npm</code>、<code>cnpm</code>、<code>taobao</code>、<code>nj(nodejitsu)</code>、<code>rednpm</code>，还可以加入你自己的私有源。</p>
+<ul>
+<li>安装<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure></li>
+<li>例子<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nrm ls</span><br><span class="line">* npm -----  https://registry.npmjs.org/</span><br><span class="line">  cnpm ----  http://r.cnpmjs.org/</span><br><span class="line">  taobao --  https://registry.npm.taobao.org/</span><br><span class="line">  nj ------  https://registry.nodejitsu.com/</span><br><span class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</span><br><span class="line">  skimdb -- https://skimdb.npmjs.com/registry</span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">$ nrm use cnpm  <span class="comment">#switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>通过nrm换源，体验一下就提升了很多，工作更有效率了。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 常用命令(待完善)</title>
+    <url>/2017/11/30/common-commonds/</url>
+    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -602,6 +580,28 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Centos7 安装 pyenv</title>
+    <url>/2018/02/27/cnetos-install-pyenv/</url>
+    <content><![CDATA[<blockquote>
+<p>人生苦短，我用Python</p>
+</blockquote>
+<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
+<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DevOps实践2:Spring Boot集成Docker环境</title>
     <url>/2018/02/27/devops-2-springboot-docker-integrated/</url>
     <content><![CDATA[<blockquote>
@@ -653,21 +653,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker 创建MySQL</title>
-    <url>/2018/01/17/docker-create-mysql/</url>
-    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
-<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
-<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker安装MongoDB(Mongo3.x)</title>
     <url>/2017/09/23/docker-install-MongoDB/</url>
     <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
@@ -698,6 +683,21 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
 <h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a></p>
 <p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/" target="_blank" rel="noopener">https://hub.docker.com/r/sonatype/nexus3/</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 创建MySQL</title>
+    <url>/2018/01/17/docker-create-mysql/</url>
+    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -748,6 +748,50 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Feign</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gitee码云使用webhook</title>
+    <url>/2018/02/25/gitee-with-webhook/</url>
+    <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。<a id="more"></a></p>
+<h3 id="什么是webhook"><a href="#什么是webhook" class="headerlink" title="什么是webhook"></a>什么是webhook</h3><blockquote>
+<p>准确的说webhoo是一种web回调或者http的push API，是向APP或者其他应用提供实时信息的一种方式。Webhook在数据产生时立即发送数据，也就是你能实时收到数据。这一种不同于典型的API，需要用了实时性需要足够快的轮询。这无论是对生产还是对消费者都是高效的，唯一的缺点是初始建立困难。</p>
+</blockquote>
+<blockquote>
+<p>Webhook有时也被称为反向API，因为他提供了API规则，你需要设计要使用的API。Webhook将向你的应用发起http请求，典型的是post请求，应用程序由请求驱动。</p>
+</blockquote>
+<h3 id="配置webhook"><a href="#配置webhook" class="headerlink" title="配置webhook"></a>配置webhook</h3><p>知道什么是webhook 后我们就要开始配置我们自己的项目了。<br>环境：<br>   CentOS7<br>   Gitee（网上GitHub的教程比较多，这个基于码云）</p>
+<ul>
+<li>配置项目公私钥</li>
+</ul>
+<ol>
+<li>生产公钥<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"xxxxx@xxxxx.com"</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Generating public/private rsa key pair...</span></span><br><span class="line"><span class="comment"># 三次回车即可生成 ssh key</span></span><br></pre></td></tr></table></figure></li>
+<li>查看公钥<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></span><br></pre></td></tr></table></figure></li>
+<li>添加公钥<br><img src="gitee-with-webhook/image-2018-153940@2x.png" alt="步骤"></li>
+<li>测试<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line">Welcome to Gitee.com, yourname! <span class="comment"># 返回，说明正常</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>配置服务器node环境</li>
+</ul>
+<ol>
+<li>安装nvm，服务器上使用nvm 方便多版本node切换<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#加入下面的内容</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line">nvm install stable <span class="comment"># 安装稳定版</span></span><br><span class="line">nvm current <span class="comment"># 查看当前的版本</span></span><br></pre></td></tr></table></figure></li>
+<li>配置相关的脚本<br>安装gitee-webhook-handler(GitHub,GitLab,gitee 的包是不同的，不能混用)<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir /opt/webhook <span class="comment">#创建目录</span></span><br><span class="line"><span class="built_in">cd</span> /opt/webhook</span><br><span class="line">npm init <span class="comment"># 初始化项目</span></span><br><span class="line">npm install  gitee-webhook-handler --save <span class="comment"># 当前的版本为v0.1.2</span></span><br></pre></td></tr></table></figure></li>
+<li>创建对应的webhook服务<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim webhook.js</span><br><span class="line"></span><br><span class="line">var http = require(<span class="string">'http'</span>)</span><br><span class="line">var createHandler = require(<span class="string">'gitee-webhook-handler'</span>)</span><br><span class="line">var handler = createHandler(&#123; path: <span class="string">'/webhooks_push'</span>, secret: <span class="string">'123456'</span> &#125;)<span class="comment"># post 所需要用到的秘钥</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> run_cmd(cmd, args, callback) &#123;</span><br><span class="line">  var spawn = require(<span class="string">'child_process'</span>).spawn;</span><br><span class="line">  var child = spawn(cmd, args);</span><br><span class="line">  var resp = <span class="string">""</span>;</span><br><span class="line">  child.stdout.on(<span class="string">'data'</span>, <span class="keyword">function</span>(buffer) &#123; resp += buffer.toString(); &#125;);</span><br><span class="line">  child.stdout.on(<span class="string">'end'</span>, <span class="function"><span class="title">function</span></span>() &#123; callback (resp) &#125;);</span><br><span class="line">&#125;</span><br><span class="line">handler.on(<span class="string">'error'</span>, <span class="keyword">function</span> (err) &#123;</span><br><span class="line">  console.error(<span class="string">'Error:'</span>, err.message)</span><br><span class="line">&#125;)</span><br><span class="line">handler.on(<span class="string">'Push Hook'</span>, <span class="keyword">function</span> (event) &#123;  <span class="comment"># 这个地方就是GitHub 和 Gitee 不一样的地方，需要注意</span></span><br><span class="line">  console.log(<span class="string">'Received a push event for %s to %s'</span>,</span><br><span class="line">    event.payload.repository.name,</span><br><span class="line">    event.payload.ref);</span><br><span class="line">    run_cmd(<span class="string">'sh'</span>, [<span class="string">'./deploy.sh'</span>], <span class="keyword">function</span>(text)&#123; console.log(text) &#125;);<span class="comment"># 需要执行的脚本位置</span></span><br><span class="line">&#125;)</span><br><span class="line">try &#123;</span><br><span class="line">  http.createServer(<span class="keyword">function</span> (req, res) &#123;</span><br><span class="line">    handler(req, res, <span class="keyword">function</span> (err) &#123;</span><br><span class="line">      res.statusCode = 404</span><br><span class="line">      res.end(<span class="string">'no such location'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;).listen(6666) <span class="comment"># 服务监听的端口，可以自行修改</span></span><br><span class="line">&#125;catch(err)&#123;</span><br><span class="line">  console.error(<span class="string">'Error:'</span>, err.message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>创建需要执行的脚本<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim deploy.sh</span><br><span class="line">git pull xxxxx  <span class="comment"># 根据自己的需要自行编写</span></span><br></pre></td></tr></table></figure></li>
+<li>测试服务<br><img src="gitee-with-webhook/WX20180225-163439@2x.png" alt=""><br><img src="gitee-with-webhook/WX20180225-163748@2x.png" alt=""><br>显示ok，说明成功</li>
+</ol>
+<h3 id="使用pm2应用进程管理器"><a href="#使用pm2应用进程管理器" class="headerlink" title="使用pm2应用进程管理器"></a>使用pm2应用进程管理器</h3><p>使用node 启动服务不是很方便，推荐使用pm2</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pm2</span><br><span class="line">pm2 start webhook.js</span><br><span class="line">pm2 monit <span class="comment"># 可以通过此命令查看服务的状态</span></span><br></pre></td></tr></table></figure>
+<p><img src="gitee-with-webhook/WX20180225-164721@2x.png" alt=""><br>上图显示了一些应用的基本信息，可以更好的观察到服务的状态</p>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>配置完成后，只要pull代码到仓库，就会触发webhook执行脚本，十分的方便，同时减少了工作量，相对采用轮询的方式消耗的资源更小。</p>
+<p>参考：<a href="https://www.npmjs.com/package/gitee-webhook-handler" target="_blank" rel="noopener">https://www.npmjs.com/package/gitee-webhook-handler</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -803,69 +847,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>gitee码云使用webhook</title>
-    <url>/2018/02/25/gitee-with-webhook/</url>
-    <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。<a id="more"></a></p>
-<h3 id="什么是webhook"><a href="#什么是webhook" class="headerlink" title="什么是webhook"></a>什么是webhook</h3><blockquote>
-<p>准确的说webhoo是一种web回调或者http的push API，是向APP或者其他应用提供实时信息的一种方式。Webhook在数据产生时立即发送数据，也就是你能实时收到数据。这一种不同于典型的API，需要用了实时性需要足够快的轮询。这无论是对生产还是对消费者都是高效的，唯一的缺点是初始建立困难。</p>
-</blockquote>
-<blockquote>
-<p>Webhook有时也被称为反向API，因为他提供了API规则，你需要设计要使用的API。Webhook将向你的应用发起http请求，典型的是post请求，应用程序由请求驱动。</p>
-</blockquote>
-<h3 id="配置webhook"><a href="#配置webhook" class="headerlink" title="配置webhook"></a>配置webhook</h3><p>知道什么是webhook 后我们就要开始配置我们自己的项目了。<br>环境：<br>   CentOS7<br>   Gitee（网上GitHub的教程比较多，这个基于码云）</p>
-<ul>
-<li>配置项目公私钥</li>
-</ul>
-<ol>
-<li>生产公钥<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"xxxxx@xxxxx.com"</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Generating public/private rsa key pair...</span></span><br><span class="line"><span class="comment"># 三次回车即可生成 ssh key</span></span><br></pre></td></tr></table></figure></li>
-<li>查看公钥<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></span><br></pre></td></tr></table></figure></li>
-<li>添加公钥<br><img src="gitee-with-webhook/image-2018-153940@2x.png" alt="步骤"></li>
-<li>测试<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line">Welcome to Gitee.com, yourname! <span class="comment"># 返回，说明正常</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ul>
-<li>配置服务器node环境</li>
-</ul>
-<ol>
-<li>安装nvm，服务器上使用nvm 方便多版本node切换<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#加入下面的内容</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line">nvm install stable <span class="comment"># 安装稳定版</span></span><br><span class="line">nvm current <span class="comment"># 查看当前的版本</span></span><br></pre></td></tr></table></figure></li>
-<li>配置相关的脚本<br>安装gitee-webhook-handler(GitHub,GitLab,gitee 的包是不同的，不能混用)<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir /opt/webhook <span class="comment">#创建目录</span></span><br><span class="line"><span class="built_in">cd</span> /opt/webhook</span><br><span class="line">npm init <span class="comment"># 初始化项目</span></span><br><span class="line">npm install  gitee-webhook-handler --save <span class="comment"># 当前的版本为v0.1.2</span></span><br></pre></td></tr></table></figure></li>
-<li>创建对应的webhook服务<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim webhook.js</span><br><span class="line"></span><br><span class="line">var http = require(<span class="string">'http'</span>)</span><br><span class="line">var createHandler = require(<span class="string">'gitee-webhook-handler'</span>)</span><br><span class="line">var handler = createHandler(&#123; path: <span class="string">'/webhooks_push'</span>, secret: <span class="string">'123456'</span> &#125;)<span class="comment"># post 所需要用到的秘钥</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> run_cmd(cmd, args, callback) &#123;</span><br><span class="line">  var spawn = require(<span class="string">'child_process'</span>).spawn;</span><br><span class="line">  var child = spawn(cmd, args);</span><br><span class="line">  var resp = <span class="string">""</span>;</span><br><span class="line">  child.stdout.on(<span class="string">'data'</span>, <span class="keyword">function</span>(buffer) &#123; resp += buffer.toString(); &#125;);</span><br><span class="line">  child.stdout.on(<span class="string">'end'</span>, <span class="function"><span class="title">function</span></span>() &#123; callback (resp) &#125;);</span><br><span class="line">&#125;</span><br><span class="line">handler.on(<span class="string">'error'</span>, <span class="keyword">function</span> (err) &#123;</span><br><span class="line">  console.error(<span class="string">'Error:'</span>, err.message)</span><br><span class="line">&#125;)</span><br><span class="line">handler.on(<span class="string">'Push Hook'</span>, <span class="keyword">function</span> (event) &#123;  <span class="comment"># 这个地方就是GitHub 和 Gitee 不一样的地方，需要注意</span></span><br><span class="line">  console.log(<span class="string">'Received a push event for %s to %s'</span>,</span><br><span class="line">    event.payload.repository.name,</span><br><span class="line">    event.payload.ref);</span><br><span class="line">    run_cmd(<span class="string">'sh'</span>, [<span class="string">'./deploy.sh'</span>], <span class="keyword">function</span>(text)&#123; console.log(text) &#125;);<span class="comment"># 需要执行的脚本位置</span></span><br><span class="line">&#125;)</span><br><span class="line">try &#123;</span><br><span class="line">  http.createServer(<span class="keyword">function</span> (req, res) &#123;</span><br><span class="line">    handler(req, res, <span class="keyword">function</span> (err) &#123;</span><br><span class="line">      res.statusCode = 404</span><br><span class="line">      res.end(<span class="string">'no such location'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;).listen(6666) <span class="comment"># 服务监听的端口，可以自行修改</span></span><br><span class="line">&#125;catch(err)&#123;</span><br><span class="line">  console.error(<span class="string">'Error:'</span>, err.message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>创建需要执行的脚本<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim deploy.sh</span><br><span class="line">git pull xxxxx  <span class="comment"># 根据自己的需要自行编写</span></span><br></pre></td></tr></table></figure></li>
-<li>测试服务<br><img src="gitee-with-webhook/WX20180225-163439@2x.png" alt=""><br><img src="gitee-with-webhook/WX20180225-163748@2x.png" alt=""><br>显示ok，说明成功</li>
-</ol>
-<h3 id="使用pm2应用进程管理器"><a href="#使用pm2应用进程管理器" class="headerlink" title="使用pm2应用进程管理器"></a>使用pm2应用进程管理器</h3><p>使用node 启动服务不是很方便，推荐使用pm2</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pm2</span><br><span class="line">pm2 start webhook.js</span><br><span class="line">pm2 monit <span class="comment"># 可以通过此命令查看服务的状态</span></span><br></pre></td></tr></table></figure>
-<p><img src="gitee-with-webhook/WX20180225-164721@2x.png" alt=""><br>上图显示了一些应用的基本信息，可以更好的观察到服务的状态</p>
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>配置完成后，只要pull代码到仓库，就会触发webhook执行脚本，十分的方便，同时减少了工作量，相对采用轮询的方式消耗的资源更小。</p>
-<p>参考：<a href="https://www.npmjs.com/package/gitee-webhook-handler" target="_blank" rel="noopener">https://www.npmjs.com/package/gitee-webhook-handler</a></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用kubeadm安装kubernetes集群(待续)</title>
-    <url>/2017/12/02/kubeadm-install-kubernetes/</url>
-    <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
-<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>建议使用daocloud提供的脚本进行安装，速度很快</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/docker | sh <span class="comment">#适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker &amp;&amp; systemctl start docker <span class="comment">#设置开机启动，启动docker</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装kubeadm-kubelet-and-kubectl"><a href="#安装kubeadm-kubelet-and-kubectl" class="headerlink" title="安装kubeadm, kubelet and kubectl"></a>安装kubeadm, kubelet and kubectl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line">$ setenforce 0 <span class="comment">#关闭SELinux</span></span><br><span class="line">$ yum install -y kubelet kubeadm kubectl</span><br><span class="line">$ systemctl <span class="built_in">enable</span> kubelet &amp;&amp; systemctl start kubelet <span class="comment"># 设置开机启动，启动</span></span><br></pre></td></tr></table></figure>
-<p>安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum --enablerepo=kubernetes clean metadata <span class="comment"># 如果还是不行，需要先清理缓存</span></span><br><span class="line">$ yum clean metadata</span><br><span class="line">$ yum clean all</span><br><span class="line">$ rm -rf /var/cache/yum</span><br></pre></td></tr></table></figure>
-<h3 id="使用-kubeadm-创建集群"><a href="#使用-kubeadm-创建集群" class="headerlink" title="使用 kubeadm 创建集群"></a>使用 kubeadm 创建集群</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubeadm init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
-<p>待续。。。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>面试总结</title>
     <url>/2019/04/18/interview-experience/</url>
     <content><![CDATA[<p>最近参加了一些面试，面试中碰到了各种各样的问题，想通过简单的记录进行回顾、总结。后期会花一些时间，对立面的部分问题进行深入了解、并进行记录。<a id="more"></a></p>
@@ -906,6 +887,25 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>工作经历</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用kubeadm安装kubernetes集群(待续)</title>
+    <url>/2017/12/02/kubeadm-install-kubernetes/</url>
+    <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>建议使用daocloud提供的脚本进行安装，速度很快</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/docker | sh <span class="comment">#适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker &amp;&amp; systemctl start docker <span class="comment">#设置开机启动，启动docker</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装kubeadm-kubelet-and-kubectl"><a href="#安装kubeadm-kubelet-and-kubectl" class="headerlink" title="安装kubeadm, kubelet and kubectl"></a>安装kubeadm, kubelet and kubectl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line">$ setenforce 0 <span class="comment">#关闭SELinux</span></span><br><span class="line">$ yum install -y kubelet kubeadm kubectl</span><br><span class="line">$ systemctl <span class="built_in">enable</span> kubelet &amp;&amp; systemctl start kubelet <span class="comment"># 设置开机启动，启动</span></span><br></pre></td></tr></table></figure>
+<p>安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum --enablerepo=kubernetes clean metadata <span class="comment"># 如果还是不行，需要先清理缓存</span></span><br><span class="line">$ yum clean metadata</span><br><span class="line">$ yum clean all</span><br><span class="line">$ rm -rf /var/cache/yum</span><br></pre></td></tr></table></figure>
+<h3 id="使用-kubeadm-创建集群"><a href="#使用-kubeadm-创建集群" class="headerlink" title="使用 kubeadm 创建集群"></a>使用 kubeadm 创建集群</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubeadm init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
+<p>待续。。。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -951,6 +951,20 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>lightsail使用root用户登录</title>
+    <url>/2019/11/22/lightsail-use-root-logn/</url>
+    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MD5、SALT加密浅析</title>
     <url>/2018/11/06/md5-and-salt-encryption/</url>
     <content><![CDATA[<p>密码的保存是开发的过程中必不可少的一部分，通常我们一般使用MD5加密，来对密码安全进行简单的加强，但是只是使用MD5进行加密，如果密码相同，MD5值就会一样，<br>通过一些在线的MD5解析网站的解析，密码大概率就会被解析出来，使用相同密码的人，也会受到影响。通过“加盐” ，可以提高密码被破解的难度。<a id="more"></a></p>
@@ -978,17 +992,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       <tags>
         <tag>加密</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Netty 学习记录</title>
-    <url>/2018/04/11/netty-study/</url>
-    <content><![CDATA[<h3 id="Netty-核心组件"><a href="#Netty-核心组件" class="headerlink" title="Netty 核心组件"></a>Netty 核心组件</h3><ul>
-<li>Channel</li>
-<li>回调</li>
-<li>Future</li>
-<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>Nginx 负载均衡策略</title>
@@ -1029,18 +1032,15 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>lightsail使用root用户登录</title>
-    <url>/2019/11/22/lightsail-use-root-logn/</url>
-    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
+    <title>Netty 学习记录</title>
+    <url>/2018/04/11/netty-study/</url>
+    <content><![CDATA[<h3 id="Netty-核心组件"><a href="#Netty-核心组件" class="headerlink" title="Netty 核心组件"></a>Netty 核心组件</h3><ul>
+<li>Channel</li>
+<li>回调</li>
+<li>Future</li>
+<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
+</ul>
 ]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>Nginx 学习日志 1</title>
@@ -1128,6 +1128,27 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>CentOS 安装 node</title>
+    <url>/2018/02/09/node-install/</url>
+    <content><![CDATA[<h3 id="下载node"><a href="#下载node" class="headerlink" title="下载node"></a>下载node</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
+<h3 id="解压-amp-配置"><a href="#解压-amp-配置" class="headerlink" title="解压&amp;配置"></a>解压&amp;配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xvJf node-v8.9.4-linux-x64.tar.xz</span><br><span class="line">mv node-v8.9.4-linux-x64 /opt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置node 环境变量</span></span><br><span class="line"><span class="built_in">export</span> NODE_HOME=/opt/node-v8.9.4-linux-x64</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NODE_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<h3 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>或者安装nvm</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#加入下面的内容</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm、</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<h3 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nvm --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm install stable <span class="comment"># 安装稳定版</span></span><br><span class="line">nvm current <span class="comment"># 查看当前的版本</span></span><br><span class="line">nvm ls <span class="comment"># 列出所有版本</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Node 项目问题总结</title>
     <url>/2018/06/02/node-project-summary/</url>
     <content><![CDATA[<p>最近在写一个Node的项目，项目中碰到了不少问题，做一个记录。 <a id="more"></a></p>
@@ -1152,27 +1173,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>CentOS 安装 node</title>
-    <url>/2018/02/09/node-install/</url>
-    <content><![CDATA[<h3 id="下载node"><a href="#下载node" class="headerlink" title="下载node"></a>下载node</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
-<h3 id="解压-amp-配置"><a href="#解压-amp-配置" class="headerlink" title="解压&amp;配置"></a>解压&amp;配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xvJf node-v8.9.4-linux-x64.tar.xz</span><br><span class="line">mv node-v8.9.4-linux-x64 /opt</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置node 环境变量</span></span><br><span class="line"><span class="built_in">export</span> NODE_HOME=/opt/node-v8.9.4-linux-x64</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NODE_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-<h3 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>或者安装nvm</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#加入下面的内容</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm、</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-<h3 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nvm --version</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm install stable <span class="comment"># 安装稳定版</span></span><br><span class="line">nvm current <span class="comment"># 查看当前的版本</span></span><br><span class="line">nvm ls <span class="comment"># 列出所有版本</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>okhttp3-proxy-auth (okhttp3 http 代理鉴权)</title>
     <url>/2018/08/30/okhttp3-proxy-auth/</url>
     <content><![CDATA[<p>因为种种原因，没有按时写博客，最近准备把博客重新拾起来。<br>最近在写一个项目，使用到了okhttp的代理，因为使用的代理是付费的，所以需要鉴权。在使用的过程中碰到了一些问题所以记录一下<a id="more"></a></p>
@@ -1193,22 +1193,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>python通过使用requirements.txt文件记录管理依赖包</title>
-    <url>/2018/03/07/python-requirements/</url>
-    <content><![CDATA[<p>python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。<a id="more"></a></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入项目目录创建requirements.txt文件</span></span><br><span class="line">touch requirements.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将项目中使用的包冻结（freeze）到requirements.txt文件中</span></span><br><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure>
-<p>当把项目上传到服务器以后可以执行下面的命令安装对应的包</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">通过requirements.txt 文件中的记录安装依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>通过上面的方法就能将本地的包安装在服务器上了，保证了两个环境中的依赖一致，一般情况是在虚拟环境中使用，保证环境的干净，避免发生冲突。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python 入门</title>
     <url>/2018/03/07/pthon-tutorial/</url>
     <content><![CDATA[<blockquote>
@@ -1226,6 +1210,22 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <li>Dictionary (字典)</li>
 </ul>
 <h3 id="待续。。。"><a href="#待续。。。" class="headerlink" title="待续。。。"></a>待续。。。</h3>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python通过使用requirements.txt文件记录管理依赖包</title>
+    <url>/2018/03/07/python-requirements/</url>
+    <content><![CDATA[<p>python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。<a id="more"></a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入项目目录创建requirements.txt文件</span></span><br><span class="line">touch requirements.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将项目中使用的包冻结（freeze）到requirements.txt文件中</span></span><br><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure>
+<p>当把项目上传到服务器以后可以执行下面的命令安装对应的包</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">通过requirements.txt 文件中的记录安装依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>通过上面的方法就能将本地的包安装在服务器上了，保证了两个环境中的依赖一致，一般情况是在虚拟环境中使用，保证环境的干净，避免发生冲突。</p>
+]]></content>
       <categories>
         <category>Python</category>
       </categories>
@@ -1413,6 +1413,31 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>学习Elastic Stack（一）</title>
+    <url>/2019/06/26/study-elastic-stack-1/</url>
+    <content><![CDATA[<p>前两天在<code>极客时间</code>买了<code>Elasticsearch核心技术与实战</code>的视频课程，希望加深对Elastic Stack的了解，提升自己的能力。实际的工作中也用到了 ELK进行生产环境的日志查询与分析，只是简单的使用，了解一些基本的原理，但是更高阶的内容并不了解。学习一个东西最后的方法就是去实践，同时做一些记录进行输出。<a id="more"></a></p>
+<p><img src="elk-stack-elkb-diagram.png" alt="Elastic Stack"></p>
+<h3 id="Elastic-Stack概念"><a href="#Elastic-Stack概念" class="headerlink" title="Elastic Stack概念"></a>Elastic Stack概念</h3><p>首先需要了解一下，什么是<code>ELK</code>，<code>为什么是Elastic Stack</code>，<a href="https://www.elastic.co/cn/elk-stack" target="_blank" rel="noopener">What is the ELK Stack? Why, it’s the Elastic Stack.</a></p>
+<blockquote>
+<p>So, what is the ELK Stack? “ELK” is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and analytics engine. Logstash is a server‑side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a “stash” like Elasticsearch. Kibana lets users visualize data with charts and graphs in Elasticsearch.<br>The Elastic Stack is the next evolution of the ELK Stack.</p>
+</blockquote>
+<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><p>因为是为了方便学习，所以使用docker进行环境的搭建，使用docker-compose 进行搭建，Elastic官方也提供了对应的<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html" target="_blank" rel="noopener">脚本</a>，极客时间上的是基于7.1版本ES的，不过区别不是很大(增加了cerebro监控和kibana，可以自行添加)。</p>
+<h4 id="运行-docker-compose-命令"><a href="#运行-docker-compose-命令" class="headerlink" title="运行 docker-compose 命令"></a>运行 docker-compose 命令</h4><p><code>docker-compose.yml</code> 文件内容如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">version: '2.2'</span><br><span class="line">services:</span><br><span class="line">  es01:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es01</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es01</span><br><span class="line">      - discovery.seed_hosts=es02</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata01:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - 9200:9200</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line">  es02:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es02</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es02</span><br><span class="line">      - discovery.seed_hosts=es01</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata02:/usr/share/elasticsearch/data</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  esdata01:</span><br><span class="line">    driver: local</span><br><span class="line">  esdata02:</span><br><span class="line">    driver: local</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  esnet:</span><br></pre></td></tr></table></figure>
+<p>启动、停止、销毁</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动</span></span><br><span class="line">docker-compose up</span><br><span class="line"><span class="meta">#</span><span class="bash">停止</span></span><br><span class="line">docker-compose down</span><br><span class="line"><span class="meta">#</span><span class="bash">销毁</span></span><br><span class="line">docker-compose down -v</span><br></pre></td></tr></table></figure>
+<h4 id="检查集群状态"><a href="#检查集群状态" class="headerlink" title="检查集群状态"></a>检查集群状态</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl http://127.0.0.1:9200/_cat/health</span><br><span class="line"><span class="meta">#</span><span class="bash">表示没有正常运行</span></span><br><span class="line">curl: (52) Empty reply from server</span><br><span class="line"><span class="meta">#</span><span class="bash">正常运行如下</span></span><br><span class="line">1561531623 06:47:03 docker-cluster green 2 2 4 2 0 0 0 0 - 100.0%</span><br></pre></td></tr></table></figure>
+<h4 id="Elasticsearch-Docker-配置修改"><a href="#Elasticsearch-Docker-配置修改" class="headerlink" title="Elasticsearch Docker 配置修改"></a>Elasticsearch Docker 配置修改</h4><p>Elasticsearch 从<code>/usr/share/elasticsearch/config/</code> 加载配置，这些配置包括 配置Elasticsearch和设置JVM选项。</p>
+<p>更多的配置可以自行查看Elastic的官网，有更详细的介绍，上面的工作就可以完成最基本的配置了</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker、Elastic</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学习Elastic Stack（二）</title>
     <url>/2019/06/27/study-elastic-stack-2/</url>
     <content><![CDATA[<p>Elastic官方提供了Elastic Stack 和 相关产品的<a href="https://www.elastic.co/guide/index.html" target="_blank" rel="noopener">文档</a>，而且提供了中文的文档，<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html" target="_blank" rel="noopener"><code>《Elasticsearch 权威指南》中文版</code></a>,不过这边书是基于Elasticsearch 2.x版本的，可能有些过时。Elasticsearch需要先了解基本概念一些常规操作<code>CRUD</code>。 <a id="more"></a></p>
@@ -1436,28 +1461,18 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>学习Elastic Stack（一）</title>
-    <url>/2019/06/26/study-elastic-stack-1/</url>
-    <content><![CDATA[<p>前两天在<code>极客时间</code>买了<code>Elasticsearch核心技术与实战</code>的视频课程，希望加深对Elastic Stack的了解，提升自己的能力。实际的工作中也用到了 ELK进行生产环境的日志查询与分析，只是简单的使用，了解一些基本的原理，但是更高阶的内容并不了解。学习一个东西最后的方法就是去实践，同时做一些记录进行输出。<a id="more"></a></p>
-<p><img src="elk-stack-elkb-diagram.png" alt="Elastic Stack"></p>
-<h3 id="Elastic-Stack概念"><a href="#Elastic-Stack概念" class="headerlink" title="Elastic Stack概念"></a>Elastic Stack概念</h3><p>首先需要了解一下，什么是<code>ELK</code>，<code>为什么是Elastic Stack</code>，<a href="https://www.elastic.co/cn/elk-stack" target="_blank" rel="noopener">What is the ELK Stack? Why, it’s the Elastic Stack.</a></p>
-<blockquote>
-<p>So, what is the ELK Stack? “ELK” is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and analytics engine. Logstash is a server‑side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a “stash” like Elasticsearch. Kibana lets users visualize data with charts and graphs in Elasticsearch.<br>The Elastic Stack is the next evolution of the ELK Stack.</p>
-</blockquote>
-<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><p>因为是为了方便学习，所以使用docker进行环境的搭建，使用docker-compose 进行搭建，Elastic官方也提供了对应的<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html" target="_blank" rel="noopener">脚本</a>，极客时间上的是基于7.1版本ES的，不过区别不是很大(增加了cerebro监控和kibana，可以自行添加)。</p>
-<h4 id="运行-docker-compose-命令"><a href="#运行-docker-compose-命令" class="headerlink" title="运行 docker-compose 命令"></a>运行 docker-compose 命令</h4><p><code>docker-compose.yml</code> 文件内容如下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">version: '2.2'</span><br><span class="line">services:</span><br><span class="line">  es01:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es01</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es01</span><br><span class="line">      - discovery.seed_hosts=es02</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata01:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - 9200:9200</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line">  es02:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es02</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es02</span><br><span class="line">      - discovery.seed_hosts=es01</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata02:/usr/share/elasticsearch/data</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  esdata01:</span><br><span class="line">    driver: local</span><br><span class="line">  esdata02:</span><br><span class="line">    driver: local</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  esnet:</span><br></pre></td></tr></table></figure>
-<p>启动、停止、销毁</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动</span></span><br><span class="line">docker-compose up</span><br><span class="line"><span class="meta">#</span><span class="bash">停止</span></span><br><span class="line">docker-compose down</span><br><span class="line"><span class="meta">#</span><span class="bash">销毁</span></span><br><span class="line">docker-compose down -v</span><br></pre></td></tr></table></figure>
-<h4 id="检查集群状态"><a href="#检查集群状态" class="headerlink" title="检查集群状态"></a>检查集群状态</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl http://127.0.0.1:9200/_cat/health</span><br><span class="line"><span class="meta">#</span><span class="bash">表示没有正常运行</span></span><br><span class="line">curl: (52) Empty reply from server</span><br><span class="line"><span class="meta">#</span><span class="bash">正常运行如下</span></span><br><span class="line">1561531623 06:47:03 docker-cluster green 2 2 4 2 0 0 0 0 - 100.0%</span><br></pre></td></tr></table></figure>
-<h4 id="Elasticsearch-Docker-配置修改"><a href="#Elasticsearch-Docker-配置修改" class="headerlink" title="Elasticsearch Docker 配置修改"></a>Elasticsearch Docker 配置修改</h4><p>Elasticsearch 从<code>/usr/share/elasticsearch/config/</code> 加载配置，这些配置包括 配置Elasticsearch和设置JVM选项。</p>
-<p>更多的配置可以自行查看Elastic的官网，有更详细的介绍，上面的工作就可以完成最基本的配置了</p>
+    <title>pandas学习笔记-3</title>
+    <url>/2018/09/26/study-pandas-notes-3/</url>
+    <content><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py" target="_blank" rel="noopener">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'title'</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'duration'</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">'content_rating'</span>, <span class="string">'duration'</span>]))</span><br></pre></td></tr></table></figure>
+<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py" target="_blank" rel="noopener">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">'genre'</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">'genre'</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
+
+<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>Docker、Elastic</tag>
+        <tag>pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -1496,21 +1511,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><h4 id="1-读取表格数据到pandas中-源码见demo1-py"><a href="#1-读取表格数据到pandas中-源码见demo1-py" class="headerlink" title="1.读取表格数据到pandas中(源码见demo1.py)"></a>1.读取表格数据到pandas中(<a href="https://github.com/junhuali/study-pandas/blob/master/demo1.py" target="_blank" rel="noopener">源码见demo1.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="string">''' 因为视频中的地址不可用，可以用网盘中的文件，或者用我提供的文件地址'''</span></span><br><span class="line"></span><br><span class="line">orders = pd.read_table(<span class="string">'https://blog.searchinfogo.com/download/data/data/chipotle.tsv'</span>)</span><br><span class="line"></span><br><span class="line">print(orders)</span><br><span class="line"></span><br><span class="line">head = orders.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">user_cols = [<span class="string">'user_id'</span>, <span class="string">'age'</span>, <span class="string">'gender'</span>, <span class="string">'occupation'</span>, <span class="string">'zip_code'</span>]</span><br><span class="line">users = pd.read_table(<span class="string">"https://blog.searchinfogo.com/download/data/data/u.user"</span>, sep=<span class="string">'|'</span>, header=<span class="literal">None</span>, names=user_cols)</span><br><span class="line">print(users)</span><br></pre></td></tr></table></figure>
 <h4 id="2-从csv中读取数据-源码见demo2-py"><a href="#2-从csv中读取数据-源码见demo2-py" class="headerlink" title="2.从csv中读取数据(源码见demo2.py)"></a>2.从csv中读取数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo2.py" target="_blank" rel="noopener">源码见demo2.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line"></span><br><span class="line">type = type(ufo)</span><br><span class="line"></span><br><span class="line">print(type)</span><br><span class="line"></span><br><span class="line">ufo.head()</span><br><span class="line"></span><br><span class="line">type(ufo[<span class="string">'City'</span>])</span><br><span class="line"></span><br><span class="line">print(ufo[<span class="string">'City'</span>])</span><br><span class="line"></span><br><span class="line">ufo.shape</span><br><span class="line"></span><br><span class="line">ufo.City + ufo.State</span><br><span class="line"></span><br><span class="line">ufo[<span class="string">'Location'</span>] = ufo.City + <span class="string">','</span> + ufo.State</span><br><span class="line"></span><br><span class="line">print(ufo[<span class="string">'Location'</span>])</span><br></pre></td></tr></table></figure>
 <p>总结：<br>上面的代码涉及视频p1-p3，讲解了pandas如何读取数据，从table、csv中读取数据，并在pandas中组合出一些数据，这些过程涉及<br>生产数据、获取数据、准备数据几个过程，在实际的使用过程中，用户的操作，或者是其他过程会产生大量的数据，然后获取数据读取到<br>pandas中，并对数据进行清洗，取出掉无效或者错误的数据，之后最数据进行更深入的分析。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pandas学习笔记-3</title>
-    <url>/2018/09/26/study-pandas-notes-3/</url>
-    <content><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py" target="_blank" rel="noopener">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'title'</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'duration'</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">'content_rating'</span>, <span class="string">'duration'</span>]))</span><br></pre></td></tr></table></figure>
-<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py" target="_blank" rel="noopener">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">'genre'</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">'genre'</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
-
-<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
 ]]></content>
       <categories>
         <category>Python</category>
