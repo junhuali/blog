@@ -47,57 +47,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</title>
-    <url>/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/</url>
-    <content><![CDATA[<p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。<a id="more"></a></p>
-<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
-<p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
-<p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
-<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
-<ul>
-<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
-</li>
-<li><p>安装系统扩展包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
-<li><p>安装certbot</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>运行certbot插件生成证书</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
-<p><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
-</li>
-<li><p>重启nginx</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
-</li>
-</ul>
-<p>增加自动续期</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
-
-<p>上面的方法是单域名证书的创建</p>
-<h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
-<ul>
-<li>certbot-dns-cloudflare</li>
-<li>certbot-dns-cloudxns</li>
-<li>certbot-dns-digitalocean</li>
-<li>certbot-dns-dnsimple</li>
-<li>certbot-dns-dnsmadeeasy</li>
-<li>certbot-dns-google</li>
-<li>certbot-dns-luadns</li>
-<li>certbot-dns-nsone</li>
-<li>certbot-dns-rfc2136</li>
-<li>certbot-dns-route53</li>
-</ul>
-<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
-<p>未完待续。。。</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Domain</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Machine-Learning-in-Java-1</title>
     <url>/2017/11/20/Machine-Learning-in-Java-1/</url>
     <content><![CDATA[<h3 id="机器学习的主要方法"><a href="#机器学习的主要方法" class="headerlink" title="机器学习的主要方法"></a>机器学习的主要方法</h3><ul>
@@ -185,6 +134,57 @@
       </categories>
       <tags>
         <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Let‘s Encrypt创建免费SSL证书（官方文档自动获取泛域名证书还不完善）</title>
+    <url>/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/</url>
+    <content><![CDATA[<p>网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL<br>证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以省了，唯一需要做的就是要进行证书续期。<a id="more"></a></p>
+<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
+<p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
+<p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
+<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
+<ul>
+<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
+</li>
+<li><p>安装系统扩展包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
+<li><p>安装certbot</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>运行certbot插件生成证书</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+<p><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png" alt="certbot"></p>
+</li>
+<li><p>重启nginx</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
+</li>
+</ul>
+<p>增加自动续期</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
+
+<p>上面的方法是单域名证书的创建</p>
+<h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
+<ul>
+<li>certbot-dns-cloudflare</li>
+<li>certbot-dns-cloudxns</li>
+<li>certbot-dns-digitalocean</li>
+<li>certbot-dns-dnsimple</li>
+<li>certbot-dns-dnsmadeeasy</li>
+<li>certbot-dns-google</li>
+<li>certbot-dns-luadns</li>
+<li>certbot-dns-nsone</li>
+<li>certbot-dns-rfc2136</li>
+<li>certbot-dns-route53</li>
+</ul>
+<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
+<p>未完待续。。。</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Domain</tag>
       </tags>
   </entry>
   <entry>
@@ -293,6 +293,31 @@
       </tags>
   </entry>
   <entry>
+    <title>apollo 配置提前加载</title>
+    <url>/2019/05/18/apollo-eagerload/</url>
+    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
+<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
+<p>当url使用固定时，可以正常的解析出请求的url，使用<code>${}</code>没有生效。<br>这个时候查询了Apollo的文档<a href=""https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90"">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
+<blockquote>
+<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
+</blockquote>
+<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
+<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">"此处写你需要提前初始化的key"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>通过在启动前将配置注入，<code>${}</code> 就可以获取到正确的链接了。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Apollo、Feign</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>方舟服务器搭建 Ark-Server-Build</title>
     <url>/2020/04/14/ark-server/</url>
     <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
@@ -319,28 +344,21 @@
       </tags>
   </entry>
   <entry>
-    <title>apollo 配置提前加载</title>
-    <url>/2019/05/18/apollo-eagerload/</url>
-    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>${}</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
-<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"xxx"</span>, url = <span class="string">"$&#123;xxx&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/xxx/xxx/xxx"</span>)</span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(@RequestParam(value = <span class="string">"xxx"</span>)</span> String xxx) <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
-<p>当url使用固定时，可以正常的解析出请求的url，使用<code>${}</code>没有生效。<br>这个时候查询了Apollo的文档<a href=""https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90"">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
-<blockquote>
-<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
-</blockquote>
-<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">"此处写你需要提前初始化的key"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>通过在启动前将配置注入，<code>${}</code> 就可以获取到正确的链接了。</p>
+    <title>brew 升级应用错误</title>
+    <url>/2018/05/03/brew-upgrade-error/</url>
+    <content><![CDATA[<p>定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。<a id="more"></a></p>
+<h3 id="brew-升级"><a href="#brew-升级" class="headerlink" title="brew 升级"></a>brew 升级</h3><p>最近在使用<code>brew upgrade</code> 的过程中，碰到了一个问题记录一下。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Error: An unexpected error occurred during the `brew link` step</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br><span class="line">Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
+<p>如上所示，需要创建<code>/usr/local/Frameworks</code> 目录，但是没有对应的权限</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /usr/local/Frameworks</span><br><span class="line">sudo chown $(whoami):admin /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
+<p>手动创建，赋权，之后就可以愉快的<code>brew upgrade</code> 了。</p>
+<p>最后<code>brew cleanup</code> 清理废弃的文件，释放空间。</p>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Shell</category>
       </categories>
       <tags>
-        <tag>Apollo、Feign</tag>
+        <tag>Brew</tag>
       </tags>
   </entry>
   <entry>
@@ -386,24 +404,6 @@
       </tags>
   </entry>
   <entry>
-    <title>brew 升级应用错误</title>
-    <url>/2018/05/03/brew-upgrade-error/</url>
-    <content><![CDATA[<p>定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。<a id="more"></a></p>
-<h3 id="brew-升级"><a href="#brew-升级" class="headerlink" title="brew 升级"></a>brew 升级</h3><p>最近在使用<code>brew upgrade</code> 的过程中，碰到了一个问题记录一下。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Error: An unexpected error occurred during the `brew link` step</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br><span class="line">Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
-<p>如上所示，需要创建<code>/usr/local/Frameworks</code> 目录，但是没有对应的权限</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir /usr/local/Frameworks</span><br><span class="line">sudo chown $(whoami):admin /usr/local/Frameworks</span><br></pre></td></tr></table></figure>
-<p>手动创建，赋权，之后就可以愉快的<code>brew upgrade</code> 了。</p>
-<p>最后<code>brew cleanup</code> 清理废弃的文件，释放空间。</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Brew</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos安装redis5.x</title>
     <url>/2018/12/14/centos-install-redis5-x/</url>
     <content><![CDATA[<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
@@ -423,6 +423,69 @@
       </categories>
       <tags>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos7 安装 pyenv</title>
+    <url>/2018/02/27/cnetos-install-pyenv/</url>
+    <content><![CDATA[<blockquote>
+<p>人生苦短，我用Python</p>
+</blockquote>
+<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
+<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm 更换源</title>
+    <url>/2018/05/03/config-npm-registry/</url>
+    <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
+<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><ul>
+<li>临时使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express --save</span><br></pre></td></tr></table></figure></li>
+<li>持久使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
+<li>验证<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure></li>
+<li>官方源<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="通过-nrm-更换源"><a href="#通过-nrm-更换源" class="headerlink" title="通过 nrm 更换源"></a>通过 nrm 更换源</h3><p>最近在工作的时候，发现淘宝的源，无法正常下载，于是需要换其他的源，在网上找源的过程中，发现了<code>nrm -- NPM registry manager</code>，它可以帮你快速的帮你在不同的源之间切换，现在包括<code>npm</code>、<code>cnpm</code>、<code>taobao</code>、<code>nj(nodejitsu)</code>、<code>rednpm</code>，还可以加入你自己的私有源。</p>
+<ul>
+<li>安装<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure></li>
+<li>例子<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nrm ls</span><br><span class="line">* npm -----  https://registry.npmjs.org/</span><br><span class="line">  cnpm ----  http://r.cnpmjs.org/</span><br><span class="line">  taobao --  https://registry.npm.taobao.org/</span><br><span class="line">  nj ------  https://registry.nodejitsu.com/</span><br><span class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</span><br><span class="line">  skimdb -- https://skimdb.npmjs.com/registry</span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">$ nrm use cnpm  <span class="comment">#switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>通过nrm换源，体验一下就提升了很多，工作更有效率了。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 常用命令(待完善)</title>
+    <url>/2017/11/30/common-commonds/</url>
+    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -478,69 +541,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Centos7 安装 pyenv</title>
-    <url>/2018/02/27/cnetos-install-pyenv/</url>
-    <content><![CDATA[<blockquote>
-<p>人生苦短，我用Python</p>
-</blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
-
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 常用命令(待完善)</title>
-    <url>/2017/11/30/common-commonds/</url>
-    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm 更换源</title>
-    <url>/2018/05/03/config-npm-registry/</url>
-    <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
-<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><ul>
-<li>临时使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express --save</span><br></pre></td></tr></table></figure></li>
-<li>持久使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
-<li>验证<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure></li>
-<li>官方源<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="通过-nrm-更换源"><a href="#通过-nrm-更换源" class="headerlink" title="通过 nrm 更换源"></a>通过 nrm 更换源</h3><p>最近在工作的时候，发现淘宝的源，无法正常下载，于是需要换其他的源，在网上找源的过程中，发现了<code>nrm -- NPM registry manager</code>，它可以帮你快速的帮你在不同的源之间切换，现在包括<code>npm</code>、<code>cnpm</code>、<code>taobao</code>、<code>nj(nodejitsu)</code>、<code>rednpm</code>，还可以加入你自己的私有源。</p>
-<ul>
-<li>安装<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure></li>
-<li>例子<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nrm ls</span><br><span class="line">* npm -----  https://registry.npmjs.org/</span><br><span class="line">  cnpm ----  http://r.cnpmjs.org/</span><br><span class="line">  taobao --  https://registry.npm.taobao.org/</span><br><span class="line">  nj ------  https://registry.nodejitsu.com/</span><br><span class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</span><br><span class="line">  skimdb -- https://skimdb.npmjs.com/registry</span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">$ nrm use cnpm  <span class="comment">#switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>通过nrm换源，体验一下就提升了很多，工作更有效率了。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
       </tags>
   </entry>
   <entry>
@@ -786,6 +786,23 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Cannot find module &#39;./build/Release/DTraceProviderBindings&#39;</title>
+    <url>/2017/09/30/hexo-can&#39;t-find-module/</url>
+    <content><![CDATA[<p>有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩<em>∩)O哈哈~</em>) <a id="more"></a><br>报错如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; Error: Cannot find module &#39;.&#x2F;build&#x2F;Release&#x2F;DTraceProviderBindings&#39;</span><br><span class="line">    at Function.Module._resolveFilename (module.js:527:15)</span><br><span class="line">    at Function.Module._load (module.js:476:23)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;dtrace-provider&#x2F;dtrace-provider.js:18:23)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;bunyan&#x2F;lib&#x2F;bunyan.js:79:18)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;hexo-log&#x2F;lib&#x2F;log.js:3:14)</span><br><span class="line">    at Module._compile (module.js:624:30) code: &#39;MODULE_NOT_FOUND&#39; &#125;</span><br><span class="line">INFO  Deleted database.</span><br></pre></td></tr></table></figure>
+<p>上面的错误看的非常的影响心情有木有？</p>
+<p>找了网上的很多方法，最后选择了一种比较粗暴的方法<br>删除hexo目录下的<code>node_modules</code>目录，之后执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>然后执行hexo server，就会惊喜的发现错误没有了 O(∩<em>∩)O~~</em>)</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gitee码云使用webhook</title>
     <url>/2018/02/25/gitee-with-webhook/</url>
     <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。<a id="more"></a></p>
@@ -830,20 +847,22 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Cannot find module &#39;./build/Release/DTraceProviderBindings&#39;</title>
-    <url>/2017/09/30/hexo-can&#39;t-find-module/</url>
-    <content><![CDATA[<p>有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩<em>∩)O哈哈~</em>) <a id="more"></a><br>报错如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; Error: Cannot find module &#39;.&#x2F;build&#x2F;Release&#x2F;DTraceProviderBindings&#39;</span><br><span class="line">    at Function.Module._resolveFilename (module.js:527:15)</span><br><span class="line">    at Function.Module._load (module.js:476:23)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;dtrace-provider&#x2F;dtrace-provider.js:18:23)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;bunyan&#x2F;lib&#x2F;bunyan.js:79:18)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;hexo-log&#x2F;lib&#x2F;log.js:3:14)</span><br><span class="line">    at Module._compile (module.js:624:30) code: &#39;MODULE_NOT_FOUND&#39; &#125;</span><br><span class="line">INFO  Deleted database.</span><br></pre></td></tr></table></figure>
-<p>上面的错误看的非常的影响心情有木有？</p>
-<p>找了网上的很多方法，最后选择了一种比较粗暴的方法<br>删除hexo目录下的<code>node_modules</code>目录，之后执行以下命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>然后执行hexo server，就会惊喜的发现错误没有了 O(∩<em>∩)O~~</em>)</p>
+    <title>使用kubeadm安装kubernetes集群(待续)</title>
+    <url>/2017/12/02/kubeadm-install-kubernetes/</url>
+    <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>建议使用daocloud提供的脚本进行安装，速度很快</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/docker | sh <span class="comment">#适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker &amp;&amp; systemctl start docker <span class="comment">#设置开机启动，启动docker</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装kubeadm-kubelet-and-kubectl"><a href="#安装kubeadm-kubelet-and-kubectl" class="headerlink" title="安装kubeadm, kubelet and kubectl"></a>安装kubeadm, kubelet and kubectl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line">$ setenforce 0 <span class="comment">#关闭SELinux</span></span><br><span class="line">$ yum install -y kubelet kubeadm kubectl</span><br><span class="line">$ systemctl <span class="built_in">enable</span> kubelet &amp;&amp; systemctl start kubelet <span class="comment"># 设置开机启动，启动</span></span><br></pre></td></tr></table></figure>
+<p>安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum --enablerepo=kubernetes clean metadata <span class="comment"># 如果还是不行，需要先清理缓存</span></span><br><span class="line">$ yum clean metadata</span><br><span class="line">$ yum clean all</span><br><span class="line">$ rm -rf /var/cache/yum</span><br></pre></td></tr></table></figure>
+<h3 id="使用-kubeadm-创建集群"><a href="#使用-kubeadm-创建集群" class="headerlink" title="使用 kubeadm 创建集群"></a>使用 kubeadm 创建集群</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubeadm init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
+<p>待续。。。</p>
 ]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -921,25 +940,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>使用kubeadm安装kubernetes集群(待续)</title>
-    <url>/2017/12/02/kubeadm-install-kubernetes/</url>
-    <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
-<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>建议使用daocloud提供的脚本进行安装，速度很快</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/docker | sh <span class="comment">#适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker &amp;&amp; systemctl start docker <span class="comment">#设置开机启动，启动docker</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装kubeadm-kubelet-and-kubectl"><a href="#安装kubeadm-kubelet-and-kubectl" class="headerlink" title="安装kubeadm, kubelet and kubectl"></a>安装kubeadm, kubelet and kubectl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line">$ setenforce 0 <span class="comment">#关闭SELinux</span></span><br><span class="line">$ yum install -y kubelet kubeadm kubectl</span><br><span class="line">$ systemctl <span class="built_in">enable</span> kubelet &amp;&amp; systemctl start kubelet <span class="comment"># 设置开机启动，启动</span></span><br></pre></td></tr></table></figure>
-<p>安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum --enablerepo=kubernetes clean metadata <span class="comment"># 如果还是不行，需要先清理缓存</span></span><br><span class="line">$ yum clean metadata</span><br><span class="line">$ yum clean all</span><br><span class="line">$ rm -rf /var/cache/yum</span><br></pre></td></tr></table></figure>
-<h3 id="使用-kubeadm-创建集群"><a href="#使用-kubeadm-创建集群" class="headerlink" title="使用 kubeadm 创建集群"></a>使用 kubeadm 创建集群</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubeadm init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
-<p>待续。。。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>生活</title>
     <url>/2017/09/23/life/</url>
     <content><![CDATA[<h3 id="日常生活趣事记录"><a href="#日常生活趣事记录" class="headerlink" title="日常生活趣事记录"></a>日常生活趣事记录</h3>]]></content>
@@ -948,20 +948,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lightsail使用root用户登录</title>
-    <url>/2019/11/22/lightsail-use-root-logn/</url>
-    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1043,24 +1029,102 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>CentOS 安装 node</title>
-    <url>/2018/02/09/node-install/</url>
-    <content><![CDATA[<h3 id="下载node"><a href="#下载node" class="headerlink" title="下载node"></a>下载node</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
-<h3 id="解压-amp-配置"><a href="#解压-amp-配置" class="headerlink" title="解压&amp;配置"></a>解压&amp;配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xvJf node-v8.9.4-linux-x64.tar.xz</span><br><span class="line">mv node-v8.9.4-linux-x64 /opt</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置node 环境变量</span></span><br><span class="line"><span class="built_in">export</span> NODE_HOME=/opt/node-v8.9.4-linux-x64</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NODE_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-<h3 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p>或者安装nvm</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#加入下面的内容</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm、</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-<h3 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nvm --version</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm install stable <span class="comment"># 安装稳定版</span></span><br><span class="line">nvm current <span class="comment"># 查看当前的版本</span></span><br><span class="line">nvm ls <span class="comment"># 列出所有版本</span></span><br></pre></td></tr></table></figure>
+    <title>lightsail使用root用户登录</title>
+    <url>/2019/11/22/lightsail-use-root-logn/</url>
+    <content><![CDATA[<p>在使用AWS云的时候，使用私钥登录，但是登录的用户权限是普通用户，个人使用的时候有很多的不变，通过下面的方法可以修改为root权限登录。<a id="more"></a><br>在创建服务器的时候，选择增加脚本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">echo root:123456 |sudo chpasswd root</span><br><span class="line">sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>需要注意的：<br>   root: 后面的部分需要修改为你自己的密码，如果你的服务器已经创建，可以建一个<code>login.sh</code>文件，将上面的脚本粘贴进去，然后执行<code>chmod +x login.sh</code><br>   ,<code>sh login</code>,之后服务器会重启，然后就可以尝试使用密码登录了，之前使用普通用户ssh 登录，也可以将用户名改为root进行登录。</p>
 ]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Node</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx 学习日志 1</title>
+    <url>/2020/06/05/nginx-study-1/</url>
+    <content><![CDATA[<h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><p>之前的时候写过<code>Centos yum 安装nginx 后增加模块</code>,源码安装的时候一笔带过，最近在学习Nginx其中的一些知识点，所以记录一下手动安装的过程，以及相关的配置。<a id="more"></a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Nginx 一般可以去官网下载，<a href="https://www.nginx.org" target="_blank" rel="noopener">Nginx</a>,Nginx也有对应的商业版本<a href="https://www.nginx.com/" target="_blank" rel="noopener">Nginx Plus</a>, 还有一些其他的基于Nginx开发的版本，<a href="https://tengine.taobao.org/" target="_blank" rel="noopener">Tengine</a>和<a href="http://openresty.org/" target="_blank" rel="noopener">OpenResty</a>都是比较有名的。</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">Nginx下载</a>,如下图，进入到下载页面，使用<code>stable version</code>稳定版。<br><img src="WX20200605-151113@2x.png" alt="nginx"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载</span></span><br><span class="line">wget https://nginx.org/download/nginx-1.18.0.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -xzf nginx-1.18.0.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="目录说明"><a href="#目录说明" class="headerlink" title="目录说明"></a>目录说明</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">cd</span> nginx-1.18.0/</span><br><span class="line"></span><br><span class="line">tree -L 1 (查看1层目录，如果没有tree 命令 yum -y install tree 进行安装 )</span><br><span class="line"></span><br><span class="line">.</span><br><span class="line">├── auto         <span class="comment"># 编译、lib库、操作系统判断</span></span><br><span class="line">├── CHANGES      <span class="comment"># feature、版本变更、bugfix</span></span><br><span class="line">├── CHANGES.ru   <span class="comment"># 俄语changes</span></span><br><span class="line">├── conf         <span class="comment"># 示例文件</span></span><br><span class="line">├── configure    <span class="comment"># 生成中间文件</span></span><br><span class="line">├── contrib      <span class="comment"># vim等相关配置</span></span><br><span class="line">├── html         <span class="comment"># 标准文件页面50</span></span><br><span class="line">├── LICENSE      <span class="comment"># LICENSE</span></span><br><span class="line">├── man          <span class="comment"># 帮助文件</span></span><br><span class="line">├── README       <span class="comment">#</span></span><br><span class="line">└── src          <span class="comment"># 源码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制vim 配置，可以让nginx配置显示颜色，更加方便的配置</span></span><br><span class="line">cp -r contrib/vim/* ~/.vim/</span><br></pre></td></tr></table></figure>
+
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看编译配置</span></span><br><span class="line">./configure --<span class="built_in">help</span> | cat</span><br><span class="line">  --<span class="built_in">help</span>                             <span class="built_in">print</span> this message</span><br><span class="line"></span><br><span class="line">  --prefix=PATH                      <span class="built_in">set</span> installation prefix</span><br><span class="line">  --sbin-path=PATH                   <span class="built_in">set</span> nginx binary pathname</span><br><span class="line">  --modules-path=PATH                <span class="built_in">set</span> modules path</span><br><span class="line">  --conf-path=PATH                   <span class="built_in">set</span> nginx.conf pathname</span><br><span class="line">  --error-log-path=PATH              <span class="built_in">set</span> error <span class="built_in">log</span> pathname</span><br><span class="line">  --pid-path=PATH                    <span class="built_in">set</span> nginx.pid pathname</span><br><span class="line">  --lock-path=PATH                   <span class="built_in">set</span> nginx.lock pathname</span><br><span class="line"></span><br><span class="line">  --user=USER                        <span class="built_in">set</span> non-privileged user <span class="keyword">for</span></span><br><span class="line">                                     worker processes</span><br><span class="line">  --group=GROUP                      <span class="built_in">set</span> non-privileged group <span class="keyword">for</span></span><br><span class="line">                                     worker processes</span><br><span class="line"></span><br><span class="line">  --build=NAME                       <span class="built_in">set</span> build name</span><br><span class="line">  --builddir=DIR                     <span class="built_in">set</span> build directory</span><br><span class="line"></span><br><span class="line">  --with-select_module               <span class="built_in">enable</span> select module</span><br><span class="line">  --without-select_module            <span class="built_in">disable</span> select module</span><br><span class="line">  --with-poll_module                 <span class="built_in">enable</span> poll module</span><br><span class="line">  --without-poll_module              <span class="built_in">disable</span> poll module</span><br><span class="line"></span><br><span class="line">  --with-threads                     <span class="built_in">enable</span> thread pool support</span><br><span class="line"></span><br><span class="line">  --with-file-aio                    <span class="built_in">enable</span> file AIO support</span><br><span class="line"></span><br><span class="line">  --with-http_ssl_module             <span class="built_in">enable</span> ngx_http_ssl_module</span><br><span class="line">  --with-http_v2_module              <span class="built_in">enable</span> ngx_http_v2_module</span><br><span class="line">  --with-http_realip_module          <span class="built_in">enable</span> ngx_http_realip_module</span><br><span class="line">  --with-http_addition_module        <span class="built_in">enable</span> ngx_http_addition_module</span><br><span class="line">  --with-http_xslt_module            <span class="built_in">enable</span> ngx_http_xslt_module</span><br><span class="line">  --with-http_xslt_module=dynamic    <span class="built_in">enable</span> dynamic ngx_http_xslt_module</span><br><span class="line">  --with-http_image_filter_module    <span class="built_in">enable</span> ngx_http_image_filter_module</span><br><span class="line">  --with-http_image_filter_module=dynamic</span><br><span class="line">                                     <span class="built_in">enable</span> dynamic ngx_http_image_filter_module</span><br><span class="line">  --with-http_geoip_module           <span class="built_in">enable</span> ngx_http_geoip_module</span><br><span class="line">  --with-http_geoip_module=dynamic   <span class="built_in">enable</span> dynamic ngx_http_geoip_module</span><br><span class="line">  --with-http_sub_module             <span class="built_in">enable</span> ngx_http_sub_module</span><br><span class="line">  --with-http_dav_module             <span class="built_in">enable</span> ngx_http_dav_module</span><br><span class="line">  --with-http_flv_module             <span class="built_in">enable</span> ngx_http_flv_module</span><br><span class="line">  --with-http_mp4_module             <span class="built_in">enable</span> ngx_http_mp4_module</span><br><span class="line">  --with-http_gunzip_module          <span class="built_in">enable</span> ngx_http_gunzip_module</span><br><span class="line">  --with-http_gzip_static_module     <span class="built_in">enable</span> ngx_http_gzip_static_module</span><br><span class="line">  --with-http_auth_request_module    <span class="built_in">enable</span> ngx_http_auth_request_module</span><br><span class="line">  --with-http_random_index_module    <span class="built_in">enable</span> ngx_http_random_index_module</span><br><span class="line">  --with-http_secure_link_module     <span class="built_in">enable</span> ngx_http_secure_link_module</span><br><span class="line">  --with-http_degradation_module     <span class="built_in">enable</span> ngx_http_degradation_module</span><br><span class="line">  --with-http_slice_module           <span class="built_in">enable</span> ngx_http_slice_module</span><br><span class="line">  --with-http_stub_status_module     <span class="built_in">enable</span> ngx_http_stub_status_module</span><br><span class="line"></span><br><span class="line">  --without-http_charset_module      <span class="built_in">disable</span> ngx_http_charset_module</span><br><span class="line">  --without-http_gzip_module         <span class="built_in">disable</span> ngx_http_gzip_module</span><br><span class="line">  --without-http_ssi_module          <span class="built_in">disable</span> ngx_http_ssi_module</span><br><span class="line">  --without-http_userid_module       <span class="built_in">disable</span> ngx_http_userid_module</span><br><span class="line">  --without-http_access_module       <span class="built_in">disable</span> ngx_http_access_module</span><br><span class="line">  --without-http_auth_basic_module   <span class="built_in">disable</span> ngx_http_auth_basic_module</span><br><span class="line">  --without-http_mirror_module       <span class="built_in">disable</span> ngx_http_mirror_module</span><br><span class="line">  --without-http_autoindex_module    <span class="built_in">disable</span> ngx_http_autoindex_module</span><br><span class="line">  --without-http_geo_module          <span class="built_in">disable</span> ngx_http_geo_module</span><br><span class="line">  --without-http_map_module          <span class="built_in">disable</span> ngx_http_map_module</span><br><span class="line">  --without-http_split_clients_module <span class="built_in">disable</span> ngx_http_split_clients_module</span><br><span class="line">  --without-http_referer_module      <span class="built_in">disable</span> ngx_http_referer_module</span><br><span class="line">  --without-http_rewrite_module      <span class="built_in">disable</span> ngx_http_rewrite_module</span><br><span class="line">  --without-http_proxy_module        <span class="built_in">disable</span> ngx_http_proxy_module</span><br><span class="line">  --without-http_fastcgi_module      <span class="built_in">disable</span> ngx_http_fastcgi_module</span><br><span class="line">  --without-http_uwsgi_module        <span class="built_in">disable</span> ngx_http_uwsgi_module</span><br><span class="line">  --without-http_scgi_module         <span class="built_in">disable</span> ngx_http_scgi_module</span><br><span class="line">  --without-http_grpc_module         <span class="built_in">disable</span> ngx_http_grpc_module</span><br><span class="line">  --without-http_memcached_module    <span class="built_in">disable</span> ngx_http_memcached_module</span><br><span class="line">  --without-http_limit_conn_module   <span class="built_in">disable</span> ngx_http_limit_conn_module</span><br><span class="line">  --without-http_limit_req_module    <span class="built_in">disable</span> ngx_http_limit_req_module</span><br><span class="line">  --without-http_empty_gif_module    <span class="built_in">disable</span> ngx_http_empty_gif_module</span><br><span class="line">  --without-http_browser_module      <span class="built_in">disable</span> ngx_http_browser_module</span><br><span class="line">  --without-http_upstream_hash_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_hash_module</span><br><span class="line">  --without-http_upstream_ip_hash_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_ip_hash_module</span><br><span class="line">  --without-http_upstream_least_conn_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_least_conn_module</span><br><span class="line">  --without-http_upstream_random_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_random_module</span><br><span class="line">  --without-http_upstream_keepalive_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_keepalive_module</span><br><span class="line">  --without-http_upstream_zone_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_zone_module</span><br><span class="line"></span><br><span class="line">  --with-http_perl_module            <span class="built_in">enable</span> ngx_http_perl_module</span><br><span class="line">  --with-http_perl_module=dynamic    <span class="built_in">enable</span> dynamic ngx_http_perl_module</span><br><span class="line">  --with-perl_modules_path=PATH      <span class="built_in">set</span> Perl modules path</span><br><span class="line">  --with-perl=PATH                   <span class="built_in">set</span> perl binary pathname</span><br><span class="line"></span><br><span class="line">  --http-log-path=PATH               <span class="built_in">set</span> http access <span class="built_in">log</span> pathname</span><br><span class="line">  --http-client-body-temp-path=PATH  <span class="built_in">set</span> path to store</span><br><span class="line">                                     http client request body temporary files</span><br><span class="line">  --http-proxy-temp-path=PATH        <span class="built_in">set</span> path to store</span><br><span class="line">                                     http proxy temporary files</span><br><span class="line">  --http-fastcgi-temp-path=PATH      <span class="built_in">set</span> path to store</span><br><span class="line">                                     http fastcgi temporary files</span><br><span class="line">  --http-uwsgi-temp-path=PATH        <span class="built_in">set</span> path to store</span><br><span class="line">                                     http uwsgi temporary files</span><br><span class="line">  --http-scgi-temp-path=PATH         <span class="built_in">set</span> path to store</span><br><span class="line">                                     http scgi temporary files</span><br><span class="line"></span><br><span class="line">  --without-http                     <span class="built_in">disable</span> HTTP server</span><br><span class="line">  --without-http-cache               <span class="built_in">disable</span> HTTP cache</span><br><span class="line"></span><br><span class="line">  --with-mail                        <span class="built_in">enable</span> POP3/IMAP4/SMTP proxy module</span><br><span class="line">  --with-mail=dynamic                <span class="built_in">enable</span> dynamic POP3/IMAP4/SMTP proxy module</span><br><span class="line">  --with-mail_ssl_module             <span class="built_in">enable</span> ngx_mail_ssl_module</span><br><span class="line">  --without-mail_pop3_module         <span class="built_in">disable</span> ngx_mail_pop3_module</span><br><span class="line">  --without-mail_imap_module         <span class="built_in">disable</span> ngx_mail_imap_module</span><br><span class="line">  --without-mail_smtp_module         <span class="built_in">disable</span> ngx_mail_smtp_module</span><br><span class="line"></span><br><span class="line">  --with-stream                      <span class="built_in">enable</span> TCP/UDP proxy module</span><br><span class="line">  --with-stream=dynamic              <span class="built_in">enable</span> dynamic TCP/UDP proxy module</span><br><span class="line">  --with-stream_ssl_module           <span class="built_in">enable</span> ngx_stream_ssl_module</span><br><span class="line">  --with-stream_realip_module        <span class="built_in">enable</span> ngx_stream_realip_module</span><br><span class="line">  --with-stream_geoip_module         <span class="built_in">enable</span> ngx_stream_geoip_module</span><br><span class="line">  --with-stream_geoip_module=dynamic <span class="built_in">enable</span> dynamic ngx_stream_geoip_module</span><br><span class="line">  --with-stream_ssl_preread_module   <span class="built_in">enable</span> ngx_stream_ssl_preread_module</span><br><span class="line">  --without-stream_limit_conn_module <span class="built_in">disable</span> ngx_stream_limit_conn_module</span><br><span class="line">  --without-stream_access_module     <span class="built_in">disable</span> ngx_stream_access_module</span><br><span class="line">  --without-stream_geo_module        <span class="built_in">disable</span> ngx_stream_geo_module</span><br><span class="line">  --without-stream_map_module        <span class="built_in">disable</span> ngx_stream_map_module</span><br><span class="line">  --without-stream_split_clients_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_split_clients_module</span><br><span class="line">  --without-stream_return_module     <span class="built_in">disable</span> ngx_stream_return_module</span><br><span class="line">  --without-stream_upstream_hash_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_upstream_hash_module</span><br><span class="line">  --without-stream_upstream_least_conn_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_upstream_least_conn_module</span><br><span class="line">  --without-stream_upstream_random_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_upstream_random_module</span><br><span class="line">  --without-stream_upstream_zone_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_upstream_zone_module</span><br><span class="line"></span><br><span class="line">  --with-google_perftools_module     <span class="built_in">enable</span> ngx_google_perftools_module</span><br><span class="line">  --with-cpp_test_module             <span class="built_in">enable</span> ngx_cpp_test_module</span><br><span class="line"></span><br><span class="line">  --add-module=PATH                  <span class="built_in">enable</span> external module</span><br><span class="line">  --add-dynamic-module=PATH          <span class="built_in">enable</span> dynamic external module</span><br><span class="line"></span><br><span class="line">  --with-compat                      dynamic modules compatibility</span><br><span class="line"></span><br><span class="line">  --with-cc=PATH                     <span class="built_in">set</span> C compiler pathname</span><br><span class="line">  --with-cpp=PATH                    <span class="built_in">set</span> C preprocessor pathname</span><br><span class="line">  --with-cc-opt=OPTIONS              <span class="built_in">set</span> additional C compiler options</span><br><span class="line">  --with-ld-opt=OPTIONS              <span class="built_in">set</span> additional linker options</span><br><span class="line">  --with-cpu-opt=CPU                 build <span class="keyword">for</span> the specified CPU, valid values:</span><br><span class="line">                                     pentium, pentiumpro, pentium3, pentium4,</span><br><span class="line">                                     athlon, opteron, sparc32, sparc64, ppc64</span><br><span class="line"></span><br><span class="line">  --without-pcre                     <span class="built_in">disable</span> PCRE library usage</span><br><span class="line">  --with-pcre                        force PCRE library usage</span><br><span class="line">  --with-pcre=DIR                    <span class="built_in">set</span> path to PCRE library sources</span><br><span class="line">  --with-pcre-opt=OPTIONS            <span class="built_in">set</span> additional build options <span class="keyword">for</span> PCRE</span><br><span class="line">  --with-pcre-jit                    build PCRE with JIT compilation support</span><br><span class="line"></span><br><span class="line">  --with-zlib=DIR                    <span class="built_in">set</span> path to zlib library sources</span><br><span class="line">  --with-zlib-opt=OPTIONS            <span class="built_in">set</span> additional build options <span class="keyword">for</span> zlib</span><br><span class="line">  --with-zlib-asm=CPU                use zlib assembler sources optimized</span><br><span class="line">                                     <span class="keyword">for</span> the specified CPU, valid values:</span><br><span class="line">                                     pentium, pentiumpro</span><br><span class="line"></span><br><span class="line">  --with-libatomic                   force libatomic_ops library usage</span><br><span class="line">  --with-libatomic=DIR               <span class="built_in">set</span> path to libatomic_ops library sources</span><br><span class="line"></span><br><span class="line">  --with-openssl=DIR                 <span class="built_in">set</span> path to OpenSSL library sources</span><br><span class="line">  --with-openssl-opt=OPTIONS         <span class="built_in">set</span> additional build options <span class="keyword">for</span> OpenSSL</span><br><span class="line"></span><br><span class="line">  --with-debug                       <span class="built_in">enable</span> debug logging</span><br></pre></td></tr></table></figure>
+<p>从上面的帮助可以看到，主要的编译配置分为3类</p>
+<ul>
+<li>配置文件位置指定</li>
+<li>指定使用和不使用的模块with（增加编译）、without（移除编译）</li>
+<li>优化参数、第三方模块，日志位置等</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#编译,指定位置</span></span><br><span class="line">./configure --prefix=/home/nginx</span><br></pre></td></tr></table></figure>
+<p>可能会出现报错</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./configure: error: the HTTP rewrite module requires the PCRE library.</span><br><span class="line">You can either <span class="built_in">disable</span> the module by using --without-http_rewrite_module</span><br><span class="line">option, or install the PCRE library into the system, or build the PCRE library</span><br><span class="line">statically from the <span class="built_in">source</span> with nginx by using --with-pcre=&lt;path&gt; option.</span><br></pre></td></tr></table></figure>
+<p>根据提示，可以安装对应的库，或者在编译的时候选择移除对应的模块，或者选择从源码编译</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装 pcre library</span></span><br><span class="line">yum -y install pcre-devel</span><br></pre></td></tr></table></figure>
+
+<p>再次编译提示缺少 zlib</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./configure: error: the HTTP gzip module requires the zlib library.</span><br><span class="line">You can either <span class="built_in">disable</span> the module by using --without-http_gzip_module</span><br><span class="line">option, or install the zlib library into the system, or build the zlib library</span><br><span class="line">statically from the <span class="built_in">source</span> with nginx by using --with-zlib=&lt;path&gt; option.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装zlib library</span></span><br><span class="line">yum -y install zlib-devel</span><br></pre></td></tr></table></figure>
+
+<p>再次编译以后，提示编译成功,以及nginx 相关的路径、模块等目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Configuration summary</span><br><span class="line">  + using system PCRE library</span><br><span class="line">  + OpenSSL library is not used</span><br><span class="line">  + using system zlib library</span><br><span class="line"></span><br><span class="line">  nginx path prefix: <span class="string">"/home/nginx"</span></span><br><span class="line">  nginx binary file: <span class="string">"/home/nginx/sbin/nginx"</span></span><br><span class="line">  nginx modules path: <span class="string">"/home/nginx/modules"</span></span><br><span class="line">  nginx configuration prefix: <span class="string">"/home/nginx/conf"</span></span><br><span class="line">  nginx configuration file: <span class="string">"/home/nginx/conf/nginx.conf"</span></span><br><span class="line">  nginx pid file: <span class="string">"/home/nginx/logs/nginx.pid"</span></span><br><span class="line">  nginx error <span class="built_in">log</span> file: <span class="string">"/home/nginx/logs/error.log"</span></span><br><span class="line">  nginx http access <span class="built_in">log</span> file: <span class="string">"/home/nginx/logs/access.log"</span></span><br><span class="line">  nginx http client request body temporary files: <span class="string">"client_body_temp"</span></span><br><span class="line">  nginx http proxy temporary files: <span class="string">"proxy_temp"</span></span><br><span class="line">  nginx http fastcgi temporary files: <span class="string">"fastcgi_temp"</span></span><br><span class="line">  nginx http uwsgi temporary files: <span class="string">"uwsgi_temp"</span></span><br><span class="line">  nginx http scgi temporary files: <span class="string">"scgi_temp"</span></span><br></pre></td></tr></table></figure>
+<p>编译生成了中间文件 <code>objs</code>,通过查看<code>ngx_modules.c</code>,可以知道nginx编译了哪些模块<br>执行<code>make</code>编译<code>make install</code> 安装<br>安装完成进入 <code>/home/nginx/</code>启动nginx以后</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── client_body_temp</span><br><span class="line">├── conf</span><br><span class="line">├── fastcgi_temp</span><br><span class="line">├── html</span><br><span class="line">├── logs</span><br><span class="line">├── proxy_temp</span><br><span class="line">├── sbin</span><br><span class="line">├── scgi_temp</span><br><span class="line">└── uwsgi_temp</span><br></pre></td></tr></table></figure>
+<p>就可以看到所有的目录以及文件了。</p>
+<p>在生产环境中，要根据实际的情况增加第三方模块</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx学习日志 2</title>
+    <url>/2020/06/10/nginx-study-2/</url>
+    <content><![CDATA[<h3 id="Nginx-配置语法"><a href="#Nginx-配置语法" class="headerlink" title="Nginx 配置语法"></a>Nginx 配置语法</h3><ul>
+<li>配置文件由指令与指令块组成</li>
+<li>每条指令以 ; 结尾，指令与参数以空格符号分隔</li>
+<li>指令块以{} 大括号将多条指令组合在一起</li>
+<li>include 语句允许组合多个配置文件以提升可维护性</li>
+<li>使用#符号添加注释，提高可读性</li>
+<li>使用$符变量</li>
+<li>部分指令的参数支持正则表达式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># nginx.conf</span></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    root           html;</span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></span><br><span class="line">        <span class="comment"># concurs with nginx's one</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">        <span class="comment">#    deny  all;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       8000;</span></span><br><span class="line">    <span class="comment">#    listen       somename:8080;</span></span><br><span class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># HTTPS server</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       443 ssl;</span></span><br><span class="line">    <span class="comment">#    server_name  localhost;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></span><br><span class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></span><br><span class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></span><br><span class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>http配置指令块主要包含下面4个部分</p>
+<ul>
+<li>http</li>
+<li>server</li>
+<li>location</li>
+<li>upstream</li>
+</ul>
+<h3 id="Nginx命令行"><a href="#Nginx命令行" class="headerlink" title="Nginx命令行"></a>Nginx命令行</h3><ul>
+<li>格式 nginx -s reload</li>
+<li>帮助 -? -h</li>
+<li>使用指定的配置文件 -c</li>
+<li>指定配置文件指定 -g</li>
+<li>指定运行目录 -p</li>
+<li>发送信号 -s(立刻停止 stop 优雅退出 quit 重载配置文件 reload 重新开始记录日志文件reopen)</li>
+<li>测试配置文件是否有语法错误 -t -T</li>
+<li>打印Nginx的版本信息、编译信息等 -v -V</li>
+</ul>
+<h3 id="Nginx-热部署"><a href="#Nginx-热部署" class="headerlink" title="Nginx 热部署"></a>Nginx 热部署</h3><h4 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h4><p>cp nginx nginx.old<br>用新编译好的nginx 替换</p>
+<h4 id="部署切换"><a href="#部署切换" class="headerlink" title="部署切换"></a>部署切换</h4><figure class="highlight ps"><figcaption><span>-ef | grep nginx</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#进程会平滑切换</span></span><br><span class="line">kill -USR2 pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#优雅退出</span></span><br><span class="line">kill -WNCH pid</span><br></pre></td></tr></table></figure>
+
+<h3 id="日志切割"><a href="#日志切割" class="headerlink" title="日志切割"></a>日志切割</h3><p>移动日志 mv xxx.log xxx.bak 重新开始记录日志文件,更好的方式是通过脚本进行<br>./nginx -s reopen </p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -1088,6 +1152,27 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>CentOS 安装 node</title>
+    <url>/2018/02/09/node-install/</url>
+    <content><![CDATA[<h3 id="下载node"><a href="#下载node" class="headerlink" title="下载node"></a>下载node</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
+<h3 id="解压-amp-配置"><a href="#解压-amp-配置" class="headerlink" title="解压&amp;配置"></a>解压&amp;配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xvJf node-v8.9.4-linux-x64.tar.xz</span><br><span class="line">mv node-v8.9.4-linux-x64 /opt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置node 环境变量</span></span><br><span class="line"><span class="built_in">export</span> NODE_HOME=/opt/node-v8.9.4-linux-x64</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NODE_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<h3 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>或者安装nvm</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#加入下面的内容</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></span><br><span class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm、</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<h3 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nvm --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm install stable <span class="comment"># 安装稳定版</span></span><br><span class="line">nvm current <span class="comment"># 查看当前的版本</span></span><br><span class="line">nvm ls <span class="comment"># 列出所有版本</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>okhttp3-proxy-auth (okhttp3 http 代理鉴权)</title>
     <url>/2018/08/30/okhttp3-proxy-auth/</url>
     <content><![CDATA[<p>因为种种原因，没有按时写博客，最近准备把博客重新拾起来。<br>最近在写一个项目，使用到了okhttp的代理，因为使用的代理是付费的，所以需要鉴权。在使用的过程中碰到了一些问题所以记录一下<a id="more"></a></p>
@@ -1108,6 +1193,22 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>python通过使用requirements.txt文件记录管理依赖包</title>
+    <url>/2018/03/07/python-requirements/</url>
+    <content><![CDATA[<p>python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。<a id="more"></a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入项目目录创建requirements.txt文件</span></span><br><span class="line">touch requirements.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将项目中使用的包冻结（freeze）到requirements.txt文件中</span></span><br><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure>
+<p>当把项目上传到服务器以后可以执行下面的命令安装对应的包</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">通过requirements.txt 文件中的记录安装依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>通过上面的方法就能将本地的包安装在服务器上了，保证了两个环境中的依赖一致，一般情况是在虚拟环境中使用，保证环境的干净，避免发生冲突。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python 入门</title>
     <url>/2018/03/07/pthon-tutorial/</url>
     <content><![CDATA[<blockquote>
@@ -1125,22 +1226,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <li>Dictionary (字典)</li>
 </ul>
 <h3 id="待续。。。"><a href="#待续。。。" class="headerlink" title="待续。。。"></a>待续。。。</h3>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python通过使用requirements.txt文件记录管理依赖包</title>
-    <url>/2018/03/07/python-requirements/</url>
-    <content><![CDATA[<p>python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。<a id="more"></a></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入项目目录创建requirements.txt文件</span></span><br><span class="line">touch requirements.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将项目中使用的包冻结（freeze）到requirements.txt文件中</span></span><br><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure>
-<p>当把项目上传到服务器以后可以执行下面的命令安装对应的包</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">通过requirements.txt 文件中的记录安装依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>通过上面的方法就能将本地的包安装在服务器上了，保证了两个环境中的依赖一致，一般情况是在虚拟环境中使用，保证环境的干净，避免发生冲突。</p>
-]]></content>
       <categories>
         <category>Python</category>
       </categories>
@@ -1328,6 +1413,29 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>学习Elastic Stack（二）</title>
+    <url>/2019/06/27/study-elastic-stack-2/</url>
+    <content><![CDATA[<p>Elastic官方提供了Elastic Stack 和 相关产品的<a href="https://www.elastic.co/guide/index.html" target="_blank" rel="noopener">文档</a>，而且提供了中文的文档，<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html" target="_blank" rel="noopener"><code>《Elasticsearch 权威指南》中文版</code></a>,不过这边书是基于Elasticsearch 2.x版本的，可能有些过时。Elasticsearch需要先了解基本概念一些常规操作<code>CRUD</code>。 <a id="more"></a></p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>Elasticsearch的主要用途是搜索和分析。</p>
+<p>Elasticsearch是Elastic Stack核心的分布式搜索和分析引擎。Logstash和Beats有助于收集，聚合和丰富您的数据并将其存储在Elasticsearch中。Kibana使您能够以交互方式探索，可视化和分享数据洞察，并管理和监控堆栈。</p>
+<p>Elasticsearch为所有类型的数据提供实时搜索和分析。无论是结构化文档还是非结构化文本，数字数据或地理空间数据，Elasticsearch都可以以支持快速搜索的方式有效地存储和索引它。远远超出简单的数据检索和聚合信息，以发现数据中的趋势和模式。随着数据和查询量的增长，Elasticsearch的分布式特性使你部署能够与其一起无缝地增长。</p>
+<h3 id="数据输入：文档和索引"><a href="#数据输入：文档和索引" class="headerlink" title="数据输入：文档和索引"></a>数据输入：文档和索引</h3><p>Elasticsearch是一个分布式文档存储。Elasticsearch不是将信息存储为列数据行，而是存储已经序列化为JSON文档的复杂数据结构。当群集中有多个Elasticsearch节点时，存储的文档将分布在群集中，并且可以从任何节点立即访问。</p>
+<p>存储文档时，它会在1秒内实时索引并完全可搜索。Elasticsearch使用称为倒排索引的数据结构，支持非常快速的全文搜索。倒排索引列出任何文档中出现的每个唯一单词，并标识每个单词出现的所有文档。</p>
+<p>索引可以被视为优化的文档集合，每个文档都是字段的集合，这些字段是包含数据的键值对。默认情况下，Elasticsearch会为每个字段中的所有数据编制索引，并且每个索引字段都具有专用的优化数据结构。例如，文本字段存储在反向索引中，数字和地理字段存储在BKD树中。使用每个字段的数据结构来汇编和返回搜索结果的能力使Elasticsearch如此之快。</p>
+<p>Elasticsearch还具有无模式的能力，这意味着可以索引文档而无需显式指定如何处理文档中可能出现的每个不同字段。启用动态映射后，Elasticsearch会自动检测并向索引添加新字段。这种默认行为使您可以轻松索引和浏览数据 - 只需开始索引文档，Elasticsearch将检测并将布尔值，浮点和整数值，日期和字符串映射到相应的Elasticsearch数据类型。</p>
+<p>但是，最终，您比Elasticsearch更了解您的数据以及您希望如何使用它。您可以定义规则来控制动态映射并显式定义映射，以完全控制字段的存储和索引方式。</p>
+<p>定义自己的映射使您能够：</p>
+<p>区分全文字符串字段和精确值字符串字段<br>执行特定于语言的文本分析<br>优化字段以进行部分匹配<br>使用自定义日期格式<br>使用诸如geo_point和geo_shape无法自动检测的数据类型<br>为不同目的以不同方式索引相同字段通常很有用。例如，您可能希望将字符串字段索引为全文搜索的文本字段和用于排序或聚合数据的关键字字段。或者，您可以选择使用多个语言分析器来处理包含用户输入的字符串字段的内容。</p>
+<p>在索引期间应用于全文字段的分析链也在搜索时使用。查询全文字段时，查询文本在索引中查找术语之前会进行相同的分析。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker、Elastic</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学习Elastic Stack（一）</title>
     <url>/2019/06/26/study-elastic-stack-1/</url>
     <content><![CDATA[<p>前两天在<code>极客时间</code>买了<code>Elasticsearch核心技术与实战</code>的视频课程，希望加深对Elastic Stack的了解，提升自己的能力。实际的工作中也用到了 ELK进行生产环境的日志查询与分析，只是简单的使用，了解一些基本的原理，但是更高阶的内容并不了解。学习一个东西最后的方法就是去实践，同时做一些记录进行输出。<a id="more"></a></p>
@@ -1353,29 +1461,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>学习Elastic Stack（二）</title>
-    <url>/2019/06/27/study-elastic-stack-2/</url>
-    <content><![CDATA[<p>Elastic官方提供了Elastic Stack 和 相关产品的<a href="https://www.elastic.co/guide/index.html" target="_blank" rel="noopener">文档</a>，而且提供了中文的文档，<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html" target="_blank" rel="noopener"><code>《Elasticsearch 权威指南》中文版</code></a>,不过这边书是基于Elasticsearch 2.x版本的，可能有些过时。Elasticsearch需要先了解基本概念一些常规操作<code>CRUD</code>。 <a id="more"></a></p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>Elasticsearch的主要用途是搜索和分析。</p>
-<p>Elasticsearch是Elastic Stack核心的分布式搜索和分析引擎。Logstash和Beats有助于收集，聚合和丰富您的数据并将其存储在Elasticsearch中。Kibana使您能够以交互方式探索，可视化和分享数据洞察，并管理和监控堆栈。</p>
-<p>Elasticsearch为所有类型的数据提供实时搜索和分析。无论是结构化文档还是非结构化文本，数字数据或地理空间数据，Elasticsearch都可以以支持快速搜索的方式有效地存储和索引它。远远超出简单的数据检索和聚合信息，以发现数据中的趋势和模式。随着数据和查询量的增长，Elasticsearch的分布式特性使你部署能够与其一起无缝地增长。</p>
-<h3 id="数据输入：文档和索引"><a href="#数据输入：文档和索引" class="headerlink" title="数据输入：文档和索引"></a>数据输入：文档和索引</h3><p>Elasticsearch是一个分布式文档存储。Elasticsearch不是将信息存储为列数据行，而是存储已经序列化为JSON文档的复杂数据结构。当群集中有多个Elasticsearch节点时，存储的文档将分布在群集中，并且可以从任何节点立即访问。</p>
-<p>存储文档时，它会在1秒内实时索引并完全可搜索。Elasticsearch使用称为倒排索引的数据结构，支持非常快速的全文搜索。倒排索引列出任何文档中出现的每个唯一单词，并标识每个单词出现的所有文档。</p>
-<p>索引可以被视为优化的文档集合，每个文档都是字段的集合，这些字段是包含数据的键值对。默认情况下，Elasticsearch会为每个字段中的所有数据编制索引，并且每个索引字段都具有专用的优化数据结构。例如，文本字段存储在反向索引中，数字和地理字段存储在BKD树中。使用每个字段的数据结构来汇编和返回搜索结果的能力使Elasticsearch如此之快。</p>
-<p>Elasticsearch还具有无模式的能力，这意味着可以索引文档而无需显式指定如何处理文档中可能出现的每个不同字段。启用动态映射后，Elasticsearch会自动检测并向索引添加新字段。这种默认行为使您可以轻松索引和浏览数据 - 只需开始索引文档，Elasticsearch将检测并将布尔值，浮点和整数值，日期和字符串映射到相应的Elasticsearch数据类型。</p>
-<p>但是，最终，您比Elasticsearch更了解您的数据以及您希望如何使用它。您可以定义规则来控制动态映射并显式定义映射，以完全控制字段的存储和索引方式。</p>
-<p>定义自己的映射使您能够：</p>
-<p>区分全文字符串字段和精确值字符串字段<br>执行特定于语言的文本分析<br>优化字段以进行部分匹配<br>使用自定义日期格式<br>使用诸如geo_point和geo_shape无法自动检测的数据类型<br>为不同目的以不同方式索引相同字段通常很有用。例如，您可能希望将字符串字段索引为全文搜索的文本字段和用于排序或聚合数据的关键字字段。或者，您可以选择使用多个语言分析器来处理包含用户输入的字符串字段的内容。</p>
-<p>在索引期间应用于全文字段的分析链也在搜索时使用。查询全文字段时，查询文本在索引中查找术语之前会进行相同的分析。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker、Elastic</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>pandas学习笔记-2</title>
     <url>/2018/09/25/study-pandas-notes-2/</url>
     <content><![CDATA[<h4 id="3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py"><a href="#3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py" class="headerlink" title="3.为什么pandas命令以括号结尾，其他的命令不呢？(源码见demo3.py)"></a>3.为什么pandas命令以括号结尾，其他的命令不呢？(<a href="https://github.com/junhuali/study-pandas/blob/master/demo3.py" target="_blank" rel="noopener">源码见demo3.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">head = movies.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">describe = movies.describe()</span><br><span class="line">print(describe)</span><br><span class="line"></span><br><span class="line">shape = movies.shape</span><br><span class="line">print(shape)</span><br><span class="line"></span><br><span class="line">dtypes = movies.dtypes</span><br><span class="line">print(dtypes)</span><br><span class="line"></span><br><span class="line">print(type(movies))</span><br><span class="line"></span><br><span class="line">movies.describe(include=[<span class="string">'object'</span>])</span><br></pre></td></tr></table></figure>
@@ -1384,21 +1469,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h4 id="5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py"><a href="#5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py" class="headerlink" title="5.在pandas DataFrame 中移除指定的行和列(源码见demo5.py)"></a>5.在pandas DataFrame 中移除指定的行和列(<a href="https://github.com/junhuali/study-pandas/blob/master/demo5.py" target="_blank" rel="noopener">源码见demo5.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># axis=0 按行 axi=1 按列</span></span><br><span class="line">ufo.drop(<span class="string">'Colors Reported'</span>, axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="string">'City'</span>, <span class="string">'State'</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="number">0</span>, <span class="number">1</span>], axis=<span class="number">0</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br></pre></td></tr></table></figure>
 
 <p>视频p4<br>讲解了怎么通过使用ipython notebook ，调出对应pandas的方法或者函数的说明，在使用的时候可以通过点击对应方法，然后加上<code>shift+tab</code>键，<br>查看对应的说明。<br>视频p5<br>讲解了通过几种方法修改数据的列名<br>视频p6<br>讲解了通过drop 方法，移除对应的行列，通过这个方法，可以将数据中不需要的部分或者是无效数据进行清洗</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pandas学习笔记-3</title>
-    <url>/2018/09/26/study-pandas-notes-3/</url>
-    <content><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py" target="_blank" rel="noopener">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'title'</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'duration'</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">'content_rating'</span>, <span class="string">'duration'</span>]))</span><br></pre></td></tr></table></figure>
-<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py" target="_blank" rel="noopener">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">'genre'</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">'genre'</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
-
-<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -1426,6 +1496,21 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><h4 id="1-读取表格数据到pandas中-源码见demo1-py"><a href="#1-读取表格数据到pandas中-源码见demo1-py" class="headerlink" title="1.读取表格数据到pandas中(源码见demo1.py)"></a>1.读取表格数据到pandas中(<a href="https://github.com/junhuali/study-pandas/blob/master/demo1.py" target="_blank" rel="noopener">源码见demo1.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="string">''' 因为视频中的地址不可用，可以用网盘中的文件，或者用我提供的文件地址'''</span></span><br><span class="line"></span><br><span class="line">orders = pd.read_table(<span class="string">'https://blog.searchinfogo.com/download/data/data/chipotle.tsv'</span>)</span><br><span class="line"></span><br><span class="line">print(orders)</span><br><span class="line"></span><br><span class="line">head = orders.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">user_cols = [<span class="string">'user_id'</span>, <span class="string">'age'</span>, <span class="string">'gender'</span>, <span class="string">'occupation'</span>, <span class="string">'zip_code'</span>]</span><br><span class="line">users = pd.read_table(<span class="string">"https://blog.searchinfogo.com/download/data/data/u.user"</span>, sep=<span class="string">'|'</span>, header=<span class="literal">None</span>, names=user_cols)</span><br><span class="line">print(users)</span><br></pre></td></tr></table></figure>
 <h4 id="2-从csv中读取数据-源码见demo2-py"><a href="#2-从csv中读取数据-源码见demo2-py" class="headerlink" title="2.从csv中读取数据(源码见demo2.py)"></a>2.从csv中读取数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo2.py" target="_blank" rel="noopener">源码见demo2.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line"></span><br><span class="line">type = type(ufo)</span><br><span class="line"></span><br><span class="line">print(type)</span><br><span class="line"></span><br><span class="line">ufo.head()</span><br><span class="line"></span><br><span class="line">type(ufo[<span class="string">'City'</span>])</span><br><span class="line"></span><br><span class="line">print(ufo[<span class="string">'City'</span>])</span><br><span class="line"></span><br><span class="line">ufo.shape</span><br><span class="line"></span><br><span class="line">ufo.City + ufo.State</span><br><span class="line"></span><br><span class="line">ufo[<span class="string">'Location'</span>] = ufo.City + <span class="string">','</span> + ufo.State</span><br><span class="line"></span><br><span class="line">print(ufo[<span class="string">'Location'</span>])</span><br></pre></td></tr></table></figure>
 <p>总结：<br>上面的代码涉及视频p1-p3，讲解了pandas如何读取数据，从table、csv中读取数据，并在pandas中组合出一些数据，这些过程涉及<br>生产数据、获取数据、准备数据几个过程，在实际的使用过程中，用户的操作，或者是其他过程会产生大量的数据，然后获取数据读取到<br>pandas中，并对数据进行清洗，取出掉无效或者错误的数据，之后最数据进行更深入的分析。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pandas学习笔记-3</title>
+    <url>/2018/09/26/study-pandas-notes-3/</url>
+    <content><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py" target="_blank" rel="noopener">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'title'</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'duration'</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">'content_rating'</span>, <span class="string">'duration'</span>]))</span><br></pre></td></tr></table></figure>
+<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py" target="_blank" rel="noopener">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">'genre'</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">'genre'</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
+
+<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
 ]]></content>
       <categories>
         <category>Python</category>

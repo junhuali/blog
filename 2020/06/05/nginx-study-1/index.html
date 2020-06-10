@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.2" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.2">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="回顾之前的时候写过Centos yum 安装nginx 后增加模块,源码安装的时候一笔带过，最近在学习Nginx其中的一些知识点，所以记录一下手动安装的过程，以及相关的配置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 学习日志 1">
+<meta property="og:url" content="https://blog.searchinfogo.com/2020/06/05/nginx-study-1/index.html">
+<meta property="og:site_name" content="Junhua&#39;s Blog">
+<meta property="og:description" content="回顾之前的时候写过Centos yum 安装nginx 后增加模块,源码安装的时候一笔带过，最近在学习Nginx其中的一些知识点，所以记录一下手动安装的过程，以及相关的配置。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.searchinfogo.com/2020/06/05/nginx-study-1/WX20200605-151113@2x.png">
+<meta property="article:published_time" content="2020-06-05T07:36:53.000Z">
+<meta property="article:modified_time" content="2020-06-10T02:32:31.933Z">
+<meta property="article:author" content="Junhua">
+<meta property="article:tag" content="Nginx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/2020/06/05/nginx-study-1/WX20200605-151113@2x.png">
+
+<link rel="canonical" href="https://blog.searchinfogo.com/2020/06/05/nginx-study-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Nginx 学习日志 1 | Junhua's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106923734-1"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-106923734-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?856b5e9d05d5a0661908b7854f41d8d7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Junhua's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2020/06/05/nginx-study-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Junhua">
+      <meta itemprop="description" content="Done is better than perfect.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junhua's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nginx 学习日志 1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-05 15:36:53" itemprop="dateCreated datePublished" datetime="2020-06-05T15:36:53+08:00">2020-06-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-10 10:32:31" itemprop="dateModified" datetime="2020-06-10T10:32:31+08:00">2020-06-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/06/05/nginx-study-1/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/05/nginx-study-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><p>之前的时候写过<code>Centos yum 安装nginx 后增加模块</code>,源码安装的时候一笔带过，最近在学习Nginx其中的一些知识点，所以记录一下手动安装的过程，以及相关的配置。<a id="more"></a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Nginx 一般可以去官网下载，<a href="https://www.nginx.org" target="_blank" rel="noopener">Nginx</a>,Nginx也有对应的商业版本<a href="https://www.nginx.com/" target="_blank" rel="noopener">Nginx Plus</a>, 还有一些其他的基于Nginx开发的版本，<a href="https://tengine.taobao.org/" target="_blank" rel="noopener">Tengine</a>和<a href="http://openresty.org/" target="_blank" rel="noopener">OpenResty</a>都是比较有名的。</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">Nginx下载</a>,如下图，进入到下载页面，使用<code>stable version</code>稳定版。<br><img src="WX20200605-151113@2x.png" alt="nginx"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载</span></span><br><span class="line">wget https://nginx.org/download/nginx-1.18.0.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -xzf nginx-1.18.0.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="目录说明"><a href="#目录说明" class="headerlink" title="目录说明"></a>目录说明</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">cd</span> nginx-1.18.0/</span><br><span class="line"></span><br><span class="line">tree -L 1 (查看1层目录，如果没有tree 命令 yum -y install tree 进行安装 )</span><br><span class="line"></span><br><span class="line">.</span><br><span class="line">├── auto         <span class="comment"># 编译、lib库、操作系统判断</span></span><br><span class="line">├── CHANGES      <span class="comment"># feature、版本变更、bugfix</span></span><br><span class="line">├── CHANGES.ru   <span class="comment"># 俄语changes</span></span><br><span class="line">├── conf         <span class="comment"># 示例文件</span></span><br><span class="line">├── configure    <span class="comment"># 生成中间文件</span></span><br><span class="line">├── contrib      <span class="comment"># vim等相关配置</span></span><br><span class="line">├── html         <span class="comment"># 标准文件页面50</span></span><br><span class="line">├── LICENSE      <span class="comment"># LICENSE</span></span><br><span class="line">├── man          <span class="comment"># 帮助文件</span></span><br><span class="line">├── README       <span class="comment">#</span></span><br><span class="line">└── src          <span class="comment"># 源码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制vim 配置，可以让nginx配置显示颜色，更加方便的配置</span></span><br><span class="line">cp -r contrib/vim/* ~/.vim/</span><br></pre></td></tr></table></figure>
+
+<h4 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看编译配置</span></span><br><span class="line">./configure --<span class="built_in">help</span> | cat</span><br><span class="line">  --<span class="built_in">help</span>                             <span class="built_in">print</span> this message</span><br><span class="line"></span><br><span class="line">  --prefix=PATH                      <span class="built_in">set</span> installation prefix</span><br><span class="line">  --sbin-path=PATH                   <span class="built_in">set</span> nginx binary pathname</span><br><span class="line">  --modules-path=PATH                <span class="built_in">set</span> modules path</span><br><span class="line">  --conf-path=PATH                   <span class="built_in">set</span> nginx.conf pathname</span><br><span class="line">  --error-log-path=PATH              <span class="built_in">set</span> error <span class="built_in">log</span> pathname</span><br><span class="line">  --pid-path=PATH                    <span class="built_in">set</span> nginx.pid pathname</span><br><span class="line">  --lock-path=PATH                   <span class="built_in">set</span> nginx.lock pathname</span><br><span class="line"></span><br><span class="line">  --user=USER                        <span class="built_in">set</span> non-privileged user <span class="keyword">for</span></span><br><span class="line">                                     worker processes</span><br><span class="line">  --group=GROUP                      <span class="built_in">set</span> non-privileged group <span class="keyword">for</span></span><br><span class="line">                                     worker processes</span><br><span class="line"></span><br><span class="line">  --build=NAME                       <span class="built_in">set</span> build name</span><br><span class="line">  --builddir=DIR                     <span class="built_in">set</span> build directory</span><br><span class="line"></span><br><span class="line">  --with-select_module               <span class="built_in">enable</span> select module</span><br><span class="line">  --without-select_module            <span class="built_in">disable</span> select module</span><br><span class="line">  --with-poll_module                 <span class="built_in">enable</span> poll module</span><br><span class="line">  --without-poll_module              <span class="built_in">disable</span> poll module</span><br><span class="line"></span><br><span class="line">  --with-threads                     <span class="built_in">enable</span> thread pool support</span><br><span class="line"></span><br><span class="line">  --with-file-aio                    <span class="built_in">enable</span> file AIO support</span><br><span class="line"></span><br><span class="line">  --with-http_ssl_module             <span class="built_in">enable</span> ngx_http_ssl_module</span><br><span class="line">  --with-http_v2_module              <span class="built_in">enable</span> ngx_http_v2_module</span><br><span class="line">  --with-http_realip_module          <span class="built_in">enable</span> ngx_http_realip_module</span><br><span class="line">  --with-http_addition_module        <span class="built_in">enable</span> ngx_http_addition_module</span><br><span class="line">  --with-http_xslt_module            <span class="built_in">enable</span> ngx_http_xslt_module</span><br><span class="line">  --with-http_xslt_module=dynamic    <span class="built_in">enable</span> dynamic ngx_http_xslt_module</span><br><span class="line">  --with-http_image_filter_module    <span class="built_in">enable</span> ngx_http_image_filter_module</span><br><span class="line">  --with-http_image_filter_module=dynamic</span><br><span class="line">                                     <span class="built_in">enable</span> dynamic ngx_http_image_filter_module</span><br><span class="line">  --with-http_geoip_module           <span class="built_in">enable</span> ngx_http_geoip_module</span><br><span class="line">  --with-http_geoip_module=dynamic   <span class="built_in">enable</span> dynamic ngx_http_geoip_module</span><br><span class="line">  --with-http_sub_module             <span class="built_in">enable</span> ngx_http_sub_module</span><br><span class="line">  --with-http_dav_module             <span class="built_in">enable</span> ngx_http_dav_module</span><br><span class="line">  --with-http_flv_module             <span class="built_in">enable</span> ngx_http_flv_module</span><br><span class="line">  --with-http_mp4_module             <span class="built_in">enable</span> ngx_http_mp4_module</span><br><span class="line">  --with-http_gunzip_module          <span class="built_in">enable</span> ngx_http_gunzip_module</span><br><span class="line">  --with-http_gzip_static_module     <span class="built_in">enable</span> ngx_http_gzip_static_module</span><br><span class="line">  --with-http_auth_request_module    <span class="built_in">enable</span> ngx_http_auth_request_module</span><br><span class="line">  --with-http_random_index_module    <span class="built_in">enable</span> ngx_http_random_index_module</span><br><span class="line">  --with-http_secure_link_module     <span class="built_in">enable</span> ngx_http_secure_link_module</span><br><span class="line">  --with-http_degradation_module     <span class="built_in">enable</span> ngx_http_degradation_module</span><br><span class="line">  --with-http_slice_module           <span class="built_in">enable</span> ngx_http_slice_module</span><br><span class="line">  --with-http_stub_status_module     <span class="built_in">enable</span> ngx_http_stub_status_module</span><br><span class="line"></span><br><span class="line">  --without-http_charset_module      <span class="built_in">disable</span> ngx_http_charset_module</span><br><span class="line">  --without-http_gzip_module         <span class="built_in">disable</span> ngx_http_gzip_module</span><br><span class="line">  --without-http_ssi_module          <span class="built_in">disable</span> ngx_http_ssi_module</span><br><span class="line">  --without-http_userid_module       <span class="built_in">disable</span> ngx_http_userid_module</span><br><span class="line">  --without-http_access_module       <span class="built_in">disable</span> ngx_http_access_module</span><br><span class="line">  --without-http_auth_basic_module   <span class="built_in">disable</span> ngx_http_auth_basic_module</span><br><span class="line">  --without-http_mirror_module       <span class="built_in">disable</span> ngx_http_mirror_module</span><br><span class="line">  --without-http_autoindex_module    <span class="built_in">disable</span> ngx_http_autoindex_module</span><br><span class="line">  --without-http_geo_module          <span class="built_in">disable</span> ngx_http_geo_module</span><br><span class="line">  --without-http_map_module          <span class="built_in">disable</span> ngx_http_map_module</span><br><span class="line">  --without-http_split_clients_module <span class="built_in">disable</span> ngx_http_split_clients_module</span><br><span class="line">  --without-http_referer_module      <span class="built_in">disable</span> ngx_http_referer_module</span><br><span class="line">  --without-http_rewrite_module      <span class="built_in">disable</span> ngx_http_rewrite_module</span><br><span class="line">  --without-http_proxy_module        <span class="built_in">disable</span> ngx_http_proxy_module</span><br><span class="line">  --without-http_fastcgi_module      <span class="built_in">disable</span> ngx_http_fastcgi_module</span><br><span class="line">  --without-http_uwsgi_module        <span class="built_in">disable</span> ngx_http_uwsgi_module</span><br><span class="line">  --without-http_scgi_module         <span class="built_in">disable</span> ngx_http_scgi_module</span><br><span class="line">  --without-http_grpc_module         <span class="built_in">disable</span> ngx_http_grpc_module</span><br><span class="line">  --without-http_memcached_module    <span class="built_in">disable</span> ngx_http_memcached_module</span><br><span class="line">  --without-http_limit_conn_module   <span class="built_in">disable</span> ngx_http_limit_conn_module</span><br><span class="line">  --without-http_limit_req_module    <span class="built_in">disable</span> ngx_http_limit_req_module</span><br><span class="line">  --without-http_empty_gif_module    <span class="built_in">disable</span> ngx_http_empty_gif_module</span><br><span class="line">  --without-http_browser_module      <span class="built_in">disable</span> ngx_http_browser_module</span><br><span class="line">  --without-http_upstream_hash_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_hash_module</span><br><span class="line">  --without-http_upstream_ip_hash_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_ip_hash_module</span><br><span class="line">  --without-http_upstream_least_conn_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_least_conn_module</span><br><span class="line">  --without-http_upstream_random_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_random_module</span><br><span class="line">  --without-http_upstream_keepalive_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_keepalive_module</span><br><span class="line">  --without-http_upstream_zone_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_http_upstream_zone_module</span><br><span class="line"></span><br><span class="line">  --with-http_perl_module            <span class="built_in">enable</span> ngx_http_perl_module</span><br><span class="line">  --with-http_perl_module=dynamic    <span class="built_in">enable</span> dynamic ngx_http_perl_module</span><br><span class="line">  --with-perl_modules_path=PATH      <span class="built_in">set</span> Perl modules path</span><br><span class="line">  --with-perl=PATH                   <span class="built_in">set</span> perl binary pathname</span><br><span class="line"></span><br><span class="line">  --http-log-path=PATH               <span class="built_in">set</span> http access <span class="built_in">log</span> pathname</span><br><span class="line">  --http-client-body-temp-path=PATH  <span class="built_in">set</span> path to store</span><br><span class="line">                                     http client request body temporary files</span><br><span class="line">  --http-proxy-temp-path=PATH        <span class="built_in">set</span> path to store</span><br><span class="line">                                     http proxy temporary files</span><br><span class="line">  --http-fastcgi-temp-path=PATH      <span class="built_in">set</span> path to store</span><br><span class="line">                                     http fastcgi temporary files</span><br><span class="line">  --http-uwsgi-temp-path=PATH        <span class="built_in">set</span> path to store</span><br><span class="line">                                     http uwsgi temporary files</span><br><span class="line">  --http-scgi-temp-path=PATH         <span class="built_in">set</span> path to store</span><br><span class="line">                                     http scgi temporary files</span><br><span class="line"></span><br><span class="line">  --without-http                     <span class="built_in">disable</span> HTTP server</span><br><span class="line">  --without-http-cache               <span class="built_in">disable</span> HTTP cache</span><br><span class="line"></span><br><span class="line">  --with-mail                        <span class="built_in">enable</span> POP3/IMAP4/SMTP proxy module</span><br><span class="line">  --with-mail=dynamic                <span class="built_in">enable</span> dynamic POP3/IMAP4/SMTP proxy module</span><br><span class="line">  --with-mail_ssl_module             <span class="built_in">enable</span> ngx_mail_ssl_module</span><br><span class="line">  --without-mail_pop3_module         <span class="built_in">disable</span> ngx_mail_pop3_module</span><br><span class="line">  --without-mail_imap_module         <span class="built_in">disable</span> ngx_mail_imap_module</span><br><span class="line">  --without-mail_smtp_module         <span class="built_in">disable</span> ngx_mail_smtp_module</span><br><span class="line"></span><br><span class="line">  --with-stream                      <span class="built_in">enable</span> TCP/UDP proxy module</span><br><span class="line">  --with-stream=dynamic              <span class="built_in">enable</span> dynamic TCP/UDP proxy module</span><br><span class="line">  --with-stream_ssl_module           <span class="built_in">enable</span> ngx_stream_ssl_module</span><br><span class="line">  --with-stream_realip_module        <span class="built_in">enable</span> ngx_stream_realip_module</span><br><span class="line">  --with-stream_geoip_module         <span class="built_in">enable</span> ngx_stream_geoip_module</span><br><span class="line">  --with-stream_geoip_module=dynamic <span class="built_in">enable</span> dynamic ngx_stream_geoip_module</span><br><span class="line">  --with-stream_ssl_preread_module   <span class="built_in">enable</span> ngx_stream_ssl_preread_module</span><br><span class="line">  --without-stream_limit_conn_module <span class="built_in">disable</span> ngx_stream_limit_conn_module</span><br><span class="line">  --without-stream_access_module     <span class="built_in">disable</span> ngx_stream_access_module</span><br><span class="line">  --without-stream_geo_module        <span class="built_in">disable</span> ngx_stream_geo_module</span><br><span class="line">  --without-stream_map_module        <span class="built_in">disable</span> ngx_stream_map_module</span><br><span class="line">  --without-stream_split_clients_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_split_clients_module</span><br><span class="line">  --without-stream_return_module     <span class="built_in">disable</span> ngx_stream_return_module</span><br><span class="line">  --without-stream_upstream_hash_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_upstream_hash_module</span><br><span class="line">  --without-stream_upstream_least_conn_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_upstream_least_conn_module</span><br><span class="line">  --without-stream_upstream_random_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_upstream_random_module</span><br><span class="line">  --without-stream_upstream_zone_module</span><br><span class="line">                                     <span class="built_in">disable</span> ngx_stream_upstream_zone_module</span><br><span class="line"></span><br><span class="line">  --with-google_perftools_module     <span class="built_in">enable</span> ngx_google_perftools_module</span><br><span class="line">  --with-cpp_test_module             <span class="built_in">enable</span> ngx_cpp_test_module</span><br><span class="line"></span><br><span class="line">  --add-module=PATH                  <span class="built_in">enable</span> external module</span><br><span class="line">  --add-dynamic-module=PATH          <span class="built_in">enable</span> dynamic external module</span><br><span class="line"></span><br><span class="line">  --with-compat                      dynamic modules compatibility</span><br><span class="line"></span><br><span class="line">  --with-cc=PATH                     <span class="built_in">set</span> C compiler pathname</span><br><span class="line">  --with-cpp=PATH                    <span class="built_in">set</span> C preprocessor pathname</span><br><span class="line">  --with-cc-opt=OPTIONS              <span class="built_in">set</span> additional C compiler options</span><br><span class="line">  --with-ld-opt=OPTIONS              <span class="built_in">set</span> additional linker options</span><br><span class="line">  --with-cpu-opt=CPU                 build <span class="keyword">for</span> the specified CPU, valid values:</span><br><span class="line">                                     pentium, pentiumpro, pentium3, pentium4,</span><br><span class="line">                                     athlon, opteron, sparc32, sparc64, ppc64</span><br><span class="line"></span><br><span class="line">  --without-pcre                     <span class="built_in">disable</span> PCRE library usage</span><br><span class="line">  --with-pcre                        force PCRE library usage</span><br><span class="line">  --with-pcre=DIR                    <span class="built_in">set</span> path to PCRE library sources</span><br><span class="line">  --with-pcre-opt=OPTIONS            <span class="built_in">set</span> additional build options <span class="keyword">for</span> PCRE</span><br><span class="line">  --with-pcre-jit                    build PCRE with JIT compilation support</span><br><span class="line"></span><br><span class="line">  --with-zlib=DIR                    <span class="built_in">set</span> path to zlib library sources</span><br><span class="line">  --with-zlib-opt=OPTIONS            <span class="built_in">set</span> additional build options <span class="keyword">for</span> zlib</span><br><span class="line">  --with-zlib-asm=CPU                use zlib assembler sources optimized</span><br><span class="line">                                     <span class="keyword">for</span> the specified CPU, valid values:</span><br><span class="line">                                     pentium, pentiumpro</span><br><span class="line"></span><br><span class="line">  --with-libatomic                   force libatomic_ops library usage</span><br><span class="line">  --with-libatomic=DIR               <span class="built_in">set</span> path to libatomic_ops library sources</span><br><span class="line"></span><br><span class="line">  --with-openssl=DIR                 <span class="built_in">set</span> path to OpenSSL library sources</span><br><span class="line">  --with-openssl-opt=OPTIONS         <span class="built_in">set</span> additional build options <span class="keyword">for</span> OpenSSL</span><br><span class="line"></span><br><span class="line">  --with-debug                       <span class="built_in">enable</span> debug logging</span><br></pre></td></tr></table></figure>
+<p>从上面的帮助可以看到，主要的编译配置分为3类</p>
+<ul>
+<li>配置文件位置指定</li>
+<li>指定使用和不使用的模块with（增加编译）、without（移除编译）</li>
+<li>优化参数、第三方模块，日志位置等</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#编译,指定位置</span></span><br><span class="line">./configure --prefix=/home/nginx</span><br></pre></td></tr></table></figure>
+<p>可能会出现报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./configure: error: the HTTP rewrite module requires the PCRE library.</span><br><span class="line">You can either <span class="built_in">disable</span> the module by using --without-http_rewrite_module</span><br><span class="line">option, or install the PCRE library into the system, or build the PCRE library</span><br><span class="line">statically from the <span class="built_in">source</span> with nginx by using --with-pcre=&lt;path&gt; option.</span><br></pre></td></tr></table></figure>
+<p>根据提示，可以安装对应的库，或者在编译的时候选择移除对应的模块，或者选择从源码编译</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装 pcre library</span></span><br><span class="line">yum -y install pcre-devel</span><br></pre></td></tr></table></figure>
+
+<p>再次编译提示缺少 zlib</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./configure: error: the HTTP gzip module requires the zlib library.</span><br><span class="line">You can either <span class="built_in">disable</span> the module by using --without-http_gzip_module</span><br><span class="line">option, or install the zlib library into the system, or build the zlib library</span><br><span class="line">statically from the <span class="built_in">source</span> with nginx by using --with-zlib=&lt;path&gt; option.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装zlib library</span></span><br><span class="line">yum -y install zlib-devel</span><br></pre></td></tr></table></figure>
+
+<p>再次编译以后，提示编译成功,以及nginx 相关的路径、模块等目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Configuration summary</span><br><span class="line">  + using system PCRE library</span><br><span class="line">  + OpenSSL library is not used</span><br><span class="line">  + using system zlib library</span><br><span class="line"></span><br><span class="line">  nginx path prefix: <span class="string">"/home/nginx"</span></span><br><span class="line">  nginx binary file: <span class="string">"/home/nginx/sbin/nginx"</span></span><br><span class="line">  nginx modules path: <span class="string">"/home/nginx/modules"</span></span><br><span class="line">  nginx configuration prefix: <span class="string">"/home/nginx/conf"</span></span><br><span class="line">  nginx configuration file: <span class="string">"/home/nginx/conf/nginx.conf"</span></span><br><span class="line">  nginx pid file: <span class="string">"/home/nginx/logs/nginx.pid"</span></span><br><span class="line">  nginx error <span class="built_in">log</span> file: <span class="string">"/home/nginx/logs/error.log"</span></span><br><span class="line">  nginx http access <span class="built_in">log</span> file: <span class="string">"/home/nginx/logs/access.log"</span></span><br><span class="line">  nginx http client request body temporary files: <span class="string">"client_body_temp"</span></span><br><span class="line">  nginx http proxy temporary files: <span class="string">"proxy_temp"</span></span><br><span class="line">  nginx http fastcgi temporary files: <span class="string">"fastcgi_temp"</span></span><br><span class="line">  nginx http uwsgi temporary files: <span class="string">"uwsgi_temp"</span></span><br><span class="line">  nginx http scgi temporary files: <span class="string">"scgi_temp"</span></span><br></pre></td></tr></table></figure>
+<p>编译生成了中间文件 <code>objs</code>,通过查看<code>ngx_modules.c</code>,可以知道nginx编译了哪些模块<br>执行<code>make</code>编译<code>make install</code> 安装<br>安装完成进入 <code>/home/nginx/</code>启动nginx以后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── client_body_temp</span><br><span class="line">├── conf</span><br><span class="line">├── fastcgi_temp</span><br><span class="line">├── html</span><br><span class="line">├── logs</span><br><span class="line">├── proxy_temp</span><br><span class="line">├── sbin</span><br><span class="line">├── scgi_temp</span><br><span class="line">└── uwsgi_temp</span><br></pre></td></tr></table></figure>
+<p>就可以看到所有的目录以及文件了。</p>
+<p>在生产环境中，要根据实际的情况增加第三方模块</p>
+
+    </div>
+
+    
+    
+    
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/uploads/wechat_qrcode.jpg" alt="Junhua wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的微信公众号！</div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/04/14/ark-server/" rel="next" title="方舟服务器搭建 Ark-Server-Build">
+                  <i class="fa fa-chevron-left"></i> 方舟服务器搭建 Ark-Server-Build
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/06/10/nginx-study-2/" rel="prev" title="Nginx学习日志 2">
+                  Nginx学习日志 2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#回顾"><span class="nav-number">1.</span> <span class="nav-text">回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载"><span class="nav-number">2.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解压"><span class="nav-number">2.2.</span> <span class="nav-text">解压</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录说明"><span class="nav-number">3.</span> <span class="nav-text">目录说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译"><span class="nav-number">3.1.</span> <span class="nav-text">编译</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Junhua"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Junhua</p>
+  <div class="site-description" itemprop="description">Done is better than perfect.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/junhuali" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;junhuali" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:junhuali.dev@gmail.com" title="E-Mail &amp;rarr; mailto:junhuali.dev@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/4d6c39ea6b2c" title="简书 &amp;rarr; https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;4d6c39ea6b2c" rel="noopener" target="_blank"><i class="fa fa-fw fa-heartbeat"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://yizibi.github.io/" title="https:&#x2F;&#x2F;yizibi.github.io&#x2F;" rel="noopener" target="_blank">一之笔</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://chensenlin.cn/" title="https:&#x2F;&#x2F;chensenlin.cn&#x2F;" rel="noopener" target="_blank">你好我是森林</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://ouyang.wang/" title="https:&#x2F;&#x2F;ouyang.wang&#x2F;" rel="noopener" target="_blank">Ouyang's Blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.mghio.cn/" title="https:&#x2F;&#x2F;www.mghio.cn" rel="noopener" target="_blank">mghio's blog</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.myapiright.cn/" title="http:&#x2F;&#x2F;www.myapiright.cn&#x2F;" rel="noopener" target="_blank">我的接口真的对了</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://varzy.me/blog/" title="https:&#x2F;&#x2F;varzy.me&#x2F;blog&#x2F;" rel="noopener" target="_blank">Aiden's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junhua</span>
+  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.2.js"></script>
+
+<script src="/js/motion.js?v=7.4.2.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.2.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.2.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+  
+<script src="/js/local-search.js?v=7.4.2.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://junhua.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://blog.searchinfogo.com/2020/06/05/nginx-study-1/",
+            identifier: "2020/06/05/nginx-study-1/",
+            title: "Nginx 学习日志 1"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://junhua.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    window.addEventListener('load', loadComments, false);
+</script>
+
+</body>
+</html>
