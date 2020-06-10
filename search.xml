@@ -188,6 +188,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Nginx 504 Gateway Time-out</title>
+    <url>/2017/09/22/Nginx-504-GateWay-Time-Out/</url>
+    <content><![CDATA[<p>今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置 <a id="more"></a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">proxy_connect_timeout = 3;</span><br></pre></td></tr></table></figure>
+<p>时间过小导致的，最好用默认参数</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring单例和多例</title>
     <url>/2019/03/25/Spring-singleton-and-prototype/</url>
     <content><![CDATA[<p>在面试的时候经常被问到Spring的单例、多例之类的问题，实际上是Bean的作用域问题。当在Spring中声明一个bean时，需要声明bean的作用域。默认是<code>singleton</code>。这篇文章主要讨论Spring 单例和多例。<a id="more"></a></p>
@@ -304,20 +318,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Nginx 504 Gateway Time-out</title>
-    <url>/2017/09/22/Nginx-504-GateWay-Time-Out/</url>
-    <content><![CDATA[<p>今天碰到了一个问题，生产环境用户报错，后台看日志都是正常的，最后经过debug 发现是nginx 设置 <a id="more"></a></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">proxy_connect_timeout = 3;</span><br></pre></td></tr></table></figure>
-<p>时间过小导致的，最好用默认参数</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>方舟服务器搭建 Ark-Server-Build</title>
     <url>/2020/04/14/ark-server/</url>
     <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
@@ -384,26 +384,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS 安装 git</title>
-    <url>/2017/11/06/centos-install-git/</url>
-    <content><![CDATA[<p>CentOS 7 上安装git 的几种方法。 <a id="more"></a></p>
-<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><ul>
-<li>安装对应的依赖<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line">yum install -y gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure></li>
-<li>下载源码编译安装<h4 id="确保系统git-已经被卸载"><a href="#确保系统git-已经被卸载" class="headerlink" title="确保系统git 已经被卸载"></a>确保系统git 已经被卸载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove -y git(先执行本选项，确保卸载掉git)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src</span><br><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gz</span><br><span class="line">tar xzf git-2.9.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.9.3</span><br><span class="line">make prefix=/usr/bin/git all</span><br><span class="line">make prefix=/usr/bin/git install</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$PATH</span>:/usr/bin/git/bin"</span> &gt;&gt; /etc/bashrc</span><br><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">git --version (查看是否安装完成)</span><br></pre></td></tr></table></figure>
-<h3 id="rpm-安装（基于CentOS7）"><a href="#rpm-安装（基于CentOS7）" class="headerlink" title="rpm 安装（基于CentOS7）"></a>rpm 安装（基于CentOS7）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y epel-release （<span class="comment">#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）</span></span><br><span class="line">rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">yum install git2u</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos安装redis5.x</title>
     <url>/2018/12/14/centos-install-redis5-x/</url>
     <content><![CDATA[<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
@@ -423,6 +403,26 @@
       </categories>
       <tags>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS 安装 git</title>
+    <url>/2017/11/06/centos-install-git/</url>
+    <content><![CDATA[<p>CentOS 7 上安装git 的几种方法。 <a id="more"></a></p>
+<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><ul>
+<li>安装对应的依赖<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line">yum install -y gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure></li>
+<li>下载源码编译安装<h4 id="确保系统git-已经被卸载"><a href="#确保系统git-已经被卸载" class="headerlink" title="确保系统git 已经被卸载"></a>确保系统git 已经被卸载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove -y git(先执行本选项，确保卸载掉git)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src</span><br><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gz</span><br><span class="line">tar xzf git-2.9.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.9.3</span><br><span class="line">make prefix=/usr/bin/git all</span><br><span class="line">make prefix=/usr/bin/git install</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$PATH</span>:/usr/bin/git/bin"</span> &gt;&gt; /etc/bashrc</span><br><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">git --version (查看是否安装完成)</span><br></pre></td></tr></table></figure>
+<h3 id="rpm-安装（基于CentOS7）"><a href="#rpm-安装（基于CentOS7）" class="headerlink" title="rpm 安装（基于CentOS7）"></a>rpm 安装（基于CentOS7）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y epel-release （<span class="comment">#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）</span></span><br><span class="line">rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">yum install git2u</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -481,6 +481,41 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Centos7 安装 pyenv</title>
+    <url>/2018/02/27/cnetos-install-pyenv/</url>
+    <content><![CDATA[<blockquote>
+<p>人生苦短，我用Python</p>
+</blockquote>
+<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
+<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 常用命令(待完善)</title>
+    <url>/2017/11/30/common-commonds/</url>
+    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>npm 更换源</title>
     <url>/2018/05/03/config-npm-registry/</url>
     <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
@@ -506,19 +541,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Node</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 常用命令(待完善)</title>
-    <url>/2017/11/30/common-commonds/</url>
-    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -580,28 +602,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Centos7 安装 pyenv</title>
-    <url>/2018/02/27/cnetos-install-pyenv/</url>
-    <content><![CDATA[<blockquote>
-<p>人生苦短，我用Python</p>
-</blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
-
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DevOps实践2:Spring Boot集成Docker环境</title>
     <url>/2018/02/27/devops-2-springboot-docker-integrated/</url>
     <content><![CDATA[<blockquote>
@@ -653,6 +653,21 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Docker 创建MySQL</title>
+    <url>/2018/01/17/docker-create-mysql/</url>
+    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker安装MongoDB(Mongo3.x)</title>
     <url>/2017/09/23/docker-install-MongoDB/</url>
     <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
@@ -683,21 +698,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
 <h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a></p>
 <p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/" target="_blank" rel="noopener">https://hub.docker.com/r/sonatype/nexus3/</a></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 创建MySQL</title>
-    <url>/2018/01/17/docker-create-mysql/</url>
-    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
-<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
-<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -751,6 +751,41 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>第一个flutter</title>
+    <url>/2019/07/11/first-flutter-app/</url>
+    <content><![CDATA[<p><a href="https://flutter.dev/" target="_blank" rel="noopener">Flutter</a> is Google’s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.<a id="more"></a></p>
+<blockquote>
+<p>Flutter是一个由谷歌开发的开源移动应用软件开发工具包，用于为Android和iOS开发应用，同时也将是Google Fuchsia下开发应用的主要工具</p>
+</blockquote>
+<p>最近看到很多的技术网站都在发Flutter相关的技术文章，所以自己也花时间了解了一下，写了个简单的HelloWorld体验了一下，感觉很不错。简单的记录一下。</p>
+<p>###安装<br>安装环境基于MAC，Windows上也没有太大的区别。<br>####安装Xcode、Android Stuido<br>#####Xcode 安装<br>Xocde 的安装比较简单，直接去App Store搜索就可以了，<img src="first-flutter-app/WX20190711-203332@2x.png" alt="示例">之后需要打开，会自动的进行相应的配置。<br>#####Android Studio 安装<br><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Android Studio官网下载</a><br><img src="first-flutter-app/WX20190711-203810@2x.png" alt="示例"><br>当前版本为3.4.2<br>配合相关的SDK，然后增加虚拟机<img src="first-flutter-app/WX20190711-204747@2x.png" alt="示例"><br>需要注意的是，建议使用API28,28的版本flutter会报错</p>
+<h5 id="安装flutter"><a href="#安装flutter" class="headerlink" title="安装flutter"></a>安装flutter</h5><p>Flutter在国内访问的速度不太好，访问<a href="https://flutter.dev/docs/get-started/install" target="_blank" rel="noopener">Flutter</a>，进行下载配置，建议使用梯子，推荐使用喵帕斯，可以联系我获取邀请码。</p>
+<ul>
+<li>增加源站镜像环境变量(使用第三方的包的时候需要用到)</li>
+</ul>
+<p>Windows</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">我的电脑-&gt;属性-&gt;高级系统设置-&gt;高级-&gt;环境变量，新建用户环境变量,增加下面两个变量</span></span><br><span class="line">PUB_HOSTED_URL https://pub.flutter-io.cn </span><br><span class="line">FLUTTER_STORAGE_BASE_URL https://storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
+
+<p>Mac OS</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">~ cd ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash">增加下面两个环境变量</span></span><br><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn  </span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br><span class="line"><span class="meta">#</span><span class="bash">保存 ,激活生效</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>将下载的安装包解压，当前的版本为<code>1.7</code>，然后配置环境变量</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ vi ~/.bash_profile</span><br><span class="line"><span class="comment">#增加如下,根据你实际的位置进行配置</span></span><br><span class="line"><span class="comment">#flutter</span></span><br><span class="line"><span class="built_in">export</span> PATH=/Users/xxx/develop/flutter/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br><span class="line"><span class="comment">#验证</span></span><br><span class="line">flutter --version</span><br><span class="line">  ╔════════════════════════════════════════════════════════════════════════════╗</span><br><span class="line">  ║ A new version of Flutter is available!                                     ║</span><br><span class="line">  ║                                                                            ║</span><br><span class="line">  ║ To update to the latest version, run <span class="string">"flutter upgrade"</span>.                    ║</span><br><span class="line">  ╚════════════════════════════════════════════════════════════════════════════╝</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Flutter 1.5.4-hotfix.2 • channel stable • https://github.com/flutter/flutter.git</span><br><span class="line">Framework • revision 7a4c33425d (2 months ago) • 2019-04-29 11:05:24 -0700</span><br><span class="line">Engine • revision 52c7a1e849</span><br><span class="line">Tools • Dart 2.3.0 (build 2.3.0-dev.0.5 a1668566e5)</span><br><span class="line"><span class="comment">#提示我更新，我当时安装的是1.5.4,更新完成再次验证，更新会花点时间，使用下面的命令行走代理，或者全局也可以，根据实际情况配置</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1087;</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1087;</span><br><span class="line"><span class="built_in">export</span> all_proxy=socks5://127.0.0.1:1086</span><br><span class="line"><span class="comment">#运行doctor 检测配置，第一次安装需要安装额外的几个包，按照提示安装即可</span></span><br><span class="line">Running flutter doctor...</span><br><span class="line">Doctor summary (to see all details, run flutter doctor -v):</span><br><span class="line">[✓] Flutter (Channel stable, v1.7.8+hotfix.3, on Mac OS X 10.14.5 18F132, locale zh-Hans-CN)</span><br><span class="line">[!] Android toolchain - develop <span class="keyword">for</span> Android devices (Android SDK version 28.0.3)</span><br><span class="line">    ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses</span><br><span class="line">[!] Xcode - develop <span class="keyword">for</span> iOS and macOS (Xcode 10.2.1)</span><br><span class="line">    ! CocoaPods out of date (1.6.0 is recommended).</span><br><span class="line">        CocoaPods is used to retrieve the iOS and macOS platform side<span class="string">'s plugin code that responds to your plugin usage on the Dart side.</span></span><br><span class="line"><span class="string">        Without CocoaPods, plugins will not work on iOS or macOS.</span></span><br><span class="line"><span class="string">        For more info, see https://flutter.dev/platform-plugins</span></span><br><span class="line"><span class="string">      To upgrade:</span></span><br><span class="line"><span class="string">        brew upgrade cocoapods</span></span><br><span class="line"><span class="string">        pod setup</span></span><br><span class="line"><span class="string">[!] iOS tools - develop for iOS devices</span></span><br><span class="line"><span class="string">    ✗ ios-deploy not installed. To install:</span></span><br><span class="line"><span class="string">        brew install ios-deploy</span></span><br><span class="line"><span class="string">[✓] Android Studio (version 3.4)</span></span><br><span class="line"><span class="string">[!] IntelliJ IDEA Ultimate Edition (version 2019.1.3)</span></span><br><span class="line"><span class="string">    ✗ Flutter plugin not installed; this adds Flutter specific functionality.</span></span><br><span class="line"><span class="string">    ✗ Dart plugin not installed; this adds Dart specific functionality.</span></span><br><span class="line"><span class="string">[!] VS Code (version 1.35.1)</span></span><br><span class="line"><span class="string">    ✗ Flutter extension not installed; install from</span></span><br><span class="line"><span class="string">      https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter</span></span><br><span class="line"><span class="string">[!] Proxy Configuration</span></span><br><span class="line"><span class="string">    ! NO_PROXY is not set</span></span><br><span class="line"><span class="string">[!] Connected device</span></span><br><span class="line"><span class="string">    ! No devices available</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">! Doctor found issues in 7 categories.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#第一次安装，需要安装下面的包，brew 的使用可用搜我之前发的文章</span></span><br><span class="line"><span class="string">brew update</span></span><br><span class="line"><span class="string">brew install --HEAD usbmuxd</span></span><br><span class="line"><span class="string">brew link usbmuxd</span></span><br><span class="line"><span class="string">brew install --HEAD libimobiledevice</span></span><br><span class="line"><span class="string">brew install ideviceinstaller</span></span><br></pre></td></tr></table></figure>
+
+<p>进入flutter的目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">~ tree -L 1 </span><br><span class="line">.</span><br><span class="line">├── AUTHORS</span><br><span class="line">├── CODE_OF_CONDUCT.md</span><br><span class="line">├── CONTRIBUTING.md</span><br><span class="line">├── LICENSE</span><br><span class="line">├── PATENTS</span><br><span class="line">├── README.md</span><br><span class="line">├── analysis_options.yaml</span><br><span class="line">├── bin</span><br><span class="line">├── dartdoc_options.yaml</span><br><span class="line">├── dev</span><br><span class="line">├── examples</span><br><span class="line">├── flutter_console.bat</span><br><span class="line">├── flutter_root.iml</span><br><span class="line">├── packages</span><br><span class="line">└── version</span><br></pre></td></tr></table></figure>
+<p>在目录中看到有个<code>examples-helloworld</code> 里面有对应的示例，使用Android Studio 打开：<br><img src="first-flutter-app/WX20190711-212257@2x.png" alt="示例">,选择对应的模拟器，Android 的和iOS 都可以，也可以使用真机，然后点击右上角运行即可<br>使用29的API会出现如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Error connecting to the service protocol: HttpException: Connection closed before full header was received, uri &#x3D; http:&#x2F;&#x2F;127.0.0.1:53668&#x2F;CCQP0ed9oCM&#x3D;&#x2F;ws</span><br></pre></td></tr></table></figure>
+<p>运行后的效果：<br><img src="first-flutter-app/WX20190711-212915@2x.png" alt="效果"></p>
+<p>demo比较简单，但是感觉非常的方便，后面有空继续深入学习。</p>
+]]></content>
+      <categories>
+        <category>flutter</category>
+      </categories>
+      <tags>
+        <tag>flutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gitee码云使用webhook</title>
     <url>/2018/02/25/gitee-with-webhook/</url>
     <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。<a id="more"></a></p>
@@ -792,41 +827,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第一个flutter</title>
-    <url>/2019/07/11/first-flutter-app/</url>
-    <content><![CDATA[<p><a href="https://flutter.dev/" target="_blank" rel="noopener">Flutter</a> is Google’s portable UI toolkit for building beautiful, natively-compiled applications for mobile, web, and desktop from a single codebase.<a id="more"></a></p>
-<blockquote>
-<p>Flutter是一个由谷歌开发的开源移动应用软件开发工具包，用于为Android和iOS开发应用，同时也将是Google Fuchsia下开发应用的主要工具</p>
-</blockquote>
-<p>最近看到很多的技术网站都在发Flutter相关的技术文章，所以自己也花时间了解了一下，写了个简单的HelloWorld体验了一下，感觉很不错。简单的记录一下。</p>
-<p>###安装<br>安装环境基于MAC，Windows上也没有太大的区别。<br>####安装Xcode、Android Stuido<br>#####Xcode 安装<br>Xocde 的安装比较简单，直接去App Store搜索就可以了，<img src="first-flutter-app/WX20190711-203332@2x.png" alt="示例">之后需要打开，会自动的进行相应的配置。<br>#####Android Studio 安装<br><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Android Studio官网下载</a><br><img src="first-flutter-app/WX20190711-203810@2x.png" alt="示例"><br>当前版本为3.4.2<br>配合相关的SDK，然后增加虚拟机<img src="first-flutter-app/WX20190711-204747@2x.png" alt="示例"><br>需要注意的是，建议使用API28,28的版本flutter会报错</p>
-<h5 id="安装flutter"><a href="#安装flutter" class="headerlink" title="安装flutter"></a>安装flutter</h5><p>Flutter在国内访问的速度不太好，访问<a href="https://flutter.dev/docs/get-started/install" target="_blank" rel="noopener">Flutter</a>，进行下载配置，建议使用梯子，推荐使用喵帕斯，可以联系我获取邀请码。</p>
-<ul>
-<li>增加源站镜像环境变量(使用第三方的包的时候需要用到)</li>
-</ul>
-<p>Windows</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">我的电脑-&gt;属性-&gt;高级系统设置-&gt;高级-&gt;环境变量，新建用户环境变量,增加下面两个变量</span></span><br><span class="line">PUB_HOSTED_URL https://pub.flutter-io.cn </span><br><span class="line">FLUTTER_STORAGE_BASE_URL https://storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
-
-<p>Mac OS</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">~ cd ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash">增加下面两个环境变量</span></span><br><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn  </span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br><span class="line"><span class="meta">#</span><span class="bash">保存 ,激活生效</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<p>将下载的安装包解压，当前的版本为<code>1.7</code>，然后配置环境变量</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ vi ~/.bash_profile</span><br><span class="line"><span class="comment">#增加如下,根据你实际的位置进行配置</span></span><br><span class="line"><span class="comment">#flutter</span></span><br><span class="line"><span class="built_in">export</span> PATH=/Users/xxx/develop/flutter/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br><span class="line"><span class="comment">#验证</span></span><br><span class="line">flutter --version</span><br><span class="line">  ╔════════════════════════════════════════════════════════════════════════════╗</span><br><span class="line">  ║ A new version of Flutter is available!                                     ║</span><br><span class="line">  ║                                                                            ║</span><br><span class="line">  ║ To update to the latest version, run <span class="string">"flutter upgrade"</span>.                    ║</span><br><span class="line">  ╚════════════════════════════════════════════════════════════════════════════╝</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Flutter 1.5.4-hotfix.2 • channel stable • https://github.com/flutter/flutter.git</span><br><span class="line">Framework • revision 7a4c33425d (2 months ago) • 2019-04-29 11:05:24 -0700</span><br><span class="line">Engine • revision 52c7a1e849</span><br><span class="line">Tools • Dart 2.3.0 (build 2.3.0-dev.0.5 a1668566e5)</span><br><span class="line"><span class="comment">#提示我更新，我当时安装的是1.5.4,更新完成再次验证，更新会花点时间，使用下面的命令行走代理，或者全局也可以，根据实际情况配置</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:1087;</span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:1087;</span><br><span class="line"><span class="built_in">export</span> all_proxy=socks5://127.0.0.1:1086</span><br><span class="line"><span class="comment">#运行doctor 检测配置，第一次安装需要安装额外的几个包，按照提示安装即可</span></span><br><span class="line">Running flutter doctor...</span><br><span class="line">Doctor summary (to see all details, run flutter doctor -v):</span><br><span class="line">[✓] Flutter (Channel stable, v1.7.8+hotfix.3, on Mac OS X 10.14.5 18F132, locale zh-Hans-CN)</span><br><span class="line">[!] Android toolchain - develop <span class="keyword">for</span> Android devices (Android SDK version 28.0.3)</span><br><span class="line">    ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses</span><br><span class="line">[!] Xcode - develop <span class="keyword">for</span> iOS and macOS (Xcode 10.2.1)</span><br><span class="line">    ! CocoaPods out of date (1.6.0 is recommended).</span><br><span class="line">        CocoaPods is used to retrieve the iOS and macOS platform side<span class="string">'s plugin code that responds to your plugin usage on the Dart side.</span></span><br><span class="line"><span class="string">        Without CocoaPods, plugins will not work on iOS or macOS.</span></span><br><span class="line"><span class="string">        For more info, see https://flutter.dev/platform-plugins</span></span><br><span class="line"><span class="string">      To upgrade:</span></span><br><span class="line"><span class="string">        brew upgrade cocoapods</span></span><br><span class="line"><span class="string">        pod setup</span></span><br><span class="line"><span class="string">[!] iOS tools - develop for iOS devices</span></span><br><span class="line"><span class="string">    ✗ ios-deploy not installed. To install:</span></span><br><span class="line"><span class="string">        brew install ios-deploy</span></span><br><span class="line"><span class="string">[✓] Android Studio (version 3.4)</span></span><br><span class="line"><span class="string">[!] IntelliJ IDEA Ultimate Edition (version 2019.1.3)</span></span><br><span class="line"><span class="string">    ✗ Flutter plugin not installed; this adds Flutter specific functionality.</span></span><br><span class="line"><span class="string">    ✗ Dart plugin not installed; this adds Dart specific functionality.</span></span><br><span class="line"><span class="string">[!] VS Code (version 1.35.1)</span></span><br><span class="line"><span class="string">    ✗ Flutter extension not installed; install from</span></span><br><span class="line"><span class="string">      https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter</span></span><br><span class="line"><span class="string">[!] Proxy Configuration</span></span><br><span class="line"><span class="string">    ! NO_PROXY is not set</span></span><br><span class="line"><span class="string">[!] Connected device</span></span><br><span class="line"><span class="string">    ! No devices available</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">! Doctor found issues in 7 categories.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#第一次安装，需要安装下面的包，brew 的使用可用搜我之前发的文章</span></span><br><span class="line"><span class="string">brew update</span></span><br><span class="line"><span class="string">brew install --HEAD usbmuxd</span></span><br><span class="line"><span class="string">brew link usbmuxd</span></span><br><span class="line"><span class="string">brew install --HEAD libimobiledevice</span></span><br><span class="line"><span class="string">brew install ideviceinstaller</span></span><br></pre></td></tr></table></figure>
-
-<p>进入flutter的目录</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">~ tree -L 1 </span><br><span class="line">.</span><br><span class="line">├── AUTHORS</span><br><span class="line">├── CODE_OF_CONDUCT.md</span><br><span class="line">├── CONTRIBUTING.md</span><br><span class="line">├── LICENSE</span><br><span class="line">├── PATENTS</span><br><span class="line">├── README.md</span><br><span class="line">├── analysis_options.yaml</span><br><span class="line">├── bin</span><br><span class="line">├── dartdoc_options.yaml</span><br><span class="line">├── dev</span><br><span class="line">├── examples</span><br><span class="line">├── flutter_console.bat</span><br><span class="line">├── flutter_root.iml</span><br><span class="line">├── packages</span><br><span class="line">└── version</span><br></pre></td></tr></table></figure>
-<p>在目录中看到有个<code>examples-helloworld</code> 里面有对应的示例，使用Android Studio 打开：<br><img src="first-flutter-app/WX20190711-212257@2x.png" alt="示例">,选择对应的模拟器，Android 的和iOS 都可以，也可以使用真机，然后点击右上角运行即可<br>使用29的API会出现如下错误：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Error connecting to the service protocol: HttpException: Connection closed before full header was received, uri &#x3D; http:&#x2F;&#x2F;127.0.0.1:53668&#x2F;CCQP0ed9oCM&#x3D;&#x2F;ws</span><br></pre></td></tr></table></figure>
-<p>运行后的效果：<br><img src="first-flutter-app/WX20190711-212915@2x.png" alt="效果"></p>
-<p>demo比较简单，但是感觉非常的方便，后面有空继续深入学习。</p>
-]]></content>
-      <categories>
-        <category>flutter</category>
-      </categories>
-      <tags>
-        <tag>flutter</tag>
       </tags>
   </entry>
   <entry>
@@ -890,25 +890,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>使用kubeadm安装kubernetes集群(待续)</title>
-    <url>/2017/12/02/kubeadm-install-kubernetes/</url>
-    <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
-<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>建议使用daocloud提供的脚本进行安装，速度很快</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/docker | sh <span class="comment">#适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker &amp;&amp; systemctl start docker <span class="comment">#设置开机启动，启动docker</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装kubeadm-kubelet-and-kubectl"><a href="#安装kubeadm-kubelet-and-kubectl" class="headerlink" title="安装kubeadm, kubelet and kubectl"></a>安装kubeadm, kubelet and kubectl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line">$ setenforce 0 <span class="comment">#关闭SELinux</span></span><br><span class="line">$ yum install -y kubelet kubeadm kubectl</span><br><span class="line">$ systemctl <span class="built_in">enable</span> kubelet &amp;&amp; systemctl start kubelet <span class="comment"># 设置开机启动，启动</span></span><br></pre></td></tr></table></figure>
-<p>安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum --enablerepo=kubernetes clean metadata <span class="comment"># 如果还是不行，需要先清理缓存</span></span><br><span class="line">$ yum clean metadata</span><br><span class="line">$ yum clean all</span><br><span class="line">$ rm -rf /var/cache/yum</span><br></pre></td></tr></table></figure>
-<h3 id="使用-kubeadm-创建集群"><a href="#使用-kubeadm-创建集群" class="headerlink" title="使用 kubeadm 创建集群"></a>使用 kubeadm 创建集群</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubeadm init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
-<p>待续。。。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 并发编程学习</title>
     <url>/2018/06/13/java-concurrency-study/</url>
     <content><![CDATA[<h3 id="关于并发"><a href="#关于并发" class="headerlink" title="关于并发"></a>关于并发</h3><p>并发在开发中广泛的应用，非常的重要，最近在读《Java并发编程的艺术》艺术，希望写一些东西来记录和巩固。<a id="more"></a></p>
@@ -937,6 +918,25 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>concurrency</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用kubeadm安装kubernetes集群(待续)</title>
+    <url>/2017/12/02/kubeadm-install-kubernetes/</url>
+    <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>建议使用daocloud提供的脚本进行安装，速度很快</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/docker | sh <span class="comment">#适用于Ubuntu，Debian,Centos等大部分Linux，会3小时同步一次Docker官方资源</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker &amp;&amp; systemctl start docker <span class="comment">#设置开机启动，启动docker</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装kubeadm-kubelet-and-kubectl"><a href="#安装kubeadm-kubelet-and-kubectl" class="headerlink" title="安装kubeadm, kubelet and kubectl"></a>安装kubeadm, kubelet and kubectl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line">$ setenforce 0 <span class="comment">#关闭SELinux</span></span><br><span class="line">$ yum install -y kubelet kubeadm kubectl</span><br><span class="line">$ systemctl <span class="built_in">enable</span> kubelet &amp;&amp; systemctl start kubelet <span class="comment"># 设置开机启动，启动</span></span><br></pre></td></tr></table></figure>
+<p>安装的过程有失败，提示执行yum –enablerepo=kubernetes clean metadata</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum --enablerepo=kubernetes clean metadata <span class="comment"># 如果还是不行，需要先清理缓存</span></span><br><span class="line">$ yum clean metadata</span><br><span class="line">$ yum clean all</span><br><span class="line">$ rm -rf /var/cache/yum</span><br></pre></td></tr></table></figure>
+<h3 id="使用-kubeadm-创建集群"><a href="#使用-kubeadm-创建集群" class="headerlink" title="使用 kubeadm 创建集群"></a>使用 kubeadm 创建集群</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ kubeadm init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
+<p>待续。。。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -994,6 +994,17 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Netty 学习记录</title>
+    <url>/2018/04/11/netty-study/</url>
+    <content><![CDATA[<h3 id="Netty-核心组件"><a href="#Netty-核心组件" class="headerlink" title="Netty 核心组件"></a>Netty 核心组件</h3><ul>
+<li>Channel</li>
+<li>回调</li>
+<li>Future</li>
+<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Nginx 负载均衡策略</title>
     <url>/2017/10/12/nginx-load-balance-strategy/</url>
     <content><![CDATA[<p>Nginx 作为高性能web服务器，负载均衡是其基本功能之一。 <code>注：负载均衡至少需要两台机器</code> <a id="more"></a></p>
@@ -1030,17 +1041,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       <tags>
         <tag>Nginx</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Netty 学习记录</title>
-    <url>/2018/04/11/netty-study/</url>
-    <content><![CDATA[<h3 id="Netty-核心组件"><a href="#Netty-核心组件" class="headerlink" title="Netty 核心组件"></a>Netty 核心组件</h3><ul>
-<li>Channel</li>
-<li>回调</li>
-<li>Future</li>
-<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>Nginx 学习日志 1</title>
@@ -1094,7 +1094,9 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <li>include 语句允许组合多个配置文件以提升可维护性</li>
 <li>使用#符号添加注释，提高可读性</li>
 <li>使用$符变量</li>
-<li>部分指令的参数支持正则表达式</li>
+<li>部分指令的参数支持正则表达式<a id="more"></a>
+
+</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># nginx.conf</span></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    root           html;</span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></span><br><span class="line">        <span class="comment"># concurs with nginx's one</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">        <span class="comment">#    deny  all;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       8000;</span></span><br><span class="line">    <span class="comment">#    listen       somename:8080;</span></span><br><span class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># HTTPS server</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       443 ssl;</span></span><br><span class="line">    <span class="comment">#    server_name  localhost;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></span><br><span class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></span><br><span class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></span><br><span class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br></pre></td></tr></table></figure>
 
@@ -1461,12 +1463,14 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>pandas学习笔记-3</title>
-    <url>/2018/09/26/study-pandas-notes-3/</url>
-    <content><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py" target="_blank" rel="noopener">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'title'</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'duration'</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">'content_rating'</span>, <span class="string">'duration'</span>]))</span><br></pre></td></tr></table></figure>
-<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py" target="_blank" rel="noopener">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">'genre'</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">'genre'</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
+    <title>pandas学习笔记-2</title>
+    <url>/2018/09/25/study-pandas-notes-2/</url>
+    <content><![CDATA[<h4 id="3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py"><a href="#3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py" class="headerlink" title="3.为什么pandas命令以括号结尾，其他的命令不呢？(源码见demo3.py)"></a>3.为什么pandas命令以括号结尾，其他的命令不呢？(<a href="https://github.com/junhuali/study-pandas/blob/master/demo3.py" target="_blank" rel="noopener">源码见demo3.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">head = movies.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">describe = movies.describe()</span><br><span class="line">print(describe)</span><br><span class="line"></span><br><span class="line">shape = movies.shape</span><br><span class="line">print(shape)</span><br><span class="line"></span><br><span class="line">dtypes = movies.dtypes</span><br><span class="line">print(dtypes)</span><br><span class="line"></span><br><span class="line">print(type(movies))</span><br><span class="line"></span><br><span class="line">movies.describe(include=[<span class="string">'object'</span>])</span><br></pre></td></tr></table></figure>
 
-<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
+<h4 id="4-在pandas-DataFrame-中重命名列名-源码见demo4-py"><a href="#4-在pandas-DataFrame-中重命名列名-源码见demo4-py" class="headerlink" title="4. 在pandas DataFrame 中重命名列名(源码见demo4.py)"></a>4. 在pandas DataFrame 中重命名列名(<a href="https://github.com/junhuali/study-pandas/blob/master/demo4.py" target="_blank" rel="noopener">源码见demo4.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line"></span><br><span class="line">head = ufo.head()</span><br><span class="line"></span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.rename(columns=&#123;<span class="string">'Colors Reported'</span>: <span class="string">'Colors_Reported'</span>, <span class="string">'Shape Reported'</span>: <span class="string">'Shape_Reported'</span>&#125;, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo_cols = &#123;<span class="string">'city'</span>, <span class="string">'colors reported'</span>, <span class="string">'shape reported'</span>, <span class="string">'state'</span>, <span class="string">'time'</span>&#125;</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo_cols</span><br><span class="line"></span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>, names=ufo_cols, header=<span class="number">0</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo.columns.str.replace(<span class="string">' '</span>, <span class="string">'_'</span>)</span><br><span class="line">print(ufo.columns)</span><br></pre></td></tr></table></figure>
+<h4 id="5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py"><a href="#5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py" class="headerlink" title="5.在pandas DataFrame 中移除指定的行和列(源码见demo5.py)"></a>5.在pandas DataFrame 中移除指定的行和列(<a href="https://github.com/junhuali/study-pandas/blob/master/demo5.py" target="_blank" rel="noopener">源码见demo5.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># axis=0 按行 axi=1 按列</span></span><br><span class="line">ufo.drop(<span class="string">'Colors Reported'</span>, axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="string">'City'</span>, <span class="string">'State'</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="number">0</span>, <span class="number">1</span>], axis=<span class="number">0</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br></pre></td></tr></table></figure>
+
+<p>视频p4<br>讲解了怎么通过使用ipython notebook ，调出对应pandas的方法或者函数的说明，在使用的时候可以通过点击对应方法，然后加上<code>shift+tab</code>键，<br>查看对应的说明。<br>视频p5<br>讲解了通过几种方法修改数据的列名<br>视频p6<br>讲解了通过drop 方法，移除对应的行列，通过这个方法，可以将数据中不需要的部分或者是无效数据进行清洗</p>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -1476,14 +1480,12 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>pandas学习笔记-2</title>
-    <url>/2018/09/25/study-pandas-notes-2/</url>
-    <content><![CDATA[<h4 id="3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py"><a href="#3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py" class="headerlink" title="3.为什么pandas命令以括号结尾，其他的命令不呢？(源码见demo3.py)"></a>3.为什么pandas命令以括号结尾，其他的命令不呢？(<a href="https://github.com/junhuali/study-pandas/blob/master/demo3.py" target="_blank" rel="noopener">源码见demo3.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">head = movies.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">describe = movies.describe()</span><br><span class="line">print(describe)</span><br><span class="line"></span><br><span class="line">shape = movies.shape</span><br><span class="line">print(shape)</span><br><span class="line"></span><br><span class="line">dtypes = movies.dtypes</span><br><span class="line">print(dtypes)</span><br><span class="line"></span><br><span class="line">print(type(movies))</span><br><span class="line"></span><br><span class="line">movies.describe(include=[<span class="string">'object'</span>])</span><br></pre></td></tr></table></figure>
+    <title>pandas学习笔记-3</title>
+    <url>/2018/09/26/study-pandas-notes-3/</url>
+    <content><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py" target="_blank" rel="noopener">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">'title'</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'title'</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">'duration'</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">'content_rating'</span>, <span class="string">'duration'</span>]))</span><br></pre></td></tr></table></figure>
+<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py" target="_blank" rel="noopener">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/imdb_1000.csv'</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">'genre'</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">'genre'</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-在pandas-DataFrame-中重命名列名-源码见demo4-py"><a href="#4-在pandas-DataFrame-中重命名列名-源码见demo4-py" class="headerlink" title="4. 在pandas DataFrame 中重命名列名(源码见demo4.py)"></a>4. 在pandas DataFrame 中重命名列名(<a href="https://github.com/junhuali/study-pandas/blob/master/demo4.py" target="_blank" rel="noopener">源码见demo4.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line"></span><br><span class="line">head = ufo.head()</span><br><span class="line"></span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.rename(columns=&#123;<span class="string">'Colors Reported'</span>: <span class="string">'Colors_Reported'</span>, <span class="string">'Shape Reported'</span>: <span class="string">'Shape_Reported'</span>&#125;, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo_cols = &#123;<span class="string">'city'</span>, <span class="string">'colors reported'</span>, <span class="string">'shape reported'</span>, <span class="string">'state'</span>, <span class="string">'time'</span>&#125;</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo_cols</span><br><span class="line"></span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>, names=ufo_cols, header=<span class="number">0</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo.columns.str.replace(<span class="string">' '</span>, <span class="string">'_'</span>)</span><br><span class="line">print(ufo.columns)</span><br></pre></td></tr></table></figure>
-<h4 id="5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py"><a href="#5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py" class="headerlink" title="5.在pandas DataFrame 中移除指定的行和列(源码见demo5.py)"></a>5.在pandas DataFrame 中移除指定的行和列(<a href="https://github.com/junhuali/study-pandas/blob/master/demo5.py" target="_blank" rel="noopener">源码见demo5.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">'https://blog.searchinfogo.com/download/data/data/ufo.csv'</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># axis=0 按行 axi=1 按列</span></span><br><span class="line">ufo.drop(<span class="string">'Colors Reported'</span>, axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="string">'City'</span>, <span class="string">'State'</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="number">0</span>, <span class="number">1</span>], axis=<span class="number">0</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br></pre></td></tr></table></figure>
-
-<p>视频p4<br>讲解了怎么通过使用ipython notebook ，调出对应pandas的方法或者函数的说明，在使用的时候可以通过点击对应方法，然后加上<code>shift+tab</code>键，<br>查看对应的说明。<br>视频p5<br>讲解了通过几种方法修改数据的列名<br>视频p6<br>讲解了通过drop 方法，移除对应的行列，通过这个方法，可以将数据中不需要的部分或者是无效数据进行清洗</p>
+<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
 ]]></content>
       <categories>
         <category>Python</category>
