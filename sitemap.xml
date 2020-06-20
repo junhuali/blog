@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.searchinfogo.com/2020/06/18/nginx-study-3/</loc>
+    
+    <lastmod>2020-06-20T03:31:54.086Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.searchinfogo.com/2020/06/10/nginx-study-2/</loc>
     
     <lastmod>2020-06-10T03:27:27.706Z</lastmod>
@@ -170,14 +177,14 @@
   </url>
   
   <url>
-    <loc>https://blog.searchinfogo.com/2017/12/07/regular-expression-basic/</loc>
+    <loc>https://blog.searchinfogo.com/2017/12/02/server-over-the-wall/</loc>
     
     <lastmod>2019-10-20T04:54:47.407Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.searchinfogo.com/2017/12/02/server-over-the-wall/</loc>
+    <loc>https://blog.searchinfogo.com/2017/12/07/regular-expression-basic/</loc>
     
     <lastmod>2019-10-20T04:54:47.407Z</lastmod>
     
@@ -247,14 +254,14 @@
   </url>
   
   <url>
-    <loc>https://blog.searchinfogo.com/2017/12/02/kubeadm-install-kubernetes/</loc>
+    <loc>https://blog.searchinfogo.com/2017/09/23/life/</loc>
     
     <lastmod>2019-10-20T04:54:47.397Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.searchinfogo.com/2017/09/23/life/</loc>
+    <loc>https://blog.searchinfogo.com/2017/12/02/kubeadm-install-kubernetes/</loc>
     
     <lastmod>2019-10-20T04:54:47.397Z</lastmod>
     
@@ -359,14 +366,14 @@
   </url>
   
   <url>
-    <loc>https://blog.searchinfogo.com/2019/06/25/centos7-docker-install-tutorial/</loc>
+    <loc>https://blog.searchinfogo.com/2018/02/27/cnetos-install-pyenv/</loc>
     
     <lastmod>2019-10-20T04:54:47.366Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.searchinfogo.com/2018/02/27/cnetos-install-pyenv/</loc>
+    <loc>https://blog.searchinfogo.com/2019/06/25/centos7-docker-install-tutorial/</loc>
     
     <lastmod>2019-10-20T04:54:47.366Z</lastmod>
     
