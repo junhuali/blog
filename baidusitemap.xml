@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/</loc>
+    <lastmod>2020-08-27</lastmod>
+  </url>
+  <url>
     <loc>https://blog.searchinfogo.com/2020/07/28/linux-install-wkhtmltox/</loc>
+    <lastmod>2020-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/</loc>
     <lastmod>2020-08-27</lastmod>
   </url>
   <url>
@@ -77,10 +85,6 @@
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
-    <loc>https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>
-  <url>
     <loc>https://blog.searchinfogo.com/2018/09/25/study-pandas-notes-2/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>
@@ -145,11 +149,11 @@
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
-    <loc>https://blog.searchinfogo.com/2017/12/02/kubeadm-install-kubernetes/</loc>
+    <loc>https://blog.searchinfogo.com/2017/09/23/life/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
-    <loc>https://blog.searchinfogo.com/2017/09/23/life/</loc>
+    <loc>https://blog.searchinfogo.com/2017/12/02/kubeadm-install-kubernetes/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
@@ -177,11 +181,11 @@
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
-    <loc>https://blog.searchinfogo.com/2017/12/04/docker-install-rabbitmq-cluster/</loc>
+    <loc>https://blog.searchinfogo.com/2017/09/30/docker-install-nexus/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
-    <loc>https://blog.searchinfogo.com/2017/09/30/docker-install-nexus/</loc>
+    <loc>https://blog.searchinfogo.com/2017/12/04/docker-install-rabbitmq-cluster/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
@@ -194,10 +198,6 @@
   </url>
   <url>
     <loc>https://blog.searchinfogo.com/2018/02/27/devops-2-springboot-docker-integrated/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.searchinfogo.com/2018/02/26/devops-1-environmental-configuration/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
