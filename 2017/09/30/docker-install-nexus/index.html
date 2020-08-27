@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype&#x2F;nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype&#x2F;nexus3) 启动镜像1docker run --restart&#x3D;&quot;always&quot; -d -p 8081:8081 --name nexu">
+  <meta name="description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype&#x2F;nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype&#x2F;nexus3) 启动镜像1docker run --restart&#x3D;&quot;always&quot; -d -p 8081:8081 -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 搭建Nexus 私服">
 <meta property="og:url" content="https://blog.searchinfogo.com/2017/09/30/docker-install-nexus/index.html">
 <meta property="og:site_name" content="Junhua&#39;s Blog">
-<meta property="og:description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype&#x2F;nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype&#x2F;nexus3) 启动镜像1docker run --restart&#x3D;&quot;always&quot; -d -p 8081:8081 --name nexu">
+<meta property="og:description" content="创建数据卷1docker volume create --name nexus-data 拉取Nexus 镜像1docker pull sonatype&#x2F;nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype&#x2F;nexus3) 启动镜像1docker run --restart&#x3D;&quot;always&quot; -d -p 8081:8081 -">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-30T05:46:02.000Z">
 <meta property="article:modified_time" content="2019-10-20T04:54:47.380Z">
@@ -304,9 +304,9 @@
       
         <h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name nexus-data</span><br></pre></td></tr></table></figure>
 <h3 id="拉取Nexus-镜像"><a href="#拉取Nexus-镜像" class="headerlink" title="拉取Nexus 镜像"></a>拉取Nexus 镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart="always" -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
-<h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a></p>
-<p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/" target="_blank" rel="noopener">https://hub.docker.com/r/sonatype/nexus3/</a></p>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
+<h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a target="_blank" rel="noopener" href="http://localhost:8081/">http://localhost:8081</a></p>
+<p>参考<a target="_blank" rel="noopener" href="https://hub.docker.com/r/sonatype/nexus3/">https://hub.docker.com/r/sonatype/nexus3/</a></p>
 
     </div>
 
@@ -384,7 +384,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据卷"><span class="nav-number">1.</span> <span class="nav-text">创建数据卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取Nexus-镜像"><span class="nav-number">2.</span> <span class="nav-text">拉取Nexus 镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动镜像"><span class="nav-number">3.</span> <span class="nav-text">启动镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问网址打开-账号-密码-admin-admin123"><span class="nav-number">4.</span> <span class="nav-text">访问网址打开(账号&#x2F;密码   admin&#x2F;admin123)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%8D%B7"><span class="nav-number">1.</span> <span class="nav-text">创建数据卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%89%E5%8F%96Nexus-%E9%95%9C%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">拉取Nexus 镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%95%9C%E5%83%8F"><span class="nav-number">3.</span> <span class="nav-text">启动镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E7%BD%91%E5%9D%80%E6%89%93%E5%BC%80-%E8%B4%A6%E5%8F%B7-%E5%AF%86%E7%A0%81-admin-admin123"><span class="nav-number">4.</span> <span class="nav-text">访问网址打开(账号&#x2F;密码   admin&#x2F;admin123)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -400,7 +400,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -413,7 +413,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -480,9 +480,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

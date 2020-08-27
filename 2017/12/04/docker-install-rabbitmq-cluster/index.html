@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -306,14 +306,14 @@
 <h3 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h3><ul>
 <li>检查是否安装过docker-compose<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose -v <span class="comment">#出现docker-compose version 1.16.1, build 6d1ac21 类似，说明安装成功</span></span><br></pre></td></tr></table></figure></li>
 <li>如果没有安装docker-compose，进行安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#服务器安装</span></span><br><span class="line">$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">$ chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></li>
-<li>在windows 和 Mac 下载对应的安装包进行安装<br><a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe" target="_blank" rel="noopener">Windows下载地址</a><br><a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">Mac下载地址</a></li>
+<li>在windows 和 Mac 下载对应的安装包进行安装<br><a target="_blank" rel="noopener" href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe">Windows下载地址</a><br><a target="_blank" rel="noopener" href="https://download.docker.com/mac/stable/Docker.dmg">Mac下载地址</a></li>
 </ul>
 <h3 id="下载对应的脚本"><a href="#下载对应的脚本" class="headerlink" title="下载对应的脚本"></a>下载对应的脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/bijukunjummen/docker-rabbitmq-cluster.git</span><br></pre></td></tr></table></figure>
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> docker-rabbitmq-cluster/cluster/</span><br><span class="line">$ docker-compose up -d <span class="comment">#启动</span></span><br></pre></td></tr></table></figure>
 <h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
 <li>登录的账号密码（可以自行在脚本里面修改）<br>user: myuser<br>password: mypass<br>然后访问<code>localhost:15672</code>进行访问</li>
 </ul>
-<p>以上使用bijukunjummen 的脚本，可参见<a href="https://github.com/bijukunjummen/docker-rabbitmq-cluster" target="_blank" rel="noopener">github</a><br>以及<a href="http://get.daocloud.io/#install-docker" target="_blank" rel="noopener">daocloud</a> docker-compose脚本</p>
+<p>以上使用bijukunjummen 的脚本，可参见<a target="_blank" rel="noopener" href="https://github.com/bijukunjummen/docker-rabbitmq-cluster">github</a><br>以及<a target="_blank" rel="noopener" href="http://get.daocloud.io/#install-docker">daocloud</a> docker-compose脚本</p>
 
     </div>
 
@@ -391,7 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">1.</span> <span class="nav-text">安装docker-compose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载对应的脚本"><span class="nav-number">2.</span> <span class="nav-text">下载对应的脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">3.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备注"><span class="nav-number">4.</span> <span class="nav-text">备注</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85docker-compose"><span class="nav-number">1.</span> <span class="nav-text">安装docker-compose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">下载对应的脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">备注</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -407,7 +407,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -420,7 +420,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -487,9 +487,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

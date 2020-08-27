@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -333,7 +333,7 @@
 </ol>
 <p>上面基本的pom配置就完成了，之后开始配置Docker相关的脚本</p>
 <h3 id="Docker脚本配置"><a href="#Docker脚本配置" class="headerlink" title="Docker脚本配置"></a>Docker脚本配置</h3><p>在src/main 目录下创建docker 文件夹，刚刚上面的pom配置里声明了Dockerfile的路径<br>创建文件Dockerfile ，注意文件没有后缀，之后增加如下脚本</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM java:8  #基本镜像</span><br><span class="line">VOLUME /tmp  #挂载文件位置，/tmp 为临时目录</span><br><span class="line">ADD devops.jar app.jar  #添加对应的jar，使用maven打包后会自动到target目录找devops.jar 文件</span><br><span class="line">ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"] # 程序启动入口</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM java:8  #基本镜像</span><br><span class="line">VOLUME /tmp  #挂载文件位置，/tmp 为临时目录</span><br><span class="line">ADD devops.jar app.jar  #添加对应的jar，使用maven打包后会自动到target目录找devops.jar 文件</span><br><span class="line">ENTRYPOINT [&quot;java&quot;,&quot;-Djava.security.egd=file:/dev/./urandom&quot;,&quot;-jar&quot;,&quot;/app.jar&quot;] # 程序启动入口</span><br></pre></td></tr></table></figure>
 
 <h3 id="打包、运行镜像"><a href="#打包、运行镜像" class="headerlink" title="打包、运行镜像"></a>打包、运行镜像</h3><p>创建对应的测试文件，打包</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package docker:build  # 一气呵成O(∩_∩)O~~</span><br></pre></td></tr></table></figure>
@@ -344,10 +344,10 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
 <p><img src="devops-2-springboot-docker-integrated/WX20180227-203234.png" alt="web服务"><br>上图说明我们的镜像打包成功<br>然后运行一下，检查镜像是否能够正常启动</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动镜像 -d 表示后台运行，-p 端口进行映射 --name docker服务名称  devops/devops:latest 运行的镜像</span></span><br><span class="line">docker run -d  -p 8080:8080 --name devops devops/devops:latest</span><br><span class="line"><span class="meta">#</span><span class="bash">执行docker ps 查看镜像是否运行</span></span><br></pre></td></tr></table></figure>
-<p><img src="devops-2-springboot-docker-integrated/WX20180227-203815.png" alt="web服务"><br>如果，说明服务是正常启动了，之后请求<br><a href="http://localhost:8080/index?name=World" target="_blank" rel="noopener">http://localhost:8080/index?name=World</a><br><img src="devops-2-springboot-docker-integrated/WX20180227-204116.png" alt="web服务"><br>能够请求成功，说明镜像部署成功</p>
+<p><img src="devops-2-springboot-docker-integrated/WX20180227-203815.png" alt="web服务"><br>如果，说明服务是正常启动了，之后请求<br><a target="_blank" rel="noopener" href="http://localhost:8080/index?name=World">http://localhost:8080/index?name=World</a><br><img src="devops-2-springboot-docker-integrated/WX20180227-204116.png" alt="web服务"><br>能够请求成功，说明镜像部署成功</p>
 <h3 id="停止释放镜像"><a href="#停止释放镜像" class="headerlink" title="停止释放镜像"></a>停止释放镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 养成好习惯，停止释放镜像</span></span><br><span class="line">docker stop 2026e45bc2ce</span><br><span class="line">docker rm 2026e45bc2ce</span><br></pre></td></tr></table></figure>
 
-<p>代码可在<a href="https://github.com/junhuali/devops-springboot" target="_blank" rel="noopener">https://github.com/junhuali/devops-springboot</a> 下载</p>
+<p>代码可在<a target="_blank" rel="noopener" href="https://github.com/junhuali/devops-springboot">https://github.com/junhuali/devops-springboot</a> 下载</p>
 
     </div>
 
@@ -427,7 +427,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目进行集成"><span class="nav-number">1.</span> <span class="nav-text">创建项目进行集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加项目对Docker的支持"><span class="nav-number">2.</span> <span class="nav-text">增加项目对Docker的支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker脚本配置"><span class="nav-number">3.</span> <span class="nav-text">Docker脚本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包、运行镜像"><span class="nav-number">4.</span> <span class="nav-text">打包、运行镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止释放镜像"><span class="nav-number">5.</span> <span class="nav-text">停止释放镜像</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E8%BF%9B%E8%A1%8C%E9%9B%86%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">创建项目进行集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E9%A1%B9%E7%9B%AE%E5%AF%B9Docker%E7%9A%84%E6%94%AF%E6%8C%81"><span class="nav-number">2.</span> <span class="nav-text">增加项目对Docker的支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Docker脚本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E3%80%81%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">打包、运行镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2%E9%87%8A%E6%94%BE%E9%95%9C%E5%83%8F"><span class="nav-number">5.</span> <span class="nav-text">停止释放镜像</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,7 +443,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -456,7 +456,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -523,9 +523,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

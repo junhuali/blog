@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -304,10 +304,10 @@
       
         <p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
 <p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
-<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart" target="_blank" rel="noopener">repl</a>新建一个<code>main.dart</code>文件</p>
+<p>学习语言的第一件事情就是准备一个环境，在<a target="_blank" rel="noopener" href="https://repl.it/languages/dart">repl</a>新建一个<code>main.dart</code>文件</p>
 <h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>点击<code>run</code><br>可以看到右边打印出来内容</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on "linux_x64"</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on &quot;linux_x64&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
 <p>Dart 也是用main做函数的入口的，跟Java很像。</p>
 <h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
 <li>Numbers</li>
@@ -322,7 +322,7 @@
 <p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
 <h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
 <li>const 表示常量在编译期能确定的值</li>
-<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。" target="_blank" rel="noopener">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
+<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a target="_blank" rel="noopener" href="https://dart.dev/guides/language),%E5%AD%A6%E4%B9%A0%E8%AF%AD%E8%A8%80%E7%9A%84%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E7%9A%84%E5%B0%B1%E6%98%AF%E7%BB%83%E4%B9%A0%EF%BC%8C%E5%A4%9A%E5%86%99%EF%BC%8C%E5%A4%9A%E6%80%9D%E8%80%83%EF%BC%8C%E5%B0%B1%E4%BC%9A%E6%9C%89%E8%BF%9B%E6%AD%A5%E3%80%82">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
 </ul>
 
     </div>
@@ -401,7 +401,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#范例，hello-world"><span class="nav-number">1.</span> <span class="nav-text">范例，hello world</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dart的变量与类型"><span class="nav-number">2.</span> <span class="nav-text">Dart的变量与类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dart的基本内置类型有："><span class="nav-number">2.1.</span> <span class="nav-text">Dart的基本内置类型有：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-number">2.2.</span> <span class="nav-text">常量</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E4%BE%8B%EF%BC%8Chello-world"><span class="nav-number">1.</span> <span class="nav-text">范例，hello world</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dart%E7%9A%84%E5%8F%98%E9%87%8F%E4%B8%8E%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">Dart的变量与类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dart%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B%E6%9C%89%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">Dart的基本内置类型有：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">常量</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -417,7 +417,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -430,7 +430,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -497,9 +497,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

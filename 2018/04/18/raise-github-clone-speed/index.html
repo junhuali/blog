@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -313,7 +313,7 @@
 <p>保存后自动生效</p>
 <p><img src="raise-github-clone-speed/WX20180418-114759@2x.png" alt="fastly"><br>通过下载Spring Boot 的源码，见上图，速度还不错。</p>
 <h3 id="通过代理提升本地的速度"><a href="#通过代理提升本地的速度" class="headerlink" title="通过代理提升本地的速度"></a>通过代理提升本地的速度</h3><p>一般我们都是使用ss的本地socks5代理，速度多快，取决于提供服务的vps的速度。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br><span class="line">git config --global http.proxy 'socks5://127.0.0.1:1080'</span><br><span class="line">git config --global https.proxy 'socks5://127.0.0.1:1080'</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br><span class="line">git config --global http.proxy &#x27;socks5://127.0.0.1:1080&#x27;</span><br><span class="line">git config --global https.proxy &#x27;socks5://127.0.0.1:1080&#x27;</span><br></pre></td></tr></table></figure>
 <p><img src="raise-github-clone-speed/WX20180418-115544@2x.png" alt="socks5"></p>
 <p>上面的配置需要注意自己的socks5 端口，Mac 和 Windows的一般是1080，Mac的根据自己设置的进行修改，比如我的是1086，所以需要改成<code>socks5://127.0.0.1:1086</code>。</p>
 <p>通过上面的两个方法，可以大幅提升服务器和本地的GitHub代码clone 速度，解决漫长的等待，特别是比较大的仓库。</p>
@@ -394,7 +394,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github-速度慢"><span class="nav-number">1.</span> <span class="nav-text">Github 速度慢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改hosts"><span class="nav-number">2.</span> <span class="nav-text">修改hosts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过代理提升本地的速度"><span class="nav-number">3.</span> <span class="nav-text">通过代理提升本地的速度</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github-%E9%80%9F%E5%BA%A6%E6%85%A2"><span class="nav-number">1.</span> <span class="nav-text">Github 速度慢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9hosts"><span class="nav-number">2.</span> <span class="nav-text">修改hosts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E6%8F%90%E5%8D%87%E6%9C%AC%E5%9C%B0%E7%9A%84%E9%80%9F%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">通过代理提升本地的速度</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -410,7 +410,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -423,7 +423,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -490,9 +490,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

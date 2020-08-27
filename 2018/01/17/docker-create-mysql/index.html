@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -304,8 +304,8 @@
       
         <h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
 <h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart="always" -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
-<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code>/etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code> /etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
 
     </div>
 
@@ -383,7 +383,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#不要在生产环境中使用，在开发和测试阶段使用比较方便"><span class="nav-number">1.</span> <span class="nav-text">不要在生产环境中使用，在开发和测试阶段使用比较方便</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取镜像"><span class="nav-number">2.</span> <span class="nav-text">拉取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建volume-（比较方便，用完方便删除）"><span class="nav-number">3.</span> <span class="nav-text">创建volume （比较方便，用完方便删除）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动镜像"><span class="nav-number">4.</span> <span class="nav-text">启动镜像</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E8%A6%81%E5%9C%A8%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%9C%A8%E5%BC%80%E5%8F%91%E5%92%8C%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83%E6%96%B9%E4%BE%BF"><span class="nav-number">1.</span> <span class="nav-text">不要在生产环境中使用，在开发和测试阶段使用比较方便</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">拉取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAvolume-%EF%BC%88%E6%AF%94%E8%BE%83%E6%96%B9%E4%BE%BF%EF%BC%8C%E7%94%A8%E5%AE%8C%E6%96%B9%E4%BE%BF%E5%88%A0%E9%99%A4%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">创建volume （比较方便，用完方便删除）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%95%9C%E5%83%8F"><span class="nav-number">4.</span> <span class="nav-text">启动镜像</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -399,7 +399,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -412,7 +412,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -479,9 +479,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

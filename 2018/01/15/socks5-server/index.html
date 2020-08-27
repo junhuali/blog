@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -306,7 +306,7 @@
 <h3 id="下载源文件"><a href="#下载源文件" class="headerlink" title="下载源文件"></a>下载源文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://nchc.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">配置编译环境及安装编译SS5依赖组件</span></span><br><span class="line">yum -y install gcc automake make</span><br><span class="line">yum install gcc openldap-devel pam-devel openssl-devel</span><br></pre></td></tr></table></figure>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar xf ss5-3.8.9-8.tar.gz</span><br><span class="line">mv ss5-3.8.9-8 ss5</span><br><span class="line">cd  ss5</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 <h3 id="启动脚本加执行权限"><a href="#启动脚本加执行权限" class="headerlink" title="启动脚本加执行权限"></a>启动脚本加执行权限</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/init.d/ss5</span><br></pre></td></tr></table></figure>
-<h3 id="进行配置并启动"><a href="#进行配置并启动" class="headerlink" title="进行配置并启动"></a>进行配置并启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/ss5  </span><br><span class="line">SS5_OPTS=" -u root -b 0.0.0.0:18080" #绑定端口为18080</span><br><span class="line">systemctl start ss5 #启动服务</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">增加用户登录权限</span></span><br><span class="line">vi /etc/opt/ss5/ss5.conf  </span><br><span class="line">auth 0.0.0.0/0 - u  </span><br><span class="line">permit u 0.0.0.0/0 - 0.0.0.0/0 - - - - -</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">设置用户名和密码，一个用户和密码一行，用空格间隔</span></span><br><span class="line">vi /etc/opt/ss5/ss5.passwd  </span><br><span class="line">user1 123456</span><br><span class="line">user2 123456</span><br></pre></td></tr></table></figure>
+<h3 id="进行配置并启动"><a href="#进行配置并启动" class="headerlink" title="进行配置并启动"></a>进行配置并启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/ss5  </span><br><span class="line">SS5_OPTS=&quot; -u root -b 0.0.0.0:18080&quot; #绑定端口为18080</span><br><span class="line">systemctl start ss5 #启动服务</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">增加用户登录权限</span></span><br><span class="line">vi /etc/opt/ss5/ss5.conf  </span><br><span class="line">auth 0.0.0.0/0 - u  </span><br><span class="line">permit u 0.0.0.0/0 - 0.0.0.0/0 - - - - -</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">设置用户名和密码，一个用户和密码一行，用空格间隔</span></span><br><span class="line">vi /etc/opt/ss5/ss5.passwd  </span><br><span class="line">user1 123456</span><br><span class="line">user2 123456</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -384,7 +384,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载源文件"><span class="nav-number">2.</span> <span class="nav-text">下载源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动脚本加执行权限"><span class="nav-number">4.</span> <span class="nav-text">启动脚本加执行权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进行配置并启动"><span class="nav-number">5.</span> <span class="nav-text">进行配置并启动</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">下载源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%8A%A0%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="nav-number">4.</span> <span class="nav-text">启动脚本加执行权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE%E5%B9%B6%E5%90%AF%E5%8A%A8"><span class="nav-number">5.</span> <span class="nav-text">进行配置并启动</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -400,7 +400,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -413,7 +413,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -480,9 +480,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -311,8 +311,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_15_centos ~]#  ab -n 1000 -c 10 https://www.baidu.com/</span><br><span class="line">This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;</span><br><span class="line">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span><br><span class="line">Licensed to The Apache Software Foundation, http://www.apache.org/</span><br><span class="line"></span><br><span class="line">Benchmarking www.baidu.com (be patient)</span><br><span class="line">Completed 100 requests</span><br><span class="line">Completed 200 requests</span><br><span class="line">Completed 300 requests</span><br><span class="line">Completed 400 requests</span><br><span class="line">Completed 500 requests</span><br><span class="line">Completed 600 requests</span><br><span class="line">Completed 700 requests</span><br><span class="line">Completed 800 requests</span><br><span class="line">Completed 900 requests</span><br><span class="line">Completed 1000 requests</span><br><span class="line">Finished 1000 requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server Software:        BWS/1.1</span><br><span class="line">Server Hostname:        www.baidu.com</span><br><span class="line">Server Port:            443</span><br><span class="line">SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128</span><br><span class="line"></span><br><span class="line">Document Path:          /</span><br><span class="line">Document Length:        227 bytes</span><br><span class="line"></span><br><span class="line">Concurrency Level:      10</span><br><span class="line">Time taken for tests:   15.518 seconds</span><br><span class="line">Complete requests:      1000</span><br><span class="line">Failed requests:        0</span><br><span class="line">Write errors:           0</span><br><span class="line">Total transferred:      893000 bytes</span><br><span class="line">HTML transferred:       227000 bytes</span><br><span class="line">Requests per second:    64.44 [#/sec] (mean)</span><br><span class="line">Time per request:       155.176 [ms] (mean)</span><br><span class="line">Time per request:       15.518 [ms] (mean, across all concurrent requests)</span><br><span class="line">Transfer rate:          56.20 [Kbytes/sec] received</span><br><span class="line"></span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:      104  114   6.8    116     172</span><br><span class="line">Processing:    35   39   5.1     39     140</span><br><span class="line">Waiting:       35   38   5.1     39     140</span><br><span class="line">Total:        139  153   9.8    156     264</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line"><span class="meta">  50%</span><span class="bash">    156</span></span><br><span class="line"><span class="meta">  66%</span><span class="bash">    159</span></span><br><span class="line"><span class="meta">  75%</span><span class="bash">    160</span></span><br><span class="line"><span class="meta">  80%</span><span class="bash">    161</span></span><br><span class="line"><span class="meta">  90%</span><span class="bash">    163</span></span><br><span class="line"><span class="meta">  95%</span><span class="bash">    164</span></span><br><span class="line"><span class="meta">  98%</span><span class="bash">    165</span></span><br><span class="line"><span class="meta">  99%</span><span class="bash">    175</span></span><br><span class="line"><span class="meta"> 100%</span><span class="bash">    264 (longest request)</span></span><br></pre></td></tr></table></figure>
 <p>上面就是请求后的结果。注意请求的地址后面要加<code>/</code>否则会报无效的url。</p>
 <h4 id="Mac-上使用"><a href="#Mac-上使用" class="headerlink" title="Mac 上使用"></a>Mac 上使用</h4><p>Mac 上好像有自带的ab 工具，请求效果如下<br><img src="some-pressure-measuring-tools/WX20190628-171039@2x.png" alt="Mac 请求效果"></p>
-<h3 id="使用Jmeter"><a href="#使用Jmeter" class="headerlink" title="使用Jmeter"></a>使用Jmeter</h3><p>具体可以查看<a href="https://jmeter.apache.org/" target="_blank" rel="noopener">Jmeter</a>,后面会补充这一部分的内容</p>
-<h3 id="使用阿里云PTS"><a href="#使用阿里云PTS" class="headerlink" title="使用阿里云PTS"></a>使用阿里云PTS</h3><p>具体可参考<a href="https://www.aliyun.com/product/pts" target="_blank" rel="noopener">PTS</a></p>
+<h3 id="使用Jmeter"><a href="#使用Jmeter" class="headerlink" title="使用Jmeter"></a>使用Jmeter</h3><p>具体可以查看<a target="_blank" rel="noopener" href="https://jmeter.apache.org/">Jmeter</a>,后面会补充这一部分的内容</p>
+<h3 id="使用阿里云PTS"><a href="#使用阿里云PTS" class="headerlink" title="使用阿里云PTS"></a>使用阿里云PTS</h3><p>具体可参考<a target="_blank" rel="noopener" href="https://www.aliyun.com/product/pts">PTS</a></p>
 
     </div>
 
@@ -390,7 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CentOS7-下安装ad"><span class="nav-number">1.1.</span> <span class="nav-text">CentOS7 下安装ad</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mac-上使用"><span class="nav-number">1.2.</span> <span class="nav-text">Mac 上使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Jmeter"><span class="nav-number">2.</span> <span class="nav-text">使用Jmeter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用阿里云PTS"><span class="nav-number">3.</span> <span class="nav-text">使用阿里云PTS</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CentOS7-%E4%B8%8B%E5%AE%89%E8%A3%85ad"><span class="nav-number">1.1.</span> <span class="nav-text">CentOS7 下安装ad</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mac-%E4%B8%8A%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">Mac 上使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Jmeter"><span class="nav-number">2.</span> <span class="nav-text">使用Jmeter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91PTS"><span class="nav-number">3.</span> <span class="nav-text">使用阿里云PTS</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -406,7 +406,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -419,7 +419,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -486,9 +486,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

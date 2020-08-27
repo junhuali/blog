@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -309,9 +309,9 @@
 <h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>为了演示，需要申请一个免费域名,我是在freenom申请的，freenom自带的有免费的DNS解析，但是在国内的体验不是很好所以为了更好的体验，使用dnspod。</p>
 <p>免费的域名和DNS服务商有很多，大家可以自己去选择，上面只是举个例子。</p>
 <p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
-<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
+<h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a target="_blank" rel="noopener" href="https://letsencrypt.org/">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
 <ul>
-<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
+<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png" alt="certbot"><br>访问<a target="_blank" rel="noopener" href="https://certbot.eff.org/">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
 </li>
 <li><p>安装系统扩展包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
@@ -323,11 +323,11 @@
 </li>
 <li><p>重启nginx</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a href="https://www.rubys.ml" target="_blank" rel="noopener">https://www.rubys.ml</a></p>
+<p>访问<a href="www.rubys.ml">www.rubys.ml</a>,发现链接自动定向到<a target="_blank" rel="noopener" href="https://www.rubys.ml/">https://www.rubys.ml</a></p>
 </li>
 </ul>
 <p>增加自动续期</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">'import random; import time; time.sleep(random.random() * 3600)'</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">0 0,12 * * * python -c <span class="string">&#x27;import random; import time; time.sleep(random.random() * 3600)&#x27;</span> &amp;&amp; certbot renew</span><br></pre></td></tr></table></figure>
 
 <p>上面的方法是单域名证书的创建</p>
 <h3 id="配置Let’s-Encrypt-泛域名"><a href="#配置Let’s-Encrypt-泛域名" class="headerlink" title="配置Let’s Encrypt 泛域名"></a>配置Let’s Encrypt 泛域名</h3><p>如果配置泛域名，还需要安装一个 <code>Certbot&#39;s DNS plugins</code> 插件<br>目前的代码还不够完善，目前根据文档，可以看到只支持，通过Docker 安装，可以一次性获取下面的服务商的支持</p>
@@ -343,7 +343,7 @@
 <li>certbot-dns-rfc2136</li>
 <li>certbot-dns-route53</li>
 </ul>
-<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
+<p>目前支持的云服务商还不多<br>阿里云的话可以使用如下脚本<br><a target="_blank" rel="noopener" href="https://github.com/Neilpang/acme.sh">https://github.com/Neilpang/acme.sh</a><br>从云服务商那里获取对应的APIKey，APISecret，填入脚本,具体参考上面地址中的文档。</p>
 <p>未完待续。。。</p>
 
     </div>
@@ -422,7 +422,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#申请域名"><span class="nav-number">1.</span> <span class="nav-text">申请域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Let’s-Encrypt-单域名"><span class="nav-number">2.</span> <span class="nav-text">配置Let’s Encrypt 单域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Let’s-Encrypt-泛域名"><span class="nav-number">3.</span> <span class="nav-text">配置Let’s Encrypt 泛域名</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D"><span class="nav-number">1.</span> <span class="nav-text">申请域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AELet%E2%80%99s-Encrypt-%E5%8D%95%E5%9F%9F%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">配置Let’s Encrypt 单域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AELet%E2%80%99s-Encrypt-%E6%B3%9B%E5%9F%9F%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">配置Let’s Encrypt 泛域名</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -438,7 +438,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -451,7 +451,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -518,9 +518,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

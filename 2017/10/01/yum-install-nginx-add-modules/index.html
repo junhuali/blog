@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -403,7 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#yum-和-源码安装的区别"><span class="nav-number">1.</span> <span class="nav-text">yum 和 源码安装的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yum安装nginx"><span class="nav-number">2.</span> <span class="nav-text">yum安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-增加对应的源"><span class="nav-number">2.1.</span> <span class="nav-text">1.增加对应的源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-查看nginx信息"><span class="nav-number">2.2.</span> <span class="nav-text">2.查看nginx信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-yum安装nginx"><span class="nav-number">2.3.</span> <span class="nav-text">3.yum安装nginx</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-相关的命令"><span class="nav-number">3.</span> <span class="nav-text">nginx 相关的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-查看安装路径"><span class="nav-number">3.1.</span> <span class="nav-text">1.查看安装路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-查看编译参数"><span class="nav-number">3.2.</span> <span class="nav-text">2.查看编译参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-nginx-启动、停止、重启"><span class="nav-number">3.3.</span> <span class="nav-text">3.nginx 启动、停止、重启</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动检查是否启动成功"><span class="nav-number">4.</span> <span class="nav-text">启动检查是否启动成功</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如下显示说明正常启动："><span class="nav-number">4.1.</span> <span class="nav-text">如下显示说明正常启动：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装第三方模块"><span class="nav-number">5.</span> <span class="nav-text">安装第三方模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装源码安装需要的第三方包"><span class="nav-number">5.1.</span> <span class="nav-text">1.安装源码安装需要的第三方包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-下载对应的源码"><span class="nav-number">5.2.</span> <span class="nav-text">2.下载对应的源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-查看对应configure"><span class="nav-number">5.3.</span> <span class="nav-text">3.查看对应configure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-增加对应的模块"><span class="nav-number">5.4.</span> <span class="nav-text">4.增加对应的模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-编译"><span class="nav-number">5.5.</span> <span class="nav-text">5.编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-对可执行文件进行备份替换"><span class="nav-number">5.6.</span> <span class="nav-text">6.对可执行文件进行备份替换</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#yum-%E5%92%8C-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">yum 和 源码安装的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yum%E5%AE%89%E8%A3%85nginx"><span class="nav-number">2.</span> <span class="nav-text">yum安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%A2%9E%E5%8A%A0%E5%AF%B9%E5%BA%94%E7%9A%84%E6%BA%90"><span class="nav-number">2.1.</span> <span class="nav-text">1.增加对应的源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9F%A5%E7%9C%8Bnginx%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text">2.查看nginx信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-yum%E5%AE%89%E8%A3%85nginx"><span class="nav-number">2.3.</span> <span class="nav-text">3.yum安装nginx</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">nginx 相关的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="nav-number">3.1.</span> <span class="nav-text">1.查看安装路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9F%A5%E7%9C%8B%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">2.查看编译参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-nginx-%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2%E3%80%81%E9%87%8D%E5%90%AF"><span class="nav-number">3.3.</span> <span class="nav-text">3.nginx 启动、停止、重启</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F"><span class="nav-number">4.</span> <span class="nav-text">启动检查是否启动成功</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%B8%8B%E6%98%BE%E7%A4%BA%E8%AF%B4%E6%98%8E%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">如下显示说明正常启动：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97"><span class="nav-number">5.</span> <span class="nav-text">安装第三方模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E5%8C%85"><span class="nav-number">5.1.</span> <span class="nav-text">1.安装源码安装需要的第三方包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84%E6%BA%90%E7%A0%81"><span class="nav-number">5.2.</span> <span class="nav-text">2.下载对应的源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9F%A5%E7%9C%8B%E5%AF%B9%E5%BA%94configure"><span class="nav-number">5.3.</span> <span class="nav-text">3.查看对应configure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A2%9E%E5%8A%A0%E5%AF%B9%E5%BA%94%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="nav-number">5.4.</span> <span class="nav-text">4.增加对应的模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E7%BC%96%E8%AF%91"><span class="nav-number">5.5.</span> <span class="nav-text">5.编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%AF%B9%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%A4%87%E4%BB%BD%E6%9B%BF%E6%8D%A2"><span class="nav-number">5.6.</span> <span class="nav-text">6.对可执行文件进行备份替换</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -419,7 +419,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -432,7 +432,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -499,9 +499,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2

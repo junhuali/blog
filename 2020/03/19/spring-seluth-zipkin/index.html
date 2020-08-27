@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
@@ -303,7 +303,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://zipkin.io/quickstart.sh | bash -s</span><br><span class="line">java -jar zipkin.jar</span><br></pre></td></tr></table></figure>
 <p>docker</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9411:9411 openzipkin/zipkin</span><br></pre></td></tr></table></figure>
-<p>访问<br>任一方式启动后，访问 <a href="http://localhost:9411/zipkin/" target="_blank" rel="noopener">http://localhost:9411/zipkin/</a> ，如下图<br><img src="WX20200319-113846.png" alt="zipkin"></p>
+<p>访问<br>任一方式启动后，访问 <a target="_blank" rel="noopener" href="http://localhost:9411/zipkin/">http://localhost:9411/zipkin/</a> ，如下图<br><img src="WX20200319-113846.png" alt="zipkin"></p>
 <h3 id="项目集成"><a href="#项目集成" class="headerlink" title="项目集成"></a>项目集成</h3><p>2.pom.xml 配置</p>
 <p>增加如下依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-zipkin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -311,7 +311,7 @@
 <p>如果项目中包含  aspectjweaver 这个jar ，需要指定jar包版本为1.8.10，否则项目启动会出错</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjweaver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.8.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="配置采样等参数"><a href="#配置采样等参数" class="headerlink" title="配置采样等参数"></a>配置采样等参数</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#zipkin配置 # 指定了 Zipkin 服务器的地址</span></span><br><span class="line"><span class="string">spring.zipkin.base-url</span> <span class="string">=</span> <span class="attr">http://localhost:9411/</span> </span><br><span class="line"><span class="comment">#采样率 1.0表示全部采样</span></span><br><span class="line"><span class="string">spring.sleuth.sampler.probability</span> <span class="string">=</span> <span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置采样等参数"><a href="#配置采样等参数" class="headerlink" title="配置采样等参数"></a>配置采样等参数</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#zipkin配置 # 指定了 Zipkin 服务器的地址</span></span><br><span class="line"><span class="string">spring.zipkin.base-url</span> <span class="string">=</span> <span class="string">http://localhost:9411/</span> </span><br><span class="line"><span class="comment">#采样率 1.0表示全部采样</span></span><br><span class="line"><span class="string">spring.sleuth.sampler.probability</span> <span class="string">=</span> <span class="number">1.0</span></span><br></pre></td></tr></table></figure>
 <p>服务调用以后，就可以看到具体的调用请求时间，但是在这个过程中也碰到了一些问题</p>
 <ul>
 <li>如果屏蔽一些接口记录，例如 健康检查会产生大量的无用数据，影响查询</li>
@@ -402,7 +402,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-官方推荐直接下载打包好的应用，建议使用docker镜像或者jar"><span class="nav-number">1.</span> <span class="nav-text">下载 官方推荐直接下载打包好的应用，建议使用docker镜像或者jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目集成"><span class="nav-number">2.</span> <span class="nav-text">项目集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置采样等参数"><span class="nav-number">3.</span> <span class="nav-text">配置采样等参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果使用ES进行存储（建议使用）"><span class="nav-number">4.</span> <span class="nav-text">如果使用ES进行存储（建议使用）</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E6%89%93%E5%8C%85%E5%A5%BD%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%8C%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E6%88%96%E8%80%85jar"><span class="nav-number">1.</span> <span class="nav-text">下载 官方推荐直接下载打包好的应用，建议使用docker镜像或者jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%9B%86%E6%88%90"><span class="nav-number">2.</span> <span class="nav-text">项目集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%87%87%E6%A0%B7%E7%AD%89%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">配置采样等参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E4%BD%BF%E7%94%A8ES%E8%BF%9B%E8%A1%8C%E5%AD%98%E5%82%A8%EF%BC%88%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">如果使用ES进行存储（建议使用）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -418,7 +418,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -431,7 +431,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -498,9 +498,9 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junhua</span>
-  <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">鄂ICP备17013397号</a>
+  <a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn">鄂ICP备17013397号</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.1.1
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
