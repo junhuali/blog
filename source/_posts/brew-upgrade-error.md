@@ -2,7 +2,7 @@
 title: brew 升级应用错误
 date: 2018-05-03 11:01:00
 categories: Shell
-tags: Brew
+tags: brew
 ---
 定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。<!-- more -->
 ### brew 升级
