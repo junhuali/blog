@@ -55,7 +55,7 @@
 <p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
 <h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a href="https://letsencrypt.org/">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
 <ul>
-<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="/.com//WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
+<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="WX20180318-120435@2x.png" alt="certbot"><br>访问<a href="https://certbot.eff.org/">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
 </li>
 <li><p>安装系统扩展包</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
@@ -63,7 +63,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure></li>
 <li><p>运行certbot插件生成证书</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
-<p><img src="/.com//WX20180318-122540@2x.png" alt="certbot"></p>
+<p><img src="WX20180318-122540@2x.png" alt="certbot"></p>
 </li>
 <li><p>重启nginx</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
@@ -408,6 +408,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker 常用命令(待完善)</title>
+    <url>/2017/11/30/common-commonds/</url>
+    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS7 安装Docker</title>
     <url>/2019/06/25/centos7-docker-install-tutorial/</url>
     <content><![CDATA[<p>Docker在越来越多的项目中使用，快捷、高效的部署，为我们提供了一个统一的环境，方便部署，当然还有其他很多的优点，就不一一列举了。安装基于<a href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker官方文档</a><a id="more"></a></p>
@@ -485,19 +498,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker 常用命令(待完善)</title>
-    <url>/2017/11/30/common-commonds/</url>
-    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>npm 更换源</title>
     <url>/2018/05/03/config-npm-registry/</url>
     <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
@@ -531,13 +531,13 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
     <content><![CDATA[<h3 id="什么是DevOps"><a href="#什么是DevOps" class="headerlink" title="什么是DevOps"></a>什么是DevOps</h3><blockquote>
 <p>DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它的出现是由于软件行业日益清晰地认识到：为了按时交付软件产品和服务，开发和运营工作必须紧密合作。<a id="more"></a></p>
 </blockquote>
-<p><img src="/.com//v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg"><br>我认为DevOps更应该是一种工程师文化，促进研发、测试和运维之间的沟通和闭环协作，共同达成业务目标。同时需要相应的流程和工具去配合，并简化工作，提升效率。</p>
+<p><img src="v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg"><br>我认为DevOps更应该是一种工程师文化，促进研发、测试和运维之间的沟通和闭环协作，共同达成业务目标。同时需要相应的流程和工具去配合，并简化工作，提升效率。</p>
 <h3 id="DevOps各个阶段"><a href="#DevOps各个阶段" class="headerlink" title="DevOps各个阶段"></a>DevOps各个阶段</h3><ol>
 <li>第一阶段：流程化<br>基于Jenkins和Docker进行实施，能够初步将持续构建、持续部署、持续发布连接在一起，减少手工配置，提升效率（基于本地环境进行实践，尽可能测试出问题，为线上环境做准备）。</li>
 <li>第二阶段：自动化服务（部分）<br>基于阿里云EDAS，基本生产环境的服务全部部署在阿里云，通过使用阿里云的服务为线上的应用提供运维、发布、回滚、监控、诊断等；此阶段准备将部分非核心服务进行DevOps化；同时引入自动化测试，UI自动化、接口自动化，提高测试效率。</li>
 <li>第三阶段：智能化<br>根据实际的业务情况，通过DevOps提升开发、测试、运维效率</li>
 </ol>
-<p><img src="/.com//191800078ffdfe660fb3.jpeg" alt="如何一步步实现DevOps"><br><img src="/.com//191500078c0b39a29f95.jpeg" alt="CI/CD"><br><img src="/.com//1916000764d774a3eee4.jpeg" alt="自动化测试"><br><img src="/.com//191700078c8d4238617c.jpeg" alt="持续集成"><br><img src="/.com//191b000762026287366b.jpeg" alt="微服务最佳实践"></p>
+<p><img src="191800078ffdfe660fb3.jpeg" alt="如何一步步实现DevOps"><br><img src="191500078c0b39a29f95.jpeg" alt="CI/CD"><br><img src="1916000764d774a3eee4.jpeg" alt="自动化测试"><br><img src="191700078c8d4238617c.jpeg" alt="持续集成"><br><img src="91b000762026287366b.jpeg" alt="微服务最佳实践"></p>
 <h3 id="工具说明"><a href="#工具说明" class="headerlink" title="工具说明"></a>工具说明</h3><p>目前处于第一阶段，希望通过相应的工具链提升开发的效率，进行持续构建、持续部署（dev、test两个环境），同时在线下环境进行实验。<br>所需要用到的软件和工具:</p>
 <ul>
 <li>Jenkins</li>
@@ -584,6 +584,29 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Docker安装MongoDB(Mongo3.x)</title>
+    <url>/2017/09/23/docker-install-MongoDB/</url>
+    <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
+
+<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --restart&#x3D;&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:&#x2F;data&#x2F;db\</span><br><span class="line">          -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
+
+<p><code> --storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
+<h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>至此，MongDB 安装完成</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DevOps实践2:Spring Boot集成Docker环境</title>
     <url>/2018/02/27/devops-2-springboot-docker-integrated/</url>
     <content><![CDATA[<blockquote>
@@ -591,8 +614,8 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 </blockquote>
 <p>我们在平常学习了很多的知识，但是如果没有深入去实践，知识掌握就不会牢固，所以需要通过实践来巩固。现在大多数的业务都切换到了Spring Boot，更加复杂和庞大的业务则使用Spring Cloud，当然也有用Dubbo，所以准备在Spring Boot中集成Docker，进行服务化。 <a id="more"></a></p>
 <h3 id="创建项目进行集成"><a href="#创建项目进行集成" class="headerlink" title="创建项目进行集成"></a>创建项目进行集成</h3><p>创建一个Spring Boot 项目</p>
-<p><img src="/.com//WX20180227-174110.png" alt="名称"></p>
-<p><img src="/.com//WX20180227-174208.png" alt="web服务"></p>
+<p><img src="WX20180227-174110.png" alt="名称"></p>
+<p><img src="WX20180227-174208.png" alt="web服务"></p>
 <h3 id="增加项目对Docker的支持"><a href="#增加项目对Docker的支持" class="headerlink" title="增加项目对Docker的支持"></a>增加项目对Docker的支持</h3><ol>
 <li><p>修改pom.xml配置，增加对应的插件，可以使用Maven进行打包</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Docker 镜像前缀，放在&lt;properties&gt; 标签中</span></span><br><span class="line"> &lt;docker.image.prefix&gt;devops&lt;/docker.image.prefix&gt;</span><br></pre></td></tr></table></figure></li>
@@ -618,9 +641,9 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <p>上面说明Docker是正常启动的</p>
 <p>然后查看镜像</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p><img src="/.com//WX20180227-203234.png" alt="web服务"><br>上图说明我们的镜像打包成功<br>然后运行一下，检查镜像是否能够正常启动</p>
+<p><img src="WX20180227-203234.png" alt="web服务"><br>上图说明我们的镜像打包成功<br>然后运行一下，检查镜像是否能够正常启动</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动镜像 -d 表示后台运行，-p 端口进行映射 --name docker服务名称  devops/devops:latest 运行的镜像</span></span><br><span class="line">docker run -d  -p 8080:8080 --name devops devops/devops:latest</span><br><span class="line"><span class="meta">#</span><span class="bash">执行docker ps 查看镜像是否运行</span></span><br></pre></td></tr></table></figure>
-<p><img src="/.com//WX20180227-203815.png" alt="web服务"><br>如果，说明服务是正常启动了，之后请求<br><a href="http://localhost:8080/index?name=World">http://localhost:8080/index?name=World</a><br><img src="/.com//WX20180227-204116.png" alt="web服务"><br>能够请求成功，说明镜像部署成功</p>
+<p><img src="WX20180227-203815.png" alt="web服务"><br>如果，说明服务是正常启动了，之后请求<br><a href="http://localhost:8080/index?name=World">http://localhost:8080/index?name=World</a><br><img src="WX20180227-204116.png" alt="web服务"><br>能够请求成功，说明镜像部署成功</p>
 <h3 id="停止释放镜像"><a href="#停止释放镜像" class="headerlink" title="停止释放镜像"></a>停止释放镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 养成好习惯，停止释放镜像</span></span><br><span class="line">docker stop 2026e45bc2ce</span><br><span class="line">docker rm 2026e45bc2ce</span><br></pre></td></tr></table></figure>
 
 <p>代码可在<a href="https://github.com/junhuali/devops-springboot">https://github.com/junhuali/devops-springboot</a> 下载</p>
@@ -641,29 +664,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
 <h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
 <p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code> /etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker安装MongoDB(Mongo3.x)</title>
-    <url>/2017/09/23/docker-install-MongoDB/</url>
-    <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
-
-<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
-
-<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --restart&#x3D;&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:&#x2F;data&#x2F;db\</span><br><span class="line">          -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
-
-<p><code> --storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
-<h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>至此，MongDB 安装完成</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -740,7 +740,7 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <p>Flutter是一个由谷歌开发的开源移动应用软件开发工具包，用于为Android和iOS开发应用，同时也将是Google Fuchsia下开发应用的主要工具</p>
 </blockquote>
 <p>最近看到很多的技术网站都在发Flutter相关的技术文章，所以自己也花时间了解了一下，写了个简单的HelloWorld体验了一下，感觉很不错。简单的记录一下。</p>
-<p>###安装<br>安装环境基于MAC，Windows上也没有太大的区别。<br>####安装Xcode、Android Stuido<br>#####Xcode 安装<br>Xocde 的安装比较简单，直接去App Store搜索就可以了，<img src="/.com//WX20190711-203332@2x.png" alt="示例">之后需要打开，会自动的进行相应的配置。<br>#####Android Studio 安装<br><a href="https://developer.android.com/studio">Android Studio官网下载</a><br><img src="/.com//WX20190711-203810@2x.png" alt="示例"><br>当前版本为3.4.2<br>配合相关的SDK，然后增加虚拟机<img src="/.com//WX20190711-204747@2x.png" alt="示例"><br>需要注意的是，建议使用API28,28的版本flutter会报错</p>
+<p>###安装<br>安装环境基于MAC，Windows上也没有太大的区别。<br>####安装Xcode、Android Stuido<br>#####Xcode 安装<br>Xocde 的安装比较简单，直接去App Store搜索就可以了，<img src="WX20190711-203332@2x.png" alt="示例">之后需要打开，会自动的进行相应的配置。<br>#####Android Studio 安装<br><a href="https://developer.android.com/studio">Android Studio官网下载</a><br><img src="WX20190711-203810@2x.png" alt="示例"><br>当前版本为3.4.2<br>配合相关的SDK，然后增加虚拟机<img src="WX20190711-204747@2x.png" alt="示例"><br>需要注意的是，建议使用API28,28的版本flutter会报错</p>
 <h5 id="安装flutter"><a href="#安装flutter" class="headerlink" title="安装flutter"></a>安装flutter</h5><p>Flutter在国内访问的速度不太好，访问<a href="https://flutter.dev/docs/get-started/install">Flutter</a>，进行下载配置，建议使用梯子，推荐使用喵帕斯，可以联系我获取邀请码。</p>
 <ul>
 <li>增加源站镜像环境变量(使用第三方的包的时候需要用到)</li>
@@ -755,9 +755,9 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 
 <p>进入flutter的目录</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">~ tree -L 1 </span><br><span class="line">.</span><br><span class="line">├── AUTHORS</span><br><span class="line">├── CODE_OF_CONDUCT.md</span><br><span class="line">├── CONTRIBUTING.md</span><br><span class="line">├── LICENSE</span><br><span class="line">├── PATENTS</span><br><span class="line">├── README.md</span><br><span class="line">├── analysis_options.yaml</span><br><span class="line">├── bin</span><br><span class="line">├── dartdoc_options.yaml</span><br><span class="line">├── dev</span><br><span class="line">├── examples</span><br><span class="line">├── flutter_console.bat</span><br><span class="line">├── flutter_root.iml</span><br><span class="line">├── packages</span><br><span class="line">└── version</span><br></pre></td></tr></table></figure>
-<p>在目录中看到有个<code>examples-helloworld</code> 里面有对应的示例，使用Android Studio 打开：<br><img src="/.com//WX20190711-212257@2x.png" alt="示例">,选择对应的模拟器，Android 的和iOS 都可以，也可以使用真机，然后点击右上角运行即可<br>使用29的API会出现如下错误：</p>
+<p>在目录中看到有个<code>examples-helloworld</code> 里面有对应的示例，使用Android Studio 打开：<br><img src="WX20190711-212257@2x.png" alt="示例">,选择对应的模拟器，Android 的和iOS 都可以，也可以使用真机，然后点击右上角运行即可<br>使用29的API会出现如下错误：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Error connecting to the service protocol: HttpException: Connection closed before full header was received, uri &#x3D; http:&#x2F;&#x2F;127.0.0.1:53668&#x2F;CCQP0ed9oCM&#x3D;&#x2F;ws</span><br></pre></td></tr></table></figure>
-<p>运行后的效果：<br><img src="/.com//WX20190711-212915@2x.png" alt="效果"></p>
+<p>运行后的效果：<br><img src="WX20190711-212915@2x.png" alt="效果"></p>
 <p>demo比较简单，但是感觉非常的方便，后面有空继续深入学习。</p>
 ]]></content>
       <categories>
@@ -784,7 +784,7 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <ol>
 <li>生产公钥<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;xxxxx@xxxxx.com&quot;</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Generating public/private rsa key pair...</span></span><br><span class="line"><span class="comment"># 三次回车即可生成 ssh key</span></span><br></pre></td></tr></table></figure></li>
 <li>查看公钥<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></span><br></pre></td></tr></table></figure></li>
-<li>添加公钥<br><img src="/.com//image-2018-153940@2x.png" alt="步骤"></li>
+<li>添加公钥<br><img src="image-2018-153940@2x.png" alt="步骤"></li>
 <li>测试<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line">Welcome to Gitee.com, yourname! <span class="comment"># 返回，说明正常</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -796,11 +796,11 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <li>配置相关的脚本<br>安装gitee-webhook-handler(GitHub,GitLab,gitee 的包是不同的，不能混用)<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir /opt/webhook <span class="comment">#创建目录</span></span><br><span class="line"><span class="built_in">cd</span> /opt/webhook</span><br><span class="line">npm init <span class="comment"># 初始化项目</span></span><br><span class="line">npm install  gitee-webhook-handler --save <span class="comment"># 当前的版本为v0.1.2</span></span><br></pre></td></tr></table></figure></li>
 <li>创建对应的webhook服务<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim webhook.js</span><br><span class="line"></span><br><span class="line">var http = require(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line">var createHandler = require(<span class="string">&#x27;gitee-webhook-handler&#x27;</span>)</span><br><span class="line">var handler = createHandler(&#123; path: <span class="string">&#x27;/webhooks_push&#x27;</span>, secret: <span class="string">&#x27;123456&#x27;</span> &#125;)<span class="comment"># post 所需要用到的秘钥</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> run_cmd(cmd, args, callback) &#123;</span><br><span class="line">  var spawn = require(<span class="string">&#x27;child_process&#x27;</span>).spawn;</span><br><span class="line">  var child = spawn(cmd, args);</span><br><span class="line">  var resp = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  child.stdout.on(<span class="string">&#x27;data&#x27;</span>, <span class="keyword">function</span>(buffer) &#123; resp += buffer.toString(); &#125;);</span><br><span class="line">  child.stdout.on(<span class="string">&#x27;end&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123; callback (resp) &#125;);</span><br><span class="line">&#125;</span><br><span class="line">handler.on(<span class="string">&#x27;error&#x27;</span>, <span class="keyword">function</span> (err) &#123;</span><br><span class="line">  console.error(<span class="string">&#x27;Error:&#x27;</span>, err.message)</span><br><span class="line">&#125;)</span><br><span class="line">handler.on(<span class="string">&#x27;Push Hook&#x27;</span>, <span class="keyword">function</span> (event) &#123;  <span class="comment"># 这个地方就是GitHub 和 Gitee 不一样的地方，需要注意</span></span><br><span class="line">  console.log(<span class="string">&#x27;Received a push event for %s to %s&#x27;</span>,</span><br><span class="line">    event.payload.repository.name,</span><br><span class="line">    event.payload.ref);</span><br><span class="line">    run_cmd(<span class="string">&#x27;sh&#x27;</span>, [<span class="string">&#x27;./deploy.sh&#x27;</span>], <span class="keyword">function</span>(text)&#123; console.log(text) &#125;);<span class="comment"># 需要执行的脚本位置</span></span><br><span class="line">&#125;)</span><br><span class="line">try &#123;</span><br><span class="line">  http.createServer(<span class="keyword">function</span> (req, res) &#123;</span><br><span class="line">    handler(req, res, <span class="keyword">function</span> (err) &#123;</span><br><span class="line">      res.statusCode = 404</span><br><span class="line">      res.end(<span class="string">&#x27;no such location&#x27;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;).listen(6666) <span class="comment"># 服务监听的端口，可以自行修改</span></span><br><span class="line">&#125;catch(err)&#123;</span><br><span class="line">  console.error(<span class="string">&#x27;Error:&#x27;</span>, err.message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>创建需要执行的脚本<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim deploy.sh</span><br><span class="line">git pull xxxxx  <span class="comment"># 根据自己的需要自行编写</span></span><br></pre></td></tr></table></figure></li>
-<li>测试服务<br><img src="/.com//WX20180225-163439@2x.png"><br><img src="/.com//WX20180225-163748@2x.png"><br>显示ok，说明成功</li>
+<li>测试服务<br><img src="WX20180225-163439@2x.png"><br><img src="WX20180225-163748@2x.png"><br>显示ok，说明成功</li>
 </ol>
 <h3 id="使用pm2应用进程管理器"><a href="#使用pm2应用进程管理器" class="headerlink" title="使用pm2应用进程管理器"></a>使用pm2应用进程管理器</h3><p>使用node 启动服务不是很方便，推荐使用pm2</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pm2</span><br><span class="line">pm2 start webhook.js</span><br><span class="line">pm2 monit <span class="comment"># 可以通过此命令查看服务的状态</span></span><br></pre></td></tr></table></figure>
-<p><img src="/.com//WX20180225-164721@2x.png"><br>上图显示了一些应用的基本信息，可以更好的观察到服务的状态</p>
+<p><img src="WX20180225-164721@2x.png"><br>上图显示了一些应用的基本信息，可以更好的观察到服务的状态</p>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>配置完成后，只要pull代码到仓库，就会触发webhook执行脚本，十分的方便，同时减少了工作量，相对采用轮询的方式消耗的资源更小。</p>
 <p>参考：<a href="https://www.npmjs.com/package/gitee-webhook-handler">https://www.npmjs.com/package/gitee-webhook-handler</a></p>
 ]]></content>
@@ -903,17 +903,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>生活</title>
-    <url>/2017/09/23/life/</url>
-    <content><![CDATA[<h3 id="日常生活趣事记录"><a href="#日常生活趣事记录" class="headerlink" title="日常生活趣事记录"></a>日常生活趣事记录</h3>]]></content>
-      <categories>
-        <category>Other</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用kubeadm安装kubernetes集群(待续)</title>
     <url>/2017/12/02/kubeadm-install-kubernetes/</url>
     <content><![CDATA[<p>因为国内服务器无法访问google，所以服务器需要科学上网<br>可以看我之前的文章，服务器科学上网<a id="more"></a></p>
@@ -927,6 +916,17 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 ]]></content>
       <categories>
         <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>生活</title>
+    <url>/2017/09/23/life/</url>
+    <content><![CDATA[<h3 id="日常生活趣事记录"><a href="#日常生活趣事记录" class="headerlink" title="日常生活趣事记录"></a>日常生活趣事记录</h3>]]></content>
+      <categories>
+        <category>Other</category>
       </categories>
       <tags>
         <tag>Docker</tag>
@@ -967,17 +967,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Netty 学习记录</title>
-    <url>/2018/04/11/netty-study/</url>
-    <content><![CDATA[<h3 id="Netty-核心组件"><a href="#Netty-核心组件" class="headerlink" title="Netty 核心组件"></a>Netty 核心组件</h3><ul>
-<li>Channel</li>
-<li>回调</li>
-<li>Future</li>
-<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>MD5、SALT加密浅析</title>
     <url>/2018/11/06/md5-and-salt-encryption/</url>
     <content><![CDATA[<p>密码的保存是开发的过程中必不可少的一部分，通常我们一般使用MD5加密，来对密码安全进行简单的加强，但是只是使用MD5进行加密，如果密码相同，MD5值就会一样，<br>通过一些在线的MD5解析网站的解析，密码大概率就会被解析出来，使用相同密码的人，也会受到影响。通过“加盐” ，可以提高密码被破解的难度。<a id="more"></a></p>
@@ -1007,28 +996,39 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Netty 学习记录</title>
+    <url>/2018/04/11/netty-study/</url>
+    <content><![CDATA[<h3 id="Netty-核心组件"><a href="#Netty-核心组件" class="headerlink" title="Netty 核心组件"></a>Netty 核心组件</h3><ul>
+<li>Channel</li>
+<li>回调</li>
+<li>Future</li>
+<li>事件和ChannelHandler<h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4>Channel 是Java NIO 的一个基本构造，是数据的载体，可以被打开或者关闭，连接或者断开连接。<h4 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h4>一个回调就是一个方法，一个指向已经被提供给另外一个方法的方法的引用。Netty 中使用回调来处理事件。<h4 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h4>Future 提供了另一种在操作完成时通知应用程序的方式。<h4 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h4>ChannelHandler 是 Netty</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Nginx 负载均衡策略</title>
     <url>/2017/10/12/nginx-load-balance-strategy/</url>
     <content><![CDATA[<p>Nginx 作为高性能web服务器，负载均衡是其基本功能之一。 <code>注：负载均衡至少需要两台机器</code> <a id="more"></a></p>
 <h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡可以将请求前端的请求分担到后端多个节点上，提升系统的响应和处理能力。</p>
 <h3 id="负载均衡策略"><a href="#负载均衡策略" class="headerlink" title="负载均衡策略"></a>负载均衡策略</h3><p>负载均衡的策略可以大致分为两大类：<code>内置策略</code> 和<code>扩展策略</code><br>内置策略：一般会直接编译进Nginx内核，常用的有、轮询、ip hash、最少连接<br>扩展策略：fair、url hash等</p>
 <h4 id="内置策略"><a href="#内置策略" class="headerlink" title="内置策略"></a>内置策略</h4><ul>
-<li><p>轮询策略（轮询加权/round-robin）<br><br><code>到应用服务器的请求以round-robin/轮询的方式被分发</code><br><br><code>配置</code></p>
+<li><p>轮询策略（轮询加权/round-robin）</br><br><code>到应用服务器的请求以round-robin/轮询的方式被分发</code></br><br><code>配置</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080 weight=1 fail_timeout=20s;</span><br><span class="line">        server 192.168.0.101:8080 weight=2 fail_timeout=20s;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>ip hash <br><br><code>使用hash算法来决定下一个请求要选择哪个服务器(基于客户端IP地址)</code><br><br><code>配置</code></p>
+<li><p>ip hash </br><br><code>使用hash算法来决定下一个请求要选择哪个服务器(基于客户端IP地址)</code></br><br><code>配置</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        ip_hash;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>最少连接（least_conn) <br><br><code>下一个请求将被分派到活动连接数量最少的服务器</code><br><br><code>配置</code></p>
+<li><p>最少连接（least_conn) </br><br><code>下一个请求将被分派到活动连接数量最少的服务器</code></br><br><code>配置</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        least_conn;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h4 id="扩展策略"><a href="#扩展策略" class="headerlink" title="扩展策略"></a>扩展策略</h4><ul>
-<li><p>fair<br><br><code>配置</code></p>
+<li><p>fair</br><br><code>配置</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        fair;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>url hash<br><br><code>配置</code></p>
+<li><p>url hash</br><br><code>配置</code></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">    upstream tomcats &#123;</span><br><span class="line">        server 192.168.0.100:8080;</span><br><span class="line">        server 192.168.0.101:8080;</span><br><span class="line">        <span class="built_in">hash</span> <span class="variable">$request_uri</span>;</span><br><span class="line">        hash_method crc32;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name www.searchinfogo.com</span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://tomcats;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># ... 省略其它配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -1049,7 +1049,7 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
     <url>/2020/06/05/nginx-study-1/</url>
     <content><![CDATA[<h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><p>之前的时候写过<code>Centos yum 安装nginx 后增加模块</code>,源码安装的时候一笔带过，最近在学习Nginx其中的一些知识点，所以记录一下手动安装的过程，以及相关的配置。<a id="more"></a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Nginx 一般可以去官网下载，<a href="https://www.nginx.org/">Nginx</a>,Nginx也有对应的商业版本<a href="https://www.nginx.com/">Nginx Plus</a>, 还有一些其他的基于Nginx开发的版本，<a href="https://tengine.taobao.org/">Tengine</a>和<a href="http://openresty.org/">OpenResty</a>都是比较有名的。</p>
-<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://nginx.org/en/download.html">Nginx下载</a>,如下图，进入到下载页面，使用<code>stable version</code>稳定版。<br><img src="/.com//WX20200605-151113@2x.png" alt="nginx"></p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://nginx.org/en/download.html">Nginx下载</a>,如下图，进入到下载页面，使用<code>stable version</code>稳定版。<br><img src="WX20200605-151113@2x.png" alt="nginx"></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载</span></span><br><span class="line">wget https://nginx.org/download/nginx-1.18.0.tar.gz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -xzf nginx-1.18.0.tar.gz</span><br></pre></td></tr></table></figure>
 <h3 id="目录说明"><a href="#目录说明" class="headerlink" title="目录说明"></a>目录说明</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">cd</span> nginx-1.18.0/</span><br><span class="line"></span><br><span class="line">tree -L 1 (查看1层目录，如果没有tree 命令 yum -y install tree 进行安装 )</span><br><span class="line"></span><br><span class="line">.</span><br><span class="line">├── auto         <span class="comment"># 编译、lib库、操作系统判断</span></span><br><span class="line">├── CHANGES      <span class="comment"># feature、版本变更、bugfix</span></span><br><span class="line">├── CHANGES.ru   <span class="comment"># 俄语changes</span></span><br><span class="line">├── conf         <span class="comment"># 示例文件</span></span><br><span class="line">├── configure    <span class="comment"># 生成中间文件</span></span><br><span class="line">├── contrib      <span class="comment"># vim等相关配置</span></span><br><span class="line">├── html         <span class="comment"># 标准文件页面50</span></span><br><span class="line">├── LICENSE      <span class="comment"># LICENSE</span></span><br><span class="line">├── man          <span class="comment"># 帮助文件</span></span><br><span class="line">├── README       <span class="comment">#</span></span><br><span class="line">└── src          <span class="comment"># 源码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制vim 配置，可以让nginx配置显示颜色，更加方便的配置</span></span><br><span class="line">cp -r contrib/vim/* ~/.vim/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1226,22 +1226,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>python通过使用requirements.txt文件记录管理依赖包</title>
-    <url>/2018/03/07/python-requirements/</url>
-    <content><![CDATA[<p>python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。<a id="more"></a></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入项目目录创建requirements.txt文件</span></span><br><span class="line">touch requirements.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将项目中使用的包冻结（freeze）到requirements.txt文件中</span></span><br><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure>
-<p>当把项目上传到服务器以后可以执行下面的命令安装对应的包</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">通过requirements.txt 文件中的记录安装依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>通过上面的方法就能将本地的包安装在服务器上了，保证了两个环境中的依赖一致，一般情况是在虚拟环境中使用，保证环境的干净，避免发生冲突。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python 入门</title>
     <url>/2018/03/07/pthon-tutorial/</url>
     <content><![CDATA[<blockquote>
@@ -1267,17 +1251,33 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>python通过使用requirements.txt文件记录管理依赖包</title>
+    <url>/2018/03/07/python-requirements/</url>
+    <content><![CDATA[<p>python在本地使用的时候，不需要关心使用的依赖的问题，但是将代码上传到服务器以后，服务器上可能没有对应的包，这个时候程序运行就会报错，所以为了程序能够正常启动，就需要使用requirements.txt来记录版本依赖，有点类似Java中的Maven,管理Jar包。<a id="more"></a></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入项目目录创建requirements.txt文件</span></span><br><span class="line">touch requirements.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将项目中使用的包冻结（freeze）到requirements.txt文件中</span></span><br><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure>
+<p>当把项目上传到服务器以后可以执行下面的命令安装对应的包</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">通过requirements.txt 文件中的记录安装依赖</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>通过上面的方法就能将本地的包安装在服务器上了，保证了两个环境中的依赖一致，一般情况是在虚拟环境中使用，保证环境的干净，避免发生冲突。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>提升国内服务器Github clone速度的方法</title>
     <url>/2018/04/18/raise-github-clone-speed/</url>
     <content><![CDATA[<h3 id="Github-速度慢"><a href="#Github-速度慢" class="headerlink" title="Github 速度慢"></a>Github 速度慢</h3><p>众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。<a id="more"></a></p>
 <h3 id="修改hosts"><a href="#修改hosts" class="headerlink" title="修改hosts"></a>修改hosts</h3><p>从<code>http://github.global.ssl.fastly.net.ipaddress.com/</code> 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。</p>
-<p><img src="/.com//WX20180418-113942.png" alt="fastly"></p>
+<p><img src="WX20180418-113942.png" alt="fastly"></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line"><span class="meta">#</span><span class="bash"> GitHub Start</span></span><br><span class="line">151.101.185.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
 <p>保存后自动生效</p>
-<p><img src="/.com//WX20180418-114759@2x.png" alt="fastly"><br>通过下载Spring Boot 的源码，见上图，速度还不错。</p>
+<p><img src="WX20180418-114759@2x.png" alt="fastly"><br>通过下载Spring Boot 的源码，见上图，速度还不错。</p>
 <h3 id="通过代理提升本地的速度"><a href="#通过代理提升本地的速度" class="headerlink" title="通过代理提升本地的速度"></a>通过代理提升本地的速度</h3><p>一般我们都是使用ss的本地socks5代理，速度多快，取决于提供服务的vps的速度。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br><span class="line">git config --global http.proxy &#x27;socks5://127.0.0.1:1080&#x27;</span><br><span class="line">git config --global https.proxy &#x27;socks5://127.0.0.1:1080&#x27;</span><br></pre></td></tr></table></figure>
-<p><img src="/.com//WX20180418-115544@2x.png" alt="socks5"></p>
+<p><img src="WX20180418-115544@2x.png" alt="socks5"></p>
 <p>上面的配置需要注意自己的socks5 端口，Mac 和 Windows的一般是1080，Mac的根据自己设置的进行修改，比如我的是1086，所以需要改成<code>socks5://127.0.0.1:1086</code>。</p>
 <p>通过上面的两个方法，可以大幅提升服务器和本地的GitHub代码clone 速度，解决漫长的等待，特别是比较大的仓库。</p>
 ]]></content>
@@ -1363,7 +1363,7 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <p>然后使用百度做个测试</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@VM_0_15_centos ~]#  ab -n 1000 -c 10 https://www.baidu.com/</span><br><span class="line">This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;</span><br><span class="line">Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span><br><span class="line">Licensed to The Apache Software Foundation, http://www.apache.org/</span><br><span class="line"></span><br><span class="line">Benchmarking www.baidu.com (be patient)</span><br><span class="line">Completed 100 requests</span><br><span class="line">Completed 200 requests</span><br><span class="line">Completed 300 requests</span><br><span class="line">Completed 400 requests</span><br><span class="line">Completed 500 requests</span><br><span class="line">Completed 600 requests</span><br><span class="line">Completed 700 requests</span><br><span class="line">Completed 800 requests</span><br><span class="line">Completed 900 requests</span><br><span class="line">Completed 1000 requests</span><br><span class="line">Finished 1000 requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server Software:        BWS/1.1</span><br><span class="line">Server Hostname:        www.baidu.com</span><br><span class="line">Server Port:            443</span><br><span class="line">SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128</span><br><span class="line"></span><br><span class="line">Document Path:          /</span><br><span class="line">Document Length:        227 bytes</span><br><span class="line"></span><br><span class="line">Concurrency Level:      10</span><br><span class="line">Time taken for tests:   15.518 seconds</span><br><span class="line">Complete requests:      1000</span><br><span class="line">Failed requests:        0</span><br><span class="line">Write errors:           0</span><br><span class="line">Total transferred:      893000 bytes</span><br><span class="line">HTML transferred:       227000 bytes</span><br><span class="line">Requests per second:    64.44 [#/sec] (mean)</span><br><span class="line">Time per request:       155.176 [ms] (mean)</span><br><span class="line">Time per request:       15.518 [ms] (mean, across all concurrent requests)</span><br><span class="line">Transfer rate:          56.20 [Kbytes/sec] received</span><br><span class="line"></span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:      104  114   6.8    116     172</span><br><span class="line">Processing:    35   39   5.1     39     140</span><br><span class="line">Waiting:       35   38   5.1     39     140</span><br><span class="line">Total:        139  153   9.8    156     264</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line"><span class="meta">  50%</span><span class="bash">    156</span></span><br><span class="line"><span class="meta">  66%</span><span class="bash">    159</span></span><br><span class="line"><span class="meta">  75%</span><span class="bash">    160</span></span><br><span class="line"><span class="meta">  80%</span><span class="bash">    161</span></span><br><span class="line"><span class="meta">  90%</span><span class="bash">    163</span></span><br><span class="line"><span class="meta">  95%</span><span class="bash">    164</span></span><br><span class="line"><span class="meta">  98%</span><span class="bash">    165</span></span><br><span class="line"><span class="meta">  99%</span><span class="bash">    175</span></span><br><span class="line"><span class="meta"> 100%</span><span class="bash">    264 (longest request)</span></span><br></pre></td></tr></table></figure>
 <p>上面就是请求后的结果。注意请求的地址后面要加<code>/</code>否则会报无效的url。</p>
-<h4 id="Mac-上使用"><a href="#Mac-上使用" class="headerlink" title="Mac 上使用"></a>Mac 上使用</h4><p>Mac 上好像有自带的ab 工具，请求效果如下<br><img src="/.com//WX20190628-171039@2x.png" alt="Mac 请求效果"></p>
+<h4 id="Mac-上使用"><a href="#Mac-上使用" class="headerlink" title="Mac 上使用"></a>Mac 上使用</h4><p>Mac 上好像有自带的ab 工具，请求效果如下<br><img src="WX20190628-171039@2x.png" alt="Mac 请求效果"></p>
 <h3 id="使用Jmeter"><a href="#使用Jmeter" class="headerlink" title="使用Jmeter"></a>使用Jmeter</h3><p>具体可以查看<a href="https://jmeter.apache.org/">Jmeter</a>,后面会补充这一部分的内容</p>
 <h3 id="使用阿里云PTS"><a href="#使用阿里云PTS" class="headerlink" title="使用阿里云PTS"></a>使用阿里云PTS</h3><p>具体可参考<a href="https://www.aliyun.com/product/pts">PTS</a></p>
 ]]></content>
@@ -1382,7 +1382,7 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -sSL https://zipkin.io/quickstart.sh | bash -s</span><br><span class="line">java -jar zipkin.jar</span><br></pre></td></tr></table></figure>
 <p>docker</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -d -p 9411:9411 openzipkin/zipkin</span><br></pre></td></tr></table></figure>
-<p>访问<br>任一方式启动后，访问 <a href="http://localhost:9411/zipkin/">http://localhost:9411/zipkin/</a> ，如下图<br><img src="/.com//WX20200319-113846.png" alt="zipkin"></p>
+<p>访问<br>任一方式启动后，访问 <a href="http://localhost:9411/zipkin/">http://localhost:9411/zipkin/</a> ，如下图<br><img src="WX20200319-113846.png" alt="zipkin"></p>
 <h3 id="项目集成"><a href="#项目集成" class="headerlink" title="项目集成"></a>项目集成</h3><p>2.pom.xml 配置</p>
 <p>增加如下依赖</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-zipkin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1446,6 +1446,31 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>学习Elastic Stack（一）</title>
+    <url>/2019/06/26/study-elastic-stack-1/</url>
+    <content><![CDATA[<p>前两天在<code>极客时间</code>买了<code>Elasticsearch核心技术与实战</code>的视频课程，希望加深对Elastic Stack的了解，提升自己的能力。实际的工作中也用到了 ELK进行生产环境的日志查询与分析，只是简单的使用，了解一些基本的原理，但是更高阶的内容并不了解。学习一个东西最后的方法就是去实践，同时做一些记录进行输出。<a id="more"></a></p>
+<p><img src="elk-stack-elkb-diagram.png" alt="Elastic Stack"></p>
+<h3 id="Elastic-Stack概念"><a href="#Elastic-Stack概念" class="headerlink" title="Elastic Stack概念"></a>Elastic Stack概念</h3><p>首先需要了解一下，什么是<code>ELK</code>，<code>为什么是Elastic Stack</code>，<a href="https://www.elastic.co/cn/elk-stack">What is the ELK Stack? Why, it’s the Elastic Stack.</a></p>
+<blockquote>
+<p>So, what is the ELK Stack? “ELK” is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and analytics engine. Logstash is a server‑side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a “stash” like Elasticsearch. Kibana lets users visualize data with charts and graphs in Elasticsearch.<br>The Elastic Stack is the next evolution of the ELK Stack.</p>
+</blockquote>
+<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><p>因为是为了方便学习，所以使用docker进行环境的搭建，使用docker-compose 进行搭建，Elastic官方也提供了对应的<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html">脚本</a>，极客时间上的是基于7.1版本ES的，不过区别不是很大(增加了cerebro监控和kibana，可以自行添加)。</p>
+<h4 id="运行-docker-compose-命令"><a href="#运行-docker-compose-命令" class="headerlink" title="运行 docker-compose 命令"></a>运行 docker-compose 命令</h4><p><code>docker-compose.yml</code> 文件内容如下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">version: &#x27;2.2&#x27;</span><br><span class="line">services:</span><br><span class="line">  es01:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es01</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es01</span><br><span class="line">      - discovery.seed_hosts=es02</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata01:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - 9200:9200</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line">  es02:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es02</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es02</span><br><span class="line">      - discovery.seed_hosts=es01</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata02:/usr/share/elasticsearch/data</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  esdata01:</span><br><span class="line">    driver: local</span><br><span class="line">  esdata02:</span><br><span class="line">    driver: local</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  esnet:</span><br></pre></td></tr></table></figure>
+<p>启动、停止、销毁</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动</span></span><br><span class="line">docker-compose up</span><br><span class="line"><span class="meta">#</span><span class="bash">停止</span></span><br><span class="line">docker-compose down</span><br><span class="line"><span class="meta">#</span><span class="bash">销毁</span></span><br><span class="line">docker-compose down -v</span><br></pre></td></tr></table></figure>
+<h4 id="检查集群状态"><a href="#检查集群状态" class="headerlink" title="检查集群状态"></a>检查集群状态</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl http://127.0.0.1:9200/_cat/health</span><br><span class="line"><span class="meta">#</span><span class="bash">表示没有正常运行</span></span><br><span class="line">curl: (52) Empty reply from server</span><br><span class="line"><span class="meta">#</span><span class="bash">正常运行如下</span></span><br><span class="line">1561531623 06:47:03 docker-cluster green 2 2 4 2 0 0 0 0 - 100.0%</span><br></pre></td></tr></table></figure>
+<h4 id="Elasticsearch-Docker-配置修改"><a href="#Elasticsearch-Docker-配置修改" class="headerlink" title="Elasticsearch Docker 配置修改"></a>Elasticsearch Docker 配置修改</h4><p>Elasticsearch 从<code>/usr/share/elasticsearch/config/</code> 加载配置，这些配置包括 配置Elasticsearch和设置JVM选项。</p>
+<p>更多的配置可以自行查看Elastic的官网，有更详细的介绍，上面的工作就可以完成最基本的配置了</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker、Elastic</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学习Elastic Stack（二）</title>
     <url>/2019/06/27/study-elastic-stack-2/</url>
     <content><![CDATA[<p>Elastic官方提供了Elastic Stack 和 相关产品的<a href="https://www.elastic.co/guide/index.html">文档</a>，而且提供了中文的文档，<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html"><code>《Elasticsearch 权威指南》中文版</code></a>,不过这边书是基于Elasticsearch 2.x版本的，可能有些过时。Elasticsearch需要先了解基本概念一些常规操作<code>CRUD</code>。 <a id="more"></a></p>
@@ -1460,31 +1485,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <p>定义自己的映射使您能够：</p>
 <p>区分全文字符串字段和精确值字符串字段<br>执行特定于语言的文本分析<br>优化字段以进行部分匹配<br>使用自定义日期格式<br>使用诸如geo_point和geo_shape无法自动检测的数据类型<br>为不同目的以不同方式索引相同字段通常很有用。例如，您可能希望将字符串字段索引为全文搜索的文本字段和用于排序或聚合数据的关键字字段。或者，您可以选择使用多个语言分析器来处理包含用户输入的字符串字段的内容。</p>
 <p>在索引期间应用于全文字段的分析链也在搜索时使用。查询全文字段时，查询文本在索引中查找术语之前会进行相同的分析。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker、Elastic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习Elastic Stack（一）</title>
-    <url>/2019/06/26/study-elastic-stack-1/</url>
-    <content><![CDATA[<p>前两天在<code>极客时间</code>买了<code>Elasticsearch核心技术与实战</code>的视频课程，希望加深对Elastic Stack的了解，提升自己的能力。实际的工作中也用到了 ELK进行生产环境的日志查询与分析，只是简单的使用，了解一些基本的原理，但是更高阶的内容并不了解。学习一个东西最后的方法就是去实践，同时做一些记录进行输出。<a id="more"></a></p>
-<p><img src="/.com//elk-stack-elkb-diagram.png" alt="Elastic Stack"></p>
-<h3 id="Elastic-Stack概念"><a href="#Elastic-Stack概念" class="headerlink" title="Elastic Stack概念"></a>Elastic Stack概念</h3><p>首先需要了解一下，什么是<code>ELK</code>，<code>为什么是Elastic Stack</code>，<a href="https://www.elastic.co/cn/elk-stack">What is the ELK Stack? Why, it’s the Elastic Stack.</a></p>
-<blockquote>
-<p>So, what is the ELK Stack? “ELK” is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and analytics engine. Logstash is a server‑side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a “stash” like Elasticsearch. Kibana lets users visualize data with charts and graphs in Elasticsearch.<br>The Elastic Stack is the next evolution of the ELK Stack.</p>
-</blockquote>
-<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><p>因为是为了方便学习，所以使用docker进行环境的搭建，使用docker-compose 进行搭建，Elastic官方也提供了对应的<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html">脚本</a>，极客时间上的是基于7.1版本ES的，不过区别不是很大(增加了cerebro监控和kibana，可以自行添加)。</p>
-<h4 id="运行-docker-compose-命令"><a href="#运行-docker-compose-命令" class="headerlink" title="运行 docker-compose 命令"></a>运行 docker-compose 命令</h4><p><code>docker-compose.yml</code> 文件内容如下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">version: &#x27;2.2&#x27;</span><br><span class="line">services:</span><br><span class="line">  es01:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es01</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es01</span><br><span class="line">      - discovery.seed_hosts=es02</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata01:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - 9200:9200</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line">  es02:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0</span><br><span class="line">    container_name: es02</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es02</span><br><span class="line">      - discovery.seed_hosts=es01</span><br><span class="line">      - cluster.initial_master_nodes=es01,es02</span><br><span class="line">      - cluster.name=docker-cluster</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - esdata02:/usr/share/elasticsearch/data</span><br><span class="line">    networks:</span><br><span class="line">      - esnet</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  esdata01:</span><br><span class="line">    driver: local</span><br><span class="line">  esdata02:</span><br><span class="line">    driver: local</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  esnet:</span><br></pre></td></tr></table></figure>
-<p>启动、停止、销毁</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动</span></span><br><span class="line">docker-compose up</span><br><span class="line"><span class="meta">#</span><span class="bash">停止</span></span><br><span class="line">docker-compose down</span><br><span class="line"><span class="meta">#</span><span class="bash">销毁</span></span><br><span class="line">docker-compose down -v</span><br></pre></td></tr></table></figure>
-<h4 id="检查集群状态"><a href="#检查集群状态" class="headerlink" title="检查集群状态"></a>检查集群状态</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl http://127.0.0.1:9200/_cat/health</span><br><span class="line"><span class="meta">#</span><span class="bash">表示没有正常运行</span></span><br><span class="line">curl: (52) Empty reply from server</span><br><span class="line"><span class="meta">#</span><span class="bash">正常运行如下</span></span><br><span class="line">1561531623 06:47:03 docker-cluster green 2 2 4 2 0 0 0 0 - 100.0%</span><br></pre></td></tr></table></figure>
-<h4 id="Elasticsearch-Docker-配置修改"><a href="#Elasticsearch-Docker-配置修改" class="headerlink" title="Elasticsearch Docker 配置修改"></a>Elasticsearch Docker 配置修改</h4><p>Elasticsearch 从<code>/usr/share/elasticsearch/config/</code> 加载配置，这些配置包括 配置Elasticsearch和设置JVM选项。</p>
-<p>更多的配置可以自行查看Elastic的官网，有更详细的介绍，上面的工作就可以完成最基本的配置了</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1528,7 +1528,7 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
   <entry>
     <title>pandas学习笔记</title>
     <url>/2018/09/21/study-pandas-notes/</url>
-    <content><![CDATA[<p><img src="/.com//pandas.png" alt="pandas"><br>最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记,笔记会参考视频，同时也会参考pandas官方文档。</p>
+    <content><![CDATA[<p><img src="pandas.png" alt="pandas"><br>最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记,笔记会参考视频，同时也会参考pandas官方文档。</p>
 <p>什么是pandas</p>
 <blockquote>
 <p>pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
@@ -1660,24 +1660,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>brew 使用</title>
-    <url>/2020/07/08/use-brew/</url>
-    <content><![CDATA[<p>记录一下常用的brew 命令 <a id="more"></a></p>
-<h3 id="brew-常用命令"><a href="#brew-常用命令" class="headerlink" title="brew 常用命令"></a>brew 常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有通过 brew 安装的包</span></span><br><span class="line">brew list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个包的信息</span></span><br><span class="line">brew info (formula)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 brew</span></span><br><span class="line">brew update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看需要更新的包(需要先执行 brew update)</span></span><br><span class="line">brew outdated</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新某个或全部包</span></span><br><span class="line">brew upgrade (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 brew 安装的服务列表，及当前状态(是否启动)</span></span><br><span class="line">brew services list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个或所有服务</span></span><br><span class="line">brew services run (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个或所有服务(并注册到用户登录/开机自动启动)</span></span><br><span class="line">brew services start (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭某个或所有服务</span></span><br><span class="line">brew services stop (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启某个或所有服务</span></span><br><span class="line">brew services restart (formula|--all)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Cakebrew"><a href="#Cakebrew" class="headerlink" title="Cakebrew"></a>Cakebrew</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install cakebrew</span><br></pre></td></tr></table></figure>
-
-<h3 id="LaunchRocket"><a href="#LaunchRocket" class="headerlink" title="LaunchRocket"></a>LaunchRocket</h3><p>而 LaunchRocket 呢，则是一个帮助管理 Homebrew 安装的服务的软件，比如你使用 Homebrew 安装的 Mysql、Redis、MongoDB，是让它自启动呢，还是手动启动，传统方式需要使用命令行的命令，而使用 LaunchRocket 则可以在图形界面中进行管理了！</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install launchrocket</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>brew</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用模拟时间在Docker 中进行测试</title>
     <url>/2019/07/02/use-a-fake-system-clock-with-docker/</url>
     <content><![CDATA[<p>在测试应用程序时，定义假系统时钟以执行使用日期和时间的代码通常很有用。虽然总是可以直接更改系统时钟，但许多人认为这种风格是不受欢迎的：</p>
@@ -1735,6 +1717,24 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>brew 使用</title>
+    <url>/2020/07/08/use-brew/</url>
+    <content><![CDATA[<p>记录一下常用的brew 命令 <a id="more"></a></p>
+<h3 id="brew-常用命令"><a href="#brew-常用命令" class="headerlink" title="brew 常用命令"></a>brew 常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有通过 brew 安装的包</span></span><br><span class="line">brew list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个包的信息</span></span><br><span class="line">brew info (formula)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 brew</span></span><br><span class="line">brew update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看需要更新的包(需要先执行 brew update)</span></span><br><span class="line">brew outdated</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新某个或全部包</span></span><br><span class="line">brew upgrade (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 brew 安装的服务列表，及当前状态(是否启动)</span></span><br><span class="line">brew services list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个或所有服务</span></span><br><span class="line">brew services run (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个或所有服务(并注册到用户登录/开机自动启动)</span></span><br><span class="line">brew services start (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭某个或所有服务</span></span><br><span class="line">brew services stop (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启某个或所有服务</span></span><br><span class="line">brew services restart (formula|--all)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cakebrew"><a href="#Cakebrew" class="headerlink" title="Cakebrew"></a>Cakebrew</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install cakebrew</span><br></pre></td></tr></table></figure>
+
+<h3 id="LaunchRocket"><a href="#LaunchRocket" class="headerlink" title="LaunchRocket"></a>LaunchRocket</h3><p>而 LaunchRocket 呢，则是一个帮助管理 Homebrew 安装的服务的软件，比如你使用 Homebrew 安装的 Mysql、Redis、MongoDB，是让它自启动呢，还是手动启动，传统方式需要使用命令行的命令，而使用 LaunchRocket 则可以在图形界面中进行管理了！</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install launchrocket</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>brew</tag>
       </tags>
   </entry>
   <entry>

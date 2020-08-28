@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="Junhua&#39;s Blog">
 <meta property="og:description" content="网络安全越来越重要，很多的网站都开始使用https来增加网站的安全性，Let’s Encrypt 最近支持了泛域名SSL证书，这样一个域名只需要一个SSL证书就搞定了，之前阿里云等云服务商提供了免费的SSL证书，但是只支持一个子域名一个证书，最多20个（一般人其实够用了），但是申请多个证书还是比较麻烦，而且很重要的一个原因，云服务商提供的通配符证书价格很贵，使用Let’s Encrypt费用就可以">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180318-120435@2x.png">
-<meta property="og:image" content="https://blog.searchinfogo.com/.com//WX20180318-122540@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
+<meta property="og:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png">
 <meta property="article:published_time" content="2018-03-17T09:38:33.000Z">
-<meta property="article:modified_time" content="2019-10-20T04:54:47.358Z">
+<meta property="article:modified_time" content="2020-08-28T02:33:24.948Z">
 <meta property="article:author" content="junhua">
 <meta property="article:tag" content="Domain">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.searchinfogo.com/.com//WX20180318-120435@2x.png">
+<meta name="twitter:image" content="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png">
 
 <link rel="canonical" href="https://blog.searchinfogo.com/2018/03/17/Lets-Encrypt-free-wildcard-domain-name/">
 
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-20 12:54:47" itemprop="dateModified" datetime="2019-10-20T12:54:47+08:00">2019-10-20</time>
+                <time title="修改时间：2020-08-28 10:33:24" itemprop="dateModified" datetime="2020-08-28T10:33:24+08:00">2020-08-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -305,7 +305,7 @@
 <p>我申请的域名是<code>rubys.ml</code>,可以免费使用一年，续费的话不到10刀/年。</p>
 <h3 id="配置Let’s-Encrypt-单域名"><a href="#配置Let’s-Encrypt-单域名" class="headerlink" title="配置Let’s Encrypt 单域名"></a>配置Let’s Encrypt 单域名</h3><p>首先访问<a target="_blank" rel="noopener" href="https://letsencrypt.org/">Let’s Cncrypt官网</a>，<code>Get Started</code>，然后会提供两种方式，<code>With Shell Access</code>和<code>Without Shell Access</code>，</p>
 <ul>
-<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="/.com//WX20180318-120435@2x.png" alt="certbot"><br>访问<a target="_blank" rel="noopener" href="https://certbot.eff.org/">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
+<li><p>With Shell Access(官方推荐通过shell进行部署)<br>使用<code>Certbot ACME</code>客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。<br><img src="WX20180318-120435@2x.png" alt="certbot"><br>访问<a target="_blank" rel="noopener" href="https://certbot.eff.org/">certbot</a>,选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。</p>
 </li>
 <li><p>安装系统扩展包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -ivh epel-release-latest-7.noarch.rpm</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure></li>
@@ -313,7 +313,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot-nginx</span><br></pre></td></tr></table></figure></li>
 <li><p>运行certbot插件生成证书</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
-<p><img src="/.com//WX20180318-122540@2x.png" alt="certbot"></p>
+<p><img src="WX20180318-122540@2x.png" alt="certbot"></p>
 </li>
 <li><p>重启nginx</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
