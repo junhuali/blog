@@ -1,5 +1,5 @@
 ---
-title: Linux 安装Wkhtmltox
+title: Linux 安装 wkhtmltopdf
 date: 2020-07-28 17:02:46
 categories: Linux
 tag: wkhtmltox
@@ -31,5 +31,7 @@ wkhtmltopdf -V
 ```
 
 在后续的上线中，发现在Linux容器中，生成合同的时候会产生乱码，查询相关文档，发现还是需要添加字体。
+下载[simsun字体](simsun.ttc),将文件复制到linux服务器`/usr/share/fonts/` 中。
+
 
 

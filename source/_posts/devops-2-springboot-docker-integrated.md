@@ -14,9 +14,9 @@ tag:
 ### 创建项目进行集成
 创建一个Spring Boot 项目
 
-![名称](devops-2-springboot-docker-integrated/WX20180227-174110.png)
+![名称](WX20180227-174110.png)
 
-![web服务](devops-2-springboot-docker-integrated/WX20180227-174208.png)
+![web服务](WX20180227-174208.png)
 
 ### 增加项目对Docker的支持
 1. 修改pom.xml配置，增加对应的插件，可以使用Maven进行打包
@@ -138,7 +138,7 @@ Server:
 ``` shell
 docker images
 ```
-![web服务](devops-2-springboot-docker-integrated/WX20180227-203234.png)
+![web服务](WX20180227-203234.png)
 上图说明我们的镜像打包成功
 然后运行一下，检查镜像是否能够正常启动
 ``` shell
@@ -146,10 +146,10 @@ docker images
 docker run -d  -p 8080:8080 --name devops devops/devops:latest
 #执行docker ps 查看镜像是否运行
 ```
-![web服务](devops-2-springboot-docker-integrated/WX20180227-203815.png)
+![web服务](WX20180227-203815.png)
 如果，说明服务是正常启动了，之后请求
 [http://localhost:8080/index?name=World](http://localhost:8080/index?name=World)
-![web服务](devops-2-springboot-docker-integrated/WX20180227-204116.png)
+![web服务](WX20180227-204116.png)
 能够请求成功，说明镜像部署成功
 
 ### 停止释放镜像

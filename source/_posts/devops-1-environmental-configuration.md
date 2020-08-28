@@ -7,7 +7,7 @@ tag: Docker
 ### 什么是DevOps
 > DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它的出现是由于软件行业日益清晰地认识到：为了按时交付软件产品和服务，开发和运营工作必须紧密合作。<!-- more -->
 
-![](devops-1-environmental-configuration/v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg)
+![](v2-1015dcf5e27561114bb64348fdd8da03_hd.jpg)
 我认为DevOps更应该是一种工程师文化，促进研发、测试和运维之间的沟通和闭环协作，共同达成业务目标。同时需要相应的流程和工具去配合，并简化工作，提升效率。
 
 ### DevOps各个阶段
@@ -18,11 +18,11 @@ tag: Docker
 3. 第三阶段：智能化
 根据实际的业务情况，通过DevOps提升开发、测试、运维效率
 
-![如何一步步实现DevOps](devops-1-environmental-configuration/191800078ffdfe660fb3.jpeg)
-![CI/CD](devops-1-environmental-configuration/191500078c0b39a29f95.jpeg)
-![自动化测试](devops-1-environmental-configuration/1916000764d774a3eee4.jpeg)
-![持续集成](devops-1-environmental-configuration/191700078c8d4238617c.jpeg)
-![微服务最佳实践](devops-1-environmental-configuration/191b000762026287366b.jpeg)
+![如何一步步实现DevOps](191800078ffdfe660fb3.jpeg)
+![CI/CD](191500078c0b39a29f95.jpeg)
+![自动化测试](1916000764d774a3eee4.jpeg)
+![持续集成](191700078c8d4238617c.jpeg)
+![微服务最佳实践](91b000762026287366b.jpeg)
 
 ### 工具说明
 目前处于第一阶段，希望通过相应的工具链提升开发的效率，进行持续构建、持续部署（dev、test两个环境），同时在线下环境进行实验。

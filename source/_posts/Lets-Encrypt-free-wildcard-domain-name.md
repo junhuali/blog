@@ -19,7 +19,7 @@ tag: Domain
 
 - With Shell Access(官方推荐通过shell进行部署)
 使用`Certbot ACME`客户端进行部署，它可以自动执行证书颁发和安装，而不用停机，它很容易使用，适用于多种操作系统，并且具有出色的文档。
-![certbot](Lets-Encrypt-free-wildcard-domain-name/WX20180318-120435@2x.png)
+![certbot](WX20180318-120435@2x.png)
 访问[certbot](https://certbot.eff.org/),选择自己使用的服务器和操作系统。有自动化和高级两种模式可以选择。这里选择自动化。
 - 安装系统扩展包
 ``` bash
@@ -36,7 +36,7 @@ sudo yum install certbot-nginx
 ``` bash
 sudo certbot --nginx
 ```
-![certbot](Lets-Encrypt-free-wildcard-domain-name/WX20180318-122540@2x.png)
+![certbot](WX20180318-122540@2x.png)
 
 - 重启nginx
 ``` bash

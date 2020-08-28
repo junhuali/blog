@@ -10,7 +10,7 @@ tags: Shell
 ### 修改hosts
 从`http://github.global.ssl.fastly.net.ipaddress.com/` 可以获取到速度比较快的ip，通过替换hosts ，达到加速的目的。
 
-![fastly](raise-github-clone-speed/WX20180418-113942.png)
+![fastly](WX20180418-113942.png)
 ``` Shell
 vim /etc/hosts
 # GitHub Start
@@ -18,7 +18,7 @@ vim /etc/hosts
 ```
 保存后自动生效
 
-![fastly](raise-github-clone-speed/WX20180418-114759@2x.png)
+![fastly](WX20180418-114759@2x.png)
 通过下载Spring Boot 的源码，见上图，速度还不错。
 
 ### 通过代理提升本地的速度
@@ -29,7 +29,7 @@ git config --global --unset https.proxy
 git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
 ```
-![socks5](raise-github-clone-speed/WX20180418-115544@2x.png)
+![socks5](WX20180418-115544@2x.png)
 
 上面的配置需要注意自己的socks5 端口，Mac 和 Windows的一般是1080，Mac的根据自己设置的进行修改，比如我的是1086，所以需要改成`socks5://127.0.0.1:1086`。
 

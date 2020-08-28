@@ -76,7 +76,7 @@ Percentage of the requests served within a certain time (ms)
 #### Mac 上使用
 
 Mac 上好像有自带的ab 工具，请求效果如下
-![Mac 请求效果](some-pressure-measuring-tools/WX20190628-171039@2x.png)
+![Mac 请求效果](WX20190628-171039@2x.png)
 
 ### 使用Jmeter
 具体可以查看[Jmeter](https://jmeter.apache.org/),后面会补充这一部分的内容

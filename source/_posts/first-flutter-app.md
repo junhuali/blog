@@ -13,12 +13,12 @@ tags: flutter
 安装环境基于MAC，Windows上也没有太大的区别。
 ####安装Xcode、Android Stuido
 #####Xcode 安装
-Xocde 的安装比较简单，直接去App Store搜索就可以了，![示例](first-flutter-app/WX20190711-203332@2x.png)之后需要打开，会自动的进行相应的配置。
+Xocde 的安装比较简单，直接去App Store搜索就可以了，![示例](WX20190711-203332@2x.png)之后需要打开，会自动的进行相应的配置。
 #####Android Studio 安装
 [Android Studio官网下载](https://developer.android.com/studio)
-![示例](first-flutter-app/WX20190711-203810@2x.png)
+![示例](WX20190711-203810@2x.png)
 当前版本为3.4.2
-配合相关的SDK，然后增加虚拟机![示例](first-flutter-app/WX20190711-204747@2x.png)
+配合相关的SDK，然后增加虚拟机![示例](WX20190711-204747@2x.png)
 需要注意的是，建议使用API28,28的版本flutter会报错
 
 ##### 安装flutter
@@ -129,13 +129,13 @@ brew install ideviceinstaller
 └── version
 ```
 在目录中看到有个`examples-helloworld` 里面有对应的示例，使用Android Studio 打开：
-![示例](first-flutter-app/WX20190711-212257@2x.png),选择对应的模拟器，Android 的和iOS 都可以，也可以使用真机，然后点击右上角运行即可
+![示例](WX20190711-212257@2x.png),选择对应的模拟器，Android 的和iOS 都可以，也可以使用真机，然后点击右上角运行即可
 使用29的API会出现如下错误：
 ``` log
 Error connecting to the service protocol: HttpException: Connection closed before full header was received, uri = http://127.0.0.1:53668/CCQP0ed9oCM=/ws
 ```
 运行后的效果：
-![效果](first-flutter-app/WX20190711-212915@2x.png)
+![效果](WX20190711-212915@2x.png)
 
 demo比较简单，但是感觉非常的方便，后面有空继续深入学习。
 

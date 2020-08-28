@@ -4,7 +4,8 @@ date: 2018-09-21 14:02:16
 categories: Python
 tags: pandas
 ---
-![pandas](study-pandas-notes/pandas.png)
+
+![pandas](pandas.png)
 最近在学python，正好看到一个讲解pandas的系列视频，正好做一下笔记,笔记会参考视频，同时也会参考pandas官方文档。
 
 什么是pandas

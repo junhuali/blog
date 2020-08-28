@@ -30,7 +30,7 @@ cat ~/.ssh/id_rsa.pub
 # ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....
 ```
 3. 添加公钥
-![步骤](gitee-with-webhook/image-2018-153940@2x.png)
+![步骤](image-2018-153940@2x.png)
 4. 测试
 ``` bash
 ssh -T git@gitee.com
@@ -98,8 +98,8 @@ vim deploy.sh
 git pull xxxxx  # 根据自己的需要自行编写
 ```
 5. 测试服务
-![](gitee-with-webhook/WX20180225-163439@2x.png)
-![](gitee-with-webhook/WX20180225-163748@2x.png)
+![](WX20180225-163439@2x.png)
+![](WX20180225-163748@2x.png)
 显示ok，说明成功
 
 ### 使用pm2应用进程管理器
@@ -109,7 +109,7 @@ npm install -g pm2
 pm2 start webhook.js
 pm2 monit # 可以通过此命令查看服务的状态
 ```
-![](gitee-with-webhook/WX20180225-164721@2x.png)
+![](WX20180225-164721@2x.png)
 上图显示了一些应用的基本信息，可以更好的观察到服务的状态
 
 ### 结束
