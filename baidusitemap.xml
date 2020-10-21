@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.searchinfogo.com/2020/10/20/bean-copy-cast-exception/</loc>
+    <lastmod>2020-10-21</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.searchinfogo.com/2020/09/29/parsing-HttpResponse-InputStream/</loc>
+    <lastmod>2020-09-29</lastmod>
+  </url>
+  <url>
     <loc>https://blog.searchinfogo.com/2019/06/28/some-pressure-measuring-tools/</loc>
     <lastmod>2020-08-28</lastmod>
   </url>

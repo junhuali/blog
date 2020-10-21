@@ -326,6 +326,27 @@
       </tags>
   </entry>
   <entry>
+    <title>BeanUtils.copyProperties() 造成的  java.lang.classcastexception 记录</title>
+    <url>/2020/10/20/bean-copy-cast-exception/</url>
+    <content><![CDATA[<p>平常开发的时候，经常会使用BeanUtils.copyProperties()进行对象的拷贝，今天在项目中使用的时候出现了<code>java.lang.classcastexception</code>,发现是因为对象中的泛型导致的，只能进行基本类型的拷贝。<a id="more"></a></p>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanA</span> </span>&#123;</span><br><span class="line">    List&lt;A&gt; a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanB</span> </span>&#123;</span><br><span class="line">    List&lt;B&gt; a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        BeanA beanA = <span class="keyword">new</span> BeanA();</span><br><span class="line">        List&lt;A&gt; aList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        A a = <span class="keyword">new</span> A();</span><br><span class="line">        a.setName(<span class="string">&quot;测试名称&quot;</span>);</span><br><span class="line">        aList.add(a);</span><br><span class="line">        beanA.setA(aList);</span><br><span class="line">        BeanB beanB = <span class="keyword">new</span> BeanB();</span><br><span class="line">        BeanUtils.copyProperties(beanA, beanB);</span><br><span class="line">        log.info(beanB.getA().get(<span class="number">0</span>).getName());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>当进行<code>beanB.getA().get(0).getName()</code> 调用的时候，会报错：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Exception in thread <span class="string">&quot;main&quot;</span> java.lang.ClassCastException: com.example.demo.A cannot be cast to com.example.demo.B</span><br><span class="line">	at com.example.demo.Test.main(Test.java:<span class="number">28</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>解决上面的方法有两种，一种是将对象取出后，然后重新set封装进行复制，这样一般适合参数较少的时候。另外一种就是使用fastjson进行转换。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;使用fastjson进行转换</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        BeanA beanA &#x3D; new BeanA();</span><br><span class="line">        List&lt;A&gt; aList &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        A a &#x3D; new A();</span><br><span class="line">        a.setName(&quot;测试名称&quot;);</span><br><span class="line">        aList.add(a);</span><br><span class="line">        beanA.setA(aList);</span><br><span class="line">        String jsonStr &#x3D; JSON.toJSONString(beanA);</span><br><span class="line">        BeanB beanB &#x3D; JSON.parseObject(jsonStr,BeanB.class);</span><br><span class="line">        log.info(beanB.getA().get(0).getName());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过上面的方法就能避免java.lang.classcastexception的错误了。</p>
+]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>brew 升级应用错误</title>
     <url>/2018/05/03/brew-upgrade-error/</url>
     <content><![CDATA[<p>定期升级电脑上的应用，是个好习惯，避免在需要使用的时候，出现各种莫名其妙的问题。<a id="more"></a></p>
@@ -408,16 +429,25 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker 常用命令(待完善)</title>
-    <url>/2017/11/30/common-commonds/</url>
-    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
+    <title>Centos7 安装 pyenv</title>
+    <url>/2018/02/27/cnetos-install-pyenv/</url>
+    <content><![CDATA[<blockquote>
+<p>人生苦短，我用Python</p>
+</blockquote>
+<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
+<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
 ]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -476,25 +506,16 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Centos7 安装 pyenv</title>
-    <url>/2018/02/27/cnetos-install-pyenv/</url>
-    <content><![CDATA[<blockquote>
-<p>人生苦短，我用Python</p>
-</blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
-
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+    <title>Docker 常用命令(待完善)</title>
+    <url>/2017/11/30/common-commonds/</url>
+    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Python</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -584,29 +605,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker安装MongoDB(Mongo3.x)</title>
-    <url>/2017/09/23/docker-install-MongoDB/</url>
-    <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
-
-<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
-
-<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --restart&#x3D;&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:&#x2F;data&#x2F;db\</span><br><span class="line">          -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
-
-<p><code> --storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
-<h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>至此，MongDB 安装完成</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DevOps实践2:Spring Boot集成Docker环境</title>
     <url>/2018/02/27/devops-2-springboot-docker-integrated/</url>
     <content><![CDATA[<blockquote>
@@ -655,6 +653,29 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
         <tag>Docker</tag>
         <tag>SpringBoot</tag>
         <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker安装MongoDB(Mongo3.x)</title>
+    <url>/2017/09/23/docker-install-MongoDB/</url>
+    <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
+
+<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --restart&#x3D;&quot;always&quot; \</span><br><span class="line">          -d \</span><br><span class="line">          --name mongo\</span><br><span class="line">          -p 17017:27017\</span><br><span class="line">          -v mongo-data:&#x2F;data&#x2F;db\</span><br><span class="line">          -v &#x2F;etc&#x2F;localtime:&#x2F;etc&#x2F;localtime\</span><br><span class="line">          mongo:latest --storageEngine wiredTiger -auth</span><br></pre></td></tr></table></figure>
+
+<p><code> --storageEngine</code> MongoDB 的存储引擎，具体请查阅官方文档,此处采用wiredTiger，将数据存储到磁盘<br><code>-auth</code> 设置Mongo的权限</p>
+<h4 id="进入mongo镜像"><a href="#进入mongo镜像" class="headerlink" title="进入mongo镜像"></a>进入mongo镜像</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>至此，MongDB 安装完成</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -1223,6 +1244,22 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>okhttp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解析HttpResponse InputStream 乱码问题</title>
+    <url>/2020/09/29/parsing-HttpResponse-InputStream/</url>
+    <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>最近在进行系统迁移，从Rancher迁移到Kubernets,前端使用了swagger-vue进行代码生成，后端的有个服务代理服务进行适配和转发，结果迁移后访问乱码。<a id="more"></a></p>
+<h3 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">RequestContext context = getCurrentContext();</span><br><span class="line"><span class="keyword">final</span> String requestURI = context.getRequest().getRequestURI();</span><br><span class="line">InputStream stream = context.getResponseDataStream();</span><br><span class="line">String body = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    body = StreamUtils.copyToString(stream, Charset.forName(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">    log.info(<span class="string">&quot;response-body:&#123;&#125;&quot;</span>, body);</span><br><span class="line"></span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>body中的内容乱码，因为服务经过了ingress的转发，怀疑ingress做了额外的操作导致的。<br>经过定位发现是开启了gzip导致的</p>
+<h3 id="增加gzip-解码-以及压缩"><a href="#增加gzip-解码-以及压缩" class="headerlink" title="增加gzip 解码 以及压缩"></a>增加gzip 解码 以及压缩</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="comment">//判断是否进行gzip</span></span><br><span class="line"> <span class="keyword">if</span> (context.getResponseGZipped()) &#123;</span><br><span class="line">                GZIPInputStream gzipInputStream = <span class="keyword">new</span> GZIPInputStream(stream);</span><br><span class="line">                body = StreamUtils.copyToString(gzipInputStream, Charset.forName(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                body = StreamUtils.copyToString(stream, Charset.forName(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">            &#125;</span><br><span class="line"> <span class="comment">//如果进行了压缩，返回的时候也需要进行压缩，否则会抛出异常           </span></span><br><span class="line"><span class="keyword">if</span> (context.getResponseGZipped()) &#123;</span><br><span class="line">    ByteArrayOutputStream bos = <span class="keyword">new</span> ByteArrayOutputStream(body.length());</span><br><span class="line">    GZIPOutputStream gzip = <span class="keyword">new</span> GZIPOutputStream(bos);</span><br><span class="line">    gzip.write(body.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">    gzip.close();</span><br><span class="line">    <span class="keyword">byte</span>[] compressed = bos.toByteArray();</span><br><span class="line">    bos.close();</span><br><span class="line">    context.setResponseDataStream(<span class="keyword">new</span> ByteArrayInputStream(compressed));</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    ontext.setResponseBody(body);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上面的方式，对直接请求做了兼容，也支持gzip压缩，提升了程序的稳定性。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>
