@@ -429,28 +429,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Centos7 安装 pyenv</title>
-    <url>/2018/02/27/cnetos-install-pyenv/</url>
-    <content><![CDATA[<blockquote>
-<p>人生苦短，我用Python</p>
-</blockquote>
-<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
-<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
-
-<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS7 安装Docker</title>
     <url>/2019/06/25/centos7-docker-install-tutorial/</url>
     <content><![CDATA[<p>Docker在越来越多的项目中使用，快捷、高效的部署，为我们提供了一个统一的环境，方便部署，当然还有其他很多的优点，就不一一列举了。安装基于<a href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker官方文档</a><a id="more"></a></p>
@@ -516,6 +494,28 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos7 安装 pyenv</title>
+    <url>/2018/02/27/cnetos-install-pyenv/</url>
+    <content><![CDATA[<blockquote>
+<p>人生苦短，我用Python</p>
+</blockquote>
+<p>Python 短小精悍，在很多小地方使用Python，能提升效率，产生更大的价值。一般我们更多的是在本地使用，或者一个人使用，但是在服务器上，可能存在多人使用的情况，所以需要不同版本的Python，手动安装很容易冲突，所以采用环境管理来进行管理。<a id="more"></a></p>
+<h3 id="安装Pyenv"><a href="#安装Pyenv" class="headerlink" title="安装Pyenv"></a>安装Pyenv</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel  <span class="comment">#安装所需的包</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建目录、安装</span></span><br><span class="line">mkdir ~/.pyenv</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/yyuu/pyenv.git ~/.pyenv  </span><br><span class="line"><span class="comment">#配置环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.bashrc  </span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">#列出所有版本</span><br><span class="line">pyenv install --list</span><br><span class="line"></span><br><span class="line">#安装python 3.5.2</span><br><span class="line">pyenv install 3.5.2</span><br><span class="line"></span><br><span class="line">#全局使用</span><br><span class="line">pyenv global 3.5.2</span><br><span class="line"></span><br><span class="line">#检查版本</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+<p>通过环境管理，一台服务器上可以存在多个环境，方便部署。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -656,6 +656,21 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>Docker 创建MySQL</title>
+    <url>/2018/01/17/docker-create-mysql/</url>
+    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code> /etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker安装MongoDB(Mongo3.x)</title>
     <url>/2017/09/23/docker-install-MongoDB/</url>
     <content><![CDATA[<h3 id="使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume"><a href="#使用Volume-Volume-比-普通的挂载磁盘有很多优势，这里采用Volume" class="headerlink" title="使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)"></a>使用Volume(Volume 比 普通的挂载磁盘有很多优势，这里采用Volume)<a id="more"></a></h3><h4 id="创建Volume-命名为mongo-data"><a href="#创建Volume-命名为mongo-data" class="headerlink" title="创建Volume 命名为mongo-data"></a>创建Volume 命名为mongo-data</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mongo-data</span><br></pre></td></tr></table></figure>
@@ -670,21 +685,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <h3 id="创建用户-user123-密码-123456"><a href="#创建用户-user123-密码-123456" class="headerlink" title="创建用户 user123 密码:123456"></a>创建用户 user123 密码:123456</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;user123&quot;,pwd: &quot;123456&quot;,roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>至此，MongDB 安装完成</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 创建MySQL</title>
-    <url>/2018/01/17/docker-create-mysql/</url>
-    <content><![CDATA[<h3 id="不要在生产环境中使用，在开发和测试阶段使用比较方便"><a href="#不要在生产环境中使用，在开发和测试阶段使用比较方便" class="headerlink" title="不要在生产环境中使用，在开发和测试阶段使用比较方便"></a>不要在生产环境中使用，在开发和测试阶段使用比较方便<a id="more"></a></h3><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
-<h3 id="创建volume-（比较方便，用完方便删除）"><a href="#创建volume-（比较方便，用完方便删除）" class="headerlink" title="创建volume （比较方便，用完方便删除）"></a>创建volume （比较方便，用完方便删除）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name mysql-data</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; -d \</span><br><span class="line">  -v mysql-data:/var/lib/mysql \</span><br><span class="line">  -v /etc/localtime:/etc/localtime \</span><br><span class="line">  -p 0.0.0.0:3306:3306 --name mysql \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=xxx mysql:latest \</span><br><span class="line">  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
-<p><code>restart=&quot;always&quot;</code> docker 重启后自动启动<br><code> /etc/localtime:/etc/localtime</code> 解决mysql 时区问题<br><code>MYSQL_ROOT_PASSWORD</code> 设置你自己的密码，默认用户名root<br><code>--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</code> 设置字符集，默认需要修改，根据官方文档，可以在创建的时候指定</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -985,6 +985,21 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>wkhtmltox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日志使用占位符还是直接拼接</title>
+    <url>/2020/10/21/log-use-placeholder-or-splice/</url>
+    <content><![CDATA[<p>在开发和生产环境，我们经常依赖log来帮我们定位问题，这时候会使用不用的log级别，debug,info,warn,error等。今天在和同事讨论的过程中，聊到了日志占位符的问题。<br>以及使用占位符的优点，然后自己简单做了一下性能测试，加深了对占位符的理解。<a id="more"></a></p>
+<h3 id="占位符和直接拼接的性能比较"><a href="#占位符和直接拼接的性能比较" class="headerlink" title="占位符和直接拼接的性能比较"></a>占位符和直接拼接的性能比较</h3><p>通过main方法for循环测试占位符和直接拼接10w次以后的用时，发现直接性能拼接的耗时较短；那么这样可以得到一个简单的结论，拼接耗时短，性能表面上看要比占位符性能高。<br>既然这样的话，我们为什么不直接使用拼接，反而越来越多的框架选择使用了占位符。</p>
+<h3 id="从实际出发"><a href="#从实际出发" class="headerlink" title="从实际出发"></a>从实际出发</h3><p>回到项目，一般项目里面有很多debug级别的日志，可以帮助我们快速定位线上问题，提交生产解决问题的效率，但是一般线上的日志级别会比较高，debug是不会打印的，这个时候就出现了一个问题，拼接的时候会进行内存空间的开辟，stringbuilder进行拼接，但是进入日志断点后，发现并不需要进行日志打印，这部分的开销就变的没有意义，而使用占位符的时候，只有需要打印的时候才会进行拼接，减少了内存的开销，性能得到了提升。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>使用占位符是一个最佳实践，当然我觉得还是要根据实际的情况，如果确定100%需要进行日志打印，而且日志级别较高，我觉得直接拼接是更好的选择，不过如果公司有规范的话，还是按照规范来执行。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Log</tag>
       </tags>
   </entry>
   <entry>
