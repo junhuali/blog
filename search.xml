@@ -484,19 +484,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker 常用命令(待完善)</title>
-    <url>/2017/11/30/common-commonds/</url>
-    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Centos7 安装 pyenv</title>
     <url>/2018/02/27/cnetos-install-pyenv/</url>
     <content><![CDATA[<blockquote>
@@ -519,31 +506,16 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>npm 更换源</title>
-    <url>/2018/05/03/config-npm-registry/</url>
-    <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
-<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><ul>
-<li>临时使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express --save</span><br></pre></td></tr></table></figure></li>
-<li>持久使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
-<li>验证<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure></li>
-<li>官方源<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="通过-nrm-更换源"><a href="#通过-nrm-更换源" class="headerlink" title="通过 nrm 更换源"></a>通过 nrm 更换源</h3><p>最近在工作的时候，发现淘宝的源，无法正常下载，于是需要换其他的源，在网上找源的过程中，发现了<code>nrm -- NPM registry manager</code>，它可以帮你快速的帮你在不同的源之间切换，现在包括<code>npm</code>、<code>cnpm</code>、<code>taobao</code>、<code>nj(nodejitsu)</code>、<code>rednpm</code>，还可以加入你自己的私有源。</p>
-<ul>
-<li>安装<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure></li>
-<li>例子<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nrm ls</span><br><span class="line">* npm -----  https://registry.npmjs.org/</span><br><span class="line">  cnpm ----  http://r.cnpmjs.org/</span><br><span class="line">  taobao --  https://registry.npm.taobao.org/</span><br><span class="line">  nj ------  https://registry.nodejitsu.com/</span><br><span class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</span><br><span class="line">  skimdb -- https://skimdb.npmjs.com/registry</span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">$ nrm use cnpm  <span class="comment">#switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>通过nrm换源，体验一下就提升了很多，工作更有效率了。</p>
+    <title>Docker 常用命令(待完善)</title>
+    <url>/2017/11/30/common-commonds/</url>
+    <content><![CDATA[<h4 id="列出所有并删除已停止容器"><a href="#列出所有并删除已停止容器" class="headerlink" title="列出所有并删除已停止容器"></a>列出所有并删除已停止容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm -v $(docker ps -aq -f status=exited)</span><br><span class="line">$ docker volume rm $(docker volume ls -qf dangling=<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker volume create --name data</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Node</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -602,6 +574,34 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm 更换源</title>
+    <url>/2018/05/03/config-npm-registry/</url>
+    <content><![CDATA[<p>由于npm的源在国外，所以有时候使用起来，会碰到速度极慢的情况，好在一些公司做了源的同步，可以使用这些源来达到加速下载，减少等待时间。<a id="more"></a></p>
+<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><ul>
+<li>临时使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express --save</span><br></pre></td></tr></table></figure></li>
+<li>持久使用<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
+<li>验证<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure></li>
+<li>官方源<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="通过-nrm-更换源"><a href="#通过-nrm-更换源" class="headerlink" title="通过 nrm 更换源"></a>通过 nrm 更换源</h3><p>最近在工作的时候，发现淘宝的源，无法正常下载，于是需要换其他的源，在网上找源的过程中，发现了<code>nrm -- NPM registry manager</code>，它可以帮你快速的帮你在不同的源之间切换，现在包括<code>npm</code>、<code>cnpm</code>、<code>taobao</code>、<code>nj(nodejitsu)</code>、<code>rednpm</code>，还可以加入你自己的私有源。</p>
+<ul>
+<li>安装<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure></li>
+<li>例子<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nrm ls</span><br><span class="line">* npm -----  https://registry.npmjs.org/</span><br><span class="line">  cnpm ----  http://r.cnpmjs.org/</span><br><span class="line">  taobao --  https://registry.npm.taobao.org/</span><br><span class="line">  nj ------  https://registry.nodejitsu.com/</span><br><span class="line">  rednpm -- http://registry.mirror.cqupt.edu.cn</span><br><span class="line">  skimdb -- https://skimdb.npmjs.com/registry</span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">$ nrm use cnpm  <span class="comment">#switch registry to cnpm Registry has been set to: http://r.cnpmjs.org/</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>通过nrm换源，体验一下就提升了很多，工作更有效率了。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
       </tags>
   </entry>
   <entry>
@@ -694,22 +694,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Docker 搭建Nexus 私服</title>
-    <url>/2017/09/30/docker-install-nexus/</url>
-    <content><![CDATA[<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name nexus-data</span><br></pre></td></tr></table></figure>
-<h3 id="拉取Nexus-镜像"><a href="#拉取Nexus-镜像" class="headerlink" title="拉取Nexus 镜像"></a>拉取Nexus 镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)</span><br></pre></td></tr></table></figure>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
-<h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081/">http://localhost:8081</a></p>
-<p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/">https://hub.docker.com/r/sonatype/nexus3/</a></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker 安装 RabbitMQ 集群</title>
     <url>/2017/12/04/docker-install-rabbitmq-cluster/</url>
     <content><![CDATA[<p>Docker 有个好处就是方便折腾，下面将使用bijukunjummen 提供的docker-rabbitmq-cluster 脚本进行安装。<a id="more"></a></p>
@@ -724,6 +708,22 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
 <li>登录的账号密码（可以自行在脚本里面修改）<br>user: myuser<br>password: mypass<br>然后访问<code>localhost:15672</code>进行访问</li>
 </ul>
 <p>以上使用bijukunjummen 的脚本，可参见<a href="https://github.com/bijukunjummen/docker-rabbitmq-cluster">github</a><br>以及<a href="http://get.daocloud.io/#install-docker">daocloud</a> docker-compose脚本</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 搭建Nexus 私服</title>
+    <url>/2017/09/30/docker-install-nexus/</url>
+    <content><![CDATA[<h3 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker volume create --name nexus-data</span><br></pre></td></tr></table></figure>
+<h3 id="拉取Nexus-镜像"><a href="#拉取Nexus-镜像" class="headerlink" title="拉取Nexus 镜像"></a>拉取Nexus 镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull sonatype/nexus3 ( 国内建议使用daocloud，centos 可以使用dao pull sonatype/nexus3)</span><br></pre></td></tr></table></figure>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --restart=&quot;always&quot; -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3</span><br></pre></td></tr></table></figure>
+<h3 id="访问网址打开-账号-密码-admin-admin123"><a href="#访问网址打开-账号-密码-admin-admin123" class="headerlink" title="访问网址打开(账号/密码   admin/admin123)"></a>访问网址打开(账号/密码   admin/admin123)</h3><p><a href="http://localhost:8081/">http://localhost:8081</a></p>
+<p>参考<a href="https://hub.docker.com/r/sonatype/nexus3/">https://hub.docker.com/r/sonatype/nexus3/</a></p>
 ]]></content>
       <categories>
         <category>Linux</category>
