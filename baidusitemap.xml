@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.searchinfogo.com/2020/12/14/centos8-yum-install-nginx/</loc>
+    <lastmod>2020-12-22</lastmod>
+  </url>
+  <url>
     <loc>https://blog.searchinfogo.com/2020/10/21/log-use-placeholder-or-splice/</loc>
     <lastmod>2020-10-21</lastmod>
   </url>
@@ -177,11 +181,11 @@
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
-    <loc>https://blog.searchinfogo.com/2017/09/23/life/</loc>
+    <loc>https://blog.searchinfogo.com/2017/12/02/kubeadm-install-kubernetes/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>
-    <loc>https://blog.searchinfogo.com/2017/12/02/kubeadm-install-kubernetes/</loc>
+    <loc>https://blog.searchinfogo.com/2017/09/23/life/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>
   <url>

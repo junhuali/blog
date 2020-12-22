@@ -204,6 +204,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/09/25/study-pandas-notes-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="junhua">
+      <meta itemprop="description" content="Done is better than perfect.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junhua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/25/study-pandas-notes-2/" class="post-title-link" itemprop="url">pandas学习笔记-2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-25 23:10:01" itemprop="dateCreated datePublished" datetime="2018-09-25T23:10:01+08:00">2018-09-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-20 12:54:47" itemprop="dateModified" datetime="2019-10-20T12:54:47+08:00">2019-10-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/09/25/study-pandas-notes-2/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/25/study-pandas-notes-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py"><a href="#3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py" class="headerlink" title="3.为什么pandas命令以括号结尾，其他的命令不呢？(源码见demo3.py)"></a>3.为什么pandas命令以括号结尾，其他的命令不呢？(<a target="_blank" rel="noopener" href="https://github.com/junhuali/study-pandas/blob/master/demo3.py">源码见demo3.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/imdb_1000.csv&#x27;</span>)</span><br><span class="line">head = movies.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">describe = movies.describe()</span><br><span class="line">print(describe)</span><br><span class="line"></span><br><span class="line">shape = movies.shape</span><br><span class="line">print(shape)</span><br><span class="line"></span><br><span class="line">dtypes = movies.dtypes</span><br><span class="line">print(dtypes)</span><br><span class="line"></span><br><span class="line">print(type(movies))</span><br><span class="line"></span><br><span class="line">movies.describe(include=[<span class="string">&#x27;object&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-在pandas-DataFrame-中重命名列名-源码见demo4-py"><a href="#4-在pandas-DataFrame-中重命名列名-源码见demo4-py" class="headerlink" title="4. 在pandas DataFrame 中重命名列名(源码见demo4.py)"></a>4. 在pandas DataFrame 中重命名列名(<a target="_blank" rel="noopener" href="https://github.com/junhuali/study-pandas/blob/master/demo4.py">源码见demo4.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line">head = ufo.head()</span><br><span class="line"></span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.rename(columns=&#123;<span class="string">&#x27;Colors Reported&#x27;</span>: <span class="string">&#x27;Colors_Reported&#x27;</span>, <span class="string">&#x27;Shape Reported&#x27;</span>: <span class="string">&#x27;Shape_Reported&#x27;</span>&#125;, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo_cols = &#123;<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;colors reported&#x27;</span>, <span class="string">&#x27;shape reported&#x27;</span>, <span class="string">&#x27;state&#x27;</span>, <span class="string">&#x27;time&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo_cols</span><br><span class="line"></span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>, names=ufo_cols, header=<span class="number">0</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo.columns.str.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py"><a href="#5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py" class="headerlink" title="5.在pandas DataFrame 中移除指定的行和列(源码见demo5.py)"></a>5.在pandas DataFrame 中移除指定的行和列(<a target="_blank" rel="noopener" href="https://github.com/junhuali/study-pandas/blob/master/demo5.py">源码见demo5.py</a>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># axis=0 按行 axi=1 按列</span></span><br><span class="line">ufo.drop(<span class="string">&#x27;Colors Reported&#x27;</span>, axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="string">&#x27;City&#x27;</span>, <span class="string">&#x27;State&#x27;</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="number">0</span>, <span class="number">1</span>], axis=<span class="number">0</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br></pre></td></tr></table></figure>
+
+<p>视频p4<br>讲解了怎么通过使用ipython notebook ，调出对应pandas的方法或者函数的说明，在使用的时候可以通过点击对应方法，然后加上<code>shift+tab</code>键，<br>查看对应的说明。<br>视频p5<br>讲解了通过几种方法修改数据的列名<br>视频p6<br>讲解了通过drop 方法，移除对应的行列，通过这个方法，可以将数据中不需要的部分或者是无效数据进行清洗</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/09/21/study-pandas-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1178,151 +1285,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.searchinfogo.com/2018/04/02/study-shell/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="junhua">
-      <meta itemprop="description" content="Done is better than perfect.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junhua's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/02/study-shell/" class="post-title-link" itemprop="url">学习Shell命令行总结</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-02 20:38:29" itemprop="dateCreated datePublished" datetime="2018-04-02T20:38:29+08:00">2018-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-20 12:54:47" itemprop="dateModified" datetime="2019-10-20T12:54:47+08:00">2019-10-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2018/04/02/study-shell/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/02/study-shell/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="了解linux系统内核"><a href="#了解linux系统内核" class="headerlink" title="了解linux系统内核"></a>了解linux系统内核</h3><p>内核的主要作用</p>
-<ul>
-<li>系统内存管理</li>
-<li>软件程序管理</li>
-<li>硬件设备管理</li>
-<li>文件系统管理</li>
-</ul>
-<p>什么是虚拟内存<br>内核通过硬盘上的存储空间来实现虚拟内存，这块区域称为交换空间（swap space）。<br>平常使用的都是阿里云，发现阿里云把swap的空间为0。查看官方文档后发现如果使用普通云盘，不建议使用<br>swap分区，原因是因为<code>开启SWAP可能会因频繁换页操作，导致IO性能下降</code>，如果内存足够的情况下，建议关闭<br>swap 分区。</p>
-<p>软件程序管理<br>Linux操作系统将运行中的程序称为进程。进程可以在前台运行，将输出显示在屏幕上，也可以在后台运行。<br>内核创建第一个进程称为<code>init进程</code>，来启动系统上其他进程，并将其加载到虚拟内存中。</p>
-<p>一些Linux发行版使用一个表来管理在系统开机时要自动启动的进程。在Linux系统上，这个表通常位于/etc/inittab中。<br>另外一些系统则采用/etc/init.d目录，将开机时启动或停止某个应用的脚本放在这个目录下。</p>
-<p>Linux 操作系统的init系统采用了运行级。运行级决定了init进程运行/etc/inittab文件或者/etc/rcX.d目录中定义好<br>的某些特定类型的进程。Linux操作系统有5个启动运行级。（但是在使用centos7的时候发现有7个运行级别0-6）</p>
-<p>CentOS系统有7个运行级别(runlevel)</p>
-<p>运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动<br>运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆<br>运行级别2：多用户状态(没有NFS)<br>运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式<br>运行级别4：系统未使用，保留<br>运行级别5：X11控制台，登陆后进入图形GUI模式<br>运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</p>
-<p>不过在centos7中使用Systemd 取代init，init 是串行的，启动速度比较慢。</p>
-<p>硬件设备管理<br>内核的另外一个作用就是管理硬件设备。如果使用硬件，都需要在内核代码中加入其驱动程序代码。在Linux中有两种方法插入设备驱动</p>
-<ul>
-<li>编译进内核的设备驱动代码</li>
-<li>可插入内核的设备驱动代码（这种方式比较方便，利于维护）</li>
-</ul>
-<p>文件系统管理<br>Linux 内核通过支持通过不同类型的文件系统从硬盘中读写数据。这样可以支持多种文件系统，需要内核在编译时就加入可能用到的文件系统的<br>支持。</p>
-<p>Shell 的种类<br>在Linux系统上，通常由好几种Linux Shell 可用。不同的Shell有不同的特性，有些利于创建脚本，有些利于管理进程。</p>
-<ul>
-<li>ash 一种运行在内存受限环境中的简单轻量级shell，与bash shell完全兼容</li>
-<li>korn 一种与Bourne shell 兼容的编程shell，支持如关联数组和浮点运算等一些高级的编程特性</li>
-<li>tcsh 一种将C 语言中的一些元素引入到shell脚本中的shell</li>
-<li>zsh 一种结合了bash、tcsh和korn的特性，同时提供高级编程特性、共享历史文件和主体话提示符的高级shell。在Mac 下面使用zsh 还是非常方便的。</li>
-</ul>
-<p>Linux 图形化桌面 基本上用不到，就略过了。</p>
-<p>文件路径</p>
-<ul>
-<li>相对路径</li>
-<li>绝对路劲<br><code>pwd</code> 命令查询当前所在的目录<br><code>ls -F</code> 显示出文件夹和普通文件<br><code>ls -F -R</code> -R 递归文件夹</li>
-</ul>
-<p>文件拷贝<br><code>copy -R</code> 拷贝整个目录和文件</p>
-<p>链接文件</p>
-<ul>
-<li>符号链接</li>
-<li>硬链接<br><code>ln -s</code><br><code>ln</code></li>
-</ul>
-<p>2018年07月11日11:20:39（更新）</p>
-<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><ul>
-<li>全局变量</li>
-<li>局部变量</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1394,7 +1356,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1481,12 +1443,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">109k</span>
+    <span title="站点总字数">110k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:39</span>
+    <span title="站点阅读时长">1:40</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
