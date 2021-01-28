@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数字货币入门</title>
+    <url>/2018/01/04/BTC-Tutorial/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。<a id="more"></a></p>
+<h3 id="怎么入场"><a href="#怎么入场" class="headerlink" title="怎么入场"></a>怎么入场</h3><p>交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要<br>进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所<br>平台做担保（避免被骗），建议用实时性比较强的到账方式，不管是买还是卖。<br>我主要是在火币进行兑换，也叫OTC（场外交易）</p>
+<p><a href="https://www.huobipro.pro/">https://www.huobipro.pro</a><br>如果请求不到，可以使用<br><a href="https://www.huobi.br.com/zh-cn/">https://www.huobi.br.com/zh-cn/</a></p>
+<p>2018年04月20日11:38:10<br>市场一扫之前的低沉，开始变的活跃起来，现在还不能确定是否是向牛市开始转变，但是趋势在慢慢变好，场外的USDT 已经开始有溢价了，说明场外资金开始进入。</p>
+]]></content>
+      <categories>
+        <category>数字货币</category>
+      </categories>
+      <tags>
+        <tag>数字货币</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redis连接池连接没有正常释放报错</title>
     <url>/2017/09/23/Could-not-get-a-resource-from-the-pool/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Caused by: redis.clients.jedis.exceptions.JedisException: Could not get a resource from the pool</span><br><span class="line">at redis.clients.util.Pool.getResource(Pool.java:51)</span><br><span class="line">at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)</span><br><span class="line">at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)</span><br><span class="line">at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:194)</span><br><span class="line">... 71 common frames omitted</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -15,21 +30,6 @@
       </categories>
       <tags>
         <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数字货币入门</title>
-    <url>/2018/01/04/BTC-Tutorial/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近数字货币非常火，发现很多朋友都想入门，但是不知道怎么进行（入场当韭菜），我就随便写写。<a id="more"></a></p>
-<h3 id="怎么入场"><a href="#怎么入场" class="headerlink" title="怎么入场"></a>怎么入场</h3><p>交易分为场外和场内，首先需要将手里的RMB，或者其他货币（即 法币），换成对应的数字货币，这样就需要<br>进行场外交易，付钱给有数字货币的朋友，然后从他们手中获取等值的数字货币，一般这样的交易需要交易所<br>平台做担保（避免被骗），建议用实时性比较强的到账方式，不管是买还是卖。<br>我主要是在火币进行兑换，也叫OTC（场外交易）</p>
-<p><a href="https://www.huobipro.pro/">https://www.huobipro.pro</a><br>如果请求不到，可以使用<br><a href="https://www.huobi.br.com/zh-cn/">https://www.huobi.br.com/zh-cn/</a></p>
-<p>2018年04月20日11:38:10<br>市场一扫之前的低沉，开始变的活跃起来，现在还不能确定是否是向牛市开始转变，但是趋势在慢慢变好，场外的USDT 已经开始有溢价了，说明场外资金开始进入。</p>
-]]></content>
-      <categories>
-        <category>数字货币</category>
-      </categories>
-      <tags>
-        <tag>数字货币</tag>
       </tags>
   </entry>
   <entry>
@@ -275,31 +275,6 @@
       </tags>
   </entry>
   <entry>
-    <title>apollo 配置提前加载</title>
-    <url>/2019/05/18/apollo-eagerload/</url>
-    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>$&#123;&#125;</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
-<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient(name = &quot;xxx&quot;, url = &quot;$&#123;xxx&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/xxx/xxx/xxx&quot;)</span></span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(<span class="meta">@RequestParam(value = &quot;xxx&quot;)</span> String xxx)</span> <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
-<p>当url使用固定时，可以正常的解析出请求的url，使用<code>$&#123;&#125;</code>没有生效。<br>这个时候查询了Apollo的文档<a href="%22https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90%22">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
-<blockquote>
-<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
-</blockquote>
-<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">&quot;此处写你需要提前初始化的key&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>通过在启动前将配置注入，<code>$&#123;&#125;</code> 就可以获取到正确的链接了。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Apollo、Feign</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>方舟服务器搭建 Ark-Server-Build</title>
     <url>/2020/04/14/ark-server/</url>
     <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
@@ -323,6 +298,31 @@
       </categories>
       <tags>
         <tag>Ark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>apollo 配置提前加载</title>
+    <url>/2019/05/18/apollo-eagerload/</url>
+    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>$&#123;&#125;</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
+<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient(name = &quot;xxx&quot;, url = &quot;$&#123;xxx&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/xxx/xxx/xxx&quot;)</span></span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(<span class="meta">@RequestParam(value = &quot;xxx&quot;)</span> String xxx)</span> <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
+<p>当url使用固定时，可以正常的解析出请求的url，使用<code>$&#123;&#125;</code>没有生效。<br>这个时候查询了Apollo的文档<a href="%22https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90%22">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
+<blockquote>
+<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
+</blockquote>
+<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
+<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">&quot;此处写你需要提前初始化的key&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>通过在启动前将配置注入，<code>$&#123;&#125;</code> 就可以获取到正确的链接了。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Apollo、Feign</tag>
       </tags>
   </entry>
   <entry>
@@ -387,6 +387,26 @@
       </tags>
   </entry>
   <entry>
+    <title>CentOS 安装 git</title>
+    <url>/2017/11/06/centos-install-git/</url>
+    <content><![CDATA[<p>CentOS 7 上安装git 的几种方法。 <a id="more"></a></p>
+<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><ul>
+<li>安装对应的依赖<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line">yum install -y gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure></li>
+<li>下载源码编译安装<h4 id="确保系统git-已经被卸载"><a href="#确保系统git-已经被卸载" class="headerlink" title="确保系统git 已经被卸载"></a>确保系统git 已经被卸载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove -y git(先执行本选项，确保卸载掉git)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src</span><br><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gz</span><br><span class="line">tar xzf git-2.9.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.9.3</span><br><span class="line">make prefix=/usr/bin/git all</span><br><span class="line">make prefix=/usr/bin/git install</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export PATH=<span class="variable">$PATH</span>:/usr/bin/git/bin&quot;</span> &gt;&gt; /etc/bashrc</span><br><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">git --version (查看是否安装完成)</span><br></pre></td></tr></table></figure>
+<h3 id="rpm-安装（基于CentOS7）"><a href="#rpm-安装（基于CentOS7）" class="headerlink" title="rpm 安装（基于CentOS7）"></a>rpm 安装（基于CentOS7）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y epel-release （<span class="comment">#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）</span></span><br><span class="line">rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">yum install git2u</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>centos安装redis5.x</title>
     <url>/2018/12/14/centos-install-redis5-x/</url>
     <content><![CDATA[<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
@@ -406,26 +426,6 @@
       </categories>
       <tags>
         <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS 安装 git</title>
-    <url>/2017/11/06/centos-install-git/</url>
-    <content><![CDATA[<p>CentOS 7 上安装git 的几种方法。 <a id="more"></a></p>
-<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><ul>
-<li>安装对应的依赖<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel</span><br><span class="line">yum install -y gcc perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure></li>
-<li>下载源码编译安装<h4 id="确保系统git-已经被卸载"><a href="#确保系统git-已经被卸载" class="headerlink" title="确保系统git 已经被卸载"></a>确保系统git 已经被卸载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove -y git(先执行本选项，确保卸载掉git)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src</span><br><span class="line">wget https://www.kernel.org/pub/software/scm/git/git-2.9.3.tar.gz</span><br><span class="line">tar xzf git-2.9.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> git-2.9.3</span><br><span class="line">make prefix=/usr/bin/git all</span><br><span class="line">make prefix=/usr/bin/git install</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export PATH=<span class="variable">$PATH</span>:/usr/bin/git/bin&quot;</span> &gt;&gt; /etc/bashrc</span><br><span class="line"><span class="built_in">source</span> /etc/bashrc</span><br><span class="line">git --version (查看是否安装完成)</span><br></pre></td></tr></table></figure>
-<h3 id="rpm-安装（基于CentOS7）"><a href="#rpm-安装（基于CentOS7）" class="headerlink" title="rpm 安装（基于CentOS7）"></a>rpm 安装（基于CentOS7）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y epel-release （<span class="comment">#error: Failed dependencies:epel-release = 7 is needed by ius-release-1.0-15.ius.centos7.noarch）</span></span><br><span class="line">rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm</span><br><span class="line">yum install git2u</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -486,7 +486,7 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
   <entry>
     <title>CentOS8 rpm 安装nginx</title>
     <url>/2020/12/14/centos8-yum-install-nginx/</url>
-    <content><![CDATA[<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>最近有台服务器升级到了centos8 ，发现之前centos7 rpm 安装nginx的方式无法使用了，记录一下新的安装方式。<a id="more"></a></p>
+    <content><![CDATA[<p>最近有台服务器升级到了centos8 ，发现之前centos7 rpm 安装nginx的方式无法使用了，记录一下新的安装方式。<a id="more"></a></p>
 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install yum-utils</span><br></pre></td></tr></table></figure>
 
 
@@ -800,23 +800,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>Cannot find module &#39;./build/Release/DTraceProviderBindings&#39;</title>
-    <url>/2017/09/30/hexo-can&#39;t-find-module/</url>
-    <content><![CDATA[<p>有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩<em>∩)O哈哈~</em>) <a id="more"></a><br>报错如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; Error: Cannot find module &#39;.&#x2F;build&#x2F;Release&#x2F;DTraceProviderBindings&#39;</span><br><span class="line">    at Function.Module._resolveFilename (module.js:527:15)</span><br><span class="line">    at Function.Module._load (module.js:476:23)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;dtrace-provider&#x2F;dtrace-provider.js:18:23)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;bunyan&#x2F;lib&#x2F;bunyan.js:79:18)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;hexo-log&#x2F;lib&#x2F;log.js:3:14)</span><br><span class="line">    at Module._compile (module.js:624:30) code: &#39;MODULE_NOT_FOUND&#39; &#125;</span><br><span class="line">INFO  Deleted database.</span><br></pre></td></tr></table></figure>
-<p>上面的错误看的非常的影响心情有木有？</p>
-<p>找了网上的很多方法，最后选择了一种比较粗暴的方法<br>删除hexo目录下的<code>node_modules</code>目录，之后执行以下命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>然后执行hexo server，就会惊喜的发现错误没有了 O(∩<em>∩)O~~</em>)</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>gitee码云使用webhook</title>
     <url>/2018/02/25/gitee-with-webhook/</url>
     <content><![CDATA[<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。<a id="more"></a></p>
@@ -858,6 +841,40 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决访问raw.githubusercontent.com出现refused拒绝连接错误</title>
+    <url>/2021/01/27/github-connection-refused/</url>
+    <content><![CDATA[<p>今天升级了一台自己的服务器，使用let’s encrypt 配置https，curl 安装 <code>acme.sh</code>的时候报错。<a id="more"></a></p>
+<p>具体的错误信息如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl: (7) Failed to connect to raw.githubusercontent.com port 443: 拒绝连接</span><br></pre></td></tr></table></figure>
+<p>查询了一下发现是dns污染的问题，设置直连</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;hosts </span><br><span class="line">###增加下面的解析</span><br><span class="line">199.232.68.133 raw.githubusercontent.com</span><br><span class="line">199.232.68.133 user-images.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars2.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars1.githubusercontent.com</span><br></pre></td></tr></table></figure>
+<p>另外一种就是使用一个安全的dns</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;resolv.conf</span><br><span class="line">###使用下面的dns或者其他的dns</span><br><span class="line">nameserver 119.29.29.29</span><br><span class="line">nameserver 182.254.116.116</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cannot find module &#39;./build/Release/DTraceProviderBindings&#39;</title>
+    <url>/2017/09/30/hexo-can&#39;t-find-module/</url>
+    <content><![CDATA[<p>有时候安装完hexo后， 执行命令的时候总是报错，但是不影响程序运行，但是。。。会逼死处女座，O(∩<em>∩)O哈哈~</em>) <a id="more"></a><br>报错如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; Error: Cannot find module &#39;.&#x2F;build&#x2F;Release&#x2F;DTraceProviderBindings&#39;</span><br><span class="line">    at Function.Module._resolveFilename (module.js:527:15)</span><br><span class="line">    at Function.Module._load (module.js:476:23)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;dtrace-provider&#x2F;dtrace-provider.js:18:23)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;bunyan&#x2F;lib&#x2F;bunyan.js:79:18)</span><br><span class="line">    at Module._compile (module.js:624:30)</span><br><span class="line">    at Object.Module._extensions..js (module.js:635:10)</span><br><span class="line">    at Module.load (module.js:545:32)</span><br><span class="line">    at tryModuleLoad (module.js:508:12)</span><br><span class="line">    at Function.Module._load (module.js:500:3)</span><br><span class="line">    at Module.require (module.js:568:17)</span><br><span class="line">    at require (internal&#x2F;module.js:11:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (&#x2F;Users&#x2F;xxx&#x2F;Dropbox&#x2F;hexo&#x2F;node_modules&#x2F;hexo-log&#x2F;lib&#x2F;log.js:3:14)</span><br><span class="line">    at Module._compile (module.js:624:30) code: &#39;MODULE_NOT_FOUND&#39; &#125;</span><br><span class="line">INFO  Deleted database.</span><br></pre></td></tr></table></figure>
+<p>上面的错误看的非常的影响心情有木有？</p>
+<p>找了网上的很多方法，最后选择了一种比较粗暴的方法<br>删除hexo目录下的<code>node_modules</code>目录，之后执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>然后执行hexo server，就会惊喜的发现错误没有了 O(∩<em>∩)O~~</em>)</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -979,21 +996,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>日志使用占位符还是直接拼接</title>
-    <url>/2020/10/21/log-use-placeholder-or-splice/</url>
-    <content><![CDATA[<p>在开发和生产环境，我们经常依赖log来帮我们定位问题，这时候会使用不用的log级别，debug,info,warn,error等。今天在和同事讨论的过程中，聊到了日志占位符的问题。<br>以及使用占位符的优点，然后自己简单做了一下性能测试，加深了对占位符的理解。<a id="more"></a></p>
-<h3 id="占位符和直接拼接的性能比较"><a href="#占位符和直接拼接的性能比较" class="headerlink" title="占位符和直接拼接的性能比较"></a>占位符和直接拼接的性能比较</h3><p>通过main方法for循环测试占位符和直接拼接10w次以后的用时，发现直接性能拼接的耗时较短；那么这样可以得到一个简单的结论，拼接耗时短，性能表面上看要比占位符性能高。<br>既然这样的话，我们为什么不直接使用拼接，反而越来越多的框架选择使用了占位符。</p>
-<h3 id="从实际出发"><a href="#从实际出发" class="headerlink" title="从实际出发"></a>从实际出发</h3><p>回到项目，一般项目里面有很多debug级别的日志，可以帮助我们快速定位线上问题，提交生产解决问题的效率，但是一般线上的日志级别会比较高，debug是不会打印的，这个时候就出现了一个问题，拼接的时候会进行内存空间的开辟，stringbuilder进行拼接，但是进入日志断点后，发现并不需要进行日志打印，这部分的开销就变的没有意义，而使用占位符的时候，只有需要打印的时候才会进行拼接，减少了内存的开销，性能得到了提升。</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>使用占位符是一个最佳实践，当然我觉得还是要根据实际的情况，如果确定100%需要进行日志打印，而且日志级别较高，我觉得直接拼接是更好的选择，不过如果公司有规范的话，还是按照规范来执行。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Log</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 安装 wkhtmltopdf</title>
     <url>/2020/07/28/linux-install-wkhtmltox/</url>
     <content><![CDATA[<p>最近在e签宝相关的开发，需要将html生成pdf，查找了一下常规的方案，有itext（html2pdf),wkhtmltopdf等。使用freemarker等。最后选择使用wkhtmltopdf（不需要关心字体之类的配置）。生产部署的时候需要安装在服务器。<a id="more"></a></p>
@@ -1011,6 +1013,50 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>wkhtmltox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日志使用占位符还是直接拼接</title>
+    <url>/2020/10/21/log-use-placeholder-or-splice/</url>
+    <content><![CDATA[<p>在开发和生产环境，我们经常依赖log来帮我们定位问题，这时候会使用不用的log级别，debug,info,warn,error等。今天在和同事讨论的过程中，聊到了日志占位符的问题。<br>以及使用占位符的优点，然后自己简单做了一下性能测试，加深了对占位符的理解。<a id="more"></a></p>
+<h3 id="占位符和直接拼接的性能比较"><a href="#占位符和直接拼接的性能比较" class="headerlink" title="占位符和直接拼接的性能比较"></a>占位符和直接拼接的性能比较</h3><p>通过main方法for循环测试占位符和直接拼接10w次以后的用时，发现直接性能拼接的耗时较短；那么这样可以得到一个简单的结论，拼接耗时短，性能表面上看要比占位符性能高。<br>既然这样的话，我们为什么不直接使用拼接，反而越来越多的框架选择使用了占位符。</p>
+<h3 id="从实际出发"><a href="#从实际出发" class="headerlink" title="从实际出发"></a>从实际出发</h3><p>回到项目，一般项目里面有很多debug级别的日志，可以帮助我们快速定位线上问题，提交生产解决问题的效率，但是一般线上的日志级别会比较高，debug是不会打印的，这个时候就出现了一个问题，拼接的时候会进行内存空间的开辟，stringbuilder进行拼接，但是进入日志断点后，发现并不需要进行日志打印，这部分的开销就变的没有意义，而使用占位符的时候，只有需要打印的时候才会进行拼接，减少了内存的开销，性能得到了提升。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>使用占位符是一个最佳实践，当然我觉得还是要根据实际的情况，如果确定100%需要进行日志打印，而且日志级别较高，我觉得直接拼接是更好的选择，不过如果公司有规范的话，还是按照规范来执行。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Log</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MD5、SALT加密浅析</title>
+    <url>/2018/11/06/md5-and-salt-encryption/</url>
+    <content><![CDATA[<p>密码的保存是开发的过程中必不可少的一部分，通常我们一般使用MD5加密，来对密码安全进行简单的加强，但是只是使用MD5进行加密，如果密码相同，MD5值就会一样，<br>通过一些在线的MD5解析网站的解析，密码大概率就会被解析出来，使用相同密码的人，也会受到影响。通过“加盐” ，可以提高密码被破解的难度。<a id="more"></a></p>
+<h3 id="什么是Salt盐"><a href="#什么是Salt盐" class="headerlink" title="什么是Salt盐"></a>什么是<code>Salt</code>盐</h3><blockquote>
+<p>盐（Salt），在密码学中，是指在散列之前将散列内容（例如：密码）的任意固定位置插入特定的字符串。这个在散列中加入字符串的方式称为“加盐”。其作用是让加盐后的散列结果和没有加盐的结果不相同，在不同的应用情景中，这个处理可以增加额外的安全性。</p>
+</blockquote>
+<blockquote>
+<p>在大部分情况，盐是不需要保密的。盐可以是随机产生的字符串，其插入的位置可以也是随意而定。如果这个散列结果在将来需要进行验证（例如：验证用户输入的密码），则需要将已使用的盐记录下来。</p>
+</blockquote>
+<h3 id="Java-实现MD5加密"><a href="#Java-实现MD5加密" class="headerlink" title="Java 实现MD5加密"></a>Java 实现MD5加密</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaImplMD5</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String numStr = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">        String result = getMD5(numStr);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String <span class="title">getMD5</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//创建具有指定算法名称的摘要</span></span><br><span class="line">            MessageDigest md = MessageDigest.getInstance(<span class="string">&quot;MD5&quot;</span>);</span><br><span class="line">            <span class="comment">//使用指定的字节数组更新摘要</span></span><br><span class="line">            md.update(str.getBytes());</span><br><span class="line">            <span class="comment">//进行哈希计算并返回一个字节数组</span></span><br><span class="line">            <span class="keyword">byte</span> mdBytes[] = md.digest();</span><br><span class="line">            String hash = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="comment">//循环字节数组</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mdBytes.length; i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp;</span><br><span class="line">                <span class="comment">//如果有小于0的字节,则转换为正数</span></span><br><span class="line">                <span class="keyword">if</span> (mdBytes[i] &lt; <span class="number">0</span>)</span><br><span class="line">                    temp = <span class="number">256</span> + mdBytes[i];</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    temp = mdBytes[i];</span><br><span class="line">                <span class="keyword">if</span> (temp &lt; <span class="number">16</span>)</span><br><span class="line">                    hash += <span class="string">&quot;0&quot;</span>;</span><br><span class="line">                <span class="comment">//将字节转换为16进制后，转换为字符串</span></span><br><span class="line">                hash += Integer.toString(temp, <span class="number">16</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> hash;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">e10adc3949ba59abbe56e057f20f883e</span><br></pre></td></tr></table></figure>
+<p>去MD5解码网站，很容易得到加密的内容是<code>123456</code></p>
+<h3 id="Guava-实现MD5加密"><a href="#Guava-实现MD5加密" class="headerlink" title="Guava 实现MD5加密"></a>Guava 实现MD5加密</h3><p>Guava 工程包含了若干被Google的 Java项目广泛依赖 的核心库，包含了一些常用工具类的实现。<br>导入maven 包</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.guava<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>guava<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>27.0-jre<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">type</span>&gt;</span>bundle<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.google.common.hash.HashCode;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.HashFunction;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.Hashing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuavaImplMD5</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String numStr = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">        HashFunction hf = Hashing.md5();</span><br><span class="line">        HashCode hc = hf.newHasher().putString(numStr, Charset.defaultCharset()).hash();</span><br><span class="line">        System.out.println(hc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果跟上面相同，但是<code>md5()</code> 的这个方法代码中标记弃用了。推荐使用新的方法<br>代码的量少了很多，不需要自己做过多的处理。</p>
+<h3 id="加盐处理"><a href="#加盐处理" class="headerlink" title="加盐处理"></a>加盐处理</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.google.common.hash.HashCode;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.HashFunction;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.Hashing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuavaImplMD5</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SALT = <span class="string">&quot;0fdfa5e5a88bedae440a9d8ae7c84708&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String numStr = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">        System.out.println(getMD5WithSalt(numStr));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMD5</span><span class="params">(String numStr)</span> </span>&#123;</span><br><span class="line">        HashFunction hf = Hashing.md5();</span><br><span class="line">        HashCode hc = hf.newHasher().putString(numStr, Charset.defaultCharset()).hash();</span><br><span class="line">        <span class="keyword">return</span> hc.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMD5WithSalt</span><span class="params">(String numStr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getMD5(getMD5(numStr) + SALT);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样就会得到不一样的MD5值，不太容易破解密码，但是使用了同样的salt，还是会出现一样的MD5结果，所以最好每个人都能有不同的salt，提高安全性。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>加密</tag>
       </tags>
   </entry>
   <entry>
@@ -1060,35 +1106,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MD5、SALT加密浅析</title>
-    <url>/2018/11/06/md5-and-salt-encryption/</url>
-    <content><![CDATA[<p>密码的保存是开发的过程中必不可少的一部分，通常我们一般使用MD5加密，来对密码安全进行简单的加强，但是只是使用MD5进行加密，如果密码相同，MD5值就会一样，<br>通过一些在线的MD5解析网站的解析，密码大概率就会被解析出来，使用相同密码的人，也会受到影响。通过“加盐” ，可以提高密码被破解的难度。<a id="more"></a></p>
-<h3 id="什么是Salt盐"><a href="#什么是Salt盐" class="headerlink" title="什么是Salt盐"></a>什么是<code>Salt</code>盐</h3><blockquote>
-<p>盐（Salt），在密码学中，是指在散列之前将散列内容（例如：密码）的任意固定位置插入特定的字符串。这个在散列中加入字符串的方式称为“加盐”。其作用是让加盐后的散列结果和没有加盐的结果不相同，在不同的应用情景中，这个处理可以增加额外的安全性。</p>
-</blockquote>
-<blockquote>
-<p>在大部分情况，盐是不需要保密的。盐可以是随机产生的字符串，其插入的位置可以也是随意而定。如果这个散列结果在将来需要进行验证（例如：验证用户输入的密码），则需要将已使用的盐记录下来。</p>
-</blockquote>
-<h3 id="Java-实现MD5加密"><a href="#Java-实现MD5加密" class="headerlink" title="Java 实现MD5加密"></a>Java 实现MD5加密</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaImplMD5</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String numStr = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">        String result = getMD5(numStr);</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String <span class="title">getMD5</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//创建具有指定算法名称的摘要</span></span><br><span class="line">            MessageDigest md = MessageDigest.getInstance(<span class="string">&quot;MD5&quot;</span>);</span><br><span class="line">            <span class="comment">//使用指定的字节数组更新摘要</span></span><br><span class="line">            md.update(str.getBytes());</span><br><span class="line">            <span class="comment">//进行哈希计算并返回一个字节数组</span></span><br><span class="line">            <span class="keyword">byte</span> mdBytes[] = md.digest();</span><br><span class="line">            String hash = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="comment">//循环字节数组</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mdBytes.length; i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp;</span><br><span class="line">                <span class="comment">//如果有小于0的字节,则转换为正数</span></span><br><span class="line">                <span class="keyword">if</span> (mdBytes[i] &lt; <span class="number">0</span>)</span><br><span class="line">                    temp = <span class="number">256</span> + mdBytes[i];</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    temp = mdBytes[i];</span><br><span class="line">                <span class="keyword">if</span> (temp &lt; <span class="number">16</span>)</span><br><span class="line">                    hash += <span class="string">&quot;0&quot;</span>;</span><br><span class="line">                <span class="comment">//将字节转换为16进制后，转换为字符串</span></span><br><span class="line">                hash += Integer.toString(temp, <span class="number">16</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> hash;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">e10adc3949ba59abbe56e057f20f883e</span><br></pre></td></tr></table></figure>
-<p>去MD5解码网站，很容易得到加密的内容是<code>123456</code></p>
-<h3 id="Guava-实现MD5加密"><a href="#Guava-实现MD5加密" class="headerlink" title="Guava 实现MD5加密"></a>Guava 实现MD5加密</h3><p>Guava 工程包含了若干被Google的 Java项目广泛依赖 的核心库，包含了一些常用工具类的实现。<br>导入maven 包</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.guava<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>guava<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>27.0-jre<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">type</span>&gt;</span>bundle<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.google.common.hash.HashCode;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.HashFunction;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.Hashing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuavaImplMD5</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String numStr = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">        HashFunction hf = Hashing.md5();</span><br><span class="line">        HashCode hc = hf.newHasher().putString(numStr, Charset.defaultCharset()).hash();</span><br><span class="line">        System.out.println(hc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果跟上面相同，但是<code>md5()</code> 的这个方法代码中标记弃用了。推荐使用新的方法<br>代码的量少了很多，不需要自己做过多的处理。</p>
-<h3 id="加盐处理"><a href="#加盐处理" class="headerlink" title="加盐处理"></a>加盐处理</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.google.common.hash.HashCode;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.HashFunction;</span><br><span class="line"><span class="keyword">import</span> com.google.common.hash.Hashing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuavaImplMD5</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SALT = <span class="string">&quot;0fdfa5e5a88bedae440a9d8ae7c84708&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String numStr = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line">        System.out.println(getMD5WithSalt(numStr));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMD5</span><span class="params">(String numStr)</span> </span>&#123;</span><br><span class="line">        HashFunction hf = Hashing.md5();</span><br><span class="line">        HashCode hc = hf.newHasher().putString(numStr, Charset.defaultCharset()).hash();</span><br><span class="line">        <span class="keyword">return</span> hc.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMD5WithSalt</span><span class="params">(String numStr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getMD5(getMD5(numStr) + SALT);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这样就会得到不一样的MD5值，不太容易破解密码，但是使用了同样的salt，还是会出现一样的MD5结果，所以最好每个人都能有不同的salt，提高安全性。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>加密</tag>
       </tags>
   </entry>
   <entry>
@@ -1330,6 +1347,20 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>正则表达式基础知识总结</title>
+    <url>/2017/12/07/regular-expression-basic/</url>
+    <content><![CDATA[<p>最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch<br>（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下<br>GitHub，选择了<a href="https://github.com/code4craft">code4craft</a>的<a href="https://github.com/code4craft/webmagic">webmagic</a><br>作为项目的基础组件。<a id="more"></a></p>
+<p>对于爬虫来说，数据的获取是基本，获取到数据后需要进行数据清洗之后入库，XPath、正则表达式就是获取<br>这些数据的利器，所以我们只要掌握这些技能就能很好的获取到我们需要的数据。</p>
+<p>[0-9]这种形式的正则表达式称作字符组、字符集。<br>\d 字符组简写。<br>(.) 匹配任意字符，通配符，一般不匹配行起始符。</p>
+]]></content>
+      <categories>
+        <category>Regular</category>
+      </categories>
+      <tags>
+        <tag>Regular</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>提升国内服务器Github clone速度的方法</title>
     <url>/2018/04/18/raise-github-clone-speed/</url>
     <content><![CDATA[<h3 id="Github-速度慢"><a href="#Github-速度慢" class="headerlink" title="Github 速度慢"></a>Github 速度慢</h3><p>众所周知的原因，国内的vps 从Github 上clone 源码的速度感人。于是查了一下，发现有两种方法可以提升从GitHub clone 代码的速度。<a id="more"></a></p>
@@ -1349,20 +1380,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>正则表达式基础知识总结</title>
-    <url>/2017/12/07/regular-expression-basic/</url>
-    <content><![CDATA[<p>最近项目需要爬取一些网站的数据，于是我开始了爬虫生涯。以前只是简单的玩过一些爬虫，了解过nutch<br>（分布式爬虫），Python下的scrapy等爬虫项目。因为公司的技术栈都是基于Java的，所以我简单的看了下<br>GitHub，选择了<a href="https://github.com/code4craft">code4craft</a>的<a href="https://github.com/code4craft/webmagic">webmagic</a><br>作为项目的基础组件。<a id="more"></a></p>
-<p>对于爬虫来说，数据的获取是基本，获取到数据后需要进行数据清洗之后入库，XPath、正则表达式就是获取<br>这些数据的利器，所以我们只要掌握这些技能就能很好的获取到我们需要的数据。</p>
-<p>[0-9]这种形式的正则表达式称作字符组、字符集。<br>\d 字符组简写。<br>(.) 匹配任意字符，通配符，一般不匹配行起始符。</p>
-]]></content>
-      <categories>
-        <category>Regular</category>
-      </categories>
-      <tags>
-        <tag>Regular</tag>
       </tags>
   </entry>
   <entry>
@@ -1476,6 +1493,39 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
+    <title>初识Dart(一)</title>
+    <url>/2019/07/15/study-dart-1/</url>
+    <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
+<p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
+<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart">repl</a>新建一个<code>main.dart</code>文件</p>
+<h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击<code>run</code><br>可以看到右边打印出来内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on &quot;linux_x64&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+<p>Dart 也是用main做函数的入口的，跟Java很像。</p>
+<h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
+<li>Numbers</li>
+<li>Strings</li>
+<li>Booleans</li>
+<li>Lists</li>
+<li>Sets</li>
+<li>Maps</li>
+<li>Runes</li>
+<li>Symbols</li>
+</ul>
+<p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
+<li>const 表示常量在编译期能确定的值</li>
+<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),%E5%AD%A6%E4%B9%A0%E8%AF%AD%E8%A8%80%E7%9A%84%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E7%9A%84%E5%B0%B1%E6%98%AF%E7%BB%83%E4%B9%A0%EF%BC%8C%E5%A4%9A%E5%86%99%EF%BC%8C%E5%A4%9A%E6%80%9D%E8%80%83%EF%BC%8C%E5%B0%B1%E4%BC%9A%E6%9C%89%E8%BF%9B%E6%AD%A5%E3%80%82">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Dart</category>
+      </categories>
+      <tags>
+        <tag>Dart</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学习Elastic Stack（一）</title>
     <url>/2019/06/26/study-elastic-stack-1/</url>
     <content><![CDATA[<p>前两天在<code>极客时间</code>买了<code>Elasticsearch核心技术与实战</code>的视频课程，希望加深对Elastic Stack的了解，提升自己的能力。实际的工作中也用到了 ELK进行生产环境的日志查询与分析，只是简单的使用，了解一些基本的原理，但是更高阶的内容并不了解。学习一个东西最后的方法就是去实践，同时做一些记录进行输出。<a id="more"></a></p>
@@ -1524,45 +1574,14 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>初识Dart(一)</title>
-    <url>/2019/07/15/study-dart-1/</url>
-    <content><![CDATA[<p>2011 年 10 月，在丹麦召开的 GOTO 大会上，Google 发布了一种新的编程语言 Dart。如同 Kotlin 和 Swift 的出现，分别是为了解决 Java 和 Objective-C 在编写应用程序的一些实际问题一样，Dart 的诞生正是要解决 JavaScript 存在的、在语言本质上无法改进的缺陷。<a id="more"></a></p>
-<p>不过因为Node的出现，JavaScript得到了告诉的发展了，Dart并没有流行起来，不过因为Flutter的出现，Dart迎来了自己的第二春。</p>
-<p>学习语言的第一件事情就是准备一个环境，在<a href="https://repl.it/languages/dart">repl</a>新建一个<code>main.dart</code>文件</p>
-<h3 id="范例，hello-world"><a href="#范例，hello-world" class="headerlink" title="范例，hello world"></a>范例，hello world</h3><figure class="highlight plain"><figcaption><span>dart</span></figcaption><table><tr><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">    print(&#39;Hello World!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>点击<code>run</code><br>可以看到右边打印出来内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Dart VM version: 2.2.0 (Unknown timestamp) on &quot;linux_x64&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> run-project</span></span><br><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
-<p>Dart 也是用main做函数的入口的，跟Java很像。</p>
-<h3 id="Dart的变量与类型"><a href="#Dart的变量与类型" class="headerlink" title="Dart的变量与类型"></a>Dart的变量与类型</h3><h4 id="Dart的基本内置类型有："><a href="#Dart的基本内置类型有：" class="headerlink" title="Dart的基本内置类型有："></a>Dart的基本内置类型有：</h4><ul>
-<li>Numbers</li>
-<li>Strings</li>
-<li>Booleans</li>
-<li>Lists</li>
-<li>Sets</li>
-<li>Maps</li>
-<li>Runes</li>
-<li>Symbols</li>
-</ul>
-<p><code>Numbers</code>有两种子类（int 和 double）<br><code>Strings</code>跟我们平常用的String没有什么区别<br><code>Booleans</code>是类型安全的，意味着我们不能使用if (nonbooleanValue) or assert (nonbooleanValue) 这样的代码去判断，而应该显示的检查<br><code>Lists</code>在Dart中，数组是List对象，因此大多数人只是将它们称为列表。<br><code>Sets</code>无序集合<br><code>Maps</code>key和value可以是任何类型<br><code>Runes</code>UTF-32字符串<br><code>Symbols</code>开发中基本上用不上</p>
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
-<li>const 表示常量在编译期能确定的值</li>
-<li>final 在运行时确定，一旦确定不可变更<br>还有一些流程控制语法，各个语言基本上大同小异，可以参考[官方文档}(<a href="https://dart.dev/guides/language),%E5%AD%A6%E4%B9%A0%E8%AF%AD%E8%A8%80%E7%9A%84%E8%BF%87%E7%A8%8B%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E7%9A%84%E5%B0%B1%E6%98%AF%E7%BB%83%E4%B9%A0%EF%BC%8C%E5%A4%9A%E5%86%99%EF%BC%8C%E5%A4%9A%E6%80%9D%E8%80%83%EF%BC%8C%E5%B0%B1%E4%BC%9A%E6%9C%89%E8%BF%9B%E6%AD%A5%E3%80%82">https://dart.dev/guides/language),学习语言的过程比较重要的就是练习，多写，多思考，就会有进步。</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Dart</category>
-      </categories>
-      <tags>
-        <tag>Dart</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pandas学习笔记-3</title>
-    <url>/2018/09/26/study-pandas-notes-3/</url>
-    <content><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/imdb_1000.csv&#x27;</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">&#x27;title&#x27;</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">&#x27;title&#x27;</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">&#x27;title&#x27;</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">&#x27;duration&#x27;</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">&#x27;content_rating&#x27;</span>, <span class="string">&#x27;duration&#x27;</span>]))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/imdb_1000.csv&#x27;</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">&#x27;genre&#x27;</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">&#x27;genre&#x27;</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
+    <title>pandas学习笔记-2</title>
+    <url>/2018/09/25/study-pandas-notes-2/</url>
+    <content><![CDATA[<h4 id="3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py"><a href="#3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py" class="headerlink" title="3.为什么pandas命令以括号结尾，其他的命令不呢？(源码见demo3.py)"></a>3.为什么pandas命令以括号结尾，其他的命令不呢？(<a href="https://github.com/junhuali/study-pandas/blob/master/demo3.py">源码见demo3.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/imdb_1000.csv&#x27;</span>)</span><br><span class="line">head = movies.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">describe = movies.describe()</span><br><span class="line">print(describe)</span><br><span class="line"></span><br><span class="line">shape = movies.shape</span><br><span class="line">print(shape)</span><br><span class="line"></span><br><span class="line">dtypes = movies.dtypes</span><br><span class="line">print(dtypes)</span><br><span class="line"></span><br><span class="line">print(type(movies))</span><br><span class="line"></span><br><span class="line">movies.describe(include=[<span class="string">&#x27;object&#x27;</span>])</span><br></pre></td></tr></table></figure>
 
-<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
+<h4 id="4-在pandas-DataFrame-中重命名列名-源码见demo4-py"><a href="#4-在pandas-DataFrame-中重命名列名-源码见demo4-py" class="headerlink" title="4. 在pandas DataFrame 中重命名列名(源码见demo4.py)"></a>4. 在pandas DataFrame 中重命名列名(<a href="https://github.com/junhuali/study-pandas/blob/master/demo4.py">源码见demo4.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line">head = ufo.head()</span><br><span class="line"></span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.rename(columns=&#123;<span class="string">&#x27;Colors Reported&#x27;</span>: <span class="string">&#x27;Colors_Reported&#x27;</span>, <span class="string">&#x27;Shape Reported&#x27;</span>: <span class="string">&#x27;Shape_Reported&#x27;</span>&#125;, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo_cols = &#123;<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;colors reported&#x27;</span>, <span class="string">&#x27;shape reported&#x27;</span>, <span class="string">&#x27;state&#x27;</span>, <span class="string">&#x27;time&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo_cols</span><br><span class="line"></span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>, names=ufo_cols, header=<span class="number">0</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo.columns.str.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py"><a href="#5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py" class="headerlink" title="5.在pandas DataFrame 中移除指定的行和列(源码见demo5.py)"></a>5.在pandas DataFrame 中移除指定的行和列(<a href="https://github.com/junhuali/study-pandas/blob/master/demo5.py">源码见demo5.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># axis=0 按行 axi=1 按列</span></span><br><span class="line">ufo.drop(<span class="string">&#x27;Colors Reported&#x27;</span>, axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="string">&#x27;City&#x27;</span>, <span class="string">&#x27;State&#x27;</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="number">0</span>, <span class="number">1</span>], axis=<span class="number">0</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br></pre></td></tr></table></figure>
+
+<p>视频p4<br>讲解了怎么通过使用ipython notebook ，调出对应pandas的方法或者函数的说明，在使用的时候可以通过点击对应方法，然后加上<code>shift+tab</code>键，<br>查看对应的说明。<br>视频p5<br>讲解了通过几种方法修改数据的列名<br>视频p6<br>讲解了通过drop 方法，移除对应的行列，通过这个方法，可以将数据中不需要的部分或者是无效数据进行清洗</p>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -1572,14 +1591,12 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>pandas学习笔记-2</title>
-    <url>/2018/09/25/study-pandas-notes-2/</url>
-    <content><![CDATA[<h4 id="3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py"><a href="#3-为什么pandas命令以括号结尾，其他的命令不呢？-源码见demo3-py" class="headerlink" title="3.为什么pandas命令以括号结尾，其他的命令不呢？(源码见demo3.py)"></a>3.为什么pandas命令以括号结尾，其他的命令不呢？(<a href="https://github.com/junhuali/study-pandas/blob/master/demo3.py">源码见demo3.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/imdb_1000.csv&#x27;</span>)</span><br><span class="line">head = movies.head()</span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">describe = movies.describe()</span><br><span class="line">print(describe)</span><br><span class="line"></span><br><span class="line">shape = movies.shape</span><br><span class="line">print(shape)</span><br><span class="line"></span><br><span class="line">dtypes = movies.dtypes</span><br><span class="line">print(dtypes)</span><br><span class="line"></span><br><span class="line">print(type(movies))</span><br><span class="line"></span><br><span class="line">movies.describe(include=[<span class="string">&#x27;object&#x27;</span>])</span><br></pre></td></tr></table></figure>
+    <title>pandas学习笔记-3</title>
+    <url>/2018/09/26/study-pandas-notes-3/</url>
+    <content><![CDATA[<h4 id="6-pandas数据排序-源码见demo6-py"><a href="#6-pandas数据排序-源码见demo6-py" class="headerlink" title="6.pandas数据排序(源码见demo6.py)"></a>6.pandas数据排序(<a href="https://github.com/junhuali/study-pandas/blob/master/demo6.py">源码见demo6.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/imdb_1000.csv&#x27;</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">&#x27;title&#x27;</span>].sort_values(ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies[<span class="string">&#x27;title&#x27;</span>])</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">&#x27;title&#x27;</span>))</span><br><span class="line"></span><br><span class="line">print(movies.sort_values(<span class="string">&#x27;duration&#x27;</span>, ascending=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">print(movies.head())</span><br><span class="line"></span><br><span class="line">print(movies.sort_values([<span class="string">&#x27;content_rating&#x27;</span>, <span class="string">&#x27;duration&#x27;</span>]))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="7-pandas通过列名过滤行数据-源码见demo7-py"><a href="#7-pandas通过列名过滤行数据-源码见demo7-py" class="headerlink" title="7.pandas通过列名过滤行数据(源码见demo7.py)"></a>7.pandas通过列名过滤行数据(<a href="https://github.com/junhuali/study-pandas/blob/master/demo7.py">源码见demo7.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">movies = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/imdb_1000.csv&#x27;</span>)</span><br><span class="line">print(movies.head())</span><br><span class="line">print(movies.shape)</span><br><span class="line"></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">booleans = []</span><br><span class="line"><span class="keyword">for</span> length <span class="keyword">in</span> movies.duration:</span><br><span class="line">    <span class="keyword">if</span> length &gt;= <span class="number">20</span>:</span><br><span class="line">        booleans.append(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        booleans.append(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">booleans[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">len(booleans)</span><br><span class="line"></span><br><span class="line">is_long = pd.Series(booleans)</span><br><span class="line">is_long.head()</span><br><span class="line"></span><br><span class="line">is_long = movies.duration &gt;= <span class="number">200</span></span><br><span class="line">is_long.head()</span><br><span class="line">movies[<span class="string">&#x27;genre&#x27;</span>]</span><br><span class="line"></span><br><span class="line">movies[movies.duration &gt;= <span class="number">200</span>][<span class="string">&#x27;genre&#x27;</span>]</span><br><span class="line">movies[is_long]</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-在pandas-DataFrame-中重命名列名-源码见demo4-py"><a href="#4-在pandas-DataFrame-中重命名列名-源码见demo4-py" class="headerlink" title="4. 在pandas DataFrame 中重命名列名(源码见demo4.py)"></a>4. 在pandas DataFrame 中重命名列名(<a href="https://github.com/junhuali/study-pandas/blob/master/demo4.py">源码见demo4.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line">head = ufo.head()</span><br><span class="line"></span><br><span class="line">print(head)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.rename(columns=&#123;<span class="string">&#x27;Colors Reported&#x27;</span>: <span class="string">&#x27;Colors_Reported&#x27;</span>, <span class="string">&#x27;Shape Reported&#x27;</span>: <span class="string">&#x27;Shape_Reported&#x27;</span>&#125;, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo_cols = &#123;<span class="string">&#x27;city&#x27;</span>, <span class="string">&#x27;colors reported&#x27;</span>, <span class="string">&#x27;shape reported&#x27;</span>, <span class="string">&#x27;state&#x27;</span>, <span class="string">&#x27;time&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo_cols</span><br><span class="line"></span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>, names=ufo_cols, header=<span class="number">0</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br><span class="line">ufo.columns = ufo.columns.str.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">print(ufo.columns)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py"><a href="#5-在pandas-DataFrame-中移除指定的行和列-源码见demo5-py" class="headerlink" title="5.在pandas DataFrame 中移除指定的行和列(源码见demo5.py)"></a>5.在pandas DataFrame 中移除指定的行和列(<a href="https://github.com/junhuali/study-pandas/blob/master/demo5.py">源码见demo5.py</a>)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">ufo = pd.read_csv(<span class="string">&#x27;https://blog.searchinfogo.com/download/data/data/ufo.csv&#x27;</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># axis=0 按行 axi=1 按列</span></span><br><span class="line">ufo.drop(<span class="string">&#x27;Colors Reported&#x27;</span>, axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="string">&#x27;City&#x27;</span>, <span class="string">&#x27;State&#x27;</span>], axis=<span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line"></span><br><span class="line">ufo.drop([<span class="number">0</span>, <span class="number">1</span>], axis=<span class="number">0</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(ufo.head())</span><br><span class="line">print(ufo.shape)</span><br></pre></td></tr></table></figure>
-
-<p>视频p4<br>讲解了怎么通过使用ipython notebook ，调出对应pandas的方法或者函数的说明，在使用的时候可以通过点击对应方法，然后加上<code>shift+tab</code>键，<br>查看对应的说明。<br>视频p5<br>讲解了通过几种方法修改数据的列名<br>视频p6<br>讲解了通过drop 方法，移除对应的行列，通过这个方法，可以将数据中不需要的部分或者是无效数据进行清洗</p>
+<p>p7<br>讲解了使用sort_values() 方法对数据进行排序<br>p8<br>讲解了通过指定的条件对数据进行筛选</p>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -1695,24 +1712,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>brew 使用</title>
-    <url>/2020/07/08/use-brew/</url>
-    <content><![CDATA[<p>记录一下常用的brew 命令 <a id="more"></a></p>
-<h3 id="brew-常用命令"><a href="#brew-常用命令" class="headerlink" title="brew 常用命令"></a>brew 常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有通过 brew 安装的包</span></span><br><span class="line">brew list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个包的信息</span></span><br><span class="line">brew info (formula)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 brew</span></span><br><span class="line">brew update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看需要更新的包(需要先执行 brew update)</span></span><br><span class="line">brew outdated</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新某个或全部包</span></span><br><span class="line">brew upgrade (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 brew 安装的服务列表，及当前状态(是否启动)</span></span><br><span class="line">brew services list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个或所有服务</span></span><br><span class="line">brew services run (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个或所有服务(并注册到用户登录/开机自动启动)</span></span><br><span class="line">brew services start (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭某个或所有服务</span></span><br><span class="line">brew services stop (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启某个或所有服务</span></span><br><span class="line">brew services restart (formula|--all)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Cakebrew"><a href="#Cakebrew" class="headerlink" title="Cakebrew"></a>Cakebrew</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install cakebrew</span><br></pre></td></tr></table></figure>
-
-<h3 id="LaunchRocket"><a href="#LaunchRocket" class="headerlink" title="LaunchRocket"></a>LaunchRocket</h3><p>而 LaunchRocket 呢，则是一个帮助管理 Homebrew 安装的服务的软件，比如你使用 Homebrew 安装的 Mysql、Redis、MongoDB，是让它自启动呢，还是手动启动，传统方式需要使用命令行的命令，而使用 LaunchRocket 则可以在图形界面中进行管理了！</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install launchrocket</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>brew</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu安装LAMP</title>
     <url>/2017/10/28/ubuntu-install-lamp/</url>
     <content><![CDATA[<h3 id="LAMP"><a href="#LAMP" class="headerlink" title="LAMP"></a>LAMP</h3><p> Linux+Apache+Mysql/MariaDB+Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。<a id="more"></a></p>
@@ -1798,6 +1797,24 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>brew 使用</title>
+    <url>/2020/07/08/use-brew/</url>
+    <content><![CDATA[<p>记录一下常用的brew 命令 <a id="more"></a></p>
+<h3 id="brew-常用命令"><a href="#brew-常用命令" class="headerlink" title="brew 常用命令"></a>brew 常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有通过 brew 安装的包</span></span><br><span class="line">brew list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个包的信息</span></span><br><span class="line">brew info (formula)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新 brew</span></span><br><span class="line">brew update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看需要更新的包(需要先执行 brew update)</span></span><br><span class="line">brew outdated</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新某个或全部包</span></span><br><span class="line">brew upgrade (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 brew 安装的服务列表，及当前状态(是否启动)</span></span><br><span class="line">brew services list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个或所有服务</span></span><br><span class="line">brew services run (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动某个或所有服务(并注册到用户登录/开机自动启动)</span></span><br><span class="line">brew services start (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭某个或所有服务</span></span><br><span class="line">brew services stop (formula|--all)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启某个或所有服务</span></span><br><span class="line">brew services restart (formula|--all)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cakebrew"><a href="#Cakebrew" class="headerlink" title="Cakebrew"></a>Cakebrew</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install cakebrew</span><br></pre></td></tr></table></figure>
+
+<h3 id="LaunchRocket"><a href="#LaunchRocket" class="headerlink" title="LaunchRocket"></a>LaunchRocket</h3><p>而 LaunchRocket 呢，则是一个帮助管理 Homebrew 安装的服务的软件，比如你使用 Homebrew 安装的 Mysql、Redis、MongoDB，是让它自启动呢，还是手动启动，传统方式需要使用命令行的命令，而使用 LaunchRocket 则可以在图形界面中进行管理了！</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install launchrocket</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>brew</tag>
       </tags>
   </entry>
   <entry>

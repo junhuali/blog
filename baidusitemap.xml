@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.searchinfogo.com/2021/01/27/github-connection-refused/</loc>
+    <lastmod>2021-01-28</lastmod>
+  </url>
+  <url>
     <loc>https://blog.searchinfogo.com/2020/12/14/centos8-yum-install-nginx/</loc>
-    <lastmod>2020-12-22</lastmod>
+    <lastmod>2020-12-23</lastmod>
   </url>
   <url>
     <loc>https://blog.searchinfogo.com/2020/10/21/log-use-placeholder-or-splice/</loc>
