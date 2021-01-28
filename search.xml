@@ -275,6 +275,31 @@
       </tags>
   </entry>
   <entry>
+    <title>apollo 配置提前加载</title>
+    <url>/2019/05/18/apollo-eagerload/</url>
+    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>$&#123;&#125;</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
+<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient(name = &quot;xxx&quot;, url = &quot;$&#123;xxx&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/xxx/xxx/xxx&quot;)</span></span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(<span class="meta">@RequestParam(value = &quot;xxx&quot;)</span> String xxx)</span> <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
+<p>当url使用固定时，可以正常的解析出请求的url，使用<code>$&#123;&#125;</code>没有生效。<br>这个时候查询了Apollo的文档<a href="%22https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90%22">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
+<blockquote>
+<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
+</blockquote>
+<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
+<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">&quot;此处写你需要提前初始化的key&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>通过在启动前将配置注入，<code>$&#123;&#125;</code> 就可以获取到正确的链接了。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Apollo、Feign</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>方舟服务器搭建 Ark-Server-Build</title>
     <url>/2020/04/14/ark-server/</url>
     <content><![CDATA[<p>最近被朋友拉着入了<code>方舟:进化生存</code>的坑，但是朋友家的网络有点炸裂，导致我疯狂掉线，所以查了一下教程，搭建一个非专用服务器，并做一下记录。<a id="more"></a></p>
@@ -298,31 +323,6 @@
       </categories>
       <tags>
         <tag>Ark</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>apollo 配置提前加载</title>
-    <url>/2019/05/18/apollo-eagerload/</url>
-    <content><![CDATA[<h4 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h4><p>项目基于SpringCloud+Apollo配置中心，在开发阶段，Feign远程调用的时候url是写死的，但是提测后，需要进行灵活配置，所以使用了占位符，发现<code>$&#123;&#125;</code>没有生效。<br>导致请求调用的时候出错。<a id="more"></a></p>
-<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>首先是检查配置是否正确，请求的代码示例如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient(name = &quot;xxx&quot;, url = &quot;$&#123;xxx&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FeignClientService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取实体列表</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> xxx xxx</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/xxx/xxx/xxx&quot;)</span></span><br><span class="line">    <span class="function">FeignResp&lt;EntityListVO&gt; <span class="title">getEntityList</span><span class="params">(<span class="meta">@RequestParam(value = &quot;xxx&quot;)</span> String xxx)</span> <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
-<p>当url使用固定时，可以正常的解析出请求的url，使用<code>$&#123;&#125;</code>没有生效。<br>这个时候查询了Apollo的文档<a href="%22https://github.com/ctripcorp/apollo/wiki/Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97#3213-spring-boot%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F%E6%8E%A8%E8%8D%90%22">Java客户端使用指南3.2.1.3SpringBoot集成方式</a></p>
-<blockquote>
-<p>Spring Boot除了支持上述两种集成方式以外，还支持通过application.properties/bootstrap.properties来配置，该方式能使配置在更早的阶段注入，比如使用@ConditionalOnProperty的场景或者是有一些spring-boot-starter在启动阶段就需要读取配置做一些事情（如dubbo-spring-boot-project），所以对于Spring Boot环境建议通过以下方式来接入Apollo(需要0.10.0及以上版本）。<br>从1.2.0版本开始，如果希望把日志相关的配置（如logging.level.root=info或logback-spring.xml中的参数）也放在Apollo管理，那么可以额外配置apollo.bootstrap.eagerLoad.enabled=true来使Apollo的加载顺序放到日志系统加载之前，不过这会导致Apollo的启动过程无法通过日志的方式输出(因为执行Apollo加载的时候，日志系统压根没有准备好呢！所以在Apollo代码中使用Slf4j的日志输出便没有任何内容)，更多信息可以参考PR 1614。参考配置示例如下：<br>     # will inject ‘application’ namespace in bootstrap phase<br>     apollo.bootstrap.enabled = true<br>     # put apollo initialization before logging system initialization<br>     apollo.bootstrap.eagerLoad.enabled=true</p>
-</blockquote>
-<p>增加了如上的配置后，发现仍然没有作用，然后检查了Apollo的版本，发现版本的<code>1.1.0</code>，这个时候内心是崩溃的，因为配置中心是公司统一使用的，所以没有办法随便升级，只能自己想办法了。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>没办法在Springboot启动前加载，可以尝试手动加载。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ctrip.framework.apollo.ConfigService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientUrlConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initSet(<span class="string">&quot;此处写你需要提前初始化的key&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSet</span><span class="params">(String... keys)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">            String val = ConfigService.getAppConfig().getProperty(key, <span class="keyword">null</span>);</span><br><span class="line">            System.setProperty(key, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在<code>SpringApplication.run()</code> 之前加载</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">new</span> ClientUrlConfig().init();</span><br><span class="line">       SpringApplication.run(Application.class, args);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>通过在启动前将配置注入，<code>$&#123;&#125;</code> 就可以获取到正确的链接了。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Apollo、Feign</tag>
       </tags>
   </entry>
   <entry>
@@ -407,28 +407,6 @@
       </tags>
   </entry>
   <entry>
-    <title>centos安装redis5.x</title>
-    <url>/2018/12/14/centos-install-redis5-x/</url>
-    <content><![CDATA[<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
-<p>Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。[3]在2013年5月之前，其开发由VMware赞助。[4根据月度排行网站DB-Engines.com的数据显示，Redis是最流行的键值对存储数据库。<a id="more"></a></p>
-</blockquote>
-<p>我们在项目的开发中很多地方都会用到reids，用户信息缓存、分布式锁、定时器、简单的队列等等，要想使用Redis，<br>第一件事就是安装Redis。</p>
-<h4 id="安装Redis（默认CentOS-7）"><a href="#安装Redis（默认CentOS-7）" class="headerlink" title="安装Redis（默认CentOS 7）"></a>安装Redis（默认CentOS 7）</h4><ul>
-<li>下载Redis<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-5.0.3.tar.gz</span><br></pre></td></tr></table></figure></li>
-<li>解压编译<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xzf redis-5.0.3.tar.gz</span><br><span class="line">cd redis-5.0.3</span><br><span class="line">make install</span><br><span class="line">#安装redis-server（默认配置）</span><br><span class="line">sh .&#x2F;utils&#x2F;install_server.sh</span><br><span class="line"></span><br><span class="line">Welcome to the redis service installer</span><br><span class="line">This script will help you easily set up a running redis server</span><br><span class="line"></span><br><span class="line">Please select the redis port for this instance: [6379]</span><br><span class="line">Selecting default: 6379</span><br><span class="line">Please select the redis config file name [&#x2F;etc&#x2F;redis&#x2F;6379.conf]</span><br><span class="line">Selected default - &#x2F;etc&#x2F;redis&#x2F;6379.conf</span><br><span class="line">Please select the redis log file name [&#x2F;var&#x2F;log&#x2F;redis_6379.log]</span><br><span class="line">Selected default - &#x2F;var&#x2F;log&#x2F;redis_6379.log</span><br><span class="line">Please select the data directory for this instance [&#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379]</span><br><span class="line">Selected default - &#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379</span><br><span class="line">Please select the redis executable path [&#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-server]</span><br><span class="line">Selected config:</span><br><span class="line">Port           : 6379</span><br><span class="line">Config file    : &#x2F;etc&#x2F;redis&#x2F;6379.conf</span><br><span class="line">Log file       : &#x2F;var&#x2F;log&#x2F;redis_6379.log</span><br><span class="line">Data dir       : &#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379</span><br><span class="line">Executable     : &#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-server</span><br><span class="line">Cli Executable : &#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-cli</span><br><span class="line">Is this ok? Then press ENTER to go on or Ctrl-C to abort.</span><br><span class="line">Copied &#x2F;tmp&#x2F;6379.conf &#x3D;&gt; &#x2F;etc&#x2F;init.d&#x2F;redis_6379</span><br><span class="line">Installing service...</span><br><span class="line">Successfully added to chkconfig!</span><br><span class="line">Successfully added to runlevels 345!</span><br><span class="line">Starting Redis server...</span><br><span class="line">Installation successful!</span><br></pre></td></tr></table></figure>
-<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/redis/6379.config</span><br><span class="line"><span class="meta">#</span><span class="bash">设置后台启动</span></span><br><span class="line">daemonize yes</span><br><span class="line"><span class="meta">#</span><span class="bash">设置数据持久化</span></span><br><span class="line">appendonly yes</span><br><span class="line"><span class="meta">#</span><span class="bash">设置ip 默认最好不修改</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">bind</span> 127.0.0.1</span></span><br><span class="line"><span class="meta">#</span><span class="bash">设置密码</span></span><br><span class="line"><span class="meta">#</span><span class="bash">requirepass 123456</span></span><br></pre></td></tr></table></figure>
-<h4 id="创建服务脚本"><a href="#创建服务脚本" class="headerlink" title="创建服务脚本"></a>创建服务脚本</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#启动</span><br><span class="line">systemctl start &#x2F;etc&#x2F;init.d&#x2F;redis_6379</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS7 安装Docker</title>
     <url>/2019/06/25/centos7-docker-install-tutorial/</url>
     <content><![CDATA[<p>Docker在越来越多的项目中使用，快捷、高效的部署，为我们提供了一个统一的环境，方便部署，当然还有其他很多的优点，就不一一列举了。安装基于<a href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker官方文档</a><a id="more"></a></p>
@@ -481,6 +459,28 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos安装redis5.x</title>
+    <url>/2018/12/14/centos-install-redis5-x/</url>
+    <content><![CDATA[<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
+<p>Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。[3]在2013年5月之前，其开发由VMware赞助。[4根据月度排行网站DB-Engines.com的数据显示，Redis是最流行的键值对存储数据库。<a id="more"></a></p>
+</blockquote>
+<p>我们在项目的开发中很多地方都会用到reids，用户信息缓存、分布式锁、定时器、简单的队列等等，要想使用Redis，<br>第一件事就是安装Redis。</p>
+<h4 id="安装Redis（默认CentOS-7）"><a href="#安装Redis（默认CentOS-7）" class="headerlink" title="安装Redis（默认CentOS 7）"></a>安装Redis（默认CentOS 7）</h4><ul>
+<li>下载Redis<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-5.0.3.tar.gz</span><br></pre></td></tr></table></figure></li>
+<li>解压编译<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar xzf redis-5.0.3.tar.gz</span><br><span class="line">cd redis-5.0.3</span><br><span class="line">make install</span><br><span class="line">#安装redis-server（默认配置）</span><br><span class="line">sh .&#x2F;utils&#x2F;install_server.sh</span><br><span class="line"></span><br><span class="line">Welcome to the redis service installer</span><br><span class="line">This script will help you easily set up a running redis server</span><br><span class="line"></span><br><span class="line">Please select the redis port for this instance: [6379]</span><br><span class="line">Selecting default: 6379</span><br><span class="line">Please select the redis config file name [&#x2F;etc&#x2F;redis&#x2F;6379.conf]</span><br><span class="line">Selected default - &#x2F;etc&#x2F;redis&#x2F;6379.conf</span><br><span class="line">Please select the redis log file name [&#x2F;var&#x2F;log&#x2F;redis_6379.log]</span><br><span class="line">Selected default - &#x2F;var&#x2F;log&#x2F;redis_6379.log</span><br><span class="line">Please select the data directory for this instance [&#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379]</span><br><span class="line">Selected default - &#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379</span><br><span class="line">Please select the redis executable path [&#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-server]</span><br><span class="line">Selected config:</span><br><span class="line">Port           : 6379</span><br><span class="line">Config file    : &#x2F;etc&#x2F;redis&#x2F;6379.conf</span><br><span class="line">Log file       : &#x2F;var&#x2F;log&#x2F;redis_6379.log</span><br><span class="line">Data dir       : &#x2F;var&#x2F;lib&#x2F;redis&#x2F;6379</span><br><span class="line">Executable     : &#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-server</span><br><span class="line">Cli Executable : &#x2F;usr&#x2F;local&#x2F;bin&#x2F;redis-cli</span><br><span class="line">Is this ok? Then press ENTER to go on or Ctrl-C to abort.</span><br><span class="line">Copied &#x2F;tmp&#x2F;6379.conf &#x3D;&gt; &#x2F;etc&#x2F;init.d&#x2F;redis_6379</span><br><span class="line">Installing service...</span><br><span class="line">Successfully added to chkconfig!</span><br><span class="line">Successfully added to runlevels 345!</span><br><span class="line">Starting Redis server...</span><br><span class="line">Installation successful!</span><br></pre></td></tr></table></figure>
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/redis/6379.config</span><br><span class="line"><span class="meta">#</span><span class="bash">设置后台启动</span></span><br><span class="line">daemonize yes</span><br><span class="line"><span class="meta">#</span><span class="bash">设置数据持久化</span></span><br><span class="line">appendonly yes</span><br><span class="line"><span class="meta">#</span><span class="bash">设置ip 默认最好不修改</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">bind</span> 127.0.0.1</span></span><br><span class="line"><span class="meta">#</span><span class="bash">设置密码</span></span><br><span class="line"><span class="meta">#</span><span class="bash">requirepass 123456</span></span><br></pre></td></tr></table></figure>
+<h4 id="创建服务脚本"><a href="#创建服务脚本" class="headerlink" title="创建服务脚本"></a>创建服务脚本</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#启动</span><br><span class="line">systemctl start &#x2F;etc&#x2F;init.d&#x2F;redis_6379</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -1016,21 +1016,6 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </tags>
   </entry>
   <entry>
-    <title>日志使用占位符还是直接拼接</title>
-    <url>/2020/10/21/log-use-placeholder-or-splice/</url>
-    <content><![CDATA[<p>在开发和生产环境，我们经常依赖log来帮我们定位问题，这时候会使用不用的log级别，debug,info,warn,error等。今天在和同事讨论的过程中，聊到了日志占位符的问题。<br>以及使用占位符的优点，然后自己简单做了一下性能测试，加深了对占位符的理解。<a id="more"></a></p>
-<h3 id="占位符和直接拼接的性能比较"><a href="#占位符和直接拼接的性能比较" class="headerlink" title="占位符和直接拼接的性能比较"></a>占位符和直接拼接的性能比较</h3><p>通过main方法for循环测试占位符和直接拼接10w次以后的用时，发现直接性能拼接的耗时较短；那么这样可以得到一个简单的结论，拼接耗时短，性能表面上看要比占位符性能高。<br>既然这样的话，我们为什么不直接使用拼接，反而越来越多的框架选择使用了占位符。</p>
-<h3 id="从实际出发"><a href="#从实际出发" class="headerlink" title="从实际出发"></a>从实际出发</h3><p>回到项目，一般项目里面有很多debug级别的日志，可以帮助我们快速定位线上问题，提交生产解决问题的效率，但是一般线上的日志级别会比较高，debug是不会打印的，这个时候就出现了一个问题，拼接的时候会进行内存空间的开辟，stringbuilder进行拼接，但是进入日志断点后，发现并不需要进行日志打印，这部分的开销就变的没有意义，而使用占位符的时候，只有需要打印的时候才会进行拼接，减少了内存的开销，性能得到了提升。</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>使用占位符是一个最佳实践，当然我觉得还是要根据实际的情况，如果确定100%需要进行日志打印，而且日志级别较高，我觉得直接拼接是更好的选择，不过如果公司有规范的话，还是按照规范来执行。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Log</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MD5、SALT加密浅析</title>
     <url>/2018/11/06/md5-and-salt-encryption/</url>
     <content><![CDATA[<p>密码的保存是开发的过程中必不可少的一部分，通常我们一般使用MD5加密，来对密码安全进行简单的加强，但是只是使用MD5进行加密，如果密码相同，MD5值就会一样，<br>通过一些在线的MD5解析网站的解析，密码大概率就会被解析出来，使用相同密码的人，也会受到影响。通过“加盐” ，可以提高密码被破解的难度。<a id="more"></a></p>
@@ -1057,6 +1042,21 @@ Docker 已安装未启动，<code>docker</code> 组被创建，但是没有user�
       </categories>
       <tags>
         <tag>加密</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日志使用占位符还是直接拼接</title>
+    <url>/2020/10/21/log-use-placeholder-or-splice/</url>
+    <content><![CDATA[<p>在开发和生产环境，我们经常依赖log来帮我们定位问题，这时候会使用不用的log级别，debug,info,warn,error等。今天在和同事讨论的过程中，聊到了日志占位符的问题。<br>以及使用占位符的优点，然后自己简单做了一下性能测试，加深了对占位符的理解。<a id="more"></a></p>
+<h3 id="占位符和直接拼接的性能比较"><a href="#占位符和直接拼接的性能比较" class="headerlink" title="占位符和直接拼接的性能比较"></a>占位符和直接拼接的性能比较</h3><p>通过main方法for循环测试占位符和直接拼接10w次以后的用时，发现直接性能拼接的耗时较短；那么这样可以得到一个简单的结论，拼接耗时短，性能表面上看要比占位符性能高。<br>既然这样的话，我们为什么不直接使用拼接，反而越来越多的框架选择使用了占位符。</p>
+<h3 id="从实际出发"><a href="#从实际出发" class="headerlink" title="从实际出发"></a>从实际出发</h3><p>回到项目，一般项目里面有很多debug级别的日志，可以帮助我们快速定位线上问题，提交生产解决问题的效率，但是一般线上的日志级别会比较高，debug是不会打印的，这个时候就出现了一个问题，拼接的时候会进行内存空间的开辟，stringbuilder进行拼接，但是进入日志断点后，发现并不需要进行日志打印，这部分的开销就变的没有意义，而使用占位符的时候，只有需要打印的时候才会进行拼接，减少了内存的开销，性能得到了提升。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>使用占位符是一个最佳实践，当然我觉得还是要根据实际的情况，如果确定100%需要进行日志打印，而且日志级别较高，我觉得直接拼接是更好的选择，不过如果公司有规范的话，还是按照规范来执行。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Log</tag>
       </tags>
   </entry>
   <entry>
