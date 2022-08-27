@@ -1,7 +1,7 @@
 ---
 title: 学习Shell命令行总结
 date: 2018-04-02 20:38:29
-categories: Shell
+categories: Linux
 tags: Shell
 ---
 
